@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: backend
+    env: node
+    region: frankfurt
+    plan: free
+    rootDir: backend
+    buildFilter:
+      paths:
+        - backend/src
+    buildCommand: npm run build
+    startCommand: npm run prod
+    envVars:
+      - key: DOTFILE_KEY
+        sync: false
+      - key: DOTFILE_BASE_URL
+        sync: false
+  - type: web
+    name: frontend
+    healthCheckPath: /health
+    env: static
+    rootDir: frontend
+    buildFilter:
+      paths:
+        - frontend/src
+    buildCommand: npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_HOST
+        fromService:
+          type: web
+          name: backend
+          envVarKey: RENDER_EXTERNAL_URL

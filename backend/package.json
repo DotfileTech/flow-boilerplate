@@ -1,0 +1,51 @@
+{
+  "name": "dotfile-demozone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "mocha -r ts-node/register --timeout 10000 src/test/test.ts ",
+    "start": "node .",
+    "dev": "nodemon",
+    "prod": "node ./dist/index.js",
+    "build": "npm install && tsc -p ."
+  },
+  "engines": {
+    "node": "^16.x"
+  },
+  "dependencies": {
+    "axios": "^1.2.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http-status": "^1.5.3",
+    "http-status-codes": "^2.2.0",
+    "lodash": "^4.17.21",
+    "momentjs": "^2.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.8.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/mocha": "^10.0.1",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.28.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-security": "^1.5.0",
+    "mocha": "^10.1.0",
+    "ngrok": "^4.3.3",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.3"
+  }
+}
