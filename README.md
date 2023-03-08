@@ -16,7 +16,7 @@ An Express application that act as a proxy between the frontend and Dotfile API 
 
 A React application to manage a multi-step form to collect the information necessary to the KYB process:
 
-- Search for a Company and edit information
+- Search for a Company and edit its information
 - Create Individuals
 - Free from to collect additional information
 
