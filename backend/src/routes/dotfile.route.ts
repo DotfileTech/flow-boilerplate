@@ -1,5 +1,6 @@
 import { Routes } from '../interfaces/routes.interface'
 import express, { Router } from 'express'
+import { upload } from '../middlewares/multer'
 import DotfileController from '../controllers/dotfile.controller'
 
 class PublicApiRoute implements Routes {
@@ -32,6 +33,23 @@ class PublicApiRoute implements Routes {
     )
 
     this.router.post(`${this.path}cases`, this.dotfileController.createCase)
+
+    this.router.get(`${this.path}cases/:id`, this.dotfileController.fetchCase)
+
+    this.router.post(`${this.path}checks`, this.dotfileController.fetchCheck)
+
+    this.router.post(
+      `${this.path}documents`,
+      function (req, res, next) {
+        upload(req, res, function (err) {
+          if (err) {
+            return res.status(400).send({ message: err.message })
+          }
+          next()
+        })
+      },
+      this.dotfileController.uploadDocument,
+    )
 
     this.router.use((req, res) => {
       res.status(404).send({

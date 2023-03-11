@@ -9,6 +9,7 @@ import {
   Progress,
   Text,
   Avatar,
+  Image,
 } from '@chakra-ui/react'
 
 import { ColorModeSwitcher } from './components/ColorModeSwitcher'
@@ -19,8 +20,10 @@ import CompaniesList from './steps/CompaniesList'
 import CompanyEdit from './steps/CompanyEdit'
 import IndividualEdit from './steps/IndividualEdit'
 import IndividualsList from './steps/IndividualsList'
+import ChecksList from './steps/ChecksList'
 import CustomForm from './steps/CustomForm'
 import useApi from './hooks/useApi'
+import { useSearchParams } from 'react-router-dom'
 
 const activeLabelStyles = {
   transform: 'scale(0.85) translateY(-24px)',
@@ -71,8 +74,21 @@ export interface Company {
 function AppContent() {
   const api = useApi()
 
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const [caseId, setCaseId] = React.useState(
+    searchParams.get('new') === 'true'
+      ? undefined
+      : localStorage.getItem('caseId') || searchParams.get('caseId'),
+  )
+
+  const email = searchParams.get('email')
+
   React.useEffect(() => {
     async function fetchMyAPI() {
+      console.log(caseId)
+      if (caseId) setStep(7)
+      if (searchParams.get('company')) getCompanies()
       const response = await api.get('/dotfile/countries')
       setCountries(response.data)
       setInitialLoading(false)
@@ -93,7 +109,7 @@ function AppContent() {
   const [metadata, setMetadata] = React.useState<any>({})
 
   const [company, setCompany] = React.useState<any>({
-    name: '',
+    name: searchParams.get('company'),
     country: 'FR',
   })
 
@@ -115,8 +131,12 @@ function AppContent() {
     const response = await api.post(`dotfile/cases`, {
       company,
       individuals,
+      email,
     })
-    return window.location.replace(response.data.caseUrl)
+    setCaseId(response.data.caseId)
+    localStorage.setItem('caseId', response.data.caseId)
+    setStep(7)
+    // return window.location.replace(response.data.caseUrl)
   }
 
   const back = async (e: any) => {
@@ -153,7 +173,7 @@ function AppContent() {
       setIsLoading(true)
       const response = await api.get(`/dotfile/companies/${id}`)
       setCompany(response.data)
-      setIndividuals(response.data.beneficial_owners)
+      setIndividuals(response.data.individuals)
       setIsLoading(false)
       setStep(step + 1)
     }
@@ -193,78 +213,111 @@ function AppContent() {
   return (
     <ChakraProvider theme={theme}>
       {/* <ColorModeSwitcher /> */}
-      <Flex minH={'100vh'} align={'center'} justify={'center'}>
-        {initialLoading && <LoadingSpinner />}
-        {!initialLoading && (
-          <Stack w="100%" spacing={5} mx={'auto'} maxW={'lg'} py={12} px={6}>
-            <Box rounded={'lg'} boxShadow={'lg'} p={8}>
-              <Stack align={'center'} spacing={6} pb={6}>
-                <Avatar src={`${logo}`} />
-                <Progress w="100%" value={(step / 5) * 100} />
-                <Text color={'gray.600'}>
-                  {' '}
-                  {step < 5
-                    ? 'Tell us more about your company'
-                    : 'Information on beneficial owners'}{' '}
-                </Text>
-              </Stack>
-              <Stack spacing={4}>
-                {step === 1 && (
-                  <CompanySearch
-                    getCompanies={getCompanies}
-                    countries={countries}
-                    company={company}
-                    changeHandler={changeHandler}
-                    isLoading={isLoading}
-                  />
-                )}
-                {step === 2 && (
-                  <CompaniesList
-                    selectCompany={selectCompany}
-                    companies={companies}
-                    isLoading={isLoading}
-                    back={back}
-                  />
-                )}
-                {step === 3 && (
-                  <CompanyEdit
-                    company={company}
-                    changeHandler={changeHandler}
-                    next={next}
-                    back={back}
-                    countries={countries}
-                  />
-                )}
-                {step === 4 && (
-                  <CustomForm
-                    metadata={metadata}
-                    changeHandlerMetadata={changeHandlerMetadata}
-                    next={next}
-                  />
-                )}
-                {step === 5 && (
-                  <IndividualsList
-                    selectIndividual={selectIndividual}
-                    individuals={individuals}
-                    setIndividuals={setIndividuals}
-                    submit={submit}
-                  />
-                )}
-                {step === 6 && (
-                  <IndividualEdit
-                    individual={individual}
-                    setIndividual={setIndividual}
-                    saveIndividual={saveIndividual}
-                    next={next}
-                    back={back}
-                    countries={countries}
-                  />
-                )}
-              </Stack>
-            </Box>
-          </Stack>
-        )}
-      </Flex>
+      <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+        <Flex minH={'100vh'} flex={1} align={'center'} justify={'center'}>
+          {initialLoading && <LoadingSpinner />}
+          {!initialLoading && (
+            <Stack
+              w="100%"
+              spacing={5}
+              mx={'auto'}
+              //  maxW={'lg'}
+              py={12}
+              px={6}
+            >
+              <Box
+                rounded={'lg'}
+                // boxShadow={'lg'}
+                p={8}
+              >
+                <Stack align={'center'} spacing={6} pb={6}>
+                  <Avatar src={`${logo}`} />
+                  <Progress w="100%" value={(step / 5) * 100} />
+                  <Text color={'gray.600'}>
+                    {' '}
+                    {step < 5
+                      ? 'Tell us more about your company'
+                      : 'Information on beneficial owners'}{' '}
+                  </Text>
+                </Stack>
+                <Stack spacing={4}>
+                  {step === 1 && (
+                    <CompanySearch
+                      getCompanies={getCompanies}
+                      countries={countries}
+                      company={company}
+                      changeHandler={changeHandler}
+                      isLoading={isLoading}
+                    />
+                  )}
+                  {step === 2 && (
+                    <CompaniesList
+                      selectCompany={selectCompany}
+                      companies={companies}
+                      isLoading={isLoading}
+                      back={back}
+                    />
+                  )}
+                  {step === 3 && (
+                    <CompanyEdit
+                      company={company}
+                      changeHandler={changeHandler}
+                      next={next}
+                      back={back}
+                      countries={countries}
+                    />
+                  )}
+                  {step === 4 && (
+                    <CustomForm
+                      metadata={metadata}
+                      changeHandlerMetadata={changeHandlerMetadata}
+                      next={next}
+                    />
+                  )}
+                  {step === 5 && (
+                    <IndividualsList
+                      selectIndividual={selectIndividual}
+                      individuals={individuals}
+                      setIndividuals={setIndividuals}
+                      submit={submit}
+                    />
+                  )}
+                  {step === 6 && (
+                    <IndividualEdit
+                      individual={individual}
+                      setIndividual={setIndividual}
+                      saveIndividual={saveIndividual}
+                      next={next}
+                      back={back}
+                      countries={countries}
+                    />
+                  )}
+                  {step === 7 && (
+                    <ChecksList
+                      individual={individual}
+                      setIndividual={setIndividual}
+                      saveIndividual={saveIndividual}
+                      next={next}
+                      back={back}
+                      countries={countries}
+                      caseId={caseId}
+                    />
+                  )}
+                </Stack>
+              </Box>
+            </Stack>
+          )}
+        </Flex>
+        <Flex flex={1}>
+          <Image
+            alt={'Login Image'}
+            objectFit={'cover'}
+            src={
+              'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+            }
+          />
+        </Flex>
+      </Stack>
     </ChakraProvider>
   )
 }

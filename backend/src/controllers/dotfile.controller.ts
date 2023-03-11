@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import axios from 'axios'
+import FormData from 'form-data'
 
 class Dotfile {
   serverUrl: string
@@ -29,19 +30,19 @@ class Dotfile {
     endpoint: string,
     params: {},
     payload: {},
+    headers: {},
   ) {
     const url = `${this.serverUrl}/${endpoint}`
-
-    let headers = {
-      'Content-Type': 'application/json',
-      'Accept-Encoding': 'application/json',
-      'X-DOTFILE-API-KEY': this.secretKey,
-    }
 
     const { data } = await axios(url, {
       method,
       params,
-      headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Encoding': 'application/json',
+        'X-DOTFILE-API-KEY': this.secretKey,
+        ...headers,
+      },
       data: payload,
     })
 
@@ -66,6 +67,7 @@ class DotfileController {
         'company-data/countries',
         {},
         {},
+        {},
       )
       res.status(200).json(countries)
     } catch (err: any) {
@@ -87,21 +89,9 @@ class DotfileController {
         'company-data/search',
         { country: req.query.country, name: req.query.name },
         {},
+        {},
       )
       res.status(200).json(companies)
-      // res.status(200).json({
-      //   data: [
-      //     {
-      //       country: 'FR',
-      //       name: 'DOTFILE',
-      //       search_ref: 'cGFwcGVycztGUjs5MTA4OTI3Nzc=',
-      //       registration_number: '910892777',
-      //       address: {
-      //         postal_code: '75009',
-      //       },
-      //     },
-      //   ],
-      // })
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
@@ -121,53 +111,12 @@ class DotfileController {
         `company-data/fetch/${req.params.id}`,
         {},
         {},
+        {},
       )
+      company.individuals = company.beneficial_owners.map((ubo) => {
+        return { roles: ['beneficial_owner'], ...ubo }
+      })
       res.status(200).json(company)
-      // res.status(200).json({
-      //   name: 'DOTFILE',
-      //   registration_number: '910892777',
-      //   country: 'FR',
-      //   status: 'live',
-      //   registration_date: '2022-02-25',
-      //   legal_form: 'SAS, société par actions simplifiée',
-      //   address: {
-      //     street_address: '9 RUE AMBROISE THOMAS',
-      //     street_address_2: null,
-      //     postal_code: '75009',
-      //     city: 'PARIS 9',
-      //     country: 'FR',
-      //   },
-      //   classifications: [
-      //     {
-      //       type: 'naf',
-      //       code: '62.01Z',
-      //       description: 'Programmation informatique',
-      //     },
-      //   ],
-      //   beneficial_owners: [
-      //     {
-      //       entity_type: 'individual',
-      //       name: 'Vasco Alexandre',
-      //       first_name: 'Vasco',
-      //       last_name: 'Alexandre',
-      //       birth_date: '1992-07-03',
-      //       birth_country: 'FR',
-      //       ownership_percentage: null,
-      //     },
-      //   ],
-      //   shareholders: null,
-      //   legal_representatives: [
-      //     {
-      //       entity_type: 'individual',
-      //       name: 'Vasco Alexandre',
-      //       first_name: 'Vasco',
-      //       last_name: 'Alexandre',
-      //       birth_date: '1992-07-03',
-      //       birth_country: 'FR',
-      //       position: 'Président',
-      //     },
-      //   ],
-      // })
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
@@ -182,9 +131,7 @@ class DotfileController {
     next: NextFunction,
   ) => {
     try {
-      const { company, individuals } = req.body
-
-      console.log(company)
+      const { company, individuals, email } = req.body
 
       const createdCase = await this.dotfileApi.request(
         'post',
@@ -192,7 +139,9 @@ class DotfileController {
         {},
         {
           name: company.name,
+          external_id: email,
         },
+        {},
       )
 
       individuals.forEach(async (individual) => {
@@ -206,6 +155,7 @@ class DotfileController {
             last_name: individual.last_name,
             roles: individual.roles,
           },
+          {},
         )
 
         if (individual.roles.includes('applicant')) {
@@ -216,6 +166,7 @@ class DotfileController {
             {
               individual_id: createdIndividual.id,
             },
+            {},
           )
         } else {
           await this.dotfileApi.request(
@@ -228,11 +179,12 @@ class DotfileController {
                 document_type: 'driving_license',
               },
             },
+            {},
           )
         }
       })
 
-      await this.dotfileApi.request(
+      const createdCompany = await this.dotfileApi.request(
         'post',
         'companies',
         {},
@@ -243,16 +195,126 @@ class DotfileController {
           country: company.country,
           legal_form: company.legal_form,
         },
+        {},
+      )
+
+      await this.dotfileApi.request(
+        'post',
+        'checks/document',
+        {},
+        {
+          company_id: createdCompany.id,
+          settings: {
+            document_type: 'registration_certificate',
+          },
+        },
+        {},
       )
 
       res.status(200).json({
-        caseUrl: `https://beta.portal.dotfile.com/cases/${createdCase.id}`,
+        caseId: createdCase.id,
+        // caseUrl: `https://beta.portal.dotfile.com/cases/${createdCase.id}`,
+      })
+    } catch (err: any) {
+      res.status(400).send({
+        type: 'error',
+        message: 'Something went wrong while processing your export',
+      })
+    }
+  }
+
+  public fetchCase = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      const company = await this.dotfileApi.request(
+        'get',
+        `cases/${req.params.id}`,
+        {},
+        {},
+        {},
+      )
+      res.status(200).json(company)
+    } catch (err: any) {
+      res.status(400).send({
+        type: 'error',
+        message: 'Something went wrong while fetching your case',
+      })
+    }
+  }
+
+  public fetchCheck = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      const { checkId, type } = req.body
+
+      const check = await this.dotfileApi.request(
+        'get',
+        `checks/${type}/${checkId}`,
+        {},
+        {},
+        {},
+      )
+      res.status(200).json({
+        url: check.data.vendor.verification_url,
       })
     } catch (err: any) {
       console.log(err)
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while processing your export',
+        message: 'Something went wrong while fetching your case',
+      })
+    }
+  }
+
+  public uploadDocument = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      const bodyFormData = new FormData()
+      bodyFormData.append('file', req.file.buffer, {
+        filename: req.file.originalname,
+      })
+
+      const { checkId, type } = req.body
+
+      const { upload_ref } = await this.dotfileApi.request(
+        'post',
+        `files/upload`,
+        {},
+        bodyFormData,
+        {
+          ...bodyFormData.getHeaders(),
+        },
+      )
+
+      const completedChecks = await this.dotfileApi.request(
+        'post',
+        `checks/${type}/${checkId}/add_files`,
+        {},
+        {
+          files: [
+            {
+              upload_ref,
+            },
+          ],
+        },
+        {},
+      )
+
+      res.status(200).json(completedChecks)
+    } catch (err: any) {
+      console.log(err.response)
+      res.status(400).send({
+        type: 'error',
+        message: 'Something went wrong while fetching your case',
       })
     }
   }
