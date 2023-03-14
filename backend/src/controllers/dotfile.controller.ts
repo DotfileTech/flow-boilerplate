@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import axios from 'axios'
 import FormData from 'form-data'
+import EmailService from '../services/email.service'
 
 class Dotfile {
   serverUrl: string
@@ -55,6 +56,8 @@ class DotfileController {
     host: process.env.DOTFILE_BASE_URL,
     secretKey: process.env.DOTFILE_KEY,
   })
+
+  private emailService = new EmailService()
 
   public getCountries = async (
     req: Request,
@@ -165,10 +168,24 @@ class DotfileController {
             {},
             {
               individual_id: createdIndividual.id,
+              settings: {
+                mode: 'liveness',
+                redirect_url: `${process.env.APP_URL}?caseId=${createdCase.id}`,
+              },
             },
             {},
           )
         } else {
+          await this.dotfileApi.request(
+            'post',
+            'checks/id_document',
+            {},
+            {
+              individual_id: createdIndividual.id,
+            },
+            {},
+          )
+
           await this.dotfileApi.request(
             'post',
             'checks/document',
@@ -229,14 +246,39 @@ class DotfileController {
     next: NextFunction,
   ) => {
     try {
-      const company = await this.dotfileApi.request(
+      const caseData = await this.dotfileApi.request(
         'get',
         `cases/${req.params.id}`,
         {},
         {},
         {},
       )
-      res.status(200).json(company)
+
+      let enrichedIndividuals = []
+
+      for (const individual of caseData.individuals) {
+        let enrichedChecks = []
+        for (const check of individual.checks) {
+          // enrichedChecks.push(check)
+          const enrichedCheck = await this.dotfileApi.request(
+            'get',
+            `checks/${check.type}/${check.id}`,
+            {},
+            {},
+            {},
+          )
+
+          enrichedChecks.push(enrichedCheck)
+        }
+        individual.checks = enrichedChecks
+        enrichedIndividuals.push(individual)
+      }
+
+      caseData.individuals = enrichedIndividuals
+
+      console.log(caseData)
+
+      res.status(200).json(caseData)
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
@@ -260,11 +302,11 @@ class DotfileController {
         {},
         {},
       )
+
       res.status(200).json({
         url: check.data.vendor.verification_url,
       })
     } catch (err: any) {
-      console.log(err)
       res.status(400).send({
         type: 'error',
         message: 'Something went wrong while fetching your case',
@@ -279,8 +321,8 @@ class DotfileController {
   ) => {
     try {
       const bodyFormData = new FormData()
-      bodyFormData.append('file', req.file.buffer, {
-        filename: req.file.originalname,
+      bodyFormData.append('file', req.files[0].buffer, {
+        filename: req.files[0].originalname,
       })
 
       const { checkId, type } = req.body
@@ -311,7 +353,36 @@ class DotfileController {
 
       res.status(200).json(completedChecks)
     } catch (err: any) {
-      console.log(err.response)
+      res.status(400).send({
+        type: 'error',
+        message: 'Something went wrong while fetching your case',
+      })
+    }
+  }
+
+  public sendLink = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { email, caseId, checkId } = req.body
+
+      // const check = await this.dotfileApi.request(
+      //   'get',
+      //   `checks/${type}/${checkId}`,
+      //   {},
+      //   {},
+      //   {},
+      // )
+
+      // res.status(200).json({
+      //   url: check.data.vendor.verification_url,
+      // })
+
+      this.emailService.sendEmail(email, {
+        subject: 'Validate your identity',
+        message: `Follow this <a href="${process.env.APP_URL}/?caseId=${caseId}">link</a>`,
+      })
+
+      res.status(200).json({})
+    } catch (err: any) {
       res.status(400).send({
         type: 'error',
         message: 'Something went wrong while fetching your case',

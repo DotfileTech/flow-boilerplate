@@ -15,4 +15,7 @@ export const upload = multer({
   //     return cb(new Error('Only .pdf format allowed!'))
   //   }
   // },
-}).single('file')
+})
+// .single('file')
+// .array('file')
+.any()

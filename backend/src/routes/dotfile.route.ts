@@ -38,6 +38,8 @@ class PublicApiRoute implements Routes {
 
     this.router.post(`${this.path}checks`, this.dotfileController.fetchCheck)
 
+    this.router.post(`${this.path}send`, this.dotfileController.sendLink)
+
     this.router.post(
       `${this.path}documents`,
       function (req, res, next) {

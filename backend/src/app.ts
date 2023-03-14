@@ -1,6 +1,7 @@
 import express, { Application } from 'express'
 import cors from 'cors'
 import DotfileRoute from './routes/dotfile.route'
+import WebhooksRoute from './routes/webhooks.route'
 
 const app: Application = express()
 
@@ -27,6 +28,7 @@ app.get('/health', (req, res) => {
   res.status(200).send(data)
 })
 
+app.use('/webhooks', new WebhooksRoute().router)
 app.use('/dotfile', new DotfileRoute().router)
 
 interface ResponseError extends Error {

@@ -1,12 +1,9 @@
 import * as React from 'react'
 
 import {
-  Select,
   InputGroup,
   Button,
   SimpleGrid,
-  FormControl,
-  FormLabel,
   Stack,
   useColorMode,
 } from '@chakra-ui/react'
@@ -60,6 +57,7 @@ function CompanySearch(props: any) {
           />
         </InputGroup>
       </SimpleGrid>
+
       <Button
         isLoading={props.isLoading}
         size="lg"

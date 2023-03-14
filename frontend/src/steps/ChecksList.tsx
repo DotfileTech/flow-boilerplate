@@ -12,7 +12,9 @@ import {
   Center,
 } from '@chakra-ui/react'
 import useApi from '../hooks/useApi'
-import UploadDocuments from './UploadDocuments'
+import UploadDocuments from '../components/UploadDocuments'
+import SendLinkModal from '../components/SendLinkModal'
+import Title from '../components/Title'
 
 function ChecksList(props: any) {
   const api = useApi()
@@ -20,6 +22,7 @@ function ChecksList(props: any) {
   async function fetchMyAPI() {
     const response = await api.get(`/dotfile/cases/${props.caseId}`)
     setData(response.data)
+    countRemainingChecks(response.data)
   }
 
   React.useEffect(() => {
@@ -39,51 +42,86 @@ function ChecksList(props: any) {
     companies: [],
   })
 
+  const [remainingChecks, setRemainingChecks] = React.useState(0)
+
   const [isUpload, setIsUpload] = React.useState(false)
+  const [isSendEmail, setIsSendEmail] = React.useState(false)
+
   const [currentCheck, setCurrentCheck] = React.useState({})
   const [currentIndividual, setCurrentIndividual] = React.useState({})
 
   const selectCheck = (check: any) => {
-    console.log(check)
     if (check.type === 'id_verification') {
-      processCheck(check)
+      // processCheck(check)
+      setIsSendEmail(true)
     } else {
       setCurrentCheck(check)
       setIsUpload(true)
     }
   }
 
+  const countRemainingChecks = (data: any) => {
+    let remainingChecks = []
+
+    data.companies.map((item: any, i: any) =>
+      item.checks
+        .filter((x: any) => x.type !== 'aml')
+        .filter((x: any) => x.status === 'in_progress')
+        .forEach((element: any) => remainingChecks.push(element)),
+    )
+
+    data.individuals.map((item: any, i: any) =>
+      item.checks
+        .filter((x: any) => x.type !== 'aml')
+        .filter((x: any) => x.status === 'in_progress')
+        .forEach((element: any) => remainingChecks.push(element)),
+    )
+
+    setRemainingChecks(remainingChecks.length)
+  }
+
   return (
     <Stack spacing={5} pt={2}>
-      {/* {!isUpload &&
-        data.companies.map((item: any, i: any) => (
-          <VStack key={i}>
-            <Heading>{item.name}</Heading>
-            <Spacer />
-
-            {item.checks
-              .filter((x: any) => x.type !== 'aml')
-              .map((check: any, i: any) => (
-                <Flex>
-                  <Button
-                    size="lg"
-                    id={check.id}
-                    name={check.type}
-                    // variant="solid"
-                    onClick={() => selectCheck(check)}
-                    // isDisabled={check.status === 'completed'}
-                  >
+      <Title>You have {remainingChecks} remaining tasks</Title>
+      <Heading>Company</Heading>
+      <Box borderWidth="1px" borderRadius="lg" background="white">
+        {data.companies.map((item: any, i: any) =>
+          item.checks
+            .filter((x: any) => x.type !== 'aml')
+            .map((check: any, i: any) => (
+              <Box>
+                <Flex alignItems="center" verticalAlign="center" m={2}>
+                  <Heading size="sm">
+                    {`${item.name} - `}
                     {check.type === 'document'
                       ? check.subtype.split(':')[1]
                       : check.type}
-                    <Tag>{check.status}</Tag>
+                  </Heading>
+                  <Spacer />
+                  <Button
+                    // size="lg"
+                    id={check.id}
+                    name={check.type}
+                    // variant="secondary"
+                    onClick={() => {
+                      selectCheck(check)
+                      setCurrentIndividual(item)
+                    }}
+                    isDisabled={check.status !== 'in_progress'}
+                  >
+                    {check.status === 'in_progress'
+                      ? 'Upload document'
+                      : 'Completed'}
                   </Button>
                 </Flex>
-              ))}
-          </VStack>
-        ))} */}
-      {!isUpload &&
-        data.individuals.map((item: any, i: any) =>
+                <Divider />
+              </Box>
+            )),
+        )}
+      </Box>
+      <Heading>Individuals</Heading>
+      <Box borderWidth="1px" borderRadius="lg" background="white">
+        {data.individuals.map((item: any, i: any) =>
           item.checks
             .filter((x: any) => x.type !== 'aml')
             .map((check: any, i: any) => (
@@ -105,23 +143,36 @@ function ChecksList(props: any) {
                       selectCheck(check)
                       setCurrentIndividual(item)
                     }}
-                    // isDisabled={check.status === 'completed'}
+                    isDisabled={check.status !== 'in_progress'}
                   >
-                    {check.status}
+                    {check.status === 'in_progress'
+                      ? check.type === 'id_verification'
+                        ? 'Verify identity'
+                        : 'Upload document'
+                      : 'Completed'}
                   </Button>
                 </Flex>
                 <Divider />
               </Box>
             )),
         )}
-      {isUpload && (
-        <UploadDocuments
-          currentCheck={currentCheck}
-          currentIndividual={currentIndividual}
-          setIsUpload={setIsUpload}
-          fetchMyAPI={fetchMyAPI}
-        />
-      )}
+      </Box>
+
+      <UploadDocuments
+        currentCheck={currentCheck}
+        currentIndividual={currentIndividual}
+        setIsUpload={setIsUpload}
+        fetchMyAPI={fetchMyAPI}
+        isUpload={isUpload}
+      />
+
+      <SendLinkModal
+        currentCheck={currentCheck}
+        currentIndividual={currentIndividual}
+        setIsSendEmail={setIsSendEmail}
+        isSendEmail={isSendEmail}
+        caseId={props.caseId}
+      />
     </Stack>
   )
 }

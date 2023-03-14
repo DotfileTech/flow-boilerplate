@@ -5,16 +5,15 @@ import {
   Box,
   Stack,
   Flex,
+  Button,
   extendTheme,
-  Progress,
+  Heading,
   Text,
-  Avatar,
-  Image,
 } from '@chakra-ui/react'
 
 import { ColorModeSwitcher } from './components/ColorModeSwitcher'
+import Sidebar from './components/Sidebar'
 import LoadingSpinner from './components/LoadingSpinner'
-import { logo } from './components/Logo'
 import CompanySearch from './steps/CompanySearch'
 import CompaniesList from './steps/CompaniesList'
 import CompanyEdit from './steps/CompanyEdit'
@@ -24,12 +23,128 @@ import ChecksList from './steps/ChecksList'
 import CustomForm from './steps/CustomForm'
 import useApi from './hooks/useApi'
 import { useSearchParams } from 'react-router-dom'
+import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
+
+const items = [
+  {
+    href: '/',
+    icon: <PhoneIcon fontSize="small" />,
+    title: 'Introduction',
+    subTitle: 'XXX',
+  },
+  {
+    href: '/templates',
+    icon: <AddIcon fontSize="small" />,
+    title: 'Company',
+    subTitle: 'XXX',
+  },
+  {
+    href: '/exports',
+    icon: <WarningIcon fontSize="small" />,
+    title: 'Individuals',
+    subTitle: 'XXX',
+  },
+]
 
 const activeLabelStyles = {
   transform: 'scale(0.85) translateY(-24px)',
 }
 
 export const theme = extendTheme({
+  colors: {
+    brand: {
+      100: '#E9E3FF',
+      200: '#422AFB',
+      300: '#422AFB',
+      400: '#7551FF',
+      500: '#422AFB',
+      600: '#3311DB',
+      700: '#02044A',
+      800: '#190793',
+      900: '#11047A',
+    },
+    brandScheme: {
+      100: '#E9E3FF',
+      200: '#7551FF',
+      300: '#7551FF',
+      400: '#7551FF',
+      500: '#422AFB',
+      600: '#3311DB',
+      700: '#02044A',
+      800: '#190793',
+      900: '#02044A',
+    },
+    brandTabs: {
+      100: '#E9E3FF',
+      200: '#422AFB',
+      300: '#422AFB',
+      400: '#422AFB',
+      500: '#422AFB',
+      600: '#3311DB',
+      700: '#02044A',
+      800: '#190793',
+      900: '#02044A',
+    },
+    secondaryGray: {
+      100: '#E0E5F2',
+      200: '#E1E9F8',
+      300: '#F4F7FE',
+      400: '#E9EDF7',
+      500: '#8F9BBA',
+      600: '#A3AED0',
+      700: '#707EAE',
+      800: '#707EAE',
+      900: '#1B2559',
+    },
+    red: {
+      100: '#FEEFEE',
+      500: '#EE5D50',
+      600: '#E31A1A',
+    },
+    blue: {
+      50: '#EFF4FB',
+      500: '#3965FF',
+    },
+    orange: {
+      100: '#FFF6DA',
+      500: '#FFB547',
+    },
+    green: {
+      100: '#E6FAF5',
+      500: '#01B574',
+    },
+    navy: {
+      50: '#d0dcfb',
+      100: '#aac0fe',
+      200: '#a3b9f8',
+      300: '#728fea',
+      400: '#3652ba',
+      500: '#1b3bbb',
+      600: '#24388a',
+      700: '#1B254B',
+      800: '#111c44',
+      900: '#0b1437',
+    },
+    gray: {
+      100: '#FAFCFE',
+    },
+  },
+  styles: {
+    global: {
+      // styles for the `body`
+      body: {
+        // bg: 'gray.100',
+      },
+      // styles for the `a`
+      a: {
+        color: 'teal.500',
+        _hover: {
+          textDecoration: 'underline',
+        },
+      },
+      html: {},
+    },
+  },
   components: {
     Form: {
       variants: {
@@ -74,12 +189,12 @@ export interface Company {
 function AppContent() {
   const api = useApi()
 
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
 
   const [caseId, setCaseId] = React.useState(
     searchParams.get('new') === 'true'
       ? undefined
-      : localStorage.getItem('caseId') || searchParams.get('caseId'),
+      : searchParams.get('caseId') || localStorage.getItem('caseId'),
   )
 
   const email = searchParams.get('email')
@@ -113,6 +228,11 @@ function AppContent() {
     country: 'FR',
   })
 
+  const [individualIndex, setIndividualIndex] = React.useState(null)
+
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [initialLoading, setInitialLoading] = React.useState(true)
+
   const next = async (e: any) => {
     if (step === 1) {
       getCompanies()
@@ -143,7 +263,7 @@ function AppContent() {
     setStep(step - 1)
   }
 
-  async function getCompanies() {
+  const getCompanies = async () => {
     try {
       setIsLoading(true)
       const response = await api.get(
@@ -161,8 +281,6 @@ function AppContent() {
       console.error(error)
     }
   }
-
-  const [individualIndex, setIndividualIndex] = React.useState(null)
 
   const selectCompany = async (id: any) => {
     if (id === null) {
@@ -207,115 +325,97 @@ function AppContent() {
     setStep(5)
   }
 
-  const [isLoading, setIsLoading] = React.useState(false)
-  const [initialLoading, setInitialLoading] = React.useState(true)
+  const [title, setTitle] = React.useState('Hello')
 
   return (
     <ChakraProvider theme={theme}>
       {/* <ColorModeSwitcher /> */}
       <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
-        <Flex minH={'100vh'} flex={1} align={'center'} justify={'center'}>
+        <Sidebar />
+        <Flex
+          minH={'100vh'}
+          flex={1}
+          // direction={{ base: 'row', md: 'row' }}
+          // align={'center'}
+          justify={'left'}
+        >
           {initialLoading && <LoadingSpinner />}
           {!initialLoading && (
             <Stack
               w="100%"
               spacing={5}
-              mx={'auto'}
+              maxW={'50vw'}
+              // mx={'auto'}
               //  maxW={'lg'}
               py={12}
               px={6}
             >
-              <Box
-                rounded={'lg'}
-                // boxShadow={'lg'}
-                p={8}
-              >
-                <Stack align={'center'} spacing={6} pb={6}>
-                  <Avatar src={`${logo}`} />
-                  <Progress w="100%" value={(step / 5) * 100} />
-                  <Text color={'gray.600'}>
-                    {' '}
-                    {step < 5
-                      ? 'Tell us more about your company'
-                      : 'Information on beneficial owners'}{' '}
-                  </Text>
-                </Stack>
-                <Stack spacing={4}>
-                  {step === 1 && (
-                    <CompanySearch
-                      getCompanies={getCompanies}
-                      countries={countries}
-                      company={company}
-                      changeHandler={changeHandler}
-                      isLoading={isLoading}
-                    />
-                  )}
-                  {step === 2 && (
-                    <CompaniesList
-                      selectCompany={selectCompany}
-                      companies={companies}
-                      isLoading={isLoading}
-                      back={back}
-                    />
-                  )}
-                  {step === 3 && (
-                    <CompanyEdit
-                      company={company}
-                      changeHandler={changeHandler}
-                      next={next}
-                      back={back}
-                      countries={countries}
-                    />
-                  )}
-                  {step === 4 && (
-                    <CustomForm
-                      metadata={metadata}
-                      changeHandlerMetadata={changeHandlerMetadata}
-                      next={next}
-                    />
-                  )}
-                  {step === 5 && (
-                    <IndividualsList
-                      selectIndividual={selectIndividual}
-                      individuals={individuals}
-                      setIndividuals={setIndividuals}
-                      submit={submit}
-                    />
-                  )}
-                  {step === 6 && (
-                    <IndividualEdit
-                      individual={individual}
-                      setIndividual={setIndividual}
-                      saveIndividual={saveIndividual}
-                      next={next}
-                      back={back}
-                      countries={countries}
-                    />
-                  )}
-                  {step === 7 && (
-                    <ChecksList
-                      individual={individual}
-                      setIndividual={setIndividual}
-                      saveIndividual={saveIndividual}
-                      next={next}
-                      back={back}
-                      countries={countries}
-                      caseId={caseId}
-                    />
-                  )}
-                </Stack>
-              </Box>
+              <Stack spacing={4}>
+                {step === 1 && (
+                  <CompanySearch
+                    getCompanies={getCompanies}
+                    countries={countries}
+                    company={company}
+                    changeHandler={changeHandler}
+                    isLoading={isLoading}
+                  />
+                )}
+                {step === 2 && (
+                  <CompaniesList
+                    selectCompany={selectCompany}
+                    companies={companies}
+                    isLoading={isLoading}
+                    back={back}
+                  />
+                )}
+                {step === 3 && (
+                  <CompanyEdit
+                    company={company}
+                    changeHandler={changeHandler}
+                    next={next}
+                    back={back}
+                    countries={countries}
+                  />
+                )}
+                {step === 4 && (
+                  <CustomForm
+                    metadata={metadata}
+                    changeHandlerMetadata={changeHandlerMetadata}
+                    next={next}
+                  />
+                )}
+                {step === 5 && (
+                  <IndividualsList
+                    selectIndividual={selectIndividual}
+                    individuals={individuals}
+                    setIndividuals={setIndividuals}
+                    submit={submit}
+                  />
+                )}
+                {step === 6 && (
+                  <IndividualEdit
+                    individual={individual}
+                    setIndividual={setIndividual}
+                    saveIndividual={saveIndividual}
+                    next={next}
+                    back={back}
+                    countries={countries}
+                  />
+                )}
+                {step === 7 && (
+                  <ChecksList
+                    individual={individual}
+                    setIndividual={setIndividual}
+                    saveIndividual={saveIndividual}
+                    next={next}
+                    back={back}
+                    countries={countries}
+                    caseId={caseId}
+                  />
+                )}
+              </Stack>
             </Stack>
           )}
-        </Flex>
-        <Flex flex={1}>
-          <Image
-            alt={'Login Image'}
-            objectFit={'cover'}
-            src={
-              'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
-            }
-          />
         </Flex>
       </Stack>
     </ChakraProvider>
