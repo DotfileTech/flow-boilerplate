@@ -276,8 +276,6 @@ class DotfileController {
 
       caseData.individuals = enrichedIndividuals
 
-      console.log(caseData)
-
       res.status(200).json(caseData)
     } catch (err: any) {
       res.status(400).send({

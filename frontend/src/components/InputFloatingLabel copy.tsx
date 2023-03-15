@@ -5,17 +5,17 @@ function InputFloatingLabel(props: any) {
 
   return (
     <FormControl
-      // variant="floating"
+      variant="floating"
       id={props.name}
       isRequired={props.isRequired}
     >
+      <Input {...props} />
       <FormLabel
         noOfLines={1}
         bg={colorMode === 'light' ? 'white' : 'gray.800'}
       >
         {props.placeholder}
       </FormLabel>
-      <Input {...props} />
     </FormControl>
   )
 }

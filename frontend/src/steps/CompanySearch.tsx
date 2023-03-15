@@ -11,6 +11,8 @@ import Joi from 'joi'
 
 import InputFloatingLabel from '../components/InputFloatingLabel'
 import SelectFloatingLabel from '../components/SelectFloatingLabel'
+import Header from '../components/Header'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 
 function CompanySearch(props: any) {
   const [formValid, setFormValid] = React.useState(false)
@@ -36,6 +38,7 @@ function CompanySearch(props: any) {
 
   return (
     <Stack spacing={10} pt={2}>
+      <Header progress={10}>Select your company</Header>
       <SimpleGrid columns={1} spacing={5}>
         <SelectFloatingLabel
           value={props.company ? props.company.country : ''}
@@ -57,10 +60,10 @@ function CompanySearch(props: any) {
           />
         </InputGroup>
       </SimpleGrid>
-
       <Button
+        variant="next"
+        rightIcon={<ChevronRightIcon />}
         isLoading={props.isLoading}
-        size="lg"
         onClick={props.getCompanies}
         isDisabled={!formValid}
       >

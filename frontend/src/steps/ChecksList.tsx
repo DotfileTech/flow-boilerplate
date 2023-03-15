@@ -2,19 +2,18 @@ import * as React from 'react'
 import {
   Stack,
   Button,
-  Tag,
   Flex,
   Spacer,
   Heading,
-  VStack,
   Box,
+  Text,
   Divider,
-  Center,
 } from '@chakra-ui/react'
 import useApi from '../hooks/useApi'
 import UploadDocuments from '../components/UploadDocuments'
 import SendLinkModal from '../components/SendLinkModal'
 import Title from '../components/Title'
+import Subtitle from '../components/Subtitle'
 
 function ChecksList(props: any) {
   const api = useApi()
@@ -82,8 +81,14 @@ function ChecksList(props: any) {
 
   return (
     <Stack spacing={5} pt={2}>
-      <Title>You have {remainingChecks} remaining tasks</Title>
-      <Heading>Company</Heading>
+      <Title>Help us run necessary verifications</Title>
+      {/* <Title>You have {remainingChecks} remaining tasks</Title> */}
+      <Text>
+        Please proceed with the necessary verifications listed below. Our teams
+        will analyze your data and keep you informed about the outcome of your
+        case.
+      </Text>
+      <Subtitle>Company</Subtitle>
       <Box borderWidth="1px" borderRadius="lg" background="white">
         {data.companies.map((item: any, i: any) =>
           item.checks
@@ -119,7 +124,7 @@ function ChecksList(props: any) {
             )),
         )}
       </Box>
-      <Heading>Individuals</Heading>
+      <Subtitle>Individuals</Subtitle>
       <Box borderWidth="1px" borderRadius="lg" background="white">
         {data.individuals.map((item: any, i: any) =>
           item.checks
@@ -134,18 +139,25 @@ function ChecksList(props: any) {
                       : check.type}
                   </Heading>
                   <Spacer />
+                  {check.data.result} {check.data.review.comment}
+                  <Spacer />
                   <Button
                     // size="lg"
                     id={check.id}
                     name={check.type}
-                    // variant="secondary"
+                    variant="solid"
                     onClick={() => {
                       selectCheck(check)
                       setCurrentIndividual(item)
                     }}
-                    isDisabled={check.status !== 'in_progress'}
+                    isDisabled={
+                      check.status !== 'in_progress' &&
+                      check.data.result !== 'rejected'
+                    }
                   >
-                    {check.status === 'in_progress'
+                    {check.data.result === 'rejected'
+                      ? 'Upload new document'
+                      : check.status === 'in_progress'
                       ? check.type === 'id_verification'
                         ? 'Verify identity'
                         : 'Upload document'

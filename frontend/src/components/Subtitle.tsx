@@ -1,12 +1,12 @@
 import { Box, Heading } from '@chakra-ui/react'
 
-function Title(props: any) {
+function Subtitle(props: any) {
   return (
     <Box>
       {' '}
       <Heading
         fontWeight={400}
-        fontSize={{ base: '1xl', sm: '2xl', md: '3xl' }}
+        fontSize={{ base: '0.5xl', sm: '1xl', md: '2xl' }}
       >
         {props.children}
       </Heading>
@@ -14,4 +14,4 @@ function Title(props: any) {
   )
 }
 
-export default Title
+export default Subtitle

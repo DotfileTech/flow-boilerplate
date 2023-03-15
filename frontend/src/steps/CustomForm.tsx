@@ -1,8 +1,9 @@
 import * as React from 'react'
-import { SimpleGrid, Button } from '@chakra-ui/react'
+import { SimpleGrid, Button, Stack } from '@chakra-ui/react'
 import InputFloatingLabel from '../components/InputFloatingLabel'
 import Joi from 'joi'
 import { questions } from '../config/Form'
+import Header from '../components/Header'
 
 function CustomForm(props: any) {
   const [formValid, setFormValid] = React.useState(false)
@@ -23,23 +24,26 @@ function CustomForm(props: any) {
   }, [props.metadata, schema])
 
   return (
-    <SimpleGrid columns={1} spacing={5}>
-      {questions
-        .filter((question) => question.enabled)
-        .map((question: any, i: any) => (
-          <InputFloatingLabel
-            key={props.metadata.id}
-            value={props.metadata.id}
-            onChange={props.changeHandlerMetadata}
-            name={question.id}
-            isRequired={question.required}
-            placeholder={question.label}
-          />
-        ))}
-      <Button onClick={props.next} isDisabled={!formValid}>
-        Next
-      </Button>
-    </SimpleGrid>
+    <Stack spacing={5} pt={2}>
+      <Header progress={40}>Tell us more about your company</Header>
+      <SimpleGrid columns={1} spacing={5}>
+        {questions
+          .filter((question) => question.enabled)
+          .map((question: any, i: any) => (
+            <InputFloatingLabel
+              key={props.metadata.id}
+              value={props.metadata.id}
+              onChange={props.changeHandlerMetadata}
+              name={question.id}
+              isRequired={question.required}
+              placeholder={question.label}
+            />
+          ))}
+        <Button variant="next" onClick={props.next} isDisabled={!formValid}>
+          Next
+        </Button>
+      </SimpleGrid>
+    </Stack>
   )
 }
 

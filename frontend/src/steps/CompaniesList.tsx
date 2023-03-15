@@ -1,16 +1,17 @@
-import { SimpleGrid, Button, Text, Radio, Stack } from '@chakra-ui/react'
-import Title from '../components/Title'
+import { EditIcon } from '@chakra-ui/icons'
+import { SimpleGrid, Button, Text, Radio, Stack, Box } from '@chakra-ui/react'
+import Header from '../components/Header'
 
 function CompanySearch(props: any) {
   return (
-    <Stack spacing={5} pt={2}>
-      <Title>Company</Title>
+    <Stack spacing={10} pt={2}>
+      <Header progress={20}>Select your company</Header>
       <SimpleGrid columns={1} spacing={5}>
         {props.companies.map((company: any, i: any) => (
           <Button
             isLoading={props.isLoading}
             key={i}
-            variant="outline"
+            variant="select"
             onClick={() => props.selectCompany(company.search_ref)}
             justifyContent="flex"
             isTruncated
@@ -22,10 +23,17 @@ function CompanySearch(props: any) {
             </Radio>
           </Button>
         ))}
-        <Button variant="outline" onClick={() => props.selectCompany(null)}>
+      </SimpleGrid>
+      <Box>
+        <Text pb={5}>You cannot you find your company?</Text>
+        <Button
+          leftIcon={<EditIcon />}
+          variant="fill"
+          onClick={() => props.selectCompany(null)}
+        >
           Fill details manually
         </Button>
-      </SimpleGrid>
+      </Box>
     </Stack>
   )
 }

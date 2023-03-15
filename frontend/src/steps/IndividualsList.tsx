@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { Stack, Button, IconButton, Tag, Flex, Spacer } from '@chakra-ui/react'
-import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { DeleteIcon, EditIcon, PlusSquareIcon } from '@chakra-ui/icons'
 import Joi from 'joi'
 import { individualData } from '../config/Individual'
+import Header from '../components/Header'
 
 function IndividualsList(props: any) {
   const rules = individualData
@@ -33,6 +34,7 @@ function IndividualsList(props: any) {
     // TODO: dynamic choice of data from individual to display in listing
 
     <Stack spacing={5} pt={2}>
+      <Header progress={60}>Verify your individuals list</Header>
       {props.individuals.map((ubo: any, i: any) => (
         <Flex key={i} alignItems="center">
           <Button
@@ -54,7 +56,8 @@ function IndividualsList(props: any) {
       ))}
 
       <Button
-        variant="outline"
+        variant="fill"
+        leftIcon={<PlusSquareIcon/>}
         size="lg"
         onClick={() => props.selectIndividual(null)}
       >
@@ -62,7 +65,7 @@ function IndividualsList(props: any) {
       </Button>
 
       <Button
-        size="lg"
+        variant="next"
         onClick={props.submit}
         isDisabled={props.individuals.length === 0}
       >

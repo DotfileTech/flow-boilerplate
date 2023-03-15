@@ -11,6 +11,7 @@ import InputFloatingLabel from '../components/InputFloatingLabel'
 import Joi from 'joi'
 import { individualData } from '../config/Individual'
 import SelectFloatingLabel from '../components/SelectFloatingLabel'
+import Title from '../components/Title'
 
 function IndividualEdit(props: any) {
   const [formValid, setFormValid] = React.useState(false)
@@ -61,66 +62,69 @@ function IndividualEdit(props: any) {
   }
 
   return (
-    <SimpleGrid columns={1} spacing={6}>
-      <FormControl>
-        <FormLabel>Roles</FormLabel>
-        <Stack spacing={5} direction="row">
-          <Checkbox
-            isChecked={
-              props.individual.roles
-                ? props.individual.roles.includes('beneficial_owner')
-                : false
-            }
-            value="beneficial_owner"
-            onChange={checkBoxChangeHandler}
+    <Stack spacing={5} pt={2}>
+      <Title>Individuals</Title>
+      <SimpleGrid columns={1} spacing={6}>
+        <FormControl>
+          <FormLabel>Roles</FormLabel>
+          <Stack spacing={5} direction="row">
+            <Checkbox
+              isChecked={
+                props.individual.roles
+                  ? props.individual.roles.includes('beneficial_owner')
+                  : false
+              }
+              value="beneficial_owner"
+              onChange={checkBoxChangeHandler}
+            >
+              Beneficial owner
+            </Checkbox>
+            <Checkbox
+              isChecked={
+                props.individual.roles
+                  ? props.individual.roles.includes('legal_representative')
+                  : false
+              }
+              value="legal_representative"
+              onChange={checkBoxChangeHandler}
+            >
+              Legal Representative
+            </Checkbox>
+          </Stack>
+        </FormControl>
+
+        <SelectFloatingLabel
+          value={props.individual ? props.individual.birth_country : ''}
+          onChange={changeHandlerIndividual}
+          name="birth_country"
+          placeholder="Birth country"
+          countries={props.countries}
+        />
+
+        {individualData
+          .filter((ind) => ind.enabled)
+          .map((ind: any, i: any) => (
+            <InputFloatingLabel
+              value={props.individual[ind.id]}
+              onChange={changeHandlerIndividual}
+              name={ind.id}
+              placeholder={ind.label}
+              isRequired={ind.required}
+              type={ind.type}
+            />
+          ))}
+
+        <SimpleGrid columns={2} spacing={3}>
+          <Button onClick={props.back}>Cancel</Button>
+          <Button
+            onClick={() => props.saveIndividual(null)}
+            isDisabled={!formValid}
           >
-            Beneficial owner
-          </Checkbox>
-          <Checkbox
-            isChecked={
-              props.individual.roles
-                ? props.individual.roles.includes('legal_representative')
-                : false
-            }
-            value="legal_representative"
-            onChange={checkBoxChangeHandler}
-          >
-            Legal Representative
-          </Checkbox>
-        </Stack>
-      </FormControl>
-
-      <SelectFloatingLabel
-        value={props.individual ? props.individual.birth_country : ''}
-        onChange={changeHandlerIndividual}
-        name="birth_country"
-        placeholder="Birth country"
-        countries={props.countries}
-      />
-
-      {individualData
-        .filter((ind) => ind.enabled)
-        .map((ind: any, i: any) => (
-          <InputFloatingLabel
-            value={props.individual[ind.id]}
-            onChange={changeHandlerIndividual}
-            name={ind.id}
-            placeholder={ind.label}
-            isRequired={ind.required}
-            type={ind.type}
-          />
-        ))}
-
-      <SimpleGrid columns={2} spacing={3}>
-        <Button onClick={props.back}>Cancel</Button>
-        <Button
-          onClick={() => props.saveIndividual(null)}
-          isDisabled={!formValid}
-        >
-          Save
-        </Button>
+            Save
+          </Button>
+        </SimpleGrid>
       </SimpleGrid>
-    </SimpleGrid>
+    </Stack>
   )
 }
 

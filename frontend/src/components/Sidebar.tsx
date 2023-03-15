@@ -1,5 +1,6 @@
-import { Box, Flex, Text, useColorModeValue, Avatar } from '@chakra-ui/react'
+import { Box, Flex, Text, Heading, Image } from '@chakra-ui/react'
 import { logo } from '../components/Logo'
+import { bg } from '../components/Background'
 import { CheckIcon } from '@chakra-ui/icons'
 
 const items = [
@@ -19,33 +20,22 @@ const items = [
 
 function Sidebar(props: any) {
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.200', 'gray.900')}>
+    <Box minH="100vh" bg={'black'} backgroundImage={`${bg}`}>
       <Box
-        bg={useColorModeValue('gray.200', 'gray.900')}
-        borderRight="1px"
-        borderRightColor={useColorModeValue('gray.200', 'gray.900')}
-        w={{ base: 'full', md: 60 }}
+        m={10}
+        w={{ base: 'full', md: 300 }}
+
         // pos="fixed"
-        h="full"
+        // h="full"
       >
-        <Flex h="20" alignItems="center" mx="20" justifyContent="space-between">
-          <Avatar src={`${logo}`} boxSize="80%" />
-        </Flex>
-        <Box sx={{ flexGrow: 1 }}>
-          {items.map((item) => (
-            <Flex
-              align="center"
-              p="4"
-              mx="4"
-              borderRadius="lg"
-              role="group"
-              cursor="pointer"
-            >
-              <CheckIcon fontSize="large" />
-              <Text>{item.title}</Text>
-            </Flex>
-          ))}
-        </Box>
+        <Image pt={10} pb={10} src={`${logo}`} />
+        <Heading
+          fontWeight={600}
+          color={'white'}
+          fontSize={{ base: '1xl', sm: '2xl', md: '3xl' }}
+        >
+          Acme partners with Dotfile for a secure compliance process
+        </Heading>
       </Box>
     </Box>
   )
