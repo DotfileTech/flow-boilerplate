@@ -24,5 +24,5 @@ A React application to manage a multi-step form to collect the information neces
 
 The Application can be easily deployed to Render.com or Heroku.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://github.com/DotfileTech/flow-boilerplate)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/DotfileTech/flow-boilerplate)
 
