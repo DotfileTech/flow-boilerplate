@@ -2,15 +2,15 @@ import * as React from 'react'
 import { SimpleGrid, Button, Stack } from '@chakra-ui/react'
 import InputFloatingLabel from '../components/InputFloatingLabel'
 import Joi from 'joi'
-import { questions } from '../config/Form'
-import Header from '../components/Header'
+import { useTranslation } from 'react-i18next'
 
 function CustomForm(props: any) {
+  const { t } = useTranslation()
   const [formValid, setFormValid] = React.useState(false)
 
-  const rules = questions
-    .filter((ind) => ind.required && ind.enabled)
-    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {})
+  const rules = props.questions
+    .filter((ind: { required: any; enabled: any }) => ind.required && ind.enabled)
+    .reduce((acc: any, cur: { id: any }) => ({ ...acc, [cur.id]: Joi.string().required() }), {})
 
   const schema = Joi.object().keys(rules).unknown(true)
 
@@ -25,10 +25,9 @@ function CustomForm(props: any) {
 
   return (
     <Stack spacing={5} pt={2}>
-      <Header progress={40}>Tell us more about your company</Header>
       <SimpleGrid columns={1} spacing={5}>
-        {questions
-          .filter((question) => question.enabled)
+        {props.questions
+          .filter((question: { enabled: any }) => question.enabled)
           .map((question: any, i: any) => (
             <InputFloatingLabel
               key={props.metadata.id}
@@ -36,11 +35,11 @@ function CustomForm(props: any) {
               onChange={props.changeHandlerMetadata}
               name={question.id}
               isRequired={question.required}
-              placeholder={question.label}
+              placeholder={t(question.id)}
             />
           ))}
         <Button variant="next" onClick={props.next} isDisabled={!formValid}>
-          Next
+          {t('next')}
         </Button>
       </SimpleGrid>
     </Stack>

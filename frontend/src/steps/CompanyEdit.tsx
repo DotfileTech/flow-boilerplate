@@ -4,9 +4,10 @@ import InputFloatingLabel from '../components/InputFloatingLabel'
 import SelectFloatingLabel from '../components/SelectFloatingLabel'
 import Joi from 'joi'
 import { companyData } from '../config/Company'
-import Header from '../components/Header'
+import { useTranslation } from 'react-i18next'
 
 function CompanyEdit(props: any) {
+  const { t } = useTranslation()
   const [formValid, setFormValid] = React.useState(false)
 
   const rules = companyData
@@ -26,7 +27,6 @@ function CompanyEdit(props: any) {
 
   return (
     <Stack spacing={5} pt={2}>
-      <Header progress={30}>Verify your company’s information</Header>
       <SimpleGrid columns={1} spacing={5}>
         <SelectFloatingLabel
           value={props.company ? props.company.country : ''}
@@ -52,7 +52,7 @@ function CompanyEdit(props: any) {
           ))}
 
         <Button variant="next" onClick={props.next} isDisabled={!formValid}>
-          Next
+          {t('next')}
         </Button>
       </SimpleGrid>
     </Stack>

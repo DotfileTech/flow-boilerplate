@@ -38,8 +38,6 @@ class PublicApiRoute implements Routes {
 
     this.router.post(`${this.path}checks`, this.dotfileController.fetchCheck)
 
-    this.router.post(`${this.path}send`, this.dotfileController.sendLink)
-
     this.router.post(
       `${this.path}documents`,
       function (req, res, next) {
@@ -51,6 +49,19 @@ class PublicApiRoute implements Routes {
         })
       },
       this.dotfileController.uploadDocument,
+    )
+
+    this.router.post(
+      `${this.path}identity_documents`,
+      function (req, res, next) {
+        upload(req, res, function (err) {
+          if (err) {
+            return res.status(400).send({ message: err.message })
+          }
+          next()
+        })
+      },
+      this.dotfileController.uploadIdentityDocument,
     )
 
     this.router.use((req, res) => {

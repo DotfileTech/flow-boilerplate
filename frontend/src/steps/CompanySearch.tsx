@@ -1,20 +1,14 @@
 import * as React from 'react'
-
-import {
-  InputGroup,
-  Button,
-  SimpleGrid,
-  Stack,
-  useColorMode,
-} from '@chakra-ui/react'
+import { InputGroup, Button, Stack } from '@chakra-ui/react'
 import Joi from 'joi'
-
 import InputFloatingLabel from '../components/InputFloatingLabel'
 import SelectFloatingLabel from '../components/SelectFloatingLabel'
-import Header from '../components/Header'
+
 import { ChevronRightIcon } from '@chakra-ui/icons'
+import { useTranslation } from 'react-i18next'
 
 function CompanySearch(props: any) {
+  const { t } = useTranslation()
   const [formValid, setFormValid] = React.useState(false)
 
   const schema = Joi.object()
@@ -34,32 +28,28 @@ function CompanySearch(props: any) {
     }
   }, [props.company, schema])
 
-  const { colorMode } = useColorMode()
-
   return (
-    <Stack spacing={10} pt={2}>
-      <Header progress={10}>Select your company</Header>
-      <SimpleGrid columns={1} spacing={5}>
-        <SelectFloatingLabel
-          value={props.company ? props.company.country : ''}
-          isRequired
-          onChange={props.changeHandler}
-          name="country"
-          countries={props.countries}
-        />
+    <Stack spacing={5} pt={2}>
+      <SelectFloatingLabel
+        value={props.company ? props.company.country : ''}
+        isRequired
+        onChange={props.changeHandler}
+        name="country"
+        countries={props.countries}
+      />
 
-        <InputGroup size="md">
-          <InputFloatingLabel
-            pr="4.5rem"
-            type="text"
-            isRequired
-            placeholder="Company name"
-            value={props.company ? props.company.name : ''}
-            onChange={props.changeHandler}
-            name="name"
-          />
-        </InputGroup>
-      </SimpleGrid>
+      <InputGroup size="md">
+        <InputFloatingLabel
+          pr="4.5rem"
+          type="text"
+          isRequired
+          placeholder={t('company_name')}
+          value={props.company ? props.company.name : ''}
+          onChange={props.changeHandler}
+          name="name"
+        />
+      </InputGroup>
+
       <Button
         variant="next"
         rightIcon={<ChevronRightIcon />}
@@ -67,7 +57,7 @@ function CompanySearch(props: any) {
         onClick={props.getCompanies}
         isDisabled={!formValid}
       >
-        Search
+        {t('search')}
       </Button>
     </Stack>
   )

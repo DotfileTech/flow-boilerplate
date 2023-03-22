@@ -16,7 +16,7 @@ export const companyData = [
     label: 'Registration date',
     type: 'date',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'legal_form',

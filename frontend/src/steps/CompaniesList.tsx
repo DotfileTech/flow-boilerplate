@@ -1,15 +1,15 @@
 import { EditIcon } from '@chakra-ui/icons'
 import { SimpleGrid, Button, Text, Radio, Stack, Box } from '@chakra-ui/react'
-import Header from '../components/Header'
+import { useTranslation } from 'react-i18next'
 
 function CompanySearch(props: any) {
+  const { t } = useTranslation()
+
   return (
     <Stack spacing={10} pt={2}>
-      <Header progress={20}>Select your company</Header>
       <SimpleGrid columns={1} spacing={5}>
         {props.companies.map((company: any, i: any) => (
           <Button
-            isLoading={props.isLoading}
             key={i}
             variant="select"
             onClick={() => props.selectCompany(company.search_ref)}
@@ -25,13 +25,13 @@ function CompanySearch(props: any) {
         ))}
       </SimpleGrid>
       <Box>
-        <Text pb={5}>You cannot you find your company?</Text>
+        <Text pb={5}>{t('company_not_found')}</Text>
         <Button
           leftIcon={<EditIcon />}
           variant="fill"
           onClick={() => props.selectCompany(null)}
         >
-          Fill details manually
+          {t('fill_manually')}
         </Button>
       </Box>
     </Stack>

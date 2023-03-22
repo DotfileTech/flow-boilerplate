@@ -1,12 +1,11 @@
 import * as React from 'react'
 import {
-  Stack,
   Button,
-  Heading,
+  Box,
   Flex,
   IconButton,
   Spacer,
-  Box,
+  Text,
   ModalBody,
   ModalCloseButton,
   ModalContent,
@@ -17,18 +16,30 @@ import {
 } from '@chakra-ui/react'
 import useApi from '../hooks/useApi'
 import { DeleteIcon } from '@chakra-ui/icons'
+import { useTranslation } from 'react-i18next'
 
 function UploadDocuments(props: any) {
+  const { t } = useTranslation()
+
   React.useEffect(() => {
     setFiles([])
   }, [])
 
   const api = useApi()
 
-  const [file, setFile] = React.useState<File>()
+  const [fileFront, setFileFront] = React.useState<File>()
+  const [fileBack, setFileBack] = React.useState<File>()
   const [files, setFiles] = React.useState<File[]>([])
 
-  const handleFile = async (event: any) => {
+  const handleFileFront = async (event: any) => {
+    setFileFront(event.target.files[0])
+  }
+
+  const handleFileBack = async (event: any) => {
+    setFileBack(event.target.files[0])
+  }
+
+  const handleFiles = async (event: any) => {
     const combined = [...files, ...event.target.files]
     if (combined) setFiles(combined)
     // setFile(event.target.files[0])
@@ -39,20 +50,37 @@ function UploadDocuments(props: any) {
     const data = new FormData()
 
     // data.append('file', file as Blob)
-    for (let i = 0; i < files.length; i++) {
-      data.append('file[]', files[i])
-    }
 
     data.append('checkId', props.currentCheck.id)
     data.append('type', props.currentCheck.type)
-    await api.post(`/dotfile/documents`, data)
-    await props.fetchMyAPI()
-    setFiles([])
-    setIsLoading(false)
-    props.setIsUpload(false)
+
+    if (props.currentCheck.type === 'document') {
+      for (let i = 0; i < files.length; i++) {
+        data.append('file[]', files[i])
+      }
+      await api.post(`/dotfile/documents`, data)
+      await props.fetchMyAPI()
+      setIsLoading(false)
+      props.setIsUpload(false)
+      setFiles([])
+    }
+
+    if (props.currentCheck.type === 'id_document') {
+      if (fileFront) data.append('file[]', fileFront)
+      if (fileBack) data.append('file[]', fileBack)
+      await api.post(`/dotfile/identity_documents`, data)
+      await new Promise((r) => setTimeout(r, 5000))
+      await props.fetchMyAPI()
+      setIsLoading(false)
+      props.setIsUpload(false)
+      setFileFront(undefined)
+      setFileBack(undefined)
+    }
   }
 
   const inputRef = React.useRef<HTMLInputElement>(null)
+  const inputRefFront = React.useRef<HTMLInputElement>(null)
+  const inputRefBack = React.useRef<HTMLInputElement>(null)
 
   const [isLoading, setIsLoading] = React.useState(false)
 
@@ -60,9 +88,27 @@ function UploadDocuments(props: any) {
     inputRef.current?.click()
   }
 
+  const handleClickFront = () => {
+    inputRefFront.current?.click()
+  }
+
+  const handleClickBack = () => {
+    inputRefBack.current?.click()
+  }
+
+  const exactType =
+    props.currentCheck.type === 'document'
+      ? props.currentCheck.subtype.split(':')[1]
+      : props.currentCheck.type
+
+  const entityName = props.currentIndividual.name
+    ? props.currentIndividual.name
+    : `${props.currentIndividual.first_name} ${props.currentIndividual.last_name}`
+
   return (
     <Modal
       isOpen={props.isUpload}
+      size={['full', 'full', 'sm']}
       onClose={() => {
         setFiles([])
         props.setIsUpload(false)
@@ -71,46 +117,106 @@ function UploadDocuments(props: any) {
       <ModalOverlay />
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>
-          {props.currentIndividual.name
-            ? props.currentIndividual.name
-            : `${props.currentIndividual.first_name} ${props.currentIndividual.last_name}`}
-          {' - '}
-          {props.currentCheck.type === 'document'
-            ? props.currentCheck.subtype.split(':')[1]
-            : props.currentCheck.type}
-        </ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <input
-            accept=".gif, .pdf, .jpeg"
-            id="raised-button-file"
-            style={{ display: 'none' }}
-            ref={inputRef}
-            name={props.currentCheck.type}
-            required
-            onChange={handleFile}
-            multiple
-            type="file"
-          />{' '}
-          <Button onClick={handleClick}>Select files</Button>
-          {files &&
-            files.length > 0 &&
-            Array.from(files).map((file: any, i: any) => (
-              <Flex key={i} alignItems="center">
-                <Button>{file.name}</Button>
-                <Spacer />
-                <IconButton
-                  aria-label="Delete"
-                  // onClick={() => deleteIndividual(i)}
-                  icon={<DeleteIcon />}
-                />
-              </Flex>
-            ))}
+        <ModalHeader>{t(`checks.${exactType}.title`)}</ModalHeader>
+        <ModalCloseButton color="white" />
+        <ModalBody padding={5}>
+          <Text mb={5}>
+            {t(`checks.${exactType}.title`)} {t(`for`)} {entityName}
+          </Text>
+          <Text>{t(`checks.${exactType}.description`)}</Text>
+          {props.currentCheck.type === 'id_document' && (
+            <Box paddingTop={5}>
+              <input
+                accept=".gif, .pdf, .jpeg, .pdf"
+                id="raised-button-file"
+                style={{ display: 'none' }}
+                ref={inputRefFront}
+                name={props.currentCheck.type}
+                required
+                onChange={handleFileFront}
+                type="file"
+              />{' '}
+              <Button variant="outline" onClick={handleClickFront}>
+                {t('upload_document_front')}
+              </Button>
+              {fileFront && (
+                <Flex alignItems="center" padding={5}>
+                  <Text>{fileFront.name}</Text>
+                  <Spacer />
+                  <IconButton
+                    aria-label="Delete"
+                    // onClick={() => deleteIndividual(i)}
+                    icon={<DeleteIcon />}
+                  />
+                </Flex>
+              )}
+              <input
+                accept=".gif, .pdf, .jpeg, .pdf"
+                id="raised-button-file"
+                style={{ display: 'none' }}
+                ref={inputRefBack}
+                name={props.currentCheck.type}
+                required
+                onChange={handleFileBack}
+                type="file"
+              />{' '}
+              <Button variant="outline" onClick={handleClickBack}>
+                {t('upload_document_back')}
+              </Button>
+              {fileBack && (
+                <Flex alignItems="center" padding={5}>
+                  <Text>{fileBack.name}</Text>
+                  <Spacer />
+                  <IconButton
+                    aria-label="Delete"
+                    // onClick={() => deleteIndividual(i)}
+                    icon={<DeleteIcon />}
+                  />
+                </Flex>
+              )}
+            </Box>
+          )}
+
+          {props.currentCheck.type === 'document' && (
+            <Box paddingTop={5}>
+              <input
+                accept=".gif, .pdf, .jpeg, .pdf"
+                id="raised-button-file"
+                style={{ display: 'none' }}
+                ref={inputRef}
+                name={props.currentCheck.type}
+                required
+                onChange={handleFiles}
+                multiple
+                type="file"
+              />{' '}
+              <Button variant="outline" onClick={handleClick}>
+                {t('upload_document')}
+              </Button>
+              {files &&
+                files.length > 0 &&
+                Array.from(files).map((file: any, i: any) => (
+                  <Flex key={i} alignItems="center" padding={5}>
+                    <Text>{file.name}</Text>
+                    <Spacer />
+                    <IconButton
+                      aria-label="Delete"
+                      // onClick={() => deleteIndividual(i)}
+                      icon={<DeleteIcon />}
+                    />
+                  </Flex>
+                ))}
+            </Box>
+          )}
         </ModalBody>
-        <ModalFooter>
-          <Button isLoading={isLoading} onClick={upload}>
-            Upload
+        <ModalFooter alignItems="center">
+          <Button
+            variant="next"
+            isLoading={isLoading}
+            isDisabled={files.length === 0 && fileFront === undefined}
+            onClick={upload}
+          >
+            {t('send_documents')}
           </Button>
         </ModalFooter>
       </ModalContent>

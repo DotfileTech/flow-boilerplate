@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Verify Your Email</title>
+    <style type='text/css'>
+      {{! your css goes here }}
+    </style>
+  </head>
+  <body>
+
+    <div>
+      <img src='{{appLogoUrl}}' alt='app_logo' />
+      <div>App Title</div>
+    </div>
+
+    <div><hr /></div>
+
+    <h2>Welcome {{name}}</h2>
+
+    <p>Thanks for signing up. Please verify your email address.</p>
+
+    <div>
+      <a href='{{verificationLink}}'>
+        <button type='button'>Verify</button>
+      </a>
+    </div>
+
+    <div>Button not working? Try pasting this link in to your browser:</div>
+
+    <div>
+      <a href='{{verificationLink}}'>{{verificationLink}}</a>
+    </div>
+
+    <div><hr /></div>
+
+  </body>
+</html>

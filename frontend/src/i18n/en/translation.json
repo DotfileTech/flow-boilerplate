@@ -1,0 +1,84 @@
+{
+  "steps": {
+    "company_search": {
+      "title": "Help us identify your business"
+    },
+    "company_list": {
+      "title": "Select your company"
+    },
+    "company_edit": {
+      "title": "Verify your business information"
+    },
+    "custom_form": {
+      "title": "Additional information"
+    },
+    "individual_edit": {
+      "title": "Check the information"
+    },
+    "individuals_list": {
+      "title": "Check the list of individuals attached to your company"
+    },
+    "checks_list": {
+      "title": "Help us carry out the necessary checks"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identity document",
+      "description": "Please provide..."
+    },
+    "id_verification": {
+      "title": "Identity Verification",
+      "description": "Please provide..."
+    },
+    "proof_of_address": {
+      "title": "Residence certificate",
+      "description": "Please provide..."
+    },
+    "driving_license": {
+      "title": "Driver's license",
+      "description": "Please provide..."
+    },
+    "social_security_card": {
+      "title": "Vital card",
+      "description": "Please provide..."
+    },
+    "ubo_registry_extract": {
+      "title": "Beneficial owners certificate",
+      "description": "Please provide..."
+    }
+  },
+  "delete": "Delete",
+  "send_documents": "Send for review",
+  "verify_identity": "Verify identity",
+  "for": "For",
+  "activity": "Activity",
+  "turnover": "Turnover",
+  "funds": "Funds managed",
+  "deposits": "Monthly deposits",
+  "beneficial_owner": "beneficial owner",
+  "legal_representative": "legal representative",
+  "individuals": "People)",
+  "companies": "Business",
+  "back": "Previous",
+  "next": "Next",
+  "edit": "Edit",
+  "remove": "Remove",
+  "add_individual": "Add an individual",
+  "search": "Search company",
+  "countries": "Country",
+  "company_name": "Your company name",
+  "company_not_found": "Can not find your company ?",
+  "form_title": "XX",
+  "fill_manually": "Fill in manually",
+  "upload_document": "Choose file",
+  "upload_document_front": "Upload Front",
+  "upload_document_back": "Upload Back",
+  "search_company_title": "Help us identify your business",
+  "individual_list_title": "Check the list of individuals attached to your company",
+  "select_company_title": "Select your company",
+  "verify_company_information_title": "Verify your business information",
+  "title": "A brand motto with some accent words if needed.",
+  "checklist_title": "Help us carry out the necessary checks ",
+  "checklist_description": "Please complete the checks below. "
+}

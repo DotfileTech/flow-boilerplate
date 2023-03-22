@@ -1,0 +1,82 @@
+{
+  "steps": {
+    "company_search": {
+      "title": "Aidez-nous à identifier votre entreprise"
+    },
+    "company_list": {
+      "title": "Sélectionnez votre entreprise"
+    },
+    "company_edit": {
+      "title": "Vérifiez les informations de votre entreprise"
+    },
+    "custom_form": {
+      "title": "Information supplémentaire"
+    },
+    "individual_edit": {
+      "title": "Vérifiez les informations"
+    },
+    "individuals_list": {
+      "title": "Vérifiez la liste d’individus rattachés à votre entreprise"
+    },
+    "checks_list": {
+      "title": "Aidez-nous à effectuer les vérifications nécessaires"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Document d'identité",
+      "description": "Merci de fournir..."
+    },
+    "id_verification": {
+      "title": "Vérification d'identité",
+      "description": "Merci de fournir..."
+    },
+    "proof_of_address": {
+      "title": "Certificat de domicile",
+      "description": "Merci de fournir..."
+    },
+    "driving_license": {
+      "title": "Permis de conduire",
+      "description": "Merci de fournir..."
+    },
+    "social_security_card": {
+      "title": "Carte vitale",
+      "description": "Merci de fournir..."
+    },
+    "ubo_registry_extract": {
+      "title": "Certificat bénéficiaires effectifs",
+      "description": "Merci de fournir..."
+    }
+  },
+  "delete": "Supprimer",
+  "send_documents": "Envoyer pour examen",
+  "verify_identity": "Vérifier identité",
+  "for": "pour",
+  "activity": "Activité",
+  "turnover": "Chiffre d'affaires",
+  "funds": "Fonds gérés",
+  "deposits": "Monthly deposits",
+  "beneficial_owner": "bénéficiaire effectif",
+  "legal_representative": "représentant légal",
+  "individuals": "Individu(s)",
+  "companies": "Entreprise",
+  "back": "Précédent",
+  "next": "Suivant",
+  "edit": "Editer",
+  "remove": "Supprimer",
+  "add_individual": "Ajouter un individu",
+  "search": "Rechercher",
+  "countries": "Pays",
+  "company_name": "Nom de votre entreprise",
+  "company_not_found": "Vous ne trouvez pas votre entreprise ?",
+  "form_title": "XX",
+  "fill_manually": "Renseigner manuellement",
+  "upload_document": "Choisir un fichier",
+  "search_company_title": "Aidez-nous à identifier votre entreprise",
+  "individual_list_title": "Vérifiez la liste d’individus rattachés à votre entreprise",
+  "select_company_title": "Sélectionnez votre entreprise",
+  "verify_company_information_title": "Vérifiez les informations de votre entreprise",
+  "title": "Un slogan pour votre entreprise",
+  "checklist_title": "Aidez-nous à effectuer les vérifications nécessaires ",
+  "checklist_description": "Veuillez procéder aux vérifications ci-dessous. Notre équipe analysera vos données et vous tiendra informé de l’avancement de votre dossier."
+}

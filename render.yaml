@@ -15,6 +15,14 @@ services:
         sync: false
       - key: DOTFILE_BASE_URL
         sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: EMAIL
+        sync: false
+      - key: APP_URL
+        sync: false`
   - type: web
     name: frontend
     healthCheckPath: /health

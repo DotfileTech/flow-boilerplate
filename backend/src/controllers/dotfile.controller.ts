@@ -1,63 +1,13 @@
 import { Request, Response, NextFunction } from 'express'
-import axios from 'axios'
 import FormData from 'form-data'
-import EmailService from '../services/email.service'
-
-class Dotfile {
-  serverUrl: string
-  secretKey: string
-
-  constructor(config: { host?: string; secretKey?: string } = {}) {
-    config.host = config.host || 'https://api.dotfile.com/v1'
-    this.serverUrl = config.host
-
-    if (this.serverUrl.slice(-1) === '/') {
-      this.serverUrl = this.serverUrl.slice(0, -1)
-    }
-
-    try {
-      new URL(this.serverUrl)
-    } catch (err) {
-      throw new Error(
-        `Invalid URL provided for the Dotfile host: ${this.serverUrl}`,
-      )
-    }
-
-    this.secretKey = config.secretKey || ''
-  }
-
-  public async request(
-    method: string,
-    endpoint: string,
-    params: {},
-    payload: {},
-    headers: {},
-  ) {
-    const url = `${this.serverUrl}/${endpoint}`
-
-    const { data } = await axios(url, {
-      method,
-      params,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept-Encoding': 'application/json',
-        'X-DOTFILE-API-KEY': this.secretKey,
-        ...headers,
-      },
-      data: payload,
-    })
-
-    return data
-  }
-}
+import { upload } from 'src/middlewares/multer'
+import Dotfile from '../api/dotfile.api'
 
 class DotfileController {
   public dotfileApi = new Dotfile({
     host: process.env.DOTFILE_BASE_URL,
     secretKey: process.env.DOTFILE_KEY,
   })
-
-  private emailService = new EmailService()
 
   public getCountries = async (
     req: Request,
@@ -76,7 +26,7 @@ class DotfileController {
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while processing your export',
+        message: 'Something went wrong while fetching countries list.',
       })
     }
   }
@@ -98,7 +48,7 @@ class DotfileController {
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while processing your export',
+        message: 'Something went wrong while searching company.',
       })
     }
   }
@@ -123,7 +73,7 @@ class DotfileController {
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while processing your export',
+        message: 'Something went wrong while fetch company details.',
       })
     }
   }
@@ -134,7 +84,7 @@ class DotfileController {
     next: NextFunction,
   ) => {
     try {
-      const { company, individuals, email } = req.body
+      const { company, individuals, metadata } = req.body
 
       const createdCase = await this.dotfileApi.request(
         'post',
@@ -142,13 +92,17 @@ class DotfileController {
         {},
         {
           name: company.name,
-          external_id: email,
+          // external_id: email,
+          template_id: process.env.TEMPLATE_ID,
+          metadata: Object.keys(metadata)
+            .filter((k) => metadata[k] != null)
+            .reduce((a, k) => ({ ...a, [k]: metadata[k] }), {}),
         },
         {},
       )
 
       individuals.forEach(async (individual) => {
-        let createdIndividual = await this.dotfileApi.request(
+        await this.dotfileApi.request(
           'post',
           'individuals',
           {},
@@ -160,48 +114,9 @@ class DotfileController {
           },
           {},
         )
-
-        if (individual.roles.includes('applicant')) {
-          await this.dotfileApi.request(
-            'post',
-            'checks/id_verification',
-            {},
-            {
-              individual_id: createdIndividual.id,
-              settings: {
-                mode: 'liveness',
-                redirect_url: `${process.env.APP_URL}?caseId=${createdCase.id}`,
-              },
-            },
-            {},
-          )
-        } else {
-          await this.dotfileApi.request(
-            'post',
-            'checks/id_document',
-            {},
-            {
-              individual_id: createdIndividual.id,
-            },
-            {},
-          )
-
-          await this.dotfileApi.request(
-            'post',
-            'checks/document',
-            {},
-            {
-              individual_id: createdIndividual.id,
-              settings: {
-                document_type: 'driving_license',
-              },
-            },
-            {},
-          )
-        }
       })
 
-      const createdCompany = await this.dotfileApi.request(
+      await this.dotfileApi.request(
         'post',
         'companies',
         {},
@@ -215,27 +130,13 @@ class DotfileController {
         {},
       )
 
-      await this.dotfileApi.request(
-        'post',
-        'checks/document',
-        {},
-        {
-          company_id: createdCompany.id,
-          settings: {
-            document_type: 'registration_certificate',
-          },
-        },
-        {},
-      )
-
       res.status(200).json({
         caseId: createdCase.id,
-        // caseUrl: `https://beta.portal.dotfile.com/cases/${createdCase.id}`,
       })
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while processing your export',
+        message: 'Something went wrong while creating case.',
       })
     }
   }
@@ -253,6 +154,26 @@ class DotfileController {
         {},
         {},
       )
+
+      let enrichedCompanies = []
+
+      for (const company of caseData.companies) {
+        let enrichedChecks = []
+        for (const check of company.checks) {
+          // enrichedChecks.push(check)
+          const enrichedCheck = await this.dotfileApi.request(
+            'get',
+            `checks/${check.type}/${check.id}`,
+            {},
+            {},
+            {},
+          )
+
+          enrichedChecks.push(enrichedCheck)
+        }
+        company.checks = enrichedChecks
+        enrichedCompanies.push(company)
+      }
 
       let enrichedIndividuals = []
 
@@ -274,13 +195,15 @@ class DotfileController {
         enrichedIndividuals.push(individual)
       }
 
+      caseData.companies = enrichedCompanies
       caseData.individuals = enrichedIndividuals
 
       res.status(200).json(caseData)
     } catch (err: any) {
+      console.log(err)
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while fetching your case',
+        message: 'Something went wrong while fetching case.',
       })
     }
   }
@@ -307,7 +230,7 @@ class DotfileController {
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while fetching your case',
+        message: 'Something went wrong while fetching check.',
       })
     }
   }
@@ -353,37 +276,74 @@ class DotfileController {
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while fetching your case',
+        message: 'Something went wrong while uploading documents',
       })
     }
   }
 
-  public sendLink = async (req: Request, res: Response, next: NextFunction) => {
+  public uploadIdentityDocument = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     try {
-      const { email, caseId, checkId } = req.body
+      if (!req.files[0]) throw new Error('missing file')
 
-      // const check = await this.dotfileApi.request(
-      //   'get',
-      //   `checks/${type}/${checkId}`,
-      //   {},
-      //   {},
-      //   {},
-      // )
-
-      // res.status(200).json({
-      //   url: check.data.vendor.verification_url,
-      // })
-
-      this.emailService.sendEmail(email, {
-        subject: 'Validate your identity',
-        message: `Follow this <a href="${process.env.APP_URL}/?caseId=${caseId}">link</a>`,
+      const bodyFormDataFront = new FormData()
+      bodyFormDataFront.append('file', req.files[0].buffer, {
+        filename: req.files[0].originalname,
       })
 
-      res.status(200).json({})
+      const { checkId, type } = req.body
+
+      const { upload_ref: front_upload_ref } = await this.dotfileApi.request(
+        'post',
+        `files/upload`,
+        {},
+        bodyFormDataFront,
+        {
+          ...bodyFormDataFront.getHeaders(),
+        },
+      )
+
+      let back_upload_ref
+
+      if (req.files[1]) {
+        const bodyFormDataBack2 = new FormData()
+        bodyFormDataFront.append('file', req.files[1].buffer, {
+          filename: req.files[1].originalname,
+        })
+
+        const { upload_ref } = await this.dotfileApi.request(
+          'post',
+          `files/upload`,
+          {},
+          bodyFormDataBack2,
+          {
+            ...bodyFormDataBack2.getHeaders(),
+          },
+        )
+
+        back_upload_ref = upload_ref
+      }
+
+      const completedChecks = await this.dotfileApi.request(
+        'post',
+        `checks/${type}/${checkId}/add_files`,
+        {},
+        {
+          front_upload_ref,
+          back_upload_ref,
+        },
+        {},
+      )
+
+      res.status(200).json(completedChecks)
     } catch (err: any) {
+      console.log(err)
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while fetching your case',
+        message: 'Something went wrong while uploading identity documents',
       })
     }
   }

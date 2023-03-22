@@ -11,7 +11,6 @@ import InputFloatingLabel from '../components/InputFloatingLabel'
 import Joi from 'joi'
 import { individualData } from '../config/Individual'
 import SelectFloatingLabel from '../components/SelectFloatingLabel'
-import Title from '../components/Title'
 
 function IndividualEdit(props: any) {
   const [formValid, setFormValid] = React.useState(false)
@@ -63,7 +62,6 @@ function IndividualEdit(props: any) {
 
   return (
     <Stack spacing={5} pt={2}>
-      <Title>Individuals</Title>
       <SimpleGrid columns={1} spacing={6}>
         <FormControl>
           <FormLabel>Roles</FormLabel>
@@ -115,8 +113,11 @@ function IndividualEdit(props: any) {
           ))}
 
         <SimpleGrid columns={2} spacing={3}>
-          <Button onClick={props.back}>Cancel</Button>
+          <Button variant="outline" onClick={props.back}>
+            Cancel
+          </Button>
           <Button
+            variant="next"
             onClick={() => props.saveIndividual(null)}
             isDisabled={!formValid}
           >

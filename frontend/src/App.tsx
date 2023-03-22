@@ -2,6 +2,8 @@ import * as React from 'react'
 import { Stack, Flex } from '@chakra-ui/react'
 import Sidebar from './components/Sidebar'
 import LoadingSpinner from './components/LoadingSpinner'
+import Header from './components/Header'
+import MobileHeader from './components/MobileHeader'
 import CompanySearch from './steps/CompanySearch'
 import CompaniesList from './steps/CompaniesList'
 import CompanyEdit from './steps/CompanyEdit'
@@ -11,6 +13,9 @@ import ChecksList from './steps/ChecksList'
 import CustomForm from './steps/CustomForm'
 import useApi from './hooks/useApi'
 import { useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { questions as questions1 } from './config/forms/Form1'
+import { questions as questions2 } from './config/forms/Form2'
 
 export interface Company {
   name?: string
@@ -21,6 +26,8 @@ export interface Company {
 }
 
 function AppContent() {
+  const { t } = useTranslation()
+
   const api = useApi()
 
   const [searchParams] = useSearchParams()
@@ -32,22 +39,23 @@ function AppContent() {
   )
 
   const email = searchParams.get('email')
+  const sid = searchParams.get('sid')
+
+  async function fetchMyAPI() {
+    if (caseId) setStep(steps.length - 1)
+    if (searchParams.get('company')) getCompanies()
+    const response = await api.get('/dotfile/countries')
+    setCountries(response.data)
+    setIsLoading(false)
+  }
 
   React.useEffect(() => {
-    async function fetchMyAPI() {
-      console.log(caseId)
-      if (caseId) setStep(7)
-      if (searchParams.get('company')) getCompanies()
-      const response = await api.get('/dotfile/countries')
-      setCountries(response.data)
-      setInitialLoading(false)
-    }
     fetchMyAPI()
   }, [])
 
   const [countries, setCountries] = React.useState([])
 
-  const [step, setStep] = React.useState(1)
+  const [step, setStep] = React.useState(0)
 
   const [companies, setCompanies] = React.useState<any>([])
 
@@ -55,7 +63,10 @@ function AppContent() {
 
   const [individual, setIndividual] = React.useState<any>({})
 
-  const [metadata, setMetadata] = React.useState<any>({})
+  const [metadata, setMetadata] = React.useState<any>({
+    email,
+    sid,
+  })
 
   const [company, setCompany] = React.useState<any>({
     name: searchParams.get('company'),
@@ -64,33 +75,26 @@ function AppContent() {
 
   const [individualIndex, setIndividualIndex] = React.useState(null)
 
-  const [isLoading, setIsLoading] = React.useState(false)
-  const [initialLoading, setInitialLoading] = React.useState(true)
+  const [isLoading, setIsLoading] = React.useState(true)
 
   const next = async (e: any) => {
-    if (step === 1) {
+    if (step === 0) {
       getCompanies()
-    }
-    if (step === 5) {
-      const response = await api.post(`dotfile/cases`, {
-        company,
-        individuals,
-      })
-      return window.location.replace(response.data.caseUrl)
     }
     setStep(step + 1)
   }
 
   const submit = async (e: any) => {
+    setIsLoading(true)
     const response = await api.post(`dotfile/cases`, {
       company,
       individuals,
       email,
+      metadata,
     })
     setCaseId(response.data.caseId)
     localStorage.setItem('caseId', response.data.caseId)
-    setStep(7)
-    // return window.location.replace(response.data.caseUrl)
+    setStep(steps.length - 1)
   }
 
   const back = async (e: any) => {
@@ -139,7 +143,7 @@ function AppContent() {
       setIndividualIndex(i)
       setIndividual(individuals[i])
     }
-    setStep(6)
+    setStep(steps.length - 2)
   }
 
   const changeHandler = (e: any) => {
@@ -156,100 +160,135 @@ function AppContent() {
     } else {
       individuals.push(individual)
     }
-    setStep(5)
+    setStep(step - 1)
   }
 
-  const [title, setTitle] = React.useState('Hello')
+  // Steps Configuration
+
+  const steps = [
+    {
+      key: 'custom_form',
+      content: (
+        <CustomForm
+          metadata={metadata}
+          questions={questions1}
+          changeHandlerMetadata={changeHandlerMetadata}
+          next={next}
+        />
+      ),
+    },
+    {
+      key: 'custom_form_2',
+      content: (
+        <CustomForm
+          metadata={metadata}
+          questions={questions2}
+          changeHandlerMetadata={changeHandlerMetadata}
+          next={next}
+        />
+      ),
+    },
+    {
+      key: 'company_search',
+      content: (
+        <CompanySearch
+          getCompanies={getCompanies}
+          countries={countries}
+          company={company}
+          changeHandler={changeHandler}
+          isLoading={isLoading}
+        />
+      ),
+    },
+    {
+      key: 'company_list',
+      content: (
+        <CompaniesList
+          selectCompany={selectCompany}
+          companies={companies}
+          isLoading={isLoading}
+          back={back}
+        />
+      ),
+    },
+    {
+      key: 'company_edit',
+      content: (
+        <CompanyEdit
+          company={company}
+          changeHandler={changeHandler}
+          next={next}
+          back={back}
+          countries={countries}
+        />
+      ),
+    },
+    {
+      key: 'individuals_list',
+      content: (
+        <IndividualsList
+          selectIndividual={selectIndividual}
+          individuals={individuals}
+          setIndividuals={setIndividuals}
+          submit={submit}
+        />
+      ),
+    },
+    {
+      key: 'individual_edit',
+      content: (
+        <IndividualEdit
+          individual={individual}
+          setIndividual={setIndividual}
+          saveIndividual={saveIndividual}
+          next={next}
+          back={back}
+          countries={countries}
+        />
+      ),
+    },
+    {
+      key: 'checks_list',
+      content: (
+        <ChecksList
+          individual={individual}
+          setIndividual={setIndividual}
+          saveIndividual={saveIndividual}
+          next={next}
+          back={back}
+          countries={countries}
+          caseId={caseId}
+          setIsLoading={setIsLoading}
+        />
+      ),
+    },
+  ]
 
   return (
-    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+    <Flex direction={{ base: 'column', md: 'row' }}>
+      <MobileHeader />
       <Sidebar />
-      <Flex
-        minH={'100vh'}
-        flex={1}
-        // direction={{ base: 'row', md: 'row' }}
-        // align={'center'}
-        justify={'left'}
-      >
-        {initialLoading && <LoadingSpinner />}
-        {!initialLoading && (
-          <Stack
-            w="100%"
-            spacing={5}
-            maxW={'900px'}
-            // mx={'auto'}
-            //  maxW={'lg'}
-            py={12}
-            px={12}
-          >
-            <Stack spacing={4}>
-              {step === 1 && (
-                <CompanySearch
-                  getCompanies={getCompanies}
-                  countries={countries}
-                  company={company}
-                  changeHandler={changeHandler}
-                  isLoading={isLoading}
-                />
-              )}
-              {step === 2 && (
-                <CompaniesList
-                  selectCompany={selectCompany}
-                  companies={companies}
-                  isLoading={isLoading}
-                  back={back}
-                />
-              )}
-              {step === 3 && (
-                <CompanyEdit
-                  company={company}
-                  changeHandler={changeHandler}
-                  next={next}
-                  back={back}
-                  countries={countries}
-                />
-              )}
-              {step === 4 && (
-                <CustomForm
-                  metadata={metadata}
-                  changeHandlerMetadata={changeHandlerMetadata}
-                  next={next}
-                />
-              )}
-              {step === 5 && (
-                <IndividualsList
-                  selectIndividual={selectIndividual}
-                  individuals={individuals}
-                  setIndividuals={setIndividuals}
-                  submit={submit}
-                />
-              )}
-              {step === 6 && (
-                <IndividualEdit
-                  individual={individual}
-                  setIndividual={setIndividual}
-                  saveIndividual={saveIndividual}
-                  next={next}
-                  back={back}
-                  countries={countries}
-                />
-              )}
-              {step === 7 && (
-                <ChecksList
-                  individual={individual}
-                  setIndividual={setIndividual}
-                  saveIndividual={saveIndividual}
-                  next={next}
-                  back={back}
-                  countries={countries}
-                  caseId={caseId}
-                />
-              )}
-            </Stack>
+      <Flex ml={['0', '0', '25vw']}>
+        <Stack
+          // spacing={5}
+          maxW={'900px'}
+          py={[5, 10, 10]}
+          px={[5, 10, 20]}
+        >
+          <Stack spacing={4}>
+            <Header
+              back={back}
+              progress={(step / steps.length) * 100}
+              hasBackButton={step !== 0 && step !== steps.length - 1}
+            >
+              {t(`steps.${steps[step].key}.title`)}
+            </Header>
+            {isLoading && <LoadingSpinner />}
+            {!isLoading && steps[step].content}
           </Stack>
-        )}
+        </Stack>
       </Flex>
-    </Stack>
+    </Flex>
   )
 }
 

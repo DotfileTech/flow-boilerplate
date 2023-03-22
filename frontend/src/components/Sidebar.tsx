@@ -1,43 +1,47 @@
-import { Box, Flex, Text, Heading, Image } from '@chakra-ui/react'
-import { logo } from '../components/Logo'
-import { bg } from '../components/Background'
-import { CheckIcon } from '@chakra-ui/icons'
-
-const items = [
-  {
-    icon: <CheckIcon fontSize="small" />,
-    title: 'Company',
-  },
-  {
-    icon: <CheckIcon fontSize="small" />,
-    title: 'Individuals',
-  },
-  {
-    icon: <CheckIcon fontSize="small" />,
-    title: 'Checks',
-  },
-]
+import { Box, Flex, Text } from '@chakra-ui/react'
+import { ReactComponent as DotfileLogo } from '../components/logos/dotfile.svg'
+import { ReactComponent as Logo } from '../components/logos/sample.svg'
+import { useTranslation } from 'react-i18next'
 
 function Sidebar(props: any) {
-  return (
-    <Box minH="100vh" bg={'black'} backgroundImage={`${bg}`}>
-      <Box
-        m={10}
-        w={{ base: 'full', md: 300 }}
+  const { t } = useTranslation()
 
-        // pos="fixed"
-        // h="full"
-      >
-        <Image pt={10} pb={10} src={`${logo}`} />
-        <Heading
-          fontWeight={600}
-          color={'white'}
-          fontSize={{ base: '1xl', sm: '2xl', md: '3xl' }}
-        >
-          Acme partners with Dotfile for a secure compliance process
-        </Heading>
+  return (
+    <Flex
+      minH="100%"
+      position="fixed"
+      background="brand.sidebar"
+      display={{ base: 'none', md: 'flex' }}
+      direction="column"
+      p="2vw"
+      w={{ base: 'full', md: '25vw' }}
+    >
+      <Box pt={10} pb={10}>
+        <Logo width="80%" />
       </Box>
-    </Box>
+      <Box flexGrow={1}>
+        <Text
+          fontWeight={700}
+          color={'white'}
+          fontSize={{ base: '3xl', sm: '3xl', md: '3xl' }}
+        >
+          {t('title')}
+        </Text>
+      </Box>
+      <Flex alignItems="center" mb="5vh">
+        <Text
+          color="white"
+          mr="10px"
+          fontSize="14px"
+          lineHeight="2Opx"
+          fontWeight="500"
+          display="inline-block"
+        >
+          <b>Powered by</b>
+        </Text>
+        <DotfileLogo />
+      </Flex>
+    </Flex>
   )
 }
 

@@ -5,7 +5,8 @@ function Title(props: any) {
     <Box>
       {' '}
       <Heading
-        fontWeight={400}
+        fontWeight={600}
+        color='brand.main-3'
         fontSize={{ base: '1xl', sm: '2xl', md: '3xl' }}
       >
         {props.children}
