@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
 import FormData from 'form-data'
-import { upload } from 'src/middlewares/multer'
 import Dotfile from '../api/dotfile.api'
 
 class DotfileController {
