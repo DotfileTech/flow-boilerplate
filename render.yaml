@@ -22,7 +22,7 @@ services:
       - key: EMAIL
         sync: false
       - key: APP_URL
-        sync: false`
+        sync: false
   - type: web
     name: frontend
     healthCheckPath: /health
