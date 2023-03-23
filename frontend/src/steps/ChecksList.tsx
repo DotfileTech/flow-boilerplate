@@ -1,8 +1,6 @@
 import * as React from 'react'
 import {
   Stack,
-  Heading,
-  Box,
   Text,
   Tabs,
   TabList,
@@ -13,7 +11,6 @@ import {
 } from '@chakra-ui/react'
 import useApi from '../hooks/useApi'
 import UploadDocuments from '../components/UploadDocuments'
-import CheckItem from '../components/CheckItem'
 import CheckCard from '../components/CheckCard'
 import { useTranslation } from 'react-i18next'
 
@@ -129,28 +126,13 @@ function ChecksList(props: any) {
             <TabPanel>
               <Stack spacing={5} pt={2}>
                 {data.companies.map((item: any, i: any) => (
-                  <Box
-                    borderWidth="1px"
-                    borderRadius="lg"
-                    background="white"
-                    boxShadow="1px 1px 16px rgba(153, 153, 153, 0.1)"
-                    padding={5}
-                  >
-                    <Heading pb={5} size="sm">
-                      {`${item.name}`}
-                    </Heading>
-                    {item.checks
-                      .filter((x: any) => x.type !== 'aml')
-                      .map((check: any, i: any) => (
-                        <CheckItem
-                          item={item}
-                          check={check}
-                          selectCheck={selectCheck}
-                          setCurrentIndividual={setCurrentIndividual}
-                          processIdentityCheck={processIdentityCheck}
-                        />
-                      ))}
-                  </Box>
+                  <CheckCard
+                    key={i}
+                    item={item}
+                    type="company"
+                    selectCheck={selectCheck}
+                    setCurrentIndividual={setCurrentIndividual}
+                  />
                 ))}
               </Stack>
             </TabPanel>
@@ -160,7 +142,9 @@ function ChecksList(props: any) {
               <Stack spacing={5} pt={2}>
                 {data.individuals.map((item: any, i: any) => (
                   <CheckCard
+                    key={i}
                     item={item}
+                    type="individual"
                     selectCheck={selectCheck}
                     setCurrentIndividual={setCurrentIndividual}
                   />

@@ -1,13 +1,5 @@
-import {
-  Tag,
-  Heading,
-  Flex,
-  Spacer,
-  Button,
-  Show,
-  IconButton,
-} from '@chakra-ui/react'
-import { DownloadIcon, ExternalLinkIcon, LinkIcon } from '@chakra-ui/icons'
+import { Tag, Heading, Flex, Spacer, Button, Show } from '@chakra-ui/react'
+import { DownloadIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
 
 function CheckItem(props: any) {
@@ -28,7 +20,11 @@ function CheckItem(props: any) {
       {/* {check.data.result} {check.data.review.comment} */}
       {/* <Spacer /> */}
 
-      <Heading size="sm">{t(`checks.${exactType(props.check)}.title`)}</Heading>
+      <Show above="sm">
+        <Heading size="sm">
+          {props.check && t(`checks.${exactType(props.check)}.title`)}
+        </Heading>
+      </Show>
 
       <Spacer />
 
@@ -49,27 +45,32 @@ function CheckItem(props: any) {
       {(props.check.data.result === 'rejected' ||
         props.check.status === 'in_progress') && (
         <>
-          <Show above="sm">
-            <Button
-              leftIcon={
-                props.check.type === 'id_verification' ? (
-                  <ExternalLinkIcon />
-                ) : (
-                  <DownloadIcon />
-                )
-              }
-              id={props.check.id}
-              name={props.check.type}
-              variant="outline"
-              onClick={() => {
-                props.selectCheck(props.check)
-                props.setCurrentIndividual(props.item)
-              }}
-              isDisabled={
-                props.check.status !== 'in_progress' &&
-                props.check.data.result !== 'rejected'
-              }
-            >
+          <Button
+            leftIcon={
+              props.check.type === 'id_verification' ? (
+                <ExternalLinkIcon />
+              ) : (
+                <DownloadIcon />
+              )
+            }
+            width={["100%","",""]}
+            id={props.check.id}
+            name={props.check.type}
+            variant="outline"
+            onClick={() => {
+              props.selectCheck(props.check)
+              props.setCurrentIndividual(props.item)
+            }}
+            isDisabled={
+              props.check.status !== 'in_progress' &&
+              props.check.data.result !== 'rejected'
+            }
+          >
+            <Show below="sm">
+              {props.check && t(`checks.${exactType(props.check)}.title`)}
+            </Show>
+
+            <Show above="sm">
               {props.check.data.result === 'rejected'
                 ? t('upload_document')
                 : props.check.status === 'in_progress'
@@ -77,33 +78,8 @@ function CheckItem(props: any) {
                   ? t('verify_identity')
                   : t('upload_document')
                 : t('upload_document')}
-            </Button>
-          </Show>
-          <Show below="sm">
-            <IconButton
-              icon={<DownloadIcon />}
-              id={props.check.id}
-              name={props.check.type}
-              aria-label={
-                props.check.data.result === 'rejected'
-                  ? t('upload_document')
-                  : props.check.status === 'in_progress'
-                  ? props.check.type === 'id_verification'
-                    ? t('verify_identity')
-                    : t('upload_document')
-                  : t('upload_document')
-              }
-              variant="outline"
-              onClick={() => {
-                props.selectCheck(props.check)
-                props.setCurrentIndividual(props.item)
-              }}
-              isDisabled={
-                props.check.status !== 'in_progress' &&
-                props.check.data.result !== 'rejected'
-              }
-            />
-          </Show>
+            </Show>
+          </Button>
         </>
       )}
     </Flex>

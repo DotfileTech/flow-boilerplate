@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
-import theme from './themes/Main'
+import theme from './config/theme/Main'
 import './i18n/config'
 
 const container = document.getElementById('root')

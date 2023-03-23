@@ -1,11 +1,10 @@
 import { FormControl, FormLabel, Input, useColorMode } from '@chakra-ui/react'
 
-function InputFloatingLabel(props: any) {
+function InputForm(props: any) {
   const { colorMode } = useColorMode()
 
   return (
     <FormControl
-      // variant="floating"
       id={props.name}
       isRequired={props.isRequired}
     >
@@ -20,4 +19,4 @@ function InputFloatingLabel(props: any) {
   )
 }
 
-export default InputFloatingLabel
+export default InputForm

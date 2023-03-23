@@ -2,7 +2,6 @@ import * as React from 'react'
 import {
   Stack,
   Button,
-  IconButton,
   Tag,
   Box,
   Flex,
@@ -12,7 +11,6 @@ import {
 import { DeleteIcon, EditIcon, PlusSquareIcon } from '@chakra-ui/icons'
 import Joi from 'joi'
 import { individualData } from '../config/Individual'
-import Header from '../components/Header'
 import { useTranslation } from 'react-i18next'
 
 function IndividualsList(props: any) {
@@ -32,6 +30,7 @@ function IndividualsList(props: any) {
         return individual
       }),
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const deleteIndividual = (index: any) => {
@@ -41,10 +40,6 @@ function IndividualsList(props: any) {
   }
 
   return (
-    // TODO Chech validation list
-
-    // TODO: dynamic choice of data from individual to display in listing
-
     <Stack spacing={5} pt={2}>
       {props.individuals.map((ubo: any, i: any) => (
         <Box
@@ -53,6 +48,7 @@ function IndividualsList(props: any) {
           background="white"
           boxShadow="1px 1px 16px rgba(153, 153, 153, 0.1)"
           padding={5}
+          key={i}
         >
           <Flex alignItems="center">
             <Heading size="sm">
@@ -80,8 +76,8 @@ function IndividualsList(props: any) {
               </Button>
             </Box>
           </Flex>
-          {ubo.roles.map((role: any) => (
-            <Tag mt={4} mr={4}>
+          {ubo.roles.map((role: any, j: any) => (
+            <Tag key={j} mt={4} mr={4}>
               {t(role)}
             </Tag>
           ))}

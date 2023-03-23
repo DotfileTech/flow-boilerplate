@@ -7,7 +7,7 @@ import {
   FormControl,
   FormLabel,
 } from '@chakra-ui/react'
-import InputFloatingLabel from '../components/InputFloatingLabel'
+import InputForm from '../components/InputForm'
 import Joi from 'joi'
 import { individualData } from '../config/Individual'
 import SelectFloatingLabel from '../components/SelectFloatingLabel'
@@ -102,7 +102,7 @@ function IndividualEdit(props: any) {
         {individualData
           .filter((ind) => ind.enabled)
           .map((ind: any, i: any) => (
-            <InputFloatingLabel
+            <InputForm
               value={props.individual[ind.id]}
               onChange={changeHandlerIndividual}
               name={ind.id}

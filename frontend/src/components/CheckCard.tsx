@@ -28,13 +28,16 @@ function CheckCard(props: any) {
           <Flex alignItems="center">
             <AccordionButton>
               <Heading size="sm">
-                {`${props.item.first_name} ${props.item.last_name}`}
+                {props.type === 'individual'
+                  ? `${props.item.first_name} ${props.item.last_name}`
+                  : props.item.name}
               </Heading>
-              {props.item.roles.map((role: any) => (
-                <Tag display={['none', 'flex', 'flex']} ml={5}>
-                  {t(role)}
-                </Tag>
-              ))}
+              {props.type === 'individual' &&
+                props.item.roles.map((role: any, i: any) => (
+                  <Tag key={i} display={['none', 'flex', 'flex']} ml={5}>
+                    {t(role)}
+                  </Tag>
+                ))}
 
               <Spacer />
               <AccordionIcon />
@@ -45,6 +48,7 @@ function CheckCard(props: any) {
               .filter((x: any) => x.type !== 'aml')
               .map((check: any, i: any) => (
                 <CheckItem
+                  key={i}
                   item={props.item}
                   check={check}
                   selectCheck={props.selectCheck}

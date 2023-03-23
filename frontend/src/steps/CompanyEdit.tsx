@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SimpleGrid, Button, Stack } from '@chakra-ui/react'
-import InputFloatingLabel from '../components/InputFloatingLabel'
+import InputForm from '../components/InputForm'
 import SelectFloatingLabel from '../components/SelectFloatingLabel'
 import Joi from 'joi'
 import { companyData } from '../config/Company'
@@ -40,7 +40,7 @@ function CompanyEdit(props: any) {
         {companyData
           .filter((company) => company.enabled)
           .map((company: any, i: any) => (
-            <InputFloatingLabel
+            <InputForm
               key={company.id}
               value={props.company[company.id]}
               onChange={props.changeHandler}

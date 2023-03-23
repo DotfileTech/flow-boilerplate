@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { InputGroup, Button, Stack } from '@chakra-ui/react'
 import Joi from 'joi'
-import InputFloatingLabel from '../components/InputFloatingLabel'
+import InputForm from '../components/InputForm'
 import SelectFloatingLabel from '../components/SelectFloatingLabel'
 
 import { ChevronRightIcon } from '@chakra-ui/icons'
@@ -39,7 +39,7 @@ function CompanySearch(props: any) {
       />
 
       <InputGroup size="md">
-        <InputFloatingLabel
+        <InputForm
           pr="4.5rem"
           type="text"
           isRequired

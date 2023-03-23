@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { ReactComponent as DotfileLogo } from '../components/logos/dotfile.svg'
-import { ReactComponent as Logo } from '../components/logos/sample.svg'
+import { ReactComponent as Logo } from '../config/theme/logo.svg'
 import { useTranslation } from 'react-i18next'
 
 function Sidebar(props: any) {

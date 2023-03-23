@@ -1,5 +1,5 @@
 import { Flex, Box } from '@chakra-ui/react'
-import { ReactComponent as Logo } from '../components/logos/sample.svg'
+import { ReactComponent as Logo } from '../config/theme/logo.svg'
 
 function Sidebar(props: any) {
   return (
@@ -15,7 +15,7 @@ function Sidebar(props: any) {
       background="brand.sidebar"
     >
       <Box pt={2} pb={2}>
-        <Logo />
+        <Logo width="80%" />
       </Box>
     </Flex>
   )

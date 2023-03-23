@@ -14,8 +14,8 @@ import CustomForm from './steps/CustomForm'
 import useApi from './hooks/useApi'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { questions as questions1 } from './config/forms/Form1'
-import { questions as questions2 } from './config/forms/Form2'
+// import { form } from './config/Forms'
+import axios from 'axios'
 
 export interface Company {
   name?: string
@@ -42,7 +42,49 @@ function AppContent() {
   const sid = searchParams.get('sid')
 
   async function fetchMyAPI() {
-    if (caseId) setStep(steps.length - 1)
+    if (process.env.REACT_APP_CONFIG) {
+      const formsResponse = await axios.get(
+        'https://api.npoint.io/d9088d5321d77e6e4756',
+      )
+
+      if (formsResponse.data) setForm(formsResponse.data as [])
+    }
+
+    form.forEach((item) => {
+      if (!item.after) {
+        steps.unshift({
+          key: item.key,
+          content: (
+            <CustomForm
+              metadata={metadata}
+              questions={item.questions}
+              changeHandlerMetadata={changeHandlerMetadata}
+              next={next}
+            />
+          ),
+        })
+      } else {
+        const index =
+          steps.findIndex((element) => element.key === item.after) + 1
+        steps.splice(index, 0, {
+          key: item.key,
+          content: (
+            <CustomForm
+              metadata={metadata}
+              questions={item.questions}
+              changeHandlerMetadata={changeHandlerMetadata}
+              next={next}
+            />
+          ),
+        })
+      }
+    })
+
+    if (caseId)
+      setStep(steps.findIndex((element) => element.key === 'checks_list'))
+
+    steps.findIndex((element) => element.key === 'checks_list')
+
     if (searchParams.get('company')) getCompanies()
     const response = await api.get('/dotfile/countries')
     setCountries(response.data)
@@ -52,6 +94,8 @@ function AppContent() {
   React.useEffect(() => {
     fetchMyAPI()
   }, [])
+
+  const [form, setForm] = React.useState<any[]>([])
 
   const [countries, setCountries] = React.useState([])
 
@@ -94,7 +138,7 @@ function AppContent() {
     })
     setCaseId(response.data.caseId)
     localStorage.setItem('caseId', response.data.caseId)
-    setStep(steps.length - 1)
+    setStep(steps.findIndex((element) => element.key === 'checks_list'))
   }
 
   const back = async (e: any) => {
@@ -166,28 +210,6 @@ function AppContent() {
   // Steps Configuration
 
   const steps = [
-    {
-      key: 'custom_form',
-      content: (
-        <CustomForm
-          metadata={metadata}
-          questions={questions1}
-          changeHandlerMetadata={changeHandlerMetadata}
-          next={next}
-        />
-      ),
-    },
-    {
-      key: 'custom_form_2',
-      content: (
-        <CustomForm
-          metadata={metadata}
-          questions={questions2}
-          changeHandlerMetadata={changeHandlerMetadata}
-          next={next}
-        />
-      ),
-    },
     {
       key: 'company_search',
       content: (
@@ -272,6 +294,7 @@ function AppContent() {
         <Stack
           // spacing={5}
           maxW={'900px'}
+          width="100%"
           py={[5, 10, 10]}
           px={[5, 10, 20]}
         >

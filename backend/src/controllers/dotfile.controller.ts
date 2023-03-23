@@ -133,6 +133,7 @@ class DotfileController {
         caseId: createdCase.id,
       })
     } catch (err: any) {
+      console.log(err)
       res.status(400).send({
         type: 'error',
         message: 'Something went wrong while creating case.',
@@ -199,7 +200,6 @@ class DotfileController {
 
       res.status(200).json(caseData)
     } catch (err: any) {
-      console.log(err)
       res.status(400).send({
         type: 'error',
         message: 'Something went wrong while fetching case.',
@@ -308,22 +308,22 @@ class DotfileController {
       let back_upload_ref
 
       if (req.files[1]) {
-        const bodyFormDataBack2 = new FormData()
-        bodyFormDataFront.append('file', req.files[1].buffer, {
+        const bodyFormDataBack = new FormData()
+        bodyFormDataBack.append('file', req.files[1].buffer, {
           filename: req.files[1].originalname,
         })
 
-        const { upload_ref } = await this.dotfileApi.request(
+        const response = await this.dotfileApi.request(
           'post',
           `files/upload`,
           {},
-          bodyFormDataBack2,
+          bodyFormDataBack,
           {
-            ...bodyFormDataBack2.getHeaders(),
+            ...bodyFormDataBack.getHeaders(),
           },
         )
 
-        back_upload_ref = upload_ref
+        back_upload_ref = response.data
       }
 
       const completedChecks = await this.dotfileApi.request(
@@ -339,7 +339,6 @@ class DotfileController {
 
       res.status(200).json(completedChecks)
     } catch (err: any) {
-      console.log(err)
       res.status(400).send({
         type: 'error',
         message: 'Something went wrong while uploading identity documents',

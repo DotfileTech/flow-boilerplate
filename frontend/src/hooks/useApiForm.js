@@ -4,7 +4,7 @@ import axios from 'axios'
 const useApi = () => {
   const api = useRef(
     axios.create({
-      baseURL: process.env.REACT_APP_HOST,
+      baseURL: process.env.CONTENT_BACKEND,
     }),
   )
 

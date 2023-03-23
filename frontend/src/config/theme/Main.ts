@@ -4,12 +4,11 @@ import type { StyleFunctionProps } from '@chakra-ui/styled-system'
 const theme = extendTheme({
   colors: {
     brand: {
-      'main-0': '#23272F',
-      'main-1': '#23272F',
-      'main-2': '#23272F',
-      'main-3': '#23272F',
-      sidebar: '#23272F',
-      accent: '#0176FF',
+      'main-0': '#EDF6FE',
+      'main-1': '#8BC8FC',
+      'main-2': '#006BE4',
+      'main-3': '#002776',
+      sidebar: 'linear-gradient(134.97deg, #075ED2 -9.42%, #007FFB 84.86%)',
     },
   },
   fonts: {
@@ -36,7 +35,7 @@ const theme = extendTheme({
       baseStyle: {
         filledTrack: {
           borderRadius: '1rem',
-          bg: 'brand.accent',
+          bg: 'brand.main-2',
         },
       },
     },
@@ -83,7 +82,7 @@ const theme = extendTheme({
       },
       variants: {
         solid: (props: StyleFunctionProps) => ({
-          // bg: 'brand.main-2',
+          bg: 'brand.main-2',
         }),
         back: (props: StyleFunctionProps) => ({}),
         next: (props: StyleFunctionProps) => ({

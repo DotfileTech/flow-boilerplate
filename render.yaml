@@ -23,6 +23,8 @@ services:
         sync: false
       - key: APP_URL
         sync: false
+      - key: TEMPLATE_ID
+        sync: false
   - type: web
     name: frontend
     healthCheckPath: /health
@@ -39,3 +41,5 @@ services:
           type: web
           name: backend
           envVarKey: RENDER_EXTERNAL_URL
+      - key: REACT_APP_CONFIG
+        sync: false

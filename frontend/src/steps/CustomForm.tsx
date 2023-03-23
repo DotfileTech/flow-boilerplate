@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SimpleGrid, Button, Stack } from '@chakra-ui/react'
-import InputFloatingLabel from '../components/InputFloatingLabel'
+import InputForm from '../components/InputForm'
 import Joi from 'joi'
 import { useTranslation } from 'react-i18next'
 
@@ -29,7 +29,7 @@ function CustomForm(props: any) {
         {props.questions
           .filter((question: { enabled: any }) => question.enabled)
           .map((question: any, i: any) => (
-            <InputFloatingLabel
+            <InputForm
               key={props.metadata.id}
               value={props.metadata.id}
               onChange={props.changeHandlerMetadata}
