@@ -20,8 +20,12 @@
     },
     "checks_list": {
       "title": "Help us carry out the necessary checks"
+    },
+    "additional_data": {
+      "title": "Additional data"
     }
   },
+  "brand": { "title": "A brand motto with some accent words if needed." },
   "checks": {
     "id_document": {
       "title": "Identity document",
@@ -79,7 +83,6 @@
   "individual_list_title": "Check the list of individuals attached to your company",
   "select_company_title": "Select your company",
   "verify_company_information_title": "Verify your business information",
-  "title": "A brand motto with some accent words if needed.",
   "checklist_title": "Help us carry out the necessary checks ",
   "checklist_description": "Please complete the checks below. "
 }

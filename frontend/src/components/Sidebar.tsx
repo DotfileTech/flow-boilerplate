@@ -25,7 +25,7 @@ function Sidebar(props: any) {
           color={'white'}
           fontSize={{ base: '3xl', sm: '3xl', md: '3xl' }}
         >
-          {t('title')}
+          {t('brand.title')}
         </Text>
       </Box>
       <Flex alignItems="center" mb="5vh">

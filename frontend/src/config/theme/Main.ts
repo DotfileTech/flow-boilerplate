@@ -1,14 +1,21 @@
 import { extendTheme } from '@chakra-ui/react'
 import type { StyleFunctionProps } from '@chakra-ui/styled-system'
 
+const disabledStyles = {
+  backgroundColor: 'gray.100',
+  borderColor: 'gray.100',
+  color: 'gray.500',
+}
+
 const theme = extendTheme({
   colors: {
     brand: {
-      'main-0': '#EDF6FE',
-      'main-1': '#8BC8FC',
-      'main-2': '#006BE4',
-      'main-3': '#002776',
-      sidebar: 'linear-gradient(134.97deg, #075ED2 -9.42%, #007FFB 84.86%)',
+      'main-0': '#23272F',
+      'main-1': '#23272F',
+      'main-2': '#23272F',
+      'main-3': '#23272F',
+      sidebar: '#23272F',
+      // sidebar: 'linear-gradient(134.97deg, #075ED2 -9.42%, #007FFB 84.86%)',
     },
   },
   fonts: {
@@ -89,6 +96,12 @@ const theme = extendTheme({
           bg: 'brand.main-2',
           color: 'white',
           maxWidth: '200px',
+          _disabled: {
+            ...disabledStyles,
+            _hover: {
+              ...disabledStyles,
+            },
+          },
         }),
         upload: (props: StyleFunctionProps) => ({
           bg: 'brand.main-2',

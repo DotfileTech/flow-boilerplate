@@ -14,8 +14,8 @@ import CustomForm from './steps/CustomForm'
 import useApi from './hooks/useApi'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-// import { form } from './config/Forms'
-import axios from 'axios'
+import { form } from './config/Forms'
+// import axios from 'axios'
 
 export interface Company {
   name?: string
@@ -42,48 +42,46 @@ function AppContent() {
   const sid = searchParams.get('sid')
 
   async function fetchMyAPI() {
-    if (process.env.REACT_APP_CONFIG) {
-      const formsResponse = await axios.get(
-        'https://api.npoint.io/d9088d5321d77e6e4756',
-      )
+    // if (process.env.REACT_APP_CONFIG) {
+    //   const formsResponse = await axios.get(
+    //     'https://api.npoint.io/d9088d5321d77e6e4756',
+    //   )
 
-      if (formsResponse.data) setForm(formsResponse.data as [])
-    }
+    //   if (formsResponse.data) setForm(formsResponse.data as [])
+    // }
 
-    form.forEach((item) => {
-      if (!item.after) {
-        steps.unshift({
-          key: item.key,
-          content: (
-            <CustomForm
-              metadata={metadata}
-              questions={item.questions}
-              changeHandlerMetadata={changeHandlerMetadata}
-              next={next}
-            />
-          ),
-        })
-      } else {
-        const index =
-          steps.findIndex((element) => element.key === item.after) + 1
-        steps.splice(index, 0, {
-          key: item.key,
-          content: (
-            <CustomForm
-              metadata={metadata}
-              questions={item.questions}
-              changeHandlerMetadata={changeHandlerMetadata}
-              next={next}
-            />
-          ),
-        })
-      }
-    })
+    // form.forEach((item) => {
+    //   if (!item.after) {
+    //     steps.unshift({
+    //       key: item.key,
+    //       content: (
+    //         <CustomForm
+    //           metadata={metadata}
+    //           questions={item.questions}
+    //           changeHandlerMetadata={changeHandlerMetadata}
+    //           next={next}
+    //         />
+    //       ),
+    //     })
+    //   } else {
+    //     const index =
+    //       steps.findIndex((element) => element.key === item.after) + 1
+    //     steps.splice(index, 0, {
+    //       key: item.key,
+    //       content: (
+    //         <CustomForm
+    //           metadata={metadata}
+    //           questions={item.questions}
+    //           changeHandlerMetadata={changeHandlerMetadata}
+    //           next={next}
+    //         />
+    //       ),
+    //     })
+    //   }
+    // })
 
     if (caseId)
       setStep(steps.findIndex((element) => element.key === 'checks_list'))
-
-    steps.findIndex((element) => element.key === 'checks_list')
 
     if (searchParams.get('company')) getCompanies()
     const response = await api.get('/dotfile/countries')
@@ -95,7 +93,7 @@ function AppContent() {
     fetchMyAPI()
   }, [])
 
-  const [form, setForm] = React.useState<any[]>([])
+  // const [form, setForm] = React.useState<any[]>([])
 
   const [countries, setCountries] = React.useState([])
 
@@ -139,6 +137,7 @@ function AppContent() {
     setCaseId(response.data.caseId)
     localStorage.setItem('caseId', response.data.caseId)
     setStep(steps.findIndex((element) => element.key === 'checks_list'))
+    setIsLoading(false)
   }
 
   const back = async (e: any) => {
@@ -242,6 +241,17 @@ function AppContent() {
           next={next}
           back={back}
           countries={countries}
+        />
+      ),
+    },
+    {
+      key: form[0].key,
+      content: (
+        <CustomForm
+          metadata={metadata}
+          questions={form[0].questions}
+          changeHandlerMetadata={changeHandlerMetadata}
+          next={next}
         />
       ),
     },

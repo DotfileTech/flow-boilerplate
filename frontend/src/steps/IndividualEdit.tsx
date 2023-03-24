@@ -103,6 +103,7 @@ function IndividualEdit(props: any) {
           .filter((ind) => ind.enabled)
           .map((ind: any, i: any) => (
             <InputForm
+              key={i}
               value={props.individual[ind.id]}
               onChange={changeHandlerIndividual}
               name={ind.id}
