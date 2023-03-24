@@ -1,11 +1,9 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { ReactComponent as DotfileLogo } from '../components/logos/dotfile.svg'
 import { ReactComponent as Logo } from '../config/theme/logo.svg'
-import { useTranslation } from 'react-i18next'
+import { Trans } from 'react-i18next'
 
 function Sidebar(props: any) {
-  const { t } = useTranslation()
-
   return (
     <Flex
       minH="100%"
@@ -25,7 +23,18 @@ function Sidebar(props: any) {
           color={'white'}
           fontSize={{ base: '3xl', sm: '3xl', md: '3xl' }}
         >
-          {t('brand.title')}
+          <Trans i18nKey="brand.title">
+            A brand motto with some
+            <Text
+              as="span"
+              fontWeight={700}
+              color={'brand.accent'}
+              fontSize={{ base: '3xl', sm: '3xl', md: '3xl' }}
+            >
+              accent words
+            </Text>
+            if needed.
+          </Trans>
         </Text>
       </Box>
       <Flex alignItems="center" mb="5vh">

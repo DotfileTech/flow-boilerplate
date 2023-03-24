@@ -14,6 +14,7 @@ const theme = extendTheme({
       'main-1': '#23272F',
       'main-2': '#23272F',
       'main-3': '#23272F',
+      accent: '#0176FF',
       sidebar: '#23272F',
       // sidebar: 'linear-gradient(134.97deg, #075ED2 -9.42%, #007FFB 84.86%)',
     },
@@ -42,7 +43,7 @@ const theme = extendTheme({
       baseStyle: {
         filledTrack: {
           borderRadius: '1rem',
-          bg: 'brand.main-2',
+          bg: 'brand.accent',
         },
       },
     },

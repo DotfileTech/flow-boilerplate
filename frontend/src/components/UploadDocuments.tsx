@@ -3,7 +3,6 @@ import {
   Button,
   Box,
   Flex,
-  IconButton,
   Spacer,
   Text,
   ModalBody,
@@ -15,7 +14,6 @@ import {
   ModalFooter,
 } from '@chakra-ui/react'
 import useApi from '../hooks/useApi'
-import { DeleteIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
 
 function UploadDocuments(props: any) {
@@ -143,11 +141,6 @@ function UploadDocuments(props: any) {
                 <Flex alignItems="center" padding={5}>
                   <Text>{fileFront.name}</Text>
                   <Spacer />
-                  <IconButton
-                    aria-label="Delete"
-                    // onClick={() => deleteIndividual(i)}
-                    icon={<DeleteIcon />}
-                  />
                 </Flex>
               )}
               <input
@@ -167,11 +160,6 @@ function UploadDocuments(props: any) {
                 <Flex alignItems="center" padding={5}>
                   <Text>{fileBack.name}</Text>
                   <Spacer />
-                  <IconButton
-                    aria-label="Delete"
-                    // onClick={() => deleteIndividual(i)}
-                    icon={<DeleteIcon />}
-                  />
                 </Flex>
               )}
             </Box>
@@ -199,11 +187,6 @@ function UploadDocuments(props: any) {
                   <Flex key={i} alignItems="center" padding={5}>
                     <Text>{file.name}</Text>
                     <Spacer />
-                    <IconButton
-                      aria-label="Delete"
-                      // onClick={() => deleteIndividual(i)}
-                      icon={<DeleteIcon />}
-                    />
                   </Flex>
                 ))}
             </Box>

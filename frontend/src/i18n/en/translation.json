@@ -25,7 +25,7 @@
       "title": "Additional data"
     }
   },
-  "brand": { "title": "A brand motto with some accent words if needed." },
+  "brand": { "title": "A brand motto with some <1>accent words</1> if needed." },
   "checks": {
     "id_document": {
       "title": "Identity document",
@@ -63,8 +63,8 @@
   "deposits": "Monthly deposits",
   "beneficial_owner": "beneficial owner",
   "legal_representative": "legal representative",
-  "individuals": "People)",
-  "companies": "Business",
+  "individuals": "Individual(s)",
+  "companies": "Company",
   "back": "Previous",
   "next": "Next",
   "edit": "Edit",
