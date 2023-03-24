@@ -21,6 +21,8 @@ services:
         sync: false
       - key: EMAIL
         sync: false
+      - key: EMAIL_PASS
+        sync: false
       - key: APP_URL
         sync: false
       - key: TEMPLATE_ID
