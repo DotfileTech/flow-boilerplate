@@ -25,6 +25,8 @@ services:
         sync: false
       - key: TEMPLATE_ID
         sync: false
+      - key: LOGO_URL
+        sync: false
   - type: web
     name: frontend
     healthCheckPath: /health

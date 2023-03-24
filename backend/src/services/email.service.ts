@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer'
-// import hbs from 'nodemailer-express-handlebars'
+import hbs from 'nodemailer-express-handlebars'
+import path from 'path'
 
 const mailOptions = {
   host: process.env.SMTP_HOST,
@@ -17,20 +18,23 @@ const mailOptions = {
 class EmailService {
   private transporter = nodemailer.createTransport(mailOptions)
 
-  public sendEmail = async (email, options) => {
+  public sendEmail = async (email, options, context) => {
+    
+    this.transporter.use(
+      'compile',
+      hbs({
+        viewEngine: {
+          extName: '.handlebars',
+          partialsDir: path.join(__dirname, 'templates'),
+          layoutsDir: path.join(__dirname, 'templates'),
+          defaultLayout: options.template,
+        },
+        viewPath: path.join(__dirname, 'templates'),
+        extName: '.handlebars',
+      }),
+    )
 
-    // this.transporter.use(
-    //   'compile',
-    //   hbs({
-    //     viewEngine: {
-    //       extName: '.handlebars',
-    //       partialsDir: './templates/',
-    //       layoutsDir: './templates/',
-    //     },
-    //     viewPath: './templates/',
-    //     extName: '.handlebars',
-    //   }),
-    // )
+    console.log(options)
 
     const message = {
       from: 'contact@docagen.com',
@@ -38,12 +42,8 @@ class EmailService {
       subject: options.subject,
       // text: 'Plaintext version of the message',
       // html: `<p>${options.message}</p>`,
-      template: '',
-      // context: {
-      //   appLogoUrl: "https://maddyness.twic.pics/2023/02/Dotfile.png?twic=v1/resize=470",
-      //   verificationLink: "http",
-      //   name: fullName,
-      // },
+      template: options.template,
+      context,
     }
 
     return this.transporter.sendMail(message)

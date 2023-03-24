@@ -33,11 +33,19 @@ class WebhooksController {
       switch (checkResult) {
         case 'rejected':
           if (email)
-            await this.emailService.sendEmail(email, {
-              subject: 'Document rejected',
-              message: `Hello,<br>Your <b>${check.subtype}</b> has been rejected with the following reason: <b>${check.data.review.comment}</b><br>
-            Follow this <a href="${process.env.APP_URL}/?caseId=${caseId}">link</a> to upload a new document`,
-            })
+            await this.emailService.sendEmail(
+              email,
+              {
+                template: 'checkRejected',
+                subject: 'Document rejected',
+                message: '',
+              },
+              {
+                link: `${process.env.APP_URL}/?caseId=${caseId}`,
+                appLogoUrl: process.env.LOGO_URL,
+                check,
+              },
+            )
           break
         case 'approved':
         default:
