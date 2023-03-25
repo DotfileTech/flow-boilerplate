@@ -2,8 +2,6 @@
 
 This is a sample application to demonstrate how to build a KYB process using Dotfile API.
 
-# Project Organization
-
 ## backend
 
 An Express application that act as a proxy between the frontend and Dotfile API to manage:
@@ -20,7 +18,7 @@ A React application to manage a multi-step form to collect the information neces
 - Create Individuals
 - Free from to collect additional information
 
-# Deployment
+### deployment
 
 The Application can be easily deployed to Render.com or Heroku.
 

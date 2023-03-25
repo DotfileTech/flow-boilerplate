@@ -112,7 +112,7 @@ function AppContent() {
 
   const [company, setCompany] = React.useState<any>({
     name: searchParams.get('company'),
-    country: 'FR',
+    country: searchParams.get('country'),
   })
 
   const [individualIndex, setIndividualIndex] = React.useState(null)

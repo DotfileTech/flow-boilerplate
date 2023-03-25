@@ -6,15 +6,14 @@ import WebhooksRoute from './routes/webhooks.route'
 const app: Application = express()
 
 //  CORS disabled in development
-
-app.options('*', cors())
+// app.options('*', cors())
 
 app.use(
   cors({
     credentials: true,
     preflightContinue: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    origin: '*',
+    origin: process.env.APP_URL,
   }),
 )
 
