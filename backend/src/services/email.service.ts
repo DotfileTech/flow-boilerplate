@@ -10,8 +10,8 @@ const mailOptions = {
     rejectUnauthorized: false,
   },
   auth: {
-    user: `${process.env.EMAIL}`,
-    pass: `${process.env.EMAIL_PASS}`,
+    user: `${process.env.EMAIL_USER}`,
+    pass: `${process.env.EMAIL_PASSWORD}`,
   },
 }
 
@@ -19,7 +19,6 @@ class EmailService {
   private transporter = nodemailer.createTransport(mailOptions)
 
   public sendEmail = async (email, options, context) => {
-    
     this.transporter.use(
       'compile',
       hbs({
@@ -37,7 +36,7 @@ class EmailService {
     console.log(options)
 
     const message = {
-      from: 'contact@docagen.com',
+      from: process.env.EMAIL_FROM,
       to: email,
       subject: options.subject,
       // text: 'Plaintext version of the message',

@@ -19,9 +19,11 @@ services:
         sync: false
       - key: SMTP_PORT
         sync: false
-      - key: EMAIL
+      - key: EMAIL_FROM
         sync: false
-      - key: EMAIL_PASS
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASSWORD
         sync: false
       - key: APP_URL
         sync: false

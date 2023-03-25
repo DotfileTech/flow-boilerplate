@@ -8,6 +8,24 @@ class DotfileController {
     secretKey: process.env.DOTFILE_KEY,
   })
 
+  private upload = async (file): Promise<string> => {
+    const bodyFormData = new FormData()
+    bodyFormData.append('file', file.buffer, {
+      filename: file.originalname,
+    })
+    const { upload_ref } = await this.dotfileApi.request(
+      'post',
+      `files/upload`,
+      {},
+      bodyFormData,
+      {
+        ...bodyFormData.getHeaders(),
+      },
+    )
+
+    return upload_ref
+  }
+
   public getCountries = async (
     req: Request,
     res: Response,
@@ -160,7 +178,6 @@ class DotfileController {
       for (const company of caseData.companies) {
         let enrichedChecks = []
         for (const check of company.checks) {
-          // enrichedChecks.push(check)
           const enrichedCheck = await this.dotfileApi.request(
             'get',
             `checks/${check.type}/${check.id}`,
@@ -240,6 +257,15 @@ class DotfileController {
     next: NextFunction,
   ) => {
     try {
+      let files = []
+
+      for (const file in req.files) {
+        const uploadRef = await this.upload(file)
+        files.push({
+          upload_ref: uploadRef,
+        })
+      }
+
       const bodyFormData = new FormData()
       bodyFormData.append('file', req.files[0].buffer, {
         filename: req.files[0].originalname,
@@ -247,26 +273,12 @@ class DotfileController {
 
       const { checkId, type } = req.body
 
-      const { upload_ref } = await this.dotfileApi.request(
-        'post',
-        `files/upload`,
-        {},
-        bodyFormData,
-        {
-          ...bodyFormData.getHeaders(),
-        },
-      )
-
       const completedChecks = await this.dotfileApi.request(
         'post',
         `checks/${type}/${checkId}/add_files`,
         {},
         {
-          files: [
-            {
-              upload_ref,
-            },
-          ],
+          files,
         },
         {},
       )
@@ -288,42 +300,14 @@ class DotfileController {
     try {
       if (!req.files[0]) throw new Error('missing file')
 
-      const bodyFormDataFront = new FormData()
-      bodyFormDataFront.append('file', req.files[0].buffer, {
-        filename: req.files[0].originalname,
-      })
-
       const { checkId, type } = req.body
 
-      const { upload_ref: front_upload_ref } = await this.dotfileApi.request(
-        'post',
-        `files/upload`,
-        {},
-        bodyFormDataFront,
-        {
-          ...bodyFormDataFront.getHeaders(),
-        },
-      )
+      const front_upload_ref = await this.upload(req.files[0])
 
       let back_upload_ref
 
       if (req.files[1]) {
-        const bodyFormDataBack = new FormData()
-        bodyFormDataBack.append('file', req.files[1].buffer, {
-          filename: req.files[1].originalname,
-        })
-
-        const response = await this.dotfileApi.request(
-          'post',
-          `files/upload`,
-          {},
-          bodyFormDataBack,
-          {
-            ...bodyFormDataBack.getHeaders(),
-          },
-        )
-
-        back_upload_ref = response.data
+        back_upload_ref = await this.upload(req.files[0])
       }
 
       const completedChecks = await this.dotfileApi.request(

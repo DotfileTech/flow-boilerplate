@@ -26,3 +26,31 @@ The Application can be easily deployed to Render.com or Heroku.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/DotfileTech/flow-boilerplate)
 
+--
+
+`NODE_ENV` Specify the node environment
+
+Dotfile Config
+
+`DOTFILE_KEY` API Key for the target Dotfile workspace
+`DOTFILE_BASE_URL` BASE URL for used Dotfile API environment
+`TEMPLATE_ID` Checks template to be used
+
+Email config
+
+`SMTP_HOST`
+`SMTP_PORT`
+`EMAIL_USER`
+`EMAIL_FROM`
+`EMAIL_PASSWORD`
+
+Other
+
+`APP_URL` Frontend URL
+`LOGO_URL` Static logo to be used in emails
+
+--
+
+Webhooks
+
+Create a Webhook pointing to the bakckend URL (`${REACT_APP_HOST}/webhooks/checks`)
