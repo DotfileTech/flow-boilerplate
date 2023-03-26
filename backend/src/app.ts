@@ -16,7 +16,7 @@ const limiter = rateLimit({
 app.use(limiter)
 
 //  CORS disabled in development
-// app.options('*', cors())
+app.options('*', cors())
 
 app.use(
   cors({
