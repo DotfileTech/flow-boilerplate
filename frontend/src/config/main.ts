@@ -1,1 +1,1 @@
-export const websiteTitle = 'Dotfile';
+export const websiteTitle = 'Hashflow';
