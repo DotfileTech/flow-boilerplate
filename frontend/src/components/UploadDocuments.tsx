@@ -67,7 +67,6 @@ function UploadDocuments(props: any) {
       if (fileFront) data.append('file[]', fileFront)
       if (fileBack) data.append('file[]', fileBack)
       await api.post(`/dotfile/identity_documents`, data)
-      await new Promise((r) => setTimeout(r, 5000))
       await props.fetchMyAPI()
       setIsLoading(false)
       props.setIsUpload(false)
@@ -121,11 +120,11 @@ function UploadDocuments(props: any) {
           <Text mb={5}>
             {t(`checks.${exactType}.title`)} {t(`for`)} {entityName}
           </Text>
-          <Text>{t(`checks.${exactType}.description`)}</Text>
+          {/* <Text>{t(`checks.${exactType}.description`)}</Text> */}
           {props.currentCheck.type === 'id_document' && (
             <Box paddingTop={5}>
               <input
-                accept=".gif, .pdf, .jpeg, .pdf"
+                accept=".gif, .pdf, .jpeg, .png"
                 id="raised-button-file"
                 style={{ display: 'none' }}
                 ref={inputRefFront}
@@ -144,7 +143,7 @@ function UploadDocuments(props: any) {
                 </Flex>
               )}
               <input
-                accept=".gif, .pdf, .jpeg, .pdf"
+                accept=".gif, .pdf, .jpeg, .png"
                 id="raised-button-file"
                 style={{ display: 'none' }}
                 ref={inputRefBack}
@@ -168,7 +167,7 @@ function UploadDocuments(props: any) {
           {props.currentCheck.type === 'document' && (
             <Box paddingTop={5}>
               <input
-                accept=".gif, .pdf, .jpeg, .pdf"
+                accept=".gif, .pdf, .jpeg, .png"
                 id="raised-button-file"
                 style={{ display: 'none' }}
                 ref={inputRef}

@@ -39,5 +39,6 @@
       "esnext.asynciterable"
     ]
   },
+  "assets": ["./src/services/templates"],
   "include": ["./src/"]
 }

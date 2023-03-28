@@ -151,7 +151,6 @@ class DotfileController {
         caseId: createdCase.id,
       })
     } catch (err: any) {
-      console.log(err)
       res.status(400).send({
         type: 'error',
         message: 'Something went wrong while creating case.',
@@ -259,17 +258,12 @@ class DotfileController {
     try {
       let files = []
 
-      for (const file in req.files) {
-        const uploadRef = await this.upload(file)
+      for (let i = 0; i < req.files.length; i++) {
+        const uploadRef = await this.upload(req.files[i])
         files.push({
           upload_ref: uploadRef,
         })
       }
-
-      const bodyFormData = new FormData()
-      bodyFormData.append('file', req.files[0].buffer, {
-        filename: req.files[0].originalname,
-      })
 
       const { checkId, type } = req.body
 

@@ -23,7 +23,7 @@ function CheckCard(props: any) {
       boxShadow="1px 1px 16px rgba(153, 153, 153, 0.1)"
       padding={2}
     >
-      <Accordion allowToggle>
+      <Accordion defaultIndex={0} allowToggle allowMultiple>
         <AccordionItem borderColor={'white'}>
           <Flex alignItems="center">
             <AccordionButton>

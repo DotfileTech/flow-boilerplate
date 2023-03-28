@@ -23,31 +23,28 @@
     }
   },
   "checks": {
-    "id_document": {
-      "title": "Document d'identité",
-      "description": "Merci de fournir..."
-    },
+    "articles_of_association": { "title": "Statuts de la société" },
+    "registration_certificate": { "title": "KBIS à jour" },
+    "ubo_registry_extract": { "title": "Registre des bénéficiaires effectifs" },
+    "financial_statements": { "title": "Rapport financier" },
+    "bank_details": { "title": "Relevé de compte" },
+    "id_document": { "title": "Document d'identité" },
+    "driving_license": { "title": "Permis de conduire" },
+    "proof_of_address": { "title": "Justificatif de domiciliation" },
+    "proof_of_insurance": { "title": "Justificatif d'assurance" },
+    "visa": { "title": "Visa" },
+    "social_security_card": { "title": "Carte vitale" },
+    "birth_certificate": { "title": "Certificat de naissance" },
+    "vehicle_registration_certificate": { "title": "Carte grise" },
+    "criminal_record_extract": { "title": "Extrait de casier judiciaire" },
+    "tax_notice": { "title": "Avis d'imposition" },
+    "agreement_certificate": { "title": "Certificat d'agrément" },
     "id_verification": {
       "title": "Vérification d'identité",
       "description": "Merci de fournir..."
-    },
-    "proof_of_address": {
-      "title": "Certificat de domicile",
-      "description": "Merci de fournir..."
-    },
-    "driving_license": {
-      "title": "Permis de conduire",
-      "description": "Merci de fournir..."
-    },
-    "social_security_card": {
-      "title": "Carte vitale",
-      "description": "Merci de fournir..."
-    },
-    "ubo_registry_extract": {
-      "title": "Certificat bénéficiaires effectifs",
-      "description": "Merci de fournir..."
     }
   },
+
   "delete": "Supprimer",
   "send_documents": "Envoyer pour examen",
   "verify_identity": "Vérifier identité",
