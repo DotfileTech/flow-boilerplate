@@ -1,1 +1,34 @@
-{}
+{
+  "brand": {
+    "title": "La solution intégrée de gestion des dépenses en entreprise"
+  },
+  "steps": {
+    "company_search": {
+      "title": "Aidez-nous à identifier votre entreprise"
+    },
+    "company_list": {
+      "title": "Sélectionnez votre entreprise"
+    },
+    "company_edit": {
+      "title": "Vérifiez les informations de votre entreprise"
+    },
+    "custom_form": {
+      "title": "Information supplémentaire"
+    },
+    "individual_edit": {
+      "title": "Vérifiez les informations"
+    },
+    "individuals_list": {
+      "title": "Vérifiez la liste d’individus rattachés à votre entreprise"
+    },
+    "checks_list": {
+      "title": "Aidez-nous à effectuer les vérifications nécessaires"
+    },
+    "company_structure": {
+      "title": "Quelle est la structure de votre entreprise ?"
+    },
+    "company_outside_eu": {
+      "title": "Votre entreprise a-t-elle une activité commerciale hors UE ?"
+    }
+  }
+}

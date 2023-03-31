@@ -1,1 +1,63 @@
-{}
+{
+  "steps": {
+    "company_search": {
+      "title": "Help us identify your business"
+    },
+    "company_list": {
+      "title": "Select your company"
+    },
+    "company_edit": {
+      "title": "Verify your business information"
+    },
+    "custom_form": {
+      "title": "Additional information"
+    },
+    "individual_edit": {
+      "title": "Check the information"
+    },
+    "individuals_list": {
+      "title": "Check the list of individuals attached to your company"
+    },
+    "checks_list": {
+      "title": "Help us carry out the necessary checks"
+    },
+    "company_structure": {
+      "title": "What is your company structure?"
+    },
+    "additional_data": {
+      "title": "Additional data"
+    },
+    "company_outside_eu": {
+      "title": "Does your company have a commercial activity outside the EU?"
+    }
+  },
+  "brand": {
+    "title": "The integrated business expense management solution"
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identity document",
+      "description": "Please provide..."
+    },
+    "id_verification": {
+      "title": "Identity Verification",
+      "description": "Please provide..."
+    },
+    "proof_of_address": {
+      "title": "Residence certificate",
+      "description": "Please provide..."
+    },
+    "driving_license": {
+      "title": "Driver's license",
+      "description": "Please provide..."
+    },
+    "social_security_card": {
+      "title": "Vital card",
+      "description": "Please provide..."
+    },
+    "ubo_registry_extract": {
+      "title": "Beneficial owners certificate",
+      "description": "Please provide..."
+    }
+  }
+}
