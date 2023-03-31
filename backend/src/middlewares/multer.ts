@@ -19,7 +19,4 @@ export const upload = multer({
       return cb(new Error('Mimeype is not allowed'))
     }
   },
-})
-  // .single('file')
-  // .array('file')
-  .any()
+}).any()

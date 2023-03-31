@@ -85,8 +85,12 @@
   <body>
 
     <div>
-      <img src='{{appLogoUrl}}' alt='app_logo' />
-      <div>App Title</div>
+      <img
+        style='width:auto; max-height: 100px; max-width:100%'
+        src='{{appLogoUrl}}'
+        alt='Logo'
+      />
+
     </div>
 
     <div><hr /></div>
@@ -95,7 +99,7 @@
 
     <p>Your
       <b>{{check.subtype}}</b>
-      has been rejected with the following reason:
+      has been rejected for the following reason:
       <b>{{check.data.review.comment}}</b></p>
 
     <div>
@@ -104,7 +108,9 @@
       </a>
     </div>
 
-    <div>Button not working? Try pasting this link in to your browser:</div>
+    <p>
+      <div>Button not working? Try pasting this link in to your browser:</div>
+    </p>
 
     <div>
       <a href='{{link}}'>{{link}}</a>

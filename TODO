@@ -1,7 +1,0 @@
-- default country to locale browser
-- manage countries selector with global setting
-- dynamic choice of data from individual to display in listing
-- creation webhook à la volée
-- email config davantage générique
-- CORS avec var d'env
-- rate limiting render ou express

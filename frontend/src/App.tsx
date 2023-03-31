@@ -120,9 +120,6 @@ function AppContent() {
   const [isLoading, setIsLoading] = React.useState(true)
 
   const next = async (e: any) => {
-    if (step === 0) {
-      getCompanies()
-    }
     setStep(step + 1)
   }
 

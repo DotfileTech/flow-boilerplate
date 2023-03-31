@@ -33,14 +33,11 @@ class EmailService {
       }),
     )
 
-    console.log(options)
-
     const message = {
       from: process.env.EMAIL_FROM,
       to: email,
       subject: options.subject,
       // text: 'Plaintext version of the message',
-      // html: `<p>${options.message}</p>`,
       template: options.template,
       context,
     }
