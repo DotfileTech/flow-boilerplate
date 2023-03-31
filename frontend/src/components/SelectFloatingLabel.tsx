@@ -11,7 +11,7 @@ function SelectFloatingLabel(props: any) {
         {t('countries')}
       </FormLabel>
       <Select value={props.value} onChange={props.onChange} name={props.name}>
-        <option disabled selected>
+        <option hidden disabled value="">
           {t('select')}
         </option>
         {props.countries.map((country: any, i: any) => (

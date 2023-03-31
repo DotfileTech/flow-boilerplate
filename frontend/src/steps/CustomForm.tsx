@@ -30,7 +30,7 @@ function CustomForm(props: any) {
           .filter((question: { enabled: any }) => question.enabled)
           .map((question: any, i: any) => (
             <InputForm
-              key={props.metadata.id}
+              key={props.question.id}
               value={props.metadata.id}
               onChange={props.changeHandlerMetadata}
               name={question.id}

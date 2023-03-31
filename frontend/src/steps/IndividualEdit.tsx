@@ -38,9 +38,6 @@ function IndividualEdit(props: any) {
   }
 
   const checkBoxChangeHandler = (event: any) => {
-    console.log(event.target.checked)
-    console.log(event.target.value)
-
     const isChecked = event.target.checked
 
     if (isChecked) {
