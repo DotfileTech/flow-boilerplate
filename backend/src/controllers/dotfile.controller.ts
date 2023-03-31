@@ -110,7 +110,7 @@ class DotfileController {
         {
           name: company.name,
           // external_id: email,
-          template_id: process.env.TEMPLATE_ID,
+          template_id: process.env.TEMPLATE_ID || null,
           metadata: Object.keys(metadata)
             .filter((k) => metadata[k] != null)
             .reduce((a, k) => ({ ...a, [k]: metadata[k] }), {}),
@@ -118,7 +118,7 @@ class DotfileController {
         {},
       )
 
-      individuals.forEach(async (individual) => {
+      for (const individual of individuals) {
         await this.dotfileApi.request(
           'post',
           'individuals',
@@ -131,7 +131,7 @@ class DotfileController {
           },
           {},
         )
-      })
+      }
 
       await this.dotfileApi.request(
         'post',
