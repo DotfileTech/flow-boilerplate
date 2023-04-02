@@ -16,19 +16,23 @@
       "title": "Check the information"
     },
     "individuals_list": {
-      "title": "Check the list of individuals attached to your company"
+      "title": "Check the list of individuals attached to your company",
+      "company": "Beneficial owners and shareholders"
     },
     "checks_list": {
       "title": "Help us carry out the necessary checks"
     },
     "company_structure": {
-      "title": "What is your company structure?"
+      "title": "What is the form of your company?",
+      "private_company": "Private company",
+      "public_company": "Public company",
+      "association": "Association",
+      "self_employed": "Self-employed"
     },
-    "additional_data": {
-      "title": "Additional data"
-    },
-    "company_outside_eu": {
-      "title": "Does your company have a commercial activity outside the EU?"
+    "activity_outside_eu": {
+      "title": "Does your company have a commercial activity outside the EU?",
+      "yes": "Yes, it has an activity outside of EU",
+      "no": "No, it only has activity in theEU"
     }
   },
   "brand": {

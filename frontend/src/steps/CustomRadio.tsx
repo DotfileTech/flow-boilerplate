@@ -1,6 +1,8 @@
 import { SimpleGrid, Button, Text, Radio, Stack } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
 
 function CustomRadio(props: any) {
+  const { t } = useTranslation()
   const changeHandlerMetadata = (label: string) => {
     props.changeHandlerMetadataCustom(props.question, label)
     props.next()
@@ -13,14 +15,12 @@ function CustomRadio(props: any) {
           <Button
             key={i}
             variant="select"
-            name={item.value}
-            value={item.value}
             onClick={() => changeHandlerMetadata(item)}
             justifyContent="flex"
             isTruncated
           >
             <Radio value="1">
-              <Text isTruncated>{item}</Text>
+              <Text isTruncated>{t(`steps.${props.question}.${item}`)}</Text>
             </Radio>
           </Button>
         ))}
