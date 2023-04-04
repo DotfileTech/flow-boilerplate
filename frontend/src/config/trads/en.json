@@ -32,7 +32,7 @@
     "activity_outside_eu": {
       "title": "Does your company have a commercial activity outside the EU?",
       "yes": "Yes, it has an activity outside of EU",
-      "no": "No, it only has activity in theEU"
+      "no": "No, it only has activity in the EU"
     }
   },
   "brand": {
