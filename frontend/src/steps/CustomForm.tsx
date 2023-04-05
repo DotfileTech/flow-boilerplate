@@ -9,8 +9,16 @@ function CustomForm(props: any) {
   const [formValid, setFormValid] = React.useState(false)
 
   const rules = props.questions
-    .filter((ind: { required: any; enabled: any }) => ind.required && ind.enabled)
-    .reduce((acc: any, cur: { id: any }) => ({ ...acc, [cur.id]: Joi.string().required() }), {})
+    .filter(
+      (ind: { required: any; enabled: any }) => ind.required && ind.enabled,
+    )
+    .reduce(
+      (acc: any, cur: { id: any }) => ({
+        ...acc,
+        [cur.id]: Joi.string().required(),
+      }),
+      {},
+    )
 
   const schema = Joi.object().keys(rules).unknown(true)
 
@@ -30,12 +38,11 @@ function CustomForm(props: any) {
           .filter((question: { enabled: any }) => question.enabled)
           .map((question: any, i: any) => (
             <InputForm
-              key={props.question.id}
+              key={props.metadata.id}
               value={props.metadata.id}
               onChange={props.changeHandlerMetadata}
               name={question.id}
               isRequired={question.required}
-              placeholder={t(question.id)}
             />
           ))}
         <Button variant="next" onClick={props.next} isDisabled={!formValid}>

@@ -70,13 +70,6 @@ const theme = extendTheme({
         tablist: {},
       },
     },
-    Tag: {
-      baseStyle: {
-        container: {
-          bg: 'brand.main-2',
-        },
-      },
-    },
     Button: {
       baseStyle: {
         borderRadius: '4px',

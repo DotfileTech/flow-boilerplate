@@ -41,6 +41,7 @@ class DotfileController {
       )
       res.status(200).json(countries)
     } catch (err: any) {
+      console.log(err)
       res.status(400).send({
         type: 'error',
         message: 'Something went wrong while fetching countries list.',
@@ -101,7 +102,9 @@ class DotfileController {
     next: NextFunction,
   ) => {
     try {
-      const { company, individuals, metadata } = req.body
+      const { company, individuals, metadata, externalId } = req.body
+
+      let template_id: string = process.env.TEMPLATE_ID
 
       const createdCase = await this.dotfileApi.request(
         'post',
@@ -109,8 +112,8 @@ class DotfileController {
         {},
         {
           name: company.name,
-          // external_id: email,
-          template_id: process.env.TEMPLATE_ID || null,
+          ...(externalId && { external_id: externalId }),
+          template_id: template_id || null,
           metadata: Object.keys(metadata)
             .filter((k) => metadata[k] != null)
             .reduce((a, k) => ({ ...a, [k]: metadata[k] }), {}),
@@ -118,7 +121,7 @@ class DotfileController {
         {},
       )
 
-      for (const individual of individuals) {
+      individuals.forEach(async (individual) => {
         await this.dotfileApi.request(
           'post',
           'individuals',
@@ -131,7 +134,7 @@ class DotfileController {
           },
           {},
         )
-      }
+      })
 
       await this.dotfileApi.request(
         'post',
@@ -258,7 +261,7 @@ class DotfileController {
     try {
       let files = []
 
-      for (let i = 0; i < req.files.length; i++) {
+      for (let i = 0; i < (req.files.length as number); i++) {
         const uploadRef = await this.upload(req.files[i])
         files.push({
           upload_ref: uploadRef,

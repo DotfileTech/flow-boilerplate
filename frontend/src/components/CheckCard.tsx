@@ -47,13 +47,15 @@ function CheckCard(props: any) {
             {props.item.checks
               .filter((x: any) => x.type !== 'aml')
               .map((check: any, i: any) => (
-                <CheckItem
-                  key={i}
-                  item={props.item}
-                  check={check}
-                  selectCheck={props.selectCheck}
-                  setCurrentIndividual={props.setCurrentIndividual}
-                />
+                <Box pb={5}>
+                  <CheckItem
+                    key={i}
+                    item={props.item}
+                    check={check}
+                    selectCheck={props.selectCheck}
+                    setCurrentIndividual={props.setCurrentIndividual}
+                  />
+                </Box>
               ))}
           </AccordionPanel>
         </AccordionItem>

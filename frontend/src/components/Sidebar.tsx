@@ -1,6 +1,7 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
-import { ReactComponent as DotfileLogo } from '../components/logos/dotfile.svg'
+import { ReactComponent as DotfileLogo } from './logos/dotfile.svg'
 import { ReactComponent as Logo } from '../config/theme/logo.svg'
+import SelectLang from './SelectLang'
 import { Trans } from 'react-i18next'
 
 function Sidebar(props: any) {
@@ -14,9 +15,9 @@ function Sidebar(props: any) {
       p="2vw"
       w={{ base: 'full', md: '25vw' }}
     >
-      <Box pt={10} pb={10}>
-        <Logo width="80%" />
-      </Box>
+      <Flex pt={10} pb={10}>
+        <Logo />
+      </Flex>
       <Box flexGrow={1}>
         <Text
           fontWeight={700}
@@ -50,6 +51,7 @@ function Sidebar(props: any) {
         </Text>
         <DotfileLogo />
       </Flex>
+      <SelectLang />
     </Flex>
   )
 }

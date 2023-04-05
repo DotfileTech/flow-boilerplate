@@ -60,6 +60,27 @@ function IndividualEdit(props: any) {
   return (
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={6}>
+        {individualData
+          .filter((ind) => ind.enabled)
+          .map((ind: any, i: any) => (
+            <InputForm
+              key={i}
+              value={props.individual[ind.id]}
+              onChange={changeHandlerIndividual}
+              name={ind.id}
+              isRequired={ind.required}
+              type={ind.type}
+            />
+          ))}
+
+        <SelectFloatingLabel
+          value={props.individual ? props.individual.birth_country : ''}
+          onChange={changeHandlerIndividual}
+          name="birth_country"
+          placeholder="Birth country"
+          countries={props.countries}
+        />
+
         <FormControl>
           <FormLabel>Roles</FormLabel>
           <Stack spacing={5} direction="row">
@@ -88,32 +109,7 @@ function IndividualEdit(props: any) {
           </Stack>
         </FormControl>
 
-        <SelectFloatingLabel
-          value={props.individual ? props.individual.birth_country : ''}
-          onChange={changeHandlerIndividual}
-          name="birth_country"
-          placeholder="Birth country"
-          countries={props.countries}
-        />
-
-        {individualData
-          .filter((ind) => ind.enabled)
-          .map((ind: any, i: any) => (
-            <InputForm
-              key={i}
-              value={props.individual[ind.id]}
-              onChange={changeHandlerIndividual}
-              name={ind.id}
-              placeholder={ind.label}
-              isRequired={ind.required}
-              type={ind.type}
-            />
-          ))}
-
         <SimpleGrid columns={2} spacing={3}>
-          <Button variant="outline" onClick={props.back}>
-            Cancel
-          </Button>
           <Button
             variant="next"
             onClick={() => props.saveIndividual(null)}

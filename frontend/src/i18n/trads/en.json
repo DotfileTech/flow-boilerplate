@@ -1,4 +1,7 @@
 {
+  "brand": {
+    "title": "La solution intégrée de gestion des dépenses en entreprise"
+  },
   "steps": {
     "company_search": {
       "title": "Aidez-nous à identifier votre entreprise"
@@ -16,10 +19,16 @@
       "title": "Vérifiez les informations"
     },
     "individuals_list": {
-      "title": "Vérifiez la liste d’individus rattachés à votre entreprise"
+      "title": "Vérifiez la liste d’individus"
     },
     "checks_list": {
       "title": "Aidez-nous à effectuer les vérifications nécessaires"
+    },
+    "company_structure": {
+      "title": "Quelle est la structure de votre entreprise ?"
+    },
+    "activity_outside_eu": {
+      "title": "Votre entreprise a-t-elle une activité commerciale hors UE ?"
     }
   },
   "checks": {
@@ -44,7 +53,7 @@
       "description": "Merci de fournir..."
     }
   },
-
+  "select": "Sélectionner",
   "delete": "Supprimer",
   "send_documents": "Envoyer pour examen",
   "verify_identity": "Vérifier identité",
@@ -61,19 +70,21 @@
   "next": "Suivant",
   "edit": "Editer",
   "remove": "Supprimer",
-  "add_individual": "Ajouter un individu",
+  "add_individual": "Ajouter individu",
   "search": "Rechercher",
   "countries": "Pays",
-  "company_name": "Nom de votre entreprise",
+  "name": "Nom",
   "company_not_found": "Vous ne trouvez pas votre entreprise ?",
   "form_title": "XX",
   "fill_manually": "Renseigner manuellement",
   "upload_document": "Choisir un fichier",
-  "search_company_title": "Aidez-nous à identifier votre entreprise",
-  "individual_list_title": "Vérifiez la liste d’individus rattachés à votre entreprise",
-  "select_company_title": "Sélectionnez votre entreprise",
-  "verify_company_information_title": "Vérifiez les informations de votre entreprise",
-  "title": "Un slogan pour votre entreprise",
-  "checklist_title": "Aidez-nous à effectuer les vérifications nécessaires ",
-  "checklist_description": "Veuillez procéder aux vérifications ci-dessous. Notre équipe analysera vos données et vous tiendra informé de l’avancement de votre dossier."
+  "upload_document_front": "Ajouter recto",
+  "upload_document_back": "Ajouter verso",
+  "en": "Anglais",
+  "fr": "Français",
+  "registration_number": "Numéro d'identification",
+  "legal_form": "Forme légale",
+  "first_name": "Prénom",
+  "last_name": "Nom",
+  "birth_date": "Date de naissance"
 }

@@ -17,7 +17,7 @@ import useApi from '../hooks/useApi'
 import { useTranslation } from 'react-i18next'
 
 function UploadDocuments(props: any) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   React.useEffect(() => {
     setFiles([])
@@ -120,7 +120,9 @@ function UploadDocuments(props: any) {
           <Text mb={5}>
             {t(`checks.${exactType}.title`)} {t(`for`)} {entityName}
           </Text>
-          {/* <Text>{t(`checks.${exactType}.description`)}</Text> */}
+          {i18n.exists(`checks.${exactType}.description`) && (
+            <Text>{t(`checks.${exactType}.description`)}</Text>
+          )}
           {props.currentCheck.type === 'id_document' && (
             <Box paddingTop={5}>
               <input

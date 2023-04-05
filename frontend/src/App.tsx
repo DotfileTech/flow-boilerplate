@@ -1,21 +1,21 @@
 import * as React from 'react'
-import { Stack, Flex } from '@chakra-ui/react'
+import { Stack, Flex, Text } from '@chakra-ui/react'
 import Sidebar from './components/Sidebar'
 import LoadingSpinner from './components/LoadingSpinner'
 import Header from './components/Header'
 import MobileHeader from './components/MobileHeader'
 import CompanySearch from './steps/CompanySearch'
 import CompaniesList from './steps/CompaniesList'
+import CustomRadio from './steps/CustomRadio'
+import CustomForm from './steps/CustomForm'
 import CompanyEdit from './steps/CompanyEdit'
 import IndividualEdit from './steps/IndividualEdit'
 import IndividualsList from './steps/IndividualsList'
 import ChecksList from './steps/ChecksList'
-import CustomForm from './steps/CustomForm'
 import useApi from './hooks/useApi'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { form } from './config/Forms'
-// import axios from 'axios'
 
 export interface Company {
   name?: string
@@ -26,7 +26,7 @@ export interface Company {
 }
 
 function AppContent() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const api = useApi()
 
@@ -42,44 +42,6 @@ function AppContent() {
   const sid = searchParams.get('sid')
 
   async function fetchMyAPI() {
-    // if (process.env.REACT_APP_CONFIG) {
-    //   const formsResponse = await axios.get(
-    //     'https://api.npoint.io/d9088d5321d77e6e4756',
-    //   )
-
-    //   if (formsResponse.data) setForm(formsResponse.data as [])
-    // }
-
-    // form.forEach((item) => {
-    //   if (!item.after) {
-    //     steps.unshift({
-    //       key: item.key,
-    //       content: (
-    //         <CustomForm
-    //           metadata={metadata}
-    //           questions={item.questions}
-    //           changeHandlerMetadata={changeHandlerMetadata}
-    //           next={next}
-    //         />
-    //       ),
-    //     })
-    //   } else {
-    //     const index =
-    //       steps.findIndex((element) => element.key === item.after) + 1
-    //     steps.splice(index, 0, {
-    //       key: item.key,
-    //       content: (
-    //         <CustomForm
-    //           metadata={metadata}
-    //           questions={item.questions}
-    //           changeHandlerMetadata={changeHandlerMetadata}
-    //           next={next}
-    //         />
-    //       ),
-    //     })
-    //   }
-    // })
-
     if (caseId)
       setStep(steps.findIndex((element) => element.key === 'checks_list'))
 
@@ -91,9 +53,8 @@ function AppContent() {
 
   React.useEffect(() => {
     fetchMyAPI()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  // const [form, setForm] = React.useState<any[]>([])
 
   const [countries, setCountries] = React.useState([])
 
@@ -113,6 +74,7 @@ function AppContent() {
   const [company, setCompany] = React.useState<any>({
     name: searchParams.get('company'),
     country: searchParams.get('country'),
+    registration_number: searchParams.get('registrationNumber'),
   })
 
   const [individualIndex, setIndividualIndex] = React.useState(null)
@@ -130,6 +92,7 @@ function AppContent() {
       individuals,
       email,
       metadata,
+      externalId: searchParams.get('externalId')
     })
     setCaseId(response.data.caseId)
     localStorage.setItem('caseId', response.data.caseId)
@@ -194,6 +157,10 @@ function AppContent() {
     setMetadata({ ...metadata, [e.target.name]: e.target.value })
   }
 
+  const changeHandlerMetadataCustom = (question: string, answer: string) => {
+    setMetadata({ ...metadata, [question]: answer })
+  }
+
   const saveIndividual = (e: any) => {
     if (individualIndex !== null) {
       individuals[individualIndex] = individual
@@ -202,8 +169,6 @@ function AppContent() {
     }
     setStep(step - 1)
   }
-
-  // Steps Configuration
 
   const steps = [
     {
@@ -238,17 +203,6 @@ function AppContent() {
           next={next}
           back={back}
           countries={countries}
-        />
-      ),
-    },
-    {
-      key: form[0].key,
-      content: (
-        <CustomForm
-          metadata={metadata}
-          questions={form[0].questions}
-          changeHandlerMetadata={changeHandlerMetadata}
-          next={next}
         />
       ),
     },
@@ -293,6 +247,43 @@ function AppContent() {
     },
   ]
 
+  form.forEach((item: any) => {
+    let content
+
+    if (item.type === 'radio') {
+      content = (
+        <CustomRadio
+          question={item.key}
+          choices={item.choices}
+          next={next}
+          changeHandlerMetadataCustom={changeHandlerMetadataCustom}
+        />
+      )
+    } else {
+      content = (
+        <CustomForm
+          metadata={metadata}
+          questions={item.questions}
+          changeHandlerMetadata={changeHandlerMetadata}
+          next={next}
+        />
+      )
+    }
+
+    if (!item.after) {
+      steps.unshift({
+        key: item.key,
+        content,
+      })
+    } else {
+      const index = steps.findIndex((element) => element.key === item.after) + 1
+      steps.splice(index, 0, {
+        key: item.key,
+        content,
+      })
+    }
+  })
+
   return (
     <Flex direction={{ base: 'column', md: 'row' }}>
       <MobileHeader />
@@ -313,6 +304,9 @@ function AppContent() {
             >
               {t(`steps.${steps[step].key}.title`)}
             </Header>
+            {i18n.exists(`steps.${steps[step].key}.description`) && (
+              <Text>{t(`steps.${steps[step].key}.description`)}</Text>
+            )}
             {isLoading && <LoadingSpinner />}
             {!isLoading && steps[step].content}
           </Stack>

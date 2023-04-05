@@ -1,0 +1,90 @@
+{
+  "brand": {
+    "title": "La solution intégrée de gestion des dépenses en entreprise"
+  },
+  "steps": {
+    "company_search": {
+      "title": "Aidez-nous à identifier votre entreprise"
+    },
+    "company_list": {
+      "title": "Sélectionnez votre entreprise"
+    },
+    "company_edit": {
+      "title": "Vérifiez les informations de votre entreprise"
+    },
+    "custom_form": {
+      "title": "Information supplémentaire"
+    },
+    "individual_edit": {
+      "title": "Vérifiez les informations"
+    },
+    "individuals_list": {
+      "title": "Vérifiez la liste d’individus"
+    },
+    "checks_list": {
+      "title": "Aidez-nous à effectuer les vérifications nécessaires"
+    },
+    "company_structure": {
+      "title": "Quelle est la structure de votre entreprise ?"
+    },
+    "activity_outside_eu": {
+      "title": "Votre entreprise a-t-elle une activité commerciale hors UE ?"
+    }
+  },
+  "checks": {
+    "articles_of_association": { "title": "Statuts de la société" },
+    "registration_certificate": { "title": "KBIS à jour" },
+    "ubo_registry_extract": { "title": "Registre des bénéficiaires effectifs" },
+    "financial_statements": { "title": "Rapport financier" },
+    "bank_details": { "title": "Relevé de compte" },
+    "id_document": { "title": "Document d'identité" },
+    "driving_license": { "title": "Permis de conduire" },
+    "proof_of_address": { "title": "Justificatif de domiciliation" },
+    "proof_of_insurance": { "title": "Justificatif d'assurance" },
+    "visa": { "title": "Visa" },
+    "social_security_card": { "title": "Carte vitale" },
+    "birth_certificate": { "title": "Certificat de naissance" },
+    "vehicle_registration_certificate": { "title": "Carte grise" },
+    "criminal_record_extract": { "title": "Extrait de casier judiciaire" },
+    "tax_notice": { "title": "Avis d'imposition" },
+    "agreement_certificate": { "title": "Certificat d'agrément" },
+    "id_verification": {
+      "title": "Vérification d'identité",
+      "description": "Merci de fournir..."
+    }
+  },
+  "select": "Sélectionner",
+  "delete": "Supprimer",
+  "send_documents": "Envoyer pour examen",
+  "verify_identity": "Vérifier identité",
+  "for": "pour",
+  "activity": "Activité",
+  "turnover": "Chiffre d'affaires",
+  "funds": "Fonds gérés",
+  "deposits": "Monthly deposits",
+  "beneficial_owner": "bénéficiaire effectif",
+  "legal_representative": "représentant légal",
+  "individuals": "Individu(s)",
+  "companies": "Entreprise",
+  "back": "Précédent",
+  "next": "Suivant",
+  "edit": "Editer",
+  "remove": "Supprimer",
+  "add_individual": "Ajouter individu",
+  "search": "Rechercher",
+  "countries": "Pays",
+  "name": "Nom",
+  "company_not_found": "Vous ne trouvez pas votre entreprise ?",
+  "form_title": "XX",
+  "fill_manually": "Renseigner manuellement",
+  "upload_document": "Choisir un fichier",
+  "upload_document_front": "Ajouter recto",
+  "upload_document_back": "Ajouter verso",
+  "en": "Anglais",
+  "fr": "Français",
+  "registration_number": "Numéro d'identification",
+  "legal_form": "Forme légale",
+  "first_name": "Prénom",
+  "last_name": "Nom",
+  "birth_date": "Date de naissance"
+}

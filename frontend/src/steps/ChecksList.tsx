@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {
   Stack,
-  Text,
   Tabs,
   TabList,
   TabPanels,
@@ -99,8 +98,6 @@ function ChecksList(props: any) {
 
   return (
     <Stack spacing={5} pt={2}>
-      <Text>{t('checklist_description')}</Text>
-
       <Tabs>
         <TabList>
           {checksCompanies > 0 && (
