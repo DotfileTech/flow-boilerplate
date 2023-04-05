@@ -47,6 +47,26 @@ export const companyData: CompanyData[] = [
     type: 'date',
     required: false,
     enabled: true,
+  },{
+    id: 'vat_number',
+    label: 'VAT Number',
+    required: true,
+    enabled: true,
+  },{
+    id: 'hq_address',
+    label: 'HQ Address',
+    required: true,
+    enabled: true,
+  },{
+    id: 'hq_zip_code',
+    label: 'ZIP Code',
+    required: true,
+    enabled: true,
+  },{
+    id: 'hq_city',
+    label: 'HQ City',
+    required: true,
+    enabled: true,
   },
   {
     id: 'tax_identification_number',

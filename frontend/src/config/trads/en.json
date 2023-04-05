@@ -1,1 +1,68 @@
-{}
+{
+  "steps": {
+    "company_search": {
+      "title": "Help us identify your business"
+    },
+    "company_list": {
+      "title": "Select your company"
+    },
+    "company_edit": {
+      "title": "Verify your business information"
+    },
+    "custom_form": {
+      "title": "Additional information"
+    },
+    "individual_edit": {
+      "title": "Check the information"
+    },
+    "individuals_list": {
+      "title": "Check the list of individuals attached to your company",
+      "company": "Beneficial owners and shareholders"
+    },
+    "checks_list": {
+      "title": "Help us carry out the necessary checks"
+    },
+    "company_structure": {
+      "title": "What is the form of your company?",
+      "private_company": "Private company",
+      "public_company": "Public company",
+      "association": "Association",
+      "self_employed": "Self-employed"
+    },
+    "activity_outside_eu": {
+      "title": "Does your company have a commercial activity outside the EU?",
+      "yes": "Yes, it has an activity outside of EU",
+      "no": "No, it only has activity in the EU"
+    }
+  },
+  "brand": {
+    "title": "The <1>community-led platform</1> for private market investments"
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identity document",
+      "description": "Please provide..."
+    },
+    "id_verification": {
+      "title": "Identity Verification",
+      "description": "Please provide..."
+    },
+    "proof_of_address": {
+      "title": "Residence certificate",
+      "description": "Please provide..."
+    },
+    "driving_license": {
+      "title": "Driver's license",
+      "description": "Please provide..."
+    },
+    "social_security_card": {
+      "title": "Vital card",
+      "description": "Please provide..."
+    },
+    "ubo_registry_extract": {
+      "title": "Beneficial owners certificate",
+      "description": "Please provide..."
+    }
+  }
+}
+

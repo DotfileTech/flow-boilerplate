@@ -18,6 +18,11 @@ export const individualData: IndividualData[] = [
     id: 'last_name',
     required: true,
     enabled: true,
+  },{
+    id: 'email',
+    label: 'Email address',
+    required: true,
+    enabled: true,
   },
   {
     id: 'maiden_name',
