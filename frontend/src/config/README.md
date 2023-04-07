@@ -26,7 +26,6 @@ Manage the properties of an individual. Each property is an object with:
 - **enabled** (`boolean`): To display the field in the individual form
 - **options** (optional `array`): An array of string for the `checkbox` field
 
-
 ```
 Info: You can move a property in the array to change the form order only in a same category.
 ```

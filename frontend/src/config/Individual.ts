@@ -18,9 +18,11 @@ export const individualData: IndividualData[] = [
     id: 'last_name',
     required: true,
     enabled: true,
-  },{
+  },
+  {
     id: 'email',
     label: 'Email address',
+    type: 'email',
     required: true,
     enabled: true,
   },
@@ -58,7 +60,7 @@ export const individualData: IndividualData[] = [
     id: 'ownership_percentage',
     type: 'number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'position',
@@ -84,7 +86,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'birth_place',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'birth_country',
@@ -102,19 +104,19 @@ export const individualData: IndividualData[] = [
     id: 'street_address_2',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'postal_code',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'city',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'country',
