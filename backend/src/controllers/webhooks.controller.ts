@@ -14,7 +14,7 @@ class WebhooksController {
     try {
       const payload = req.body
 
-      if (payload.event !== 'Check.Completed') return res.status(200).json({})
+      if (payload.event !== 'Check.Rejected') return res.status(200).json({})
 
       const caseId = payload.context.case.id
       const check = payload.check
@@ -28,7 +28,11 @@ class WebhooksController {
         {},
       )
 
-      const email = caseData.metadata.email
+      const { email, locale } = caseData.metadata
+
+      if (!email) {
+        return res.status(200).json({})
+      }
 
       switch (checkResult) {
         case 'rejected':
@@ -45,6 +49,7 @@ class WebhooksController {
                 appLogoUrl: process.env.LOGO_URL,
                 check,
               },
+              locale,
             )
           break
         case 'approved':

@@ -41,7 +41,6 @@ class DotfileController {
       )
       res.status(200).json(countries)
     } catch (err: any) {
-      console.log(err)
       res.status(400).send({
         type: 'error',
         message: 'Something went wrong while fetching countries list.',
@@ -55,10 +54,16 @@ class DotfileController {
     next: NextFunction,
   ) => {
     try {
+      const { country, name, registration_number } = req.query
+
       const companies = await this.dotfileApi.request(
         'get',
         'company-data/search',
-        { country: req.query.country, name: req.query.name },
+        {
+          country,
+          name,
+          registration_number,
+        },
         {},
         {},
       )
@@ -84,9 +89,14 @@ class DotfileController {
         {},
         {},
       )
-      company.individuals = company.beneficial_owners.map((ubo) => {
-        return { roles: ['beneficial_owner'], ...ubo }
-      })
+
+      for (const individual of company.merged_individuals) {
+        individual.street_address = individual.address.street_address
+        individual.street_address2 = individual.address.street_address_2
+        individual.postal_code = individual.address.postal_code
+        individual.city = individual.address.city
+      }
+
       res.status(200).json(company)
     } catch (err: any) {
       res.status(400).send({
@@ -106,6 +116,25 @@ class DotfileController {
 
       let template_id: string = process.env.TEMPLATE_ID
 
+      // Custom config
+      // For several templates, create a mapping between a metadata and the corresponding template
+      /*switch (metadata['company_structure']) {
+        case 'private_company':
+          template_id = process.env.TEMPLATE_PRIVATE_COMPANY
+          break
+        case 'public_company':
+          template_id = process.env.TEMPLATE_PUBLIC_COMPANY
+          break
+        case 'association':
+          template_id = process.env.TEMPLATE_ASSOCIATION
+          break
+        case 'self_employed':
+          template_id = process.env.TEMPLATE_SELF_EMPLOYED
+          break
+        default:
+          template_id = process.env.TEMPLATE_ID
+      }*/
+
       const createdCase = await this.dotfileApi.request(
         'post',
         'cases',
@@ -121,31 +150,75 @@ class DotfileController {
         {},
       )
 
-      individuals.forEach(async (individual) => {
+      for (const individual of individuals) {
         await this.dotfileApi.request(
           'post',
           'individuals',
           {},
           {
+            // Required
             case_id: createdCase.id,
+            roles: individual.roles,
             first_name: individual.first_name,
             last_name: individual.last_name,
-            roles: individual.roles,
+            // Optional
+            email: individual.email,
+            birth_date: individual.birth_date,
+            birth_country: individual.birth_country,
+            birth_place: individual.birth_place,
+            address: {
+              street_address: individual.street_address,
+              street_address2: individual.street_address2,
+              postal_code: individual.postal_code,
+              city: individual.city,
+              state: individual.state,
+              region: individual.region,
+              country: individual.country,
+            },
+            banking_information: {
+              iban: individual.iban,
+              bic: individual.bic,
+            },
+            tax_identification_number: individual.tax_identification_number,
+            social_security_number: individual.social_security_number,
+            phone_number: individual.phone_number,
+            position: individual.position,
+            ownership_percentage: individual.ownership_percentage
           },
           {},
         )
-      })
+      }
 
       await this.dotfileApi.request(
         'post',
         'companies',
         {},
         {
+          // Required
           case_id: createdCase.id,
           name: company.name,
           registration_number: company.registration_number,
           country: company.country,
+          // Optional
+          registration_date: company.registration_date,
+          status: company.status,
           legal_form: company.legal_form,
+          address: {
+            street_address: company.street_address,
+            street_address2: company.street_address2,
+            postal_code: company.postal_code,
+            city: company.city,
+            state: company.state,
+            region: company.region,
+            country: company.country,
+          },
+          banking_information: {
+            iban: company.iban,
+            bic: company.bic,
+          },
+          tax_identification_number: company.tax_identification_number,
+          website_url: company.website_url,
+          employer_identification_number: company.employer_identification_number
         },
         {},
       )

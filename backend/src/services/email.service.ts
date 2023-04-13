@@ -1,11 +1,26 @@
 import nodemailer from 'nodemailer'
 import hbs from 'nodemailer-express-handlebars'
 import path from 'path'
+import baseFr from './trads/fr.json'
+import baseEn from './trads/en.json'
+import baseEs from './trads/es.json'
+import baseDe from './trads/de.json'
+import baseIt from './trads/it.json'
+import baseNl from './trads/nl.json'
+
+const trads = {
+  fr: baseFr,
+  es: baseEs,
+  en: baseEn,
+  de: baseDe,
+  it: baseIt,
+  nl: baseNl,
+}
 
 const mailOptions = {
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
-  secure: true,
+  secure: false,
   tls: {
     rejectUnauthorized: false,
   },
@@ -18,7 +33,7 @@ const mailOptions = {
 class EmailService {
   private transporter = nodemailer.createTransport(mailOptions)
 
-  public sendEmail = async (email, options, context) => {
+  public sendEmail = async (email, options, context, locale) => {
     this.transporter.use(
       'compile',
       hbs({
@@ -27,6 +42,11 @@ class EmailService {
           partialsDir: path.join(__dirname, 'templates'),
           layoutsDir: path.join(__dirname, 'templates'),
           defaultLayout: options.template,
+          helpers: {
+            translate: function (str) {
+              return trads[locale][str]
+            },
+          },
         },
         viewPath: path.join(__dirname, 'templates'),
         extName: '.handlebars',
@@ -36,13 +56,13 @@ class EmailService {
     const message = {
       from: process.env.EMAIL_FROM,
       to: email,
-      subject: options.subject,
+      subject: trads[locale]['titleValue'],
       // text: 'Plaintext version of the message',
       template: options.template,
       context,
     }
 
-    return this.transporter.sendMail(message)
+    return await this.transporter.sendMail(message)
   }
 }
 
