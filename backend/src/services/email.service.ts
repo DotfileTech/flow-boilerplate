@@ -31,10 +31,11 @@ const mailOptions = {
 }
 
 class EmailService {
-  private transporter = nodemailer.createTransport(mailOptions)
 
   public sendEmail = async (email, options, context, locale) => {
-    this.transporter.use(
+    const transporter = nodemailer.createTransport(mailOptions);
+
+    transporter.use(
       'compile',
       hbs({
         viewEngine: {
@@ -62,7 +63,7 @@ class EmailService {
       context,
     }
 
-    return await this.transporter.sendMail(message)
+    return await transporter.sendMail(message)
   }
 }
 

@@ -6,6 +6,7 @@ class DotfileController {
   public dotfileApi = new Dotfile({
     host: process.env.DOTFILE_BASE_URL,
     secretKey: process.env.DOTFILE_KEY,
+    isDev: process.env.NODE_ENV === 'development'
   })
 
   private upload = async (file): Promise<string> => {

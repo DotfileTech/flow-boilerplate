@@ -1,10 +1,12 @@
 import axios from 'axios'
+import * as https from 'https'
 
 class Dotfile {
   serverUrl: string
   secretKey: string
+  isDev: boolean
 
-  constructor(config: { host?: string; secretKey?: string } = {}) {
+  constructor(config: { host?: string; secretKey?: string; isDev?: boolean } = {}) {
     config.host = config.host || 'https://api.dotfile.com/v1'
     this.serverUrl = config.host
 
@@ -21,6 +23,7 @@ class Dotfile {
     }
 
     this.secretKey = config.secretKey || ''
+    this.isDev = config.isDev || true
   }
 
   public async request(
@@ -42,6 +45,9 @@ class Dotfile {
         ...headers,
       },
       data: payload,
+      httpsAgent: new https.Agent({
+        rejectUnauthorized: !this.isDev
+      })
     })
 
     return data

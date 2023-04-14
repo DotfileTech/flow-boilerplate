@@ -52,6 +52,6 @@ const languageDetector = new LanguageDetector({
 
 i18next.use(languageDetector).use(initReactI18next).init({
   // lng: 'fr', // if you're using a language detector, do not define the lng option
-  debug: true,
+  debug: process.env.REACT_APP_ENV === 'development',
   resources,
 })
