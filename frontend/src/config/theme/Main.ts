@@ -16,7 +16,6 @@ const theme = extendTheme({
       'main-3': '#23272F',
       accent: '#0176FF',
       sidebar: '#23272F',
-      // sidebar: 'linear-gradient(134.97deg, #075ED2 -9.42%, #007FFB 84.86%)',
     },
   },
   fonts: {
@@ -89,7 +88,6 @@ const theme = extendTheme({
         next: (props: StyleFunctionProps) => ({
           bg: 'brand.main-2',
           color: 'white',
-          maxWidth: '200px',
           _disabled: {
             ...disabledStyles,
             _hover: {
