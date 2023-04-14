@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState, useRef } from 'react';
 import {
   Button,
   Box,
@@ -12,103 +12,108 @@ import {
   ModalHeader,
   Modal,
   ModalFooter,
-} from '@chakra-ui/react'
-import useApi from '../hooks/useApi'
-import { useTranslation } from 'react-i18next'
+} from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
-function UploadDocuments(props: any) {
-  const { t, i18n } = useTranslation()
+import useApi from '../hooks/useApi';
+import { CheckTypeEnum } from '../constants';
 
-  React.useEffect(() => {
+const UploadDocuments = (props: any) => {
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
     setFiles([])
-  }, [])
+  }, []);
 
-  const api = useApi()
+  const api = useApi();
 
-  const [fileFront, setFileFront] = React.useState<File>()
-  const [fileBack, setFileBack] = React.useState<File>()
-  const [files, setFiles] = React.useState<File[]>([])
+  const [fileFront, setFileFront] = useState<File>();
+  const [fileBack, setFileBack] = useState<File>();
+  const [files, setFiles] = useState<File[]>([]);
 
   const handleFileFront = async (event: any) => {
-    setFileFront(event.target.files[0])
-  }
+    setFileFront(event.target.files[0]);
+  };
 
   const handleFileBack = async (event: any) => {
-    setFileBack(event.target.files[0])
-  }
+    setFileBack(event.target.files[0]);
+  };
 
   const handleFiles = async (event: any) => {
-    const combined = [...files, ...event.target.files]
-    if (combined) setFiles(combined)
-    // setFile(event.target.files[0])
-  }
+    const combined = [...files, ...event.target.files];
+    if (combined) {
+      setFiles(combined);
+    }
+  };
 
   async function upload() {
-    setIsLoading(true)
-    const data = new FormData()
+    setIsLoading(true);
+    const data = new FormData();
 
-    // data.append('file', file as Blob)
+    data.append('checkId', props.currentCheck.id);
+    data.append('type', props.currentCheck.type);
 
-    data.append('checkId', props.currentCheck.id)
-    data.append('type', props.currentCheck.type)
-
-    if (props.currentCheck.type === 'document') {
+    if (props.currentCheck.type === CheckTypeEnum.document) {
       for (let i = 0; i < files.length; i++) {
-        data.append('file[]', files[i])
+        data.append('file[]', files[i]);
       }
-      await api.post(`/dotfile/documents`, data)
-      await props.fetchMyAPI()
-      setIsLoading(false)
-      props.setIsUpload(false)
-      setFiles([])
+      await api.post(`/dotfile/documents`, data);
+      await props.fetchMyAPI();
+      setIsLoading(false);
+      props.setIsUpload(false);
+      setFiles([]);
     }
 
-    if (props.currentCheck.type === 'id_document') {
-      if (fileFront) data.append('file[]', fileFront)
-      if (fileBack) data.append('file[]', fileBack)
-      await api.post(`/dotfile/identity_documents`, data)
-      await props.fetchMyAPI()
-      setIsLoading(false)
-      props.setIsUpload(false)
-      setFileFront(undefined)
-      setFileBack(undefined)
+    if (props.currentCheck.type === CheckTypeEnum.id_document) {
+      if (fileFront) {
+        data.append('file[]', fileFront);
+      }
+      if (fileBack) {
+        data.append('file[]', fileBack);
+      }
+      await api.post(`/dotfile/identity_documents`, data);
+      await props.fetchMyAPI();
+      setIsLoading(false);
+      props.setIsUpload(false);
+      setFileFront(undefined);
+      setFileBack(undefined);
     }
   }
 
-  const inputRef = React.useRef<HTMLInputElement>(null)
-  const inputRefFront = React.useRef<HTMLInputElement>(null)
-  const inputRefBack = React.useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRefFront = useRef<HTMLInputElement>(null);
+  const inputRefBack = useRef<HTMLInputElement>(null);
 
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = () => {
-    inputRef.current?.click()
-  }
+    inputRef.current?.click();
+  };
 
   const handleClickFront = () => {
-    inputRefFront.current?.click()
-  }
+    inputRefFront.current?.click();
+  };
 
   const handleClickBack = () => {
-    inputRefBack.current?.click()
-  }
+    inputRefBack.current?.click();
+  };
 
   const exactType =
-    props.currentCheck.type === 'document'
+    props.currentCheck.type === CheckTypeEnum.document
       ? props.currentCheck.subtype.split(':')[1]
-      : props.currentCheck.type
+      : props.currentCheck.type;
 
   const entityName = props.currentIndividual.name
     ? props.currentIndividual.name
-    : `${props.currentIndividual.first_name} ${props.currentIndividual.last_name}`
+    : `${props.currentIndividual.first_name} ${props.currentIndividual.last_name}`;
 
   return (
     <Modal
       isOpen={props.isUpload}
-      size={['full', 'full', 'sm']}
+      size={['full', 'full', 'xl']}
       onClose={() => {
-        setFiles([])
-        props.setIsUpload(false)
+        setFiles([]);
+        props.setIsUpload(false);
       }}
     >
       <ModalOverlay />
@@ -123,7 +128,7 @@ function UploadDocuments(props: any) {
           {i18n.exists(`checks.${exactType}.description`) && (
             <Text>{t(`checks.${exactType}.description`)}</Text>
           )}
-          {props.currentCheck.type === 'id_document' && (
+          {props.currentCheck.type === CheckTypeEnum.id_document && (
             <Box paddingTop={5}>
               <input
                 accept=".gif, .pdf, .jpeg, .png"
@@ -166,7 +171,7 @@ function UploadDocuments(props: any) {
             </Box>
           )}
 
-          {props.currentCheck.type === 'document' && (
+          {props.currentCheck.type === CheckTypeEnum.document && (
             <Box paddingTop={5}>
               <input
                 accept=".gif, .pdf, .jpeg, .png"
@@ -184,7 +189,7 @@ function UploadDocuments(props: any) {
               </Button>
               {files &&
                 files.length > 0 &&
-                Array.from(files).map((file: any, i: any) => (
+                Array.from(files).map((file: any, i: number) => (
                   <Flex key={i} alignItems="center" padding={5}>
                     <Text>{file.name}</Text>
                     <Spacer />
@@ -205,7 +210,7 @@ function UploadDocuments(props: any) {
         </ModalFooter>
       </ModalContent>
     </Modal>
-  )
-}
+  );
+};
 
-export default UploadDocuments
+export default UploadDocuments;

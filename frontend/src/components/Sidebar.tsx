@@ -1,10 +1,11 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
-import { ReactComponent as DotfileLogo } from './logos/dotfile.svg'
-import { ReactComponent as Logo } from '../config/theme/logo.svg'
-import SelectLang from './SelectLang'
-import { Trans } from 'react-i18next'
+import { Box, Flex, Text } from '@chakra-ui/react';
+import { Trans } from 'react-i18next';
 
-function Sidebar(props: any) {
+import { ReactComponent as Logo } from '../config/theme/logo.svg';
+import SelectLang from './SelectLang';
+import { ReactComponent as DotfileLogo } from './logos/dotfile.svg';
+
+const Sidebar = () => {
   return (
     <Flex
       minH="100%"
@@ -53,7 +54,7 @@ function Sidebar(props: any) {
       </Flex>
       <SelectLang />
     </Flex>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

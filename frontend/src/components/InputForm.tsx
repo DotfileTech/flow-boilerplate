@@ -1,9 +1,9 @@
-import { FormControl, FormLabel, Input, useColorMode } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { FormControl, FormLabel, Input, useColorMode } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
-function InputForm(props: any) {
-  const { t } = useTranslation()
-  const { colorMode } = useColorMode()
+const InputForm = (props: any) => {
+  const { t } = useTranslation();
+  const { colorMode } = useColorMode();
 
   return (
     <FormControl id={props.name} isRequired={props.isRequired}>
@@ -13,9 +13,9 @@ function InputForm(props: any) {
       >
         {t(props.name)}
       </FormLabel>
-      <Input {...props} />
+      <Input maxW="400px" {...props} />
     </FormControl>
-  )
-}
+  );
+};
 
-export default InputForm
+export default InputForm;

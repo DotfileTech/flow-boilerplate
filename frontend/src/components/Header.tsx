@@ -1,10 +1,11 @@
-import { Stack, Progress, Button, Box } from '@chakra-ui/react'
-import Title from '../components/Title'
-import { ChevronLeftIcon } from '@chakra-ui/icons'
-import { useTranslation } from 'react-i18next'
+import { Stack, Progress, Button, Box } from '@chakra-ui/react';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
+import { useTranslation } from 'react-i18next';
 
-function Header(props: any) {
-  const { t } = useTranslation()
+import Title from '../components/Title';
+
+const Header = (props: any) => {
+  const { t } = useTranslation();
 
   return (
     <Stack spacing={8} pb={5}>
@@ -24,7 +25,7 @@ function Header(props: any) {
       </Box>
       <Title>{props.children}</Title>
     </Stack>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

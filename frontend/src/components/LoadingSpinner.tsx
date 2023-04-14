@@ -1,6 +1,6 @@
-import { Spinner, Center } from '@chakra-ui/react'
+import { Spinner, Center } from '@chakra-ui/react';
 
-function LoadingSpinner(props: any) {
+const LoadingSpinner = () => {
   return (
     <Center padding={10}>
       <Spinner
@@ -11,7 +11,7 @@ function LoadingSpinner(props: any) {
         size="xl"
       />
     </Center>
-  )
-}
+  );
+};
 
-export default LoadingSpinner
+export default LoadingSpinner;

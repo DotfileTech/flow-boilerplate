@@ -1,6 +1,6 @@
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, Heading } from '@chakra-ui/react';
 
-function Title(props: any) {
+const Title = (props: any) => {
   return (
     <Box>
       <Heading
@@ -11,7 +11,7 @@ function Title(props: any) {
         {props.children}
       </Heading>
     </Box>
-  )
-}
+  );
+};
 
-export default Title
+export default Title;

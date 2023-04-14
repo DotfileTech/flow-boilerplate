@@ -9,11 +9,11 @@ import {
   Spacer,
   VStack,
   Divider
-} from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+} from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
-import CheckItem from '../components/CheckItem'
-import { IndividualRoleEnum } from '../constants'
+import CheckItem from '../components/CheckItem';
+import { CheckTypeEnum, IndividualRoleEnum } from '../constants';
 
 const CheckCard = (props: any) => {
   const { t } = useTranslation();
@@ -54,7 +54,7 @@ const CheckCard = (props: any) => {
             <AccordionPanel p={0}>
               <VStack spacing="0" divider={<Divider />}>
               {props.item.checks
-                .filter((check: any) => check.type !== 'aml')
+                .filter((check: any) => check.type !== CheckTypeEnum.aml)
                 .map((check: any, i: number) => (
                   <CheckItem
                     key={i}

@@ -1,7 +1,8 @@
-import { Flex, Box } from '@chakra-ui/react'
-import { ReactComponent as Logo } from '../config/theme/logo.svg'
+import { Flex, Box } from '@chakra-ui/react';
 
-function Sidebar(props: any) {
+import { ReactComponent as Logo } from '../config/theme/logo.svg';
+
+const Sidebar = () => {
   return (
     <Flex
       display={{ base: 'flex', md: 'none' }}
@@ -18,7 +19,7 @@ function Sidebar(props: any) {
         <Logo width="80%" />
       </Box>
     </Flex>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
