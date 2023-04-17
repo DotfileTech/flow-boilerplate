@@ -1,12 +1,13 @@
-import * as React from 'react'
-import { SimpleGrid, Button, Stack } from '@chakra-ui/react'
-import InputForm from '../components/InputForm'
-import Joi from 'joi'
-import { useTranslation } from 'react-i18next'
+import { useState, useEffect } from 'react';
+import { SimpleGrid, Button, Stack, Box } from '@chakra-ui/react';
+import Joi from 'joi';
+import { useTranslation } from 'react-i18next';
 
-function CustomForm(props: any) {
-  const { t } = useTranslation()
-  const [formValid, setFormValid] = React.useState(false)
+import InputForm from '../components/InputForm';
+
+const CustomForm = (props: any) => {
+  const { t } = useTranslation();
+  const [formValid, setFormValid] = useState(false);
 
   const rules = props.questions
     .filter(
@@ -18,25 +19,25 @@ function CustomForm(props: any) {
         [cur.id]: Joi.string().required(),
       }),
       {},
-    )
+    );
 
-  const schema = Joi.object().keys(rules).unknown(true)
+  const schema = Joi.object().keys(rules).unknown(true);
 
-  React.useEffect(() => {
-    const check = schema.validate(props.metadata)
+  useEffect(() => {
+    const check = schema.validate(props.metadata);
     if (check.error) {
-      setFormValid(false)
+      setFormValid(false);
     } else {
-      setFormValid(true)
+      setFormValid(true);
     }
-  }, [props.metadata, schema])
+  }, [props.metadata, schema]);
 
   return (
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={5}>
         {props.questions
           .filter((question: { enabled: any }) => question.enabled)
-          .map((question: any, i: any) => (
+          .map((question: any) => (
             <InputForm
               key={props.metadata.id}
               value={props.metadata.id}
@@ -45,12 +46,14 @@ function CustomForm(props: any) {
               isRequired={question.required}
             />
           ))}
-        <Button variant="next" onClick={props.next} isDisabled={!formValid}>
-          {t('next')}
-        </Button>
+        <Box>
+          <Button variant="next" onClick={props.next} isDisabled={!formValid}>
+            {t('next')}
+          </Button>
+        </Box>
       </SimpleGrid>
     </Stack>
-  )
-}
+  );
+};
 
-export default CustomForm
+export default CustomForm;

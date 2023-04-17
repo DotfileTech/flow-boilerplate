@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState, useEffect } from 'react';
 import {
   SimpleGrid,
   Button,
@@ -6,39 +6,44 @@ import {
   Stack,
   FormControl,
   FormLabel,
-} from '@chakra-ui/react'
-import InputForm from '../components/InputForm'
-import Joi from 'joi'
-import { individualData } from '../config/Individual'
-import SelectFloatingLabel from '../components/SelectFloatingLabel'
+  Box,
+} from '@chakra-ui/react';
+import Joi from 'joi';
+import { useTranslation } from 'react-i18next';
 
-function IndividualEdit(props: any) {
-  const [formValid, setFormValid] = React.useState(false)
+import InputForm from '../components/InputForm';
+import SelectFloatingLabel from '../components/SelectFloatingLabel';
+import { individualData } from '../config/Individual';
+import { IndividualRoleEnum } from '../constants'
+
+const IndividualEdit = (props: any) => {
+  const { t } = useTranslation();
+  const [formValid, setFormValid] = useState(false);
 
   const rules = individualData
     .filter((ind) => ind.required && ind.enabled)
-    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {})
+    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
 
-  const schema = Joi.object().keys(rules).unknown(true)
+  const schema = Joi.object().keys(rules).unknown(true);
 
-  React.useEffect(() => {
-    const check = schema.validate(props.individual)
+  useEffect(() => {
+    const check = schema.validate(props.individual);
     if (check.error) {
-      setFormValid(false)
+      setFormValid(false);
     } else {
-      setFormValid(true)
+      setFormValid(true);
     }
-  }, [props.individual, schema])
+  }, [props.individual, schema]);
 
   const changeHandlerIndividual = (e: any) => {
     props.setIndividual({
       ...props.individual,
       [e.target.name]: e.target.value,
     })
-  }
+  };
 
   const checkBoxChangeHandler = (event: any) => {
-    const isChecked = event.target.checked
+    const isChecked = event.target.checked;
 
     if (isChecked) {
       props.setIndividual({
@@ -55,14 +60,15 @@ function IndividualEdit(props: any) {
         roles: props.individual.roles,
       })
     }
-  }
+  };
 
   return (
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={6}>
         {individualData
           .filter((ind) => ind.enabled)
-          .map((ind: any, i: any) => (
+          .filter((ind) => ind.category === 'personal')
+          .map((ind: any, i: number) => (
             <InputForm
               key={i}
               value={props.individual[ind.id]}
@@ -77,50 +83,84 @@ function IndividualEdit(props: any) {
           value={props.individual ? props.individual.birth_country : ''}
           onChange={changeHandlerIndividual}
           name="birth_country"
-          placeholder="Birth country"
+          countries={props.countries}
+        />
+
+        {individualData
+          .filter((ind) => ind.enabled)
+          .filter((ind) => ind.category === 'address')
+          .map((ind: any, i: number) => (
+            <InputForm
+              key={i}
+              value={props.individual[ind.id]}
+              onChange={changeHandlerIndividual}
+              name={ind.id}
+              isRequired={ind.required}
+              type={ind.type}
+            />
+          ))}
+
+        <SelectFloatingLabel
+          value={props.individual ? props.individual.address.country : ''}
+          onChange={changeHandlerIndividual}
+          name="country"
           countries={props.countries}
         />
 
         <FormControl>
-          <FormLabel>Roles</FormLabel>
+          <FormLabel>{t('roles')}</FormLabel>
           <Stack spacing={5} direction="row">
             <Checkbox
               isChecked={
                 props.individual.roles
-                  ? props.individual.roles.includes('beneficial_owner')
+                  ? props.individual.roles.includes(IndividualRoleEnum.beneficial_owner)
                   : false
               }
-              value="beneficial_owner"
+              value={IndividualRoleEnum.beneficial_owner}
               onChange={checkBoxChangeHandler}
             >
-              Beneficial owner
+              {t('beneficial_owner')}
             </Checkbox>
             <Checkbox
               isChecked={
                 props.individual.roles
-                  ? props.individual.roles.includes('legal_representative')
+                  ? props.individual.roles.includes(IndividualRoleEnum.legal_representative)
                   : false
               }
-              value="legal_representative"
+              value={IndividualRoleEnum.legal_representative}
               onChange={checkBoxChangeHandler}
             >
-              Legal Representative
+              {t('legal_representative')}
             </Checkbox>
           </Stack>
         </FormControl>
 
-        <SimpleGrid columns={2} spacing={3}>
+        {individualData
+          .filter((ind) => ind.enabled)
+          .filter((ind) => ind.category === 'roles')
+          .map((ind: any, i: number) => (
+            <InputForm
+              key={i}
+              value={props.individual[ind.id]}
+              onChange={changeHandlerIndividual}
+              name={ind.id}
+              isRequired={ind.required}
+              type={ind.type}
+            />
+          ))}
+
+        <Box>
           <Button
             variant="next"
             onClick={() => props.saveIndividual(null)}
             isDisabled={!formValid}
           >
-            Save
+            {t('save')}
           </Button>
-        </SimpleGrid>
+        </Box>
       </SimpleGrid>
     </Stack>
-  )
-}
+  );
+};
 
-export default IndividualEdit
+export default IndividualEdit;

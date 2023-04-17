@@ -1,29 +1,30 @@
-import * as React from 'react'
-import { SimpleGrid, Button, Stack } from '@chakra-ui/react'
-import InputForm from '../components/InputForm'
-import SelectFloatingLabel from '../components/SelectFloatingLabel'
-import Joi from 'joi'
-import { companyData } from '../config/Company'
-import { useTranslation } from 'react-i18next'
+import { useState, useEffect } from 'react';
+import { SimpleGrid, Button, Stack, Box } from '@chakra-ui/react';
+import Joi from 'joi';
+import { useTranslation } from 'react-i18next';
 
-function CompanyEdit(props: any) {
-  const { t } = useTranslation()
-  const [formValid, setFormValid] = React.useState(false)
+import InputForm from '../components/InputForm';
+import SelectFloatingLabel from '../components/SelectFloatingLabel';
+import { companyData } from '../config/Company';
+
+const CompanyEdit = (props: any) => {
+  const { t } = useTranslation();
+  const [formValid, setFormValid] = useState(false);
 
   const rules = companyData
     .filter((company) => company.required && company.enabled)
-    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {})
+    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
 
-  const schema = Joi.object().keys(rules).unknown(true)
+  const schema = Joi.object().keys(rules).unknown(true);
 
-  React.useEffect(() => {
-    const check = schema.validate(props.company)
+  useEffect(() => {
+    const check = schema.validate(props.company);
     if (check.error) {
-      setFormValid(false)
+      setFormValid(false);
     } else {
-      setFormValid(true)
+      setFormValid(true);
     }
-  }, [props.company, schema])
+  }, [props.company, schema]);
 
   return (
     <Stack spacing={5} pt={2}>
@@ -39,24 +40,25 @@ function CompanyEdit(props: any) {
 
         {companyData
           .filter((company) => company.enabled)
-          .map((company: any, i: any) => (
+          .map((company: any) => (
             <InputForm
               key={company.id}
               value={props.company[company.id]}
               onChange={props.changeHandler}
               name={company.id}
-              placeholder={company.label}
               isRequired={company.required}
               type={company.type}
             />
           ))}
 
-        <Button variant="next" onClick={props.next} isDisabled={!formValid}>
-          {t('next')}
-        </Button>
+        <Box>
+          <Button variant="next" onClick={props.next} isDisabled={!formValid}>
+            {t('next')}
+          </Button>
+        </Box>
       </SimpleGrid>
     </Stack>
-  )
+  );
 }
 
-export default CompanyEdit
+export default CompanyEdit;

@@ -1,14 +1,14 @@
-import { EditIcon } from '@chakra-ui/icons'
-import { SimpleGrid, Button, Text, Radio, Stack, Box } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { EditIcon } from '@chakra-ui/icons';
+import { SimpleGrid, Button, Text, Radio, Stack, Box } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
-function CompanySearch(props: any) {
-  const { t } = useTranslation()
+const CompanySearch = (props: any) => {
+  const { t } = useTranslation();
 
   return (
     <Stack spacing={10} pt={2}>
       <SimpleGrid columns={1} spacing={5}>
-        {props.companies.map((company: any, i: any) => (
+        {props.companies.map((company: any, i: number) => (
           <Button
             key={i}
             variant="select"
@@ -35,7 +35,7 @@ function CompanySearch(props: any) {
         </Button>
       </Box>
     </Stack>
-  )
+  );
 }
 
-export default CompanySearch
+export default CompanySearch;

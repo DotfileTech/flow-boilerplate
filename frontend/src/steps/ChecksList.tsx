@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState, useEffect } from 'react';
 import {
   Stack,
   Tabs,
@@ -7,94 +7,96 @@ import {
   Tab,
   TabPanel,
   Badge,
-} from '@chakra-ui/react'
-import useApi from '../hooks/useApi'
-import UploadDocuments from '../components/UploadDocuments'
-import CheckCard from '../components/CheckCard'
-import { useTranslation } from 'react-i18next'
+} from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
-function ChecksList(props: any) {
-  const { t } = useTranslation()
-  const api = useApi()
+import useApi from '../hooks/useApi';
+import UploadDocuments from '../components/UploadDocuments';
+import CheckCard from '../components/CheckCard';
+import { CheckStatusEnum, CheckTypeEnum } from '../constants'
+
+const ChecksList = (props: any) => {
+  const { t } = useTranslation();
+  const api = useApi();
 
   async function fetchMyAPI() {
-    const response = await api.get(`/dotfile/cases/${props.caseId}`)
-    setData(response.data)
-    countRemainingChecks(response.data)
+    const response = await api.get(`/dotfile/cases/${props.caseId}`);
+    setData(response.data);
+    countRemainingChecks(response.data);
   }
 
-  React.useEffect(() => {
-    props.setIsLoading(true)
-    fetchMyAPI()
-    props.setIsLoading(false)
+  useEffect(() => {
+    props.setIsLoading(true);
+    fetchMyAPI();
+    props.setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const processIdentityCheck = async (check: any) => {
     const response = await api.post(`dotfile/checks`, {
       checkId: check.id,
       type: check.type,
-    })
-    window.open(response.data.url, '_blank', 'noreferrer')
-  }
+    });
+    window.open(response.data.url, '_blank', 'noreferrer');
+  };
 
-  const [data, setData] = React.useState({
+  const [data, setData] = useState({
     individuals: [],
     companies: [{ checks: [] }],
-  })
+  });
 
-  const [checksCompanies, setChecksCompanies] = React.useState(0)
+  const [checksCompanies, setChecksCompanies] = useState(0);
 
-  const [checksIndividuals, setChecksIndividuals] = React.useState(0)
+  const [checksIndividuals, setChecksIndividuals] = useState(0);
 
   const [remainingChecksCompanies, setRemainingChecksCompanies] =
-    React.useState(0)
+    useState(0);
 
   const [remainingChecksIndividuals, setRemainingChecksIndividuals] =
-    React.useState(0)
+    useState(0);
 
-  const [isUpload, setIsUpload] = React.useState(false)
+  const [isUpload, setIsUpload] = useState(false);
 
-  const [currentCheck, setCurrentCheck] = React.useState({})
-  const [currentIndividual, setCurrentIndividual] = React.useState({})
+  const [currentCheck, setCurrentCheck] = useState({});
+  const [currentIndividual, setCurrentIndividual] = useState({});
 
   const selectCheck = (check: any) => {
-    if (check.type === 'id_verification') {
-      processIdentityCheck(check)
+    if (check.type === CheckTypeEnum.id_verification) {
+      processIdentityCheck(check);
       // setIsSendEmail(true)
     } else {
-      setCurrentCheck(check)
-      setIsUpload(true)
+      setCurrentCheck(check);
+      setIsUpload(true);
     }
   }
 
   const countRemainingChecks = (data: any) => {
-    let checksCompanies: any[] = []
-    let checksIndividuals: any[] = []
+    let checksCompanies: any[] = [];
+    let checksIndividuals: any[] = [];
 
-    data.companies.map((item: any, i: any) =>
+    data.companies.map((item: any) =>
       item.checks
-        .filter((x: any) => x.type !== 'aml')
+        .filter((check: any) => check.type !== CheckTypeEnum.aml)
         .forEach((element: any) => checksCompanies.push(element)),
-    )
+    );
 
-    data.individuals.map((item: any, i: any) =>
+    data.individuals.map((item: any) =>
       item.checks
-        .filter((x: any) => x.type !== 'aml')
+        .filter((check: any) => check.type !== CheckTypeEnum.aml)
         .forEach((element: any) => checksIndividuals.push(element)),
-    )
+    );
 
     setRemainingChecksCompanies(
-      checksCompanies.filter((x: any) => x.status === 'in_progress').length,
-    )
+      checksCompanies.filter((check: any) => check.status === CheckStatusEnum.in_progress).length,
+    );
 
     setRemainingChecksIndividuals(
-      checksIndividuals.filter((x: any) => x.status === 'in_progress').length,
-    )
+      checksIndividuals.filter((check: any) => check.status === CheckStatusEnum.in_progress).length,
+    );
 
-    setChecksCompanies(checksCompanies.length)
-    setChecksIndividuals(checksIndividuals.length)
-  }
+    setChecksCompanies(checksCompanies.length);
+    setChecksIndividuals(checksIndividuals.length);
+  };
 
   return (
     <Stack spacing={5} pt={2}>
@@ -122,7 +124,7 @@ function ChecksList(props: any) {
           {checksCompanies > 0 && (
             <TabPanel>
               <Stack spacing={5} pt={2}>
-                {data.companies.map((item: any, i: any) => (
+                {data.companies.map((item: any, i: number) => (
                   <CheckCard
                     key={i}
                     item={item}
@@ -137,7 +139,7 @@ function ChecksList(props: any) {
           {checksIndividuals > 0 && (
             <TabPanel>
               <Stack spacing={5} pt={2}>
-                {data.individuals.map((item: any, i: any) => (
+                {data.individuals.map((item: any, i: number) => (
                   <CheckCard
                     key={i}
                     item={item}
@@ -160,7 +162,7 @@ function ChecksList(props: any) {
         isUpload={isUpload}
       />
     </Stack>
-  )
-}
+  );
+};
 
-export default ChecksList
+export default ChecksList;
