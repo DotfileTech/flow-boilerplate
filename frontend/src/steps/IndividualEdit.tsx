@@ -89,23 +89,28 @@ const IndividualEdit = (props: any) => {
         {individualData
           .filter((ind) => ind.enabled)
           .filter((ind) => ind.category === 'address')
-          .map((ind: any, i: number) => (
-            <InputForm
-              key={i}
-              value={props.individual[ind.id] || ''}
-              onChange={changeHandlerIndividual}
-              name={ind.id}
-              isRequired={ind.required}
-              type={ind.type}
-            />
-          ))}
-
-        <SelectFloatingLabel
-          value={props.individual?.address?.country || ''}
-          onChange={changeHandlerIndividual}
-          name="country"
-          countries={props.countries}
-        />
+          .map((ind: any, i: number, array) => {
+            return(
+              <>
+                <InputForm
+                  key={i}
+                  value={props.individual[ind.id] || ''}
+                  onChange={changeHandlerIndividual}
+                  name={ind.id}
+                  isRequired={ind.required}
+                  type={ind.type}
+                />
+                {i + 1 === array.length && (
+                  <SelectFloatingLabel
+                    value={props.individual?.address?.country || ''}
+                    onChange={changeHandlerIndividual}
+                    name="country"
+                    countries={props.countries}
+                  />
+                )}
+              </>
+            );
+          })}
 
         <FormControl>
           <FormLabel>{t('roles')}</FormLabel>
