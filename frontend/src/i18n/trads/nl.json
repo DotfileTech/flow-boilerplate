@@ -1,0 +1,139 @@
+{
+  "brand": {
+    "title": "Een merkmotto met eventueel <1>accentwoorden</1>"
+  },
+  "steps": {
+    "company_search": {
+      "title": "Help ons uw bedrijf te identificeren"
+    },
+    "company_list": {
+      "title": "Selecteer uw bedrijf"
+    },
+    "company_edit": {
+      "title": "Controleer uw bedrijfsgegevens"
+    },
+    "custom_form": {
+      "title": "Extra informatie"
+    },
+    "individual_edit": {
+      "title": "Controleer de informatie"
+    },
+    "individuals_list": {
+      "title": "Controleer uw personenlijst",
+      "company": "Uiteindelijke begunstigden en aandeelhouders"
+    },
+    "checks_list": {
+      "title": "Help ons de nodige controles uit te voeren"
+    }
+  },
+  "domain": {
+    "individual": {
+      "missing_data": "Gelieve te corrigeren"
+    },
+    "check": {
+      "status": {
+        "rejected": "Afgewezen",
+        "approved": "Goedgekeurd",
+        "need_review": "In beoordeling",
+        "expired": "Verlopen"
+      }
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identiteitsbewijs",
+      "description": "Geef een kleur, niet-verlopen, ingelijst, niet bijgesneden en duidelijk document van de identiteitskaart (voor- / achterkant) of paspoort (dubbele binnenpagina met de handtekening)"
+    },
+    "id_verification": {
+      "title": "Identiteit verificatie"
+    },
+    "proof_of_address": {
+      "title": "bewijs van verblijf"
+    },
+    "driving_license": {
+      "title": "Rijbewijs"
+    },
+    "social_security_card": {
+      "title": "Vitale kaart"
+    },
+    "ubo_registry_extract": {
+      "title": "Certificaat uiteindelijk gerechtigden"
+    },
+    "articles_of_association": {
+      "title": "Statuten"
+    },
+    "registration_certificate": {
+      "title": "Registratie certificaat"
+    },
+    "financial_statements": {
+      "title": "Financial statements"
+    },
+    "bank_details": {
+      "title": "Bank details"
+    },
+    "proof_of_insurance": {
+      "title": "Proof of insurance"
+    },
+    "visa": {
+      "title": "Visa"
+    },
+    "birth_certificate": {
+      "title": "Birth certificate"
+    },
+    "vehicle_registration_certificate": {
+      "title": "Vehicle registration certificate"
+    },
+    "criminal_record_extract": {
+      "title": "Criminal record extract"
+    },
+    "tax_notice": {
+      "title": "Tax notice"
+    },
+    "agreement_certificate": {
+      "title": "Agreement certificate"
+    }
+  },
+  "delete": "Verwijderen",
+  "send_documents": "Stuur ter beoordeling",
+  "verify_identity": "Identiteit verifiëren",
+  "for": "Voor",
+  "select": "Selecteer",
+  "roles": "Rollen",
+  "beneficial_owner": "uiteindelijke begunstigde",
+  "legal_representative": "wettelijke vertegenwoordiger",
+  "individuals": "Individu(en)",
+  "companies": "Bedrijf",
+  "back": "Vorig",
+  "next": "Volgende",
+  "edit": "Bewerking",
+  "remove": "Verwijderen",
+  "save": "Besparen",
+  "add_individual": "Individueel toevoegen",
+  "search": "Zoek bedrijf",
+  "countries": "Land",
+  "name": "Naam",
+  "company_not_found": "Kunt u uw bedrijf niet vinden?",
+  "fill_manually": "Vul gegevens handmatig in",
+  "upload_document": "Kies documenten)",
+  "upload_document_front": "Voorzijde uploaden",
+  "upload_document_back": "Upload terug",
+  "verify_company_information_title": "Controleer uw bedrijfsgegevens",
+  "en": "Engels",
+  "fr": "Frans",
+  "es": "Spaans",
+  "it": "Italiaans",
+  "de": "Duits",
+  "nl": "Nederlands",
+  "registration_number": "Registratie nummer",
+  "legal_form": "Wettelijk document",
+  "first_name": "Voornaam",
+  "last_name": "Achternaam",
+  "birth_date": "Geboortedatum",
+  "birth_country": "Geboorteland",
+  "country": "Land",
+  "street_address": "Adres",
+  "street_address_2": "Adres 2",
+  "city": "Stad",
+  "postal_code": "Postcode",
+  "ownership_percentage": "Eigendomspercentage"
+}

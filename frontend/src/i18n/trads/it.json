@@ -1,0 +1,139 @@
+{
+  "brand": {
+    "title": "Un motto del marchio con alcune <1>parole di accento</1> se necessario"
+  },
+  "steps": {
+    "company_search": {
+      "title": "Aiutaci a identificare la tua azienda"
+    },
+    "company_list": {
+      "title": "Seleziona la tua azienda"
+    },
+    "company_edit": {
+      "title": "Verifica le informazioni sulla tua azienda"
+    },
+    "custom_form": {
+      "title": "Informazioni supplementari"
+    },
+    "individual_edit": {
+      "title": "Verifica le informazioni"
+    },
+    "individuals_list": {
+      "title": "Verifica l'elenco delle persone",
+      "company": "Beneficiari effettivi e azionisti"
+    },
+    "checks_list": {
+      "title": "Aiutaci ad effettuare i controlli necessari"
+    }
+  },
+  "domain": {
+    "individual": {
+      "missing_data": "Per favore Correggi"
+    },
+    "check": {
+      "status": {
+        "rejected": "Respinto",
+        "approved": "Approvato",
+        "need_review": "In revisione",
+        "expired": "Scaduto"
+      }
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Documento di identità",
+      "description": "Si prega di fornire un documento a colori, non scaduto, incorniciato, non rifilato e chiaro della carta d'identità (fronte/retro) o del passaporto (doppia pagina interna con la firma)"
+    },
+    "id_verification": {
+      "title": "Verifica dell'identità"
+    },
+    "proof_of_address": {
+      "title": "Certificato di residenza"
+    },
+    "driving_license": {
+      "title": "Patente di guida"
+    },
+    "social_security_card": {
+      "title": "Tessera sanitaria"
+    },
+    "ubo_registry_extract": {
+      "title": "Certificato di beneficiari effettivi"
+    },
+    "articles_of_association": {
+      "title": "Statuto"
+    },
+    "registration_certificate": {
+      "title": "Certificato di registrazione"
+    },
+    "financial_statements": {
+      "title": "Financial statements"
+    },
+    "bank_details": {
+      "title": "Bank details"
+    },
+    "proof_of_insurance": {
+      "title": "Proof of insurance"
+    },
+    "visa": {
+      "title": "Visa"
+    },
+    "birth_certificate": {
+      "title": "Birth certificate"
+    },
+    "vehicle_registration_certificate": {
+      "title": "Vehicle registration certificate"
+    },
+    "criminal_record_extract": {
+      "title": "Criminal record extract"
+    },
+    "tax_notice": {
+      "title": "Tax notice"
+    },
+    "agreement_certificate": {
+      "title": "Agreement certificate"
+    }
+  },
+  "delete": "Eliminare",
+  "send_documents": "Invia per la revisione",
+  "verify_identity": "Verifica identità",
+  "for": "Per",
+  "select": "Selezionare",
+  "roles": "Ruoli",
+  "beneficial_owner": "beneficiario effettivo",
+  "legal_representative": "rappresentante legale",
+  "individuals": "Individui",
+  "companies": "Azienda",
+  "back": "Precedente",
+  "next": "Prossimo",
+  "edit": "Modificare",
+  "remove": "Rimuovere",
+  "save": "Salvaguardare",
+  "add_individual": "Aggiungi individuo",
+  "search": "Cerca azienda",
+  "countries": "Paese",
+  "name": "Nome",
+  "company_not_found": "Non riesci a trovare la tua azienda?",
+  "fill_manually": "Compila i dettagli manualmente",
+  "upload_document": "Scegliere i/il file",
+  "upload_document_front": "Carica il fronte",
+  "upload_document_back": "Carica il retro",
+  "verify_company_information_title": "Verifica i dati della tua azienda",
+  "en": "Inglese",
+  "fr": "Francese",
+  "it": "Italiano",
+  "es": "Spagnolo",
+  "de": "Tedesco",
+  "nl": "Olandese",
+  "registration_number": "Codice REA",
+  "legal_form": "Forma giuridica",
+  "first_name": "Nome",
+  "last_name": "Cognome",
+  "birth_date": "Data di nascita",
+  "birth_country": "Paese di nascita",
+  "country": "Paese",
+  "street_address": "Indirizzo",
+  "street_address_2": "Indirizzo 2",
+  "city": "Città",
+  "postal_code": "CAP",
+  "ownership_percentage": "Percentuale di proprietà"
+}

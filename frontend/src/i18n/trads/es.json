@@ -1,0 +1,139 @@
+{
+  "brand": {
+    "title": "Un lema de marca con algunas <1>palabras de acento</1> si es necesario"
+  },
+  "steps": {
+    "company_search": {
+      "title": "Ayúdanos a identificar tu empresa"
+    },
+    "company_list": {
+      "title": "Selecciona tu empresa"
+    },
+    "company_edit": {
+      "title": "Verifica la información de tu empresa"
+    },
+    "custom_form": {
+      "title": "Información adicional"
+    },
+    "individual_edit": {
+      "title": "Revisa la información"
+    },
+    "individuals_list": {
+      "title": "Verifica la lista de personas",
+      "company": "Propietarios efectivos y accionistas"
+    },
+    "checks_list": {
+      "title": "Ayúdanos a realizar las comprobaciones necesarias"
+    }
+  },
+  "domain": {
+    "individual": {
+      "missing_data": "Por favor corregir"
+    },
+    "check": {
+      "status": {
+        "rejected": "Rechazado",
+        "approved": "Aprobado",
+        "need_review": "En revisión",
+        "expired": "Caducado"
+      }
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Documento de identidad",
+      "description": "Proporciona un documento a color, vigente, enmarcado, sin recortes y claro de la tarjeta de identidad (anverso / reverso) o pasaporte (doble página interior con la firma)"
+    },
+    "id_verification": {
+      "title": "Verificación de identidad"
+    },
+    "proof_of_address": {
+      "title": "Certificado de residencia"
+    },
+    "driving_license": {
+      "title": "Licencia de conducir"
+    },
+    "social_security_card": {
+      "title": "Tarjeta sanitaria"
+    },
+    "ubo_registry_extract": {
+      "title": "Certificado de los proprietarios efectivos"
+    },
+    "articles_of_association": {
+      "title": "Estatutos"
+    },
+    "registration_certificate": {
+      "title": "Certificado de registro"
+    },
+    "financial_statements": {
+      "title": "Financial statements"
+    },
+    "bank_details": {
+      "title": "Bank details"
+    },
+    "proof_of_insurance": {
+      "title": "Proof of insurance"
+    },
+    "visa": {
+      "title": "Visa"
+    },
+    "birth_certificate": {
+      "title": "Birth certificate"
+    },
+    "vehicle_registration_certificate": {
+      "title": "Vehicle registration certificate"
+    },
+    "criminal_record_extract": {
+      "title": "Criminal record extract"
+    },
+    "tax_notice": {
+      "title": "Tax notice"
+    },
+    "agreement_certificate": {
+      "title": "Agreement certificate"
+    }
+  },
+  "delete": "Borrar",
+  "send_documents": "Enviar para revisión",
+  "verify_identity": "Verificar identidad",
+  "for": "Para",
+  "select": "Seleccionar",
+  "roles": "Roles",
+  "beneficial_owner": "proprietarios efectivos",
+  "legal_representative": "representante legal",
+  "individuals": "Individuo(s)",
+  "companies": "Empresa",
+  "back": "Anterior",
+  "next": "Próximo",
+  "edit": "Editar",
+  "remove": "Eliminar",
+  "save": "Respaldo",
+  "add_individual": "Añadir individuo",
+  "search": "Buscar empresa",
+  "countries": "País",
+  "name": "Nombre",
+  "company_not_found": "¿No encuentras tu empresa?",
+  "fill_manually": "Rellene los detalles manualmente",
+  "upload_document": "Seleccionar archivo(s)",
+  "upload_document_front": "Subir recto",
+  "upload_document_back": "Subir verso",
+  "verify_company_information_title": "Verifica la información de tu empresa",
+  "en": "Inglés",
+  "fr": "Francés",
+  "es": "Español",
+  "nl": "Holandés",
+  "de": "Alemán",
+  "it": "Italiano",
+  "registration_number": "Número de registro",
+  "legal_form": "Forma jurídica",
+  "first_name": "Nombre",
+  "last_name": "Apellido",
+  "birth_date": "Fecha de nacimiento",
+  "street_address": "Dirección",
+  "street_address_2": "Dirección 2",
+  "city": "Ciudad",
+  "postal_code": "Código postal",
+  "country": "País",
+  "birth_country": "País de nacimiento",
+  "ownership_percentage": "Porcentaje de participación"
+}

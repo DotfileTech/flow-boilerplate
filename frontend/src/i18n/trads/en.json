@@ -1,90 +1,139 @@
 {
   "brand": {
-    "title": "La solution intégrée de gestion des dépenses en entreprise"
+    "title": "A brand motto with some <1>accent words</1> if needed"
   },
   "steps": {
     "company_search": {
-      "title": "Aidez-nous à identifier votre entreprise"
+      "title": "Help us identify your company"
     },
     "company_list": {
-      "title": "Sélectionnez votre entreprise"
+      "title": "Select your company"
     },
     "company_edit": {
-      "title": "Vérifiez les informations de votre entreprise"
+      "title": "Verify your company information"
     },
     "custom_form": {
-      "title": "Information supplémentaire"
+      "title": "Additional information"
     },
     "individual_edit": {
-      "title": "Vérifiez les informations"
+      "title": "Check the information"
     },
     "individuals_list": {
-      "title": "Vérifiez la liste d’individus"
+      "title": "Check the list of individuals attached to your company",
+      "company": "Beneficial owners and shareholders"
     },
     "checks_list": {
-      "title": "Aidez-nous à effectuer les vérifications nécessaires"
+      "title": "Help us carry out the necessary checks"
+    }
+  },
+  "domain": {
+    "individual": {
+      "missing_data": "Please correct"
     },
-    "company_structure": {
-      "title": "Quelle est la structure de votre entreprise ?"
-    },
-    "activity_outside_eu": {
-      "title": "Votre entreprise a-t-elle une activité commerciale hors UE ?"
+    "check": {
+      "status": {
+        "rejected": "Rejected",
+        "approved": "Approved",
+        "need_review": "In review",
+        "expired": "Expired"
+      }
     }
   },
   "checks": {
-    "articles_of_association": { "title": "Statuts de la société" },
-    "registration_certificate": { "title": "KBIS à jour" },
-    "ubo_registry_extract": { "title": "Registre des bénéficiaires effectifs" },
-    "financial_statements": { "title": "Rapport financier" },
-    "bank_details": { "title": "Relevé de compte" },
-    "id_document": { "title": "Document d'identité" },
-    "driving_license": { "title": "Permis de conduire" },
-    "proof_of_address": { "title": "Justificatif de domiciliation" },
-    "proof_of_insurance": { "title": "Justificatif d'assurance" },
-    "visa": { "title": "Visa" },
-    "social_security_card": { "title": "Carte vitale" },
-    "birth_certificate": { "title": "Certificat de naissance" },
-    "vehicle_registration_certificate": { "title": "Carte grise" },
-    "criminal_record_extract": { "title": "Extrait de casier judiciaire" },
-    "tax_notice": { "title": "Avis d'imposition" },
-    "agreement_certificate": { "title": "Certificat d'agrément" },
+    "id_document": {
+      "title": "Identity document",
+      "description": "Please provide a color, unexpired, framed, untrimmed and clear document of the identity card (front / back) or passport (double inside page with the signature)"
+    },
     "id_verification": {
-      "title": "Vérification d'identité",
-      "description": "Merci de fournir..."
+      "title": "Identity Verification"
+    },
+    "proof_of_address": {
+      "title": "Residence certificate"
+    },
+    "driving_license": {
+      "title": "Driver's license"
+    },
+    "social_security_card": {
+      "title": "Vital card"
+    },
+    "ubo_registry_extract": {
+      "title": "Beneficial owners certificate"
+    },
+    "articles_of_association": {
+      "title": "Articles of association"
+    },
+    "registration_certificate": {
+      "title": "Registration certificate"
+    },
+    "financial_statements": {
+      "title": "Financial statements"
+    },
+    "bank_details": {
+      "title": "Bank details"
+    },
+    "proof_of_insurance": {
+      "title": "Proof of insurance"
+    },
+    "visa": {
+      "title": "Visa"
+    },
+    "birth_certificate": {
+      "title": "Birth certificate"
+    },
+    "vehicle_registration_certificate": {
+      "title": "Vehicle registration certificate"
+    },
+    "criminal_record_extract": {
+      "title": "Criminal record extract"
+    },
+    "tax_notice": {
+      "title": "Tax notice"
+    },
+    "agreement_certificate": {
+      "title": "Agreement certificate"
     }
   },
-  "select": "Sélectionner",
-  "delete": "Supprimer",
-  "send_documents": "Envoyer pour examen",
-  "verify_identity": "Vérifier identité",
-  "for": "pour",
-  "activity": "Activité",
-  "turnover": "Chiffre d'affaires",
-  "funds": "Fonds gérés",
-  "deposits": "Monthly deposits",
-  "beneficial_owner": "bénéficiaire effectif",
-  "legal_representative": "représentant légal",
-  "individuals": "Individu(s)",
-  "companies": "Entreprise",
-  "back": "Précédent",
-  "next": "Suivant",
-  "edit": "Editer",
-  "remove": "Supprimer",
-  "add_individual": "Ajouter individu",
-  "search": "Rechercher",
-  "countries": "Pays",
-  "name": "Nom",
-  "company_not_found": "Vous ne trouvez pas votre entreprise ?",
-  "form_title": "XX",
-  "fill_manually": "Renseigner manuellement",
-  "upload_document": "Choisir un fichier",
-  "upload_document_front": "Ajouter recto",
-  "upload_document_back": "Ajouter verso",
-  "en": "Anglais",
-  "fr": "Français",
-  "registration_number": "Numéro d'identification",
-  "legal_form": "Forme légale",
-  "first_name": "Prénom",
-  "last_name": "Nom",
-  "birth_date": "Date de naissance"
+  "delete": "Delete",
+  "send_documents": "Send for review",
+  "verify_identity": "Verify identity",
+  "for": "For",
+  "select": "Select",
+  "roles": "Roles",
+  "beneficial_owner": "beneficial owner",
+  "legal_representative": "legal representative",
+  "individuals": "Individual(s)",
+  "companies": "Company",
+  "back": "Previous",
+  "next": "Next",
+  "edit": "Edit",
+  "remove": "Remove",
+  "save": "Save",
+  "add_individual": "Add individual",
+  "search": "Search company",
+  "countries": "Country",
+  "name": "Name",
+  "company_not_found": "You cannot find your company ?",
+  "fill_manually": "Fill details manually",
+  "upload_document": "Choose file(s)",
+  "upload_document_front": "Upload Front",
+  "upload_document_back": "Upload Back",
+  "verify_company_information_title": "Verify your company information",
+  "en": "English",
+  "fr": "French",
+  "es": "Spanish",
+  "de": "German",
+  "it": "Italian",
+  "nl": "Dutch",
+  "registration_number": "Registration number",
+  "legal_form": "Legal form",
+  "first_name": "First name",
+  "last_name": "Last name",
+  "birth_date": "Birth date",
+  "birth_country": "Birth country",
+  "country": "Country",
+  "street_address": "Address line 1",
+  "street_address_2": "Address line 2",
+  "city": "City",
+  "postal_code": "Postal code",
+  "ownership_percentage": "Ownership percentage"
 }

@@ -1,19 +1,28 @@
-import i18next from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import baseEn from './trads/en.json'
-import baseFr from './trads/fr.json'
-import addEn from '../config/trads/en.json'
-import addFr from '../config/trads/fr.json'
-import LanguageDetector from 'i18next-browser-languagedetector'
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+
+import addEn from '../config/trads/en.json';
+import addFr from '../config/trads/fr.json';
+import addDe from '../config/trads/de.json';
+import addEs from '../config/trads/es.json';
+import addIt from '../config/trads/it.json';
+import addNl from '../config/trads/nl.json';
+import baseEn from './trads/en.json';
+import baseFr from './trads/fr.json';
+import baseDe from './trads/de.json';
+import baseEs from './trads/es.json';
+import baseIt from './trads/it.json';
+import baseNl from './trads/nl.json';
 
 export const resources = {
-  en: {
-    translation: { ...baseEn, ...addEn },
-  },
-  fr: {
-    translation: { ...baseFr, ...addFr },
-  },
-}
+  en: { translation: { ...baseEn, ...addEn } },
+  fr: { translation: { ...baseFr, ...addFr } },
+  de: { translation: { ...baseDe, ...addDe } },
+  es: { translation: { ...baseEs, ...addEs } },
+  it: { translation: { ...baseIt, ...addIt } },
+  nl: { translation: { ...baseNl, ...addNl } },
+};
 
 const languageDetector = new LanguageDetector({
   order: [
@@ -48,10 +57,9 @@ const languageDetector = new LanguageDetector({
 
   // optional set cookie options, reference:[MDN Set-Cookie docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)
   cookieOptions: { path: '/', sameSite: 'strict' },
-})
+});
 
 i18next.use(languageDetector).use(initReactI18next).init({
-  // lng: 'fr', // if you're using a language detector, do not define the lng option
   debug: process.env.REACT_APP_ENV === 'development',
   resources,
-})
+});

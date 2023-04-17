@@ -1,6 +1,6 @@
 {
   "brand": {
-    "title": "La solution intégrée de gestion des dépenses en entreprise"
+    "title": "Une description avec quelques <1>mots accentués</1> si besoin"
   },
   "steps": {
     "company_search": {
@@ -13,78 +13,127 @@
       "title": "Vérifiez les informations de votre entreprise"
     },
     "custom_form": {
-      "title": "Information supplémentaire"
+      "title": "Informations additionnelles"
     },
     "individual_edit": {
-      "title": "Vérifiez les informations"
+      "title": "Vérifiez ou completez les informations"
     },
     "individuals_list": {
-      "title": "Vérifiez la liste d’individus"
+      "title": "Vérifiez ou complétez les représentants légaux et bénéficiaires effectifs de votre entreprise",
+      "company": "Bénéficiaires effectifs"
     },
     "checks_list": {
       "title": "Aidez-nous à effectuer les vérifications nécessaires"
+    }
+  },
+  "domain": {
+    "individual": {
+      "missing_data": "A corriger"
     },
-    "company_structure": {
-      "title": "Quelle est la structure de votre entreprise ?"
-    },
-    "activity_outside_eu": {
-      "title": "Votre entreprise a-t-elle une activité commerciale hors UE ?"
+    "check": {
+      "status": {
+        "rejected": "Rejeté",
+        "approved": "Approuvé",
+        "need_review": "En cours de vérification",
+        "expired": "Expiré"
+      }
     }
   },
   "checks": {
-    "articles_of_association": { "title": "Statuts de la société" },
-    "registration_certificate": { "title": "KBIS à jour" },
-    "ubo_registry_extract": { "title": "Registre des bénéficiaires effectifs" },
-    "financial_statements": { "title": "Rapport financier" },
-    "bank_details": { "title": "Relevé de compte" },
-    "id_document": { "title": "Document d'identité" },
-    "driving_license": { "title": "Permis de conduire" },
-    "proof_of_address": { "title": "Justificatif de domiciliation" },
-    "proof_of_insurance": { "title": "Justificatif d'assurance" },
-    "visa": { "title": "Visa" },
-    "social_security_card": { "title": "Carte vitale" },
-    "birth_certificate": { "title": "Certificat de naissance" },
-    "vehicle_registration_certificate": { "title": "Carte grise" },
-    "criminal_record_extract": { "title": "Extrait de casier judiciaire" },
-    "tax_notice": { "title": "Avis d'imposition" },
-    "agreement_certificate": { "title": "Certificat d'agrément" },
+    "id_document": {
+      "title": "Document d'identité",
+      "description": "Merci de fournir un document couleur, non expiré, cadré, non rogné et net de la carte d'identité (recto / verso) ou du passeport (double page intérieure comportant la signature)"
+    },
     "id_verification": {
-      "title": "Vérification d'identité",
-      "description": "Merci de fournir..."
+      "title": "Vérification d'identité"
+    },
+    "proof_of_address": {
+      "title": "Justificatif de domicile"
+    },
+    "driving_license": {
+      "title": "Permis de conduire"
+    },
+    "social_security_card": {
+      "title": "Carte Vitale"
+    },
+    "ubo_registry_extract": {
+      "title": "Certificat de bénéficiaire effectif"
+    },
+    "articles_of_association": {
+      "title": "Statuts de la société"
+    },
+    "registration_certificate": {
+      "title": "KBIS à jour"
+    },
+    "financial_statements": {
+      "title": "Rapport financier"
+    },
+    "bank_details": {
+      "title": "Relevé de compte"
+    },
+    "proof_of_insurance": {
+      "title": "Justificatif d'assurance"
+    },
+    "visa": {
+      "title": "Visa"
+    },
+    "birth_certificate": {
+      "title": "Certificat de naissance"
+    },
+    "vehicle_registration_certificate": {
+      "title": "Carte grise"
+    },
+    "criminal_record_extract": {
+      "title": "Extrait de casier judiciaire"
+    },
+    "tax_notice": {
+      "title": "Avis d'imposition"
+    },
+    "agreement_certificate": {
+      "title": "Certificat d'agrément"
     }
   },
-  "select": "Sélectionner",
   "delete": "Supprimer",
-  "send_documents": "Envoyer pour examen",
-  "verify_identity": "Vérifier identité",
-  "for": "pour",
-  "activity": "Activité",
-  "turnover": "Chiffre d'affaires",
-  "funds": "Fonds gérés",
-  "deposits": "Monthly deposits",
-  "beneficial_owner": "bénéficiaire effectif",
-  "legal_representative": "représentant légal",
+  "send_documents": "Envoyer pour vérification",
+  "verify_identity": "Vérifier l'identité",
+  "for": "Pour",
+  "select": "Sélectionner",
+  "roles": "Rôles",
+  "beneficial_owner": "Bénéficiaire effectif",
+  "legal_representative": "Représentant légal",
   "individuals": "Individu(s)",
   "companies": "Entreprise",
   "back": "Précédent",
   "next": "Suivant",
-  "edit": "Editer",
+  "edit": "Éditer",
   "remove": "Supprimer",
-  "add_individual": "Ajouter individu",
-  "search": "Rechercher",
+  "save": "Sauvegarder",
+  "add_individual": "Ajouter un individu",
+  "search": "Chercher une entreprise",
   "countries": "Pays",
   "name": "Nom",
   "company_not_found": "Vous ne trouvez pas votre entreprise ?",
-  "form_title": "XX",
-  "fill_manually": "Renseigner manuellement",
+  "fill_manually": "Remplir les détails manuellement",
   "upload_document": "Choisir un fichier",
-  "upload_document_front": "Ajouter recto",
-  "upload_document_back": "Ajouter verso",
+  "upload_document_front": "Télécharger le Recto",
+  "upload_document_back": "Télécharger le Verso",
+  "verify_company_information_title": "Vérifier ou compléter les informations de votre entreprise",
   "en": "Anglais",
   "fr": "Français",
-  "registration_number": "Numéro d'identification",
+  "it": "Italien",
+  "es": "Espagnol",
+  "nl": "Néerlandais",
+  "de": "Allemand",
+  "registration_number": "Numéro d'enregistrement",
   "legal_form": "Forme légale",
   "first_name": "Prénom",
   "last_name": "Nom",
-  "birth_date": "Date de naissance"
+  "birth_date": "Date de naissance",
+  "birth_country": "Pays de naissance",
+  "country": "Pays",
+  "street_address": "Adresse ligne 1",
+  "street_address_2": "Adresse ligne 2",
+  "city": "Ville",
+  "postal_code": "Code postal",
+  "ownership_percentage": "Pourcentage de détention"
 }

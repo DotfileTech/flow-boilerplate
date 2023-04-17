@@ -1,0 +1,139 @@
+{
+  "brand": {
+    "title": "Ein Markenmotto mit einigen <1>Akzentwörtern</1>, falls erforderlich"
+  },
+  "steps": {
+    "company_search": {
+      "title": "Helfen Sie uns, Ihr Unternehmen zu identifizieren"
+    },
+    "company_list": {
+      "title": "Wählen Sie Ihr Unternehmen aus"
+    },
+    "company_edit": {
+      "title": "Überprüfen Sie die Informationen Ihres Unternehmens"
+    },
+    "custom_form": {
+      "title": "Weitere Informationen"
+    },
+    "individual_edit": {
+      "title": "Überprüfen oder vervollständigen Sie die Informationen über Ihr Unternehmen"
+    },
+    "individuals_list": {
+      "title": "Überprüfen oder ergänzen Sie die gesetzlichen Vertreter und wirtschaftlichen Eigentümer Ihres Unternehmens.",
+      "company": "Wirtschaftliche Eigentümer und Aktionäre"
+    },
+    "checks_list": {
+      "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen"
+    }
+  },
+  "domain": {
+    "individual": {
+      "missing_data": "Bitte korrigieren"
+    },
+    "check": {
+      "status": {
+        "rejected": "Abgelehnt",
+        "approved": "Genehmigt",
+        "need_review": "Im Rückblick",
+        "expired": "Abgelaufen"
+      }
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identitätsnachweis",
+      "description": "Bitte legen Sie ein farbiges, nicht abgelaufenes, gerahmtes, unbeschnittenes und klares Dokument des Personalausweises (Vorder-/Rückseite) oder des Reisepasses (doppelte Innenseite mit der Unterschrift) vor."
+    },
+    "id_verification": {
+      "title": "Identitätsprüfung"
+    },
+    "proof_of_address": {
+      "title": "Wohnsitzbescheinigung"
+    },
+    "driving_license": {
+      "title": "Führerschein"
+    },
+    "social_security_card": {
+      "title": "Krankenversicherungskarte"
+    },
+    "ubo_registry_extract": {
+      "title": "Bescheinigung des wirtschaftlich Berechtigten"
+    },
+    "articles_of_association": {
+      "title": "Gesellschaftsvertrag"
+    },
+    "registration_certificate": {
+      "title": "Handelsregister"
+    },
+    "financial_statements": {
+      "title": "Financial statements"
+    },
+    "bank_details": {
+      "title": "Bank details"
+    },
+    "proof_of_insurance": {
+      "title": "Proof of insurance"
+    },
+    "visa": {
+      "title": "Visa"
+    },
+    "birth_certificate": {
+      "title": "Birth certificate"
+    },
+    "vehicle_registration_certificate": {
+      "title": "Vehicle registration certificate"
+    },
+    "criminal_record_extract": {
+      "title": "Criminal record extract"
+    },
+    "tax_notice": {
+      "title": "Tax notice"
+    },
+    "agreement_certificate": {
+      "title": "Agreement certificate"
+    }
+  },
+  "delete": "Löschen",
+  "send_documents": "Zur Überprüfung senden",
+  "verify_identity": "Identität überprüfen",
+  "for": "Für",
+  "select": "Auswählen",
+  "roles": "Rollen",
+  "beneficial_owner": "wirtschaftlicher Eigentümer",
+  "legal_representative": "Vertretungsberechtigte Person/Betriebsleiter",
+  "individuals": "Person(en)",
+  "companies": "Unternehmen",
+  "back": "Zurück",
+  "next": "Weiter",
+  "edit": "Bearbeiten",
+  "remove": "Entfernen",
+  "save": "Zu schützen",
+  "add_individual": "Person hinzufügen",
+  "search": "Unternehmen suchen",
+  "countries": "Land",
+  "name": "Name",
+  "company_not_found": "Können Sie Ihr Unternehmen nicht finden?",
+  "fill_manually": "Details manuell ausfüllen",
+  "upload_document": "Datei(en) auswählen",
+  "upload_document_front": "Vorderseite hochladen",
+  "upload_document_back": "Rückseite hochladen",
+  "verify_company_information_title": "Überprüfen Sie Ihre Firmendaten",
+  "en": "Englisch",
+  "fr": "Französisch",
+  "es": "Spanisch",
+  "it": "Italienisch",
+  "nl": "Niederländisch",
+  "de": "Deutsch",
+  "registration_number": "Registrierungsnummer",
+  "legal_form": "Rechtsform",
+  "first_name": "Vorname",
+  "last_name": "Familienname, Nachname",
+  "birth_date": "Geburtsdatum",
+  "birth_country": "Geburtsland",
+  "country": "Land",
+  "street_address": "Adresse",
+  "street_address_2": "Adresse (Fortsetzung)",
+  "city": "Stadt",
+  "postal_code": "Postleitzahl",
+  "ownership_percentage": "Eigentumsprozentsatz"
+}
