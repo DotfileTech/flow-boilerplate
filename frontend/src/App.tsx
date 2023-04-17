@@ -1,174 +1,191 @@
-import * as React from 'react'
-import { Stack, Flex, Text } from '@chakra-ui/react'
-import Sidebar from './components/Sidebar'
-import LoadingSpinner from './components/LoadingSpinner'
-import Header from './components/Header'
-import MobileHeader from './components/MobileHeader'
-import CompanySearch from './steps/CompanySearch'
-import CompaniesList from './steps/CompaniesList'
-import CustomRadio from './steps/CustomRadio'
-import CustomForm from './steps/CustomForm'
-import CompanyEdit from './steps/CompanyEdit'
-import IndividualEdit from './steps/IndividualEdit'
-import IndividualsList from './steps/IndividualsList'
-import ChecksList from './steps/ChecksList'
-import useApi from './hooks/useApi'
-import { useSearchParams } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { form } from './config/Forms'
+import { useState, useEffect } from 'react';
+import { Stack, Flex, Text } from '@chakra-ui/react';
+import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
-export interface Company {
-  name?: string
-  street_address?: string
-  registration_number?: string
-  registration_date?: string
-  legal_form?: string
-}
+import Sidebar from './components/Sidebar';
+import LoadingSpinner from './components/LoadingSpinner';
+import Header from './components/Header';
+import MobileHeader from './components/MobileHeader';
+import CompanySearch from './steps/CompanySearch';
+import CompaniesList from './steps/CompaniesList';
+import CustomRadio from './steps/CustomRadio';
+import CustomForm from './steps/CustomForm';
+import CompanyEdit from './steps/CompanyEdit';
+import IndividualEdit from './steps/IndividualEdit';
+import IndividualsList from './steps/IndividualsList';
+import ChecksList from './steps/ChecksList';
+import useApi from './hooks/useApi';
+import { form } from './config/Forms';
 
-function AppContent() {
-  const { t, i18n } = useTranslation()
+const AppContent = () => {
+  const { t, i18n } = useTranslation();
 
-  const api = useApi()
+  const api = useApi();
 
-  const [searchParams] = useSearchParams()
+  const [searchParams] = useSearchParams();
 
-  const [caseId, setCaseId] = React.useState(
+  const [caseId, setCaseId] = useState(
     searchParams.get('new') === 'true'
       ? undefined
       : searchParams.get('caseId') || localStorage.getItem('caseId'),
-  )
+  );
 
-  const email = searchParams.get('email')
-  const sid = searchParams.get('sid')
+  const email = searchParams.get('email');
+  const sid = searchParams.get('sid');
 
   async function fetchMyAPI() {
     if (caseId)
-      setStep(steps.findIndex((element) => element.key === 'checks_list'))
+      setStep(steps.findIndex((element) => element.key === 'checks_list'));
 
-    if (searchParams.get('company')) getCompanies()
-    const response = await api.get('/dotfile/countries')
-    setCountries(response.data)
-    setIsLoading(false)
+    const response = await api.get('/dotfile/countries');
+    setCountries(response.data);
+    setIsLoading(false);
   }
 
-  React.useEffect(() => {
-    fetchMyAPI()
+  useEffect(() => {
+    fetchMyAPI();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
-  const [countries, setCountries] = React.useState([])
+  const [countries, setCountries] = useState([]);
 
-  const [step, setStep] = React.useState(0)
+  const [step, setStep] = useState(0);
 
-  const [companies, setCompanies] = React.useState<any>([])
+  const [companies, setCompanies] = useState<any>([]);
 
-  const [individuals, setIndividuals] = React.useState<any>([])
+  const [individuals, setIndividuals] = useState<any>([]);
 
-  const [individual, setIndividual] = React.useState<any>({})
+  const [individual, setIndividual] = useState<any>({});
 
-  const [metadata, setMetadata] = React.useState<any>({
+  const [metadata, setMetadata] = useState<any>({
     email,
     sid,
-  })
+  });
 
-  const [company, setCompany] = React.useState<any>({
+  const [company, setCompany] = useState<any>({
     name: searchParams.get('company'),
     country: searchParams.get('country'),
     registration_number: searchParams.get('registrationNumber'),
-  })
+  });
 
-  const [individualIndex, setIndividualIndex] = React.useState(null)
+  const [individualIndex, setIndividualIndex] = useState(null);
 
-  const [isLoading, setIsLoading] = React.useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
-  const next = async (e: any) => {
-    setStep(step + 1)
-  }
+  const next = async () => {
+    setStep(step + 1);
+  };
 
-  const submit = async (e: any) => {
-    setIsLoading(true)
+  const submit = async () => {
+    setIsLoading(true);
+    metadata.locale = i18next.languages[0];
     const response = await api.post(`dotfile/cases`, {
       company,
       individuals,
       email,
       metadata,
       externalId: searchParams.get('externalId')
-    })
-    setCaseId(response.data.caseId)
-    localStorage.setItem('caseId', response.data.caseId)
-    setStep(steps.findIndex((element) => element.key === 'checks_list'))
-    setIsLoading(false)
-  }
+    });
+    setCaseId(response.data.caseId);
+    localStorage.setItem('caseId', response.data.caseId);
+    setStep(steps.findIndex((element) => element.key === 'checks_list'));
+    setIsLoading(false);
+  };
 
-  const back = async (e: any) => {
-    setStep(step - 1)
-  }
+  const back = async () => {
+    setStep(step - 1);
+  };
+
+  const [autoSearchDone, setAutoSearchDone] = useState(false);
 
   const getCompanies = async () => {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
+
+      const params = {
+        country: company.country,
+        ...(company.registration_number && {
+          registration_number: company.registration_number,
+        }),
+        ...(company.name && {
+          name: company.name,
+        }),
+      };
+
       const response = await api.get(
-        `dotfile/companies?country=${company.country}&name=${company.name}`,
-      )
+        `dotfile/companies?${new URLSearchParams(params).toString()}`,
+      );
+
+      setAutoSearchDone(true);
+
       if (response.data.data.length === 0) {
         setIsLoading(false)
         setStep(step + 2)
       } else {
-        setIsLoading(false)
-        setCompanies(response.data.data)
-        setStep(step + 1)
+        setIsLoading(false);
+        setCompanies(response.data.data);
+        setStep(step + 1);
       }
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   const selectCompany = async (id: any) => {
     if (id === null) {
-      // setCompanyData({});
-      setIndividuals([])
-      setStep(step + 1)
+      setIndividuals([]);
+      setStep(step + 1);
     } else {
-      setIsLoading(true)
-      const response = await api.get(`/dotfile/companies/${id}`)
-      setCompany(response.data)
-      setIndividuals(response.data.individuals)
-      setIsLoading(false)
-      setStep(step + 1)
+      setIsLoading(true);
+      const response = await api.get(`/dotfile/companies/${id}`);
+      setCompany(response.data);
+      setIndividuals(response.data.merged_individuals);
+      setIsLoading(false);
+      setStep(step + 1);
     }
-  }
+  };
 
   const selectIndividual = (i: any) => {
     if (i === null) {
-      setIndividual({})
-      setIndividualIndex(null)
+      setIndividual({});
+      setIndividualIndex(null);
     } else {
-      setIndividualIndex(i)
-      setIndividual(individuals[i])
+      setIndividualIndex(i);
+      setIndividual(individuals[i]);
     }
-    setStep(steps.length - 2)
-  }
+    setStep(steps.length - 2);
+  };
 
   const changeHandler = (e: any) => {
-    setCompany({ ...company, [e.target.name]: e.target.value })
-  }
+    setCompany({ ...company, [e.target.name]: e.target.value });
+  };
 
   const changeHandlerMetadata = (e: any) => {
-    setMetadata({ ...metadata, [e.target.name]: e.target.value })
-  }
+    setMetadata({ ...metadata, [e.target.name]: e.target.value });
+  };
 
   const changeHandlerMetadataCustom = (question: string, answer: string) => {
-    setMetadata({ ...metadata, [question]: answer })
-  }
+    setMetadata({ ...metadata, [question]: answer });
+  };
 
-  const saveIndividual = (e: any) => {
+  const [individualsValid, setIndividualsValid] = useState(true);
+
+  const saveIndividual = () => {
+    individual.isValid = true;
     if (individualIndex !== null) {
-      individuals[individualIndex] = individual
+      individuals[individualIndex] = individual;
     } else {
-      individuals.push(individual)
+      individuals.push(individual);
     }
-    setStep(step - 1)
-  }
+
+    setIndividualsValid(
+      !individuals.some((e: { isValid: boolean }) => !e.isValid),
+    );
+
+    setStep(step - 1);
+  };
 
   const steps = [
     {
@@ -180,6 +197,7 @@ function AppContent() {
           company={company}
           changeHandler={changeHandler}
           isLoading={isLoading}
+          autoSearchDone={autoSearchDone}
         />
       ),
     },
@@ -214,6 +232,8 @@ function AppContent() {
           individuals={individuals}
           setIndividuals={setIndividuals}
           submit={submit}
+          individualsValid={individualsValid}
+          setIndividualsValid={setIndividualsValid}
         />
       ),
     },
@@ -227,6 +247,7 @@ function AppContent() {
           next={next}
           back={back}
           countries={countries}
+          setIndividualsValid={setIndividualsValid}
         />
       ),
     },
@@ -245,10 +266,10 @@ function AppContent() {
         />
       ),
     },
-  ]
+  ];
 
   form.forEach((item: any) => {
-    let content
+    let content;
 
     if (item.type === 'radio') {
       content = (
@@ -258,7 +279,7 @@ function AppContent() {
           next={next}
           changeHandlerMetadataCustom={changeHandlerMetadataCustom}
         />
-      )
+      );
     } else {
       content = (
         <CustomForm
@@ -267,20 +288,20 @@ function AppContent() {
           changeHandlerMetadata={changeHandlerMetadata}
           next={next}
         />
-      )
+      );
     }
 
     if (!item.after) {
       steps.unshift({
         key: item.key,
         content,
-      })
+      });
     } else {
-      const index = steps.findIndex((element) => element.key === item.after) + 1
+      const index = steps.findIndex((element) => element.key === item.after) + 1;
       steps.splice(index, 0, {
         key: item.key,
         content,
-      })
+      });
     }
   })
 
@@ -288,13 +309,16 @@ function AppContent() {
     <Flex direction={{ base: 'column', md: 'row' }}>
       <MobileHeader />
       <Sidebar />
-      <Flex ml={['0', '0', '25vw']}>
+      <Flex
+        width="100%"
+        ml={['0', '0', '25vw']}
+      >
         <Stack
-          // spacing={5}
-          maxW={'900px'}
           width="100%"
+          maxW={{ base: 'auto', md: '880px' }}
           py={[5, 10, 10]}
-          px={[5, 10, 20]}
+          pl={[5, 5, 20]}
+          pr={[5, 5, 5]}
         >
           <Stack spacing={4}>
             <Header
@@ -313,9 +337,9 @@ function AppContent() {
         </Stack>
       </Flex>
     </Flex>
-  )
-}
+  );
+};
 
 export default function App() {
-  return <AppContent />
-}
+  return <AppContent />;
+};
