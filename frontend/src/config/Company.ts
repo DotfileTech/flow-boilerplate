@@ -28,7 +28,7 @@ export const companyData: CompanyData[] = [
   },
   {
     id: 'legal_form',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -46,7 +46,7 @@ export const companyData: CompanyData[] = [
     id: 'registration_date',
     type: 'date',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'tax_identification_number',
@@ -80,25 +80,25 @@ export const companyData: CompanyData[] = [
     id: 'street_address',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'street_address_2',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'postal_code',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'city',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'country',
@@ -111,12 +111,12 @@ export const companyData: CompanyData[] = [
     id: 'iban',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'bic',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
 ];
