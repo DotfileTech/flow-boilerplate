@@ -71,7 +71,7 @@ const IndividualEdit = (props: any) => {
           .map((ind: any, i: number) => (
             <InputForm
               key={i}
-              value={props.individual[ind.id]}
+              value={props.individual[ind.id] || ''}
               onChange={changeHandlerIndividual}
               name={ind.id}
               isRequired={ind.required}
@@ -80,7 +80,7 @@ const IndividualEdit = (props: any) => {
           ))}
 
         <SelectFloatingLabel
-          value={props.individual ? props.individual.birth_country : ''}
+          value={props.individual?.birth_country || ''}
           onChange={changeHandlerIndividual}
           name="birth_country"
           countries={props.countries}
@@ -92,7 +92,7 @@ const IndividualEdit = (props: any) => {
           .map((ind: any, i: number) => (
             <InputForm
               key={i}
-              value={props.individual[ind.id]}
+              value={props.individual[ind.id] || ''}
               onChange={changeHandlerIndividual}
               name={ind.id}
               isRequired={ind.required}
@@ -101,7 +101,7 @@ const IndividualEdit = (props: any) => {
           ))}
 
         <SelectFloatingLabel
-          value={props.individual ? props.individual.address.country : ''}
+          value={props.individual?.address?.country || ''}
           onChange={changeHandlerIndividual}
           name="country"
           countries={props.countries}
@@ -141,7 +141,7 @@ const IndividualEdit = (props: any) => {
           .map((ind: any, i: number) => (
             <InputForm
               key={i}
-              value={props.individual[ind.id]}
+              value={props.individual[ind.id] || ''}
               onChange={changeHandlerIndividual}
               name={ind.id}
               isRequired={ind.required}

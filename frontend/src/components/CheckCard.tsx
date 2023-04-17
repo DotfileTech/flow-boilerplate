@@ -19,7 +19,7 @@ const CheckCard = (props: any) => {
   const { t } = useTranslation();
 
   return (
-    <Accordion defaultIndex={0} allowToggle allowMultiple>
+    <Accordion defaultIndex={[0]} allowMultiple>
       <AccordionItem
         borderColor="gray.200"
         borderWidth="1px"

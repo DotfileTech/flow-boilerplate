@@ -30,7 +30,7 @@ const CompanyEdit = (props: any) => {
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={5}>
         <SelectFloatingLabel
-          value={props.company ? props.company.country : ''}
+          value={props.company?.country || ''}
           onChange={props.changeHandler}
           name="country"
           isRequired
@@ -43,7 +43,7 @@ const CompanyEdit = (props: any) => {
           .map((company: any) => (
             <InputForm
               key={company.id}
-              value={props.company[company.id]}
+              value={props.company[company.id] || ''}
               onChange={props.changeHandler}
               name={company.id}
               isRequired={company.required}

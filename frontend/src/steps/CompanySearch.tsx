@@ -41,7 +41,7 @@ const CompanySearch = (props: any) => {
   return (
     <Stack spacing={5} pt={2}>
       <SelectFloatingLabel
-        value={props.company ? props.company.country : ''}
+        value={props.company?.country || ''}
         isRequired
         onChange={props.changeHandler}
         name="country"
@@ -53,7 +53,7 @@ const CompanySearch = (props: any) => {
           pr="4.5rem"
           type="text"
           isRequired
-          value={props.company ? props.company.name : ''}
+          value={props.company?.name || ''}
           onChange={props.changeHandler}
           name="name"
         />
