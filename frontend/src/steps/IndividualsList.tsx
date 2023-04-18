@@ -28,30 +28,34 @@ const IndividualsList = (props: any) => {
     props.setIndividuals(
       props.individuals.map((individual: any) => {
         const check = schema.validate(individual);
-        if (check.error) individual.isValid = false
+        if (check.error) {
+          individual.isValid = false;
+        } else {
+          individual.isValid = true;
+        }
         return individual;
-      }),
-    )
+      })
+    );
 
     props.setIndividualsValid(
-      !props.individuals.some((e: { isValid: boolean }) => !e.isValid),
-    )
+      !props.individuals.some((e: { isValid: boolean }) => !e.isValid)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     props.individuals.map((individual: any) => {
       const check = schema.validate(individual);
-      if (check.error) props.setIndividualsValid(false)
+      if (check.error) props.setIndividualsValid(false);
       return individual;
-    })
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.individuals])
+  }, [props.individuals]);
 
   const deleteIndividual = (index: any) => {
     props.setIndividuals(
-      props.individuals.filter((_: any, i: any) => i !== index),
-    )
+      props.individuals.filter((_: any, i: any) => i !== index)
+    );
   };
 
   return (
@@ -65,12 +69,19 @@ const IndividualsList = (props: any) => {
           padding={5}
           key={i}
         >
-          <Flex direction={{ base: 'column', sm: 'row' }} alignItems={{ base: 'start', sm: 'center' }}>
+          <Flex
+            direction={{ base: 'column', sm: 'row' }}
+            alignItems={{ base: 'start', sm: 'center' }}
+          >
             <Heading size="sm">
               {ubo.first_name} {ubo.last_name}
             </Heading>
             <Spacer />
-            {ubo.isValid === false && <Tag colorScheme="yellow" mr={4} mt={{ base: '12px', md: '0' }}>{t('domain.individual.missing_data')}</Tag>}
+            {ubo.isValid === false && (
+              <Tag colorScheme="yellow" mr={4} mt={{ base: '12px', md: '0' }}>
+                {t('domain.individual.missing_data')}
+              </Tag>
+            )}
             <Show above="sm">
               <Box mt={{ base: '12px', md: '0' }}>
                 <Button
