@@ -1,1 +1,20 @@
-{}
+{
+  "titleValue": "Please review your information",
+  "id_document": "Identiteitsbewijs",
+  "id_verification": "Identiteit verificatie",
+  "proof_of_address": "bewijs van verblijf",
+  "driving_license": "Rijbewijs",
+  "social_security_card": "Vitale kaart",
+  "ubo_registry_extract": "Certificaat uiteindelijk gerechtigden",
+  "articles_of_association": "Statuten",
+  "registration_certificate": "Registratie certificaat",
+  "financial_statements": "Financial statements",
+  "bank_details": "Bank details",
+  "proof_of_insurance": "Proof of insurance",
+  "visa": "Visa",
+  "birth_certificate": "Birth certificate",
+  "vehicle_registration_certificate": "Vehicle registration certificate",
+  "criminal_record_extract": "Criminal record extract",
+  "tax_notice": "Tax notice",
+  "agreement_certificate": "Agreement certificate"
+}

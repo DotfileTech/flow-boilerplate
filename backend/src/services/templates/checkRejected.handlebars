@@ -97,10 +97,12 @@
 
     <p>Hello,</p>
 
-    <p>Your
-      <b>{{check.subtype}}</b>
-      has been rejected for the following reason:
-      <b>{{check.data.review.comment}}</b></p>
+    <p>
+      Your <b>{{translate checkTitle}}</b> has been rejected
+      {{#if comment}}
+        for the following reason: <b>{{comment}}</b>
+      {{/if}}
+    </p>
 
     <div>
       <a href='{{link}}'>

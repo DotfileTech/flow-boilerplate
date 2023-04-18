@@ -1,39 +1,45 @@
-import { NextFunction, Request, Response } from 'express'
-import EmailService from '../services/email.service'
-import Dotfile from '../api/dotfile.api'
+import { NextFunction, Request, Response } from 'express';
+import EmailService from '../services/email.service';
+import Dotfile from '../api/dotfile.api';
 
 class WebhooksController {
   public dotfileApi = new Dotfile({
     host: process.env.DOTFILE_BASE_URL,
     secretKey: process.env.DOTFILE_KEY,
-    isDev: process.env.NODE_ENV === 'development'
-  })
+    isDev: process.env.NODE_ENV === 'development',
+  });
 
-  private emailService = new EmailService()
+  private emailService = new EmailService();
 
   checksConsumer = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const payload = req.body
+      const payload = req.body;
 
-      if (payload.event !== 'Check.Rejected') return res.status(200).json({})
+      if (payload.event !== 'Check.Rejected') return res.status(200).json({});
 
-      const caseId = payload.context.case.id
-      const check = payload.check
-      const checkResult = payload.check.data.result
+      const caseId = payload.context.case.id;
+      const check = payload.check;
+      const checkResult = payload.check.data.result;
 
       const caseData = await this.dotfileApi.request(
         'get',
         `cases/${caseId}`,
         {},
         {},
-        {},
-      )
+        {}
+      );
 
-      const { email, locale } = caseData.metadata
+      const { email, locale } = caseData.metadata;
 
       if (!email) {
-        return res.status(200).json({})
+        return res.status(200).json({});
       }
+
+      const exactType = (currentCheck: any) => {
+        return currentCheck.type === 'document'
+          ? currentCheck.subtype.split(':')[1]
+          : currentCheck.type;
+      };
 
       switch (checkResult) {
         case 'rejected':
@@ -48,20 +54,21 @@ class WebhooksController {
               {
                 link: `${process.env.APP_URL}/?caseId=${caseId}`,
                 appLogoUrl: process.env.LOGO_URL,
-                check,
+                checkTitle: exactType(check),
+                comment: check.data.review.comment,
               },
-              locale,
-            )
-          break
+              locale
+            );
+          break;
         case 'approved':
         default:
       }
 
-      return res.status(200).json({})
+      return res.status(200).json({});
     } catch (err) {
-      next(err)
+      next(err);
     }
-  }
+  };
 }
 
-export default WebhooksController
+export default WebhooksController;

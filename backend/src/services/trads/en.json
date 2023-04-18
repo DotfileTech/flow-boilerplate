@@ -1,1 +1,20 @@
-{}
+{
+  "titleValue": "Please review your information",
+  "id_document": "Identity document",
+  "id_verification": "Identity Verification",
+  "proof_of_address": "Residence certificate",
+  "driving_license": "Driver's license",
+  "social_security_card": "Vital card",
+  "ubo_registry_extract": "Beneficial owners certificate",
+  "articles_of_association": "Articles of association",
+  "registration_certificate": "Registration certificate",
+  "financial_statements": "Financial statements",
+  "bank_details": "Bank details",
+  "proof_of_insurance": "Proof of insurance",
+  "visa": "Visa",
+  "birth_certificate": "Birth certificate",
+  "vehicle_registration_certificate": "Vehicle registration certificate",
+  "criminal_record_extract": "Criminal record extract",
+  "tax_notice": "Tax notice",
+  "agreement_certificate": "Agreement certificate"
+}

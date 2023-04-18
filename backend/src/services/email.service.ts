@@ -1,12 +1,12 @@
-import nodemailer from 'nodemailer'
-import hbs from 'nodemailer-express-handlebars'
-import path from 'path'
-import baseFr from './trads/fr.json'
-import baseEn from './trads/en.json'
-import baseEs from './trads/es.json'
-import baseDe from './trads/de.json'
-import baseIt from './trads/it.json'
-import baseNl from './trads/nl.json'
+import nodemailer from 'nodemailer';
+import hbs from 'nodemailer-express-handlebars';
+import path from 'path';
+import baseFr from './trads/fr.json';
+import baseEn from './trads/en.json';
+import baseEs from './trads/es.json';
+import baseDe from './trads/de.json';
+import baseIt from './trads/it.json';
+import baseNl from './trads/nl.json';
 
 const trads = {
   fr: baseFr,
@@ -15,7 +15,7 @@ const trads = {
   de: baseDe,
   it: baseIt,
   nl: baseNl,
-}
+};
 
 const mailOptions = {
   host: process.env.SMTP_HOST,
@@ -28,10 +28,9 @@ const mailOptions = {
     user: `${process.env.EMAIL_USER}`,
     pass: `${process.env.EMAIL_PASSWORD}`,
   },
-}
+};
 
 class EmailService {
-
   public sendEmail = async (email, options, context, locale) => {
     const transporter = nodemailer.createTransport(mailOptions);
 
@@ -45,14 +44,14 @@ class EmailService {
           defaultLayout: options.template,
           helpers: {
             translate: function (str) {
-              return trads[locale][str]
+              return trads[locale][str];
             },
           },
         },
         viewPath: path.join(__dirname, 'templates'),
         extName: '.handlebars',
-      }),
-    )
+      })
+    );
 
     const message = {
       from: process.env.EMAIL_FROM,
@@ -61,10 +60,10 @@ class EmailService {
       // text: 'Plaintext version of the message',
       template: options.template,
       context,
-    }
+    };
 
-    return await transporter.sendMail(message)
-  }
+    return await transporter.sendMail(message);
+  };
 }
 
-export default EmailService
+export default EmailService;
