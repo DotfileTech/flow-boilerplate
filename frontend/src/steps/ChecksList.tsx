@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Stack,
   Tabs,
@@ -6,23 +6,24 @@ import {
   TabPanels,
   Tab,
   TabPanel,
-  Badge,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 import useApi from '../hooks/useApi';
 import UploadDocuments from '../components/UploadDocuments';
 import CheckCard from '../components/CheckCard';
-import { CheckStatusEnum, CheckTypeEnum } from '../constants'
+import { CheckStatusEnum, CheckTypeEnum } from '../constants';
+import { Indicator } from '../components/indicator';
 
 const ChecksList = (props: any) => {
   const { t } = useTranslation();
   const api = useApi();
+  const [isMobile] = useMediaQuery('(max-width: 48em)');
 
   async function fetchMyAPI() {
     const response = await api.get(`/dotfile/cases/${props.caseId}`);
     setData(response.data);
-    countRemainingChecks(response.data);
   }
 
   useEffect(() => {
@@ -40,20 +41,7 @@ const ChecksList = (props: any) => {
     window.open(response.data.url, '_blank', 'noreferrer');
   };
 
-  const [data, setData] = useState({
-    individuals: [],
-    companies: [{ checks: [] }],
-  });
-
-  const [checksCompanies, setChecksCompanies] = useState(0);
-
-  const [checksIndividuals, setChecksIndividuals] = useState(0);
-
-  const [remainingChecksCompanies, setRemainingChecksCompanies] =
-    useState(0);
-
-  const [remainingChecksIndividuals, setRemainingChecksIndividuals] =
-    useState(0);
+  const [data, setData] = useState<any>();
 
   const [isUpload, setIsUpload] = useState(false);
 
@@ -63,65 +51,89 @@ const ChecksList = (props: any) => {
   const selectCheck = (check: any) => {
     if (check.type === CheckTypeEnum.id_verification) {
       processIdentityCheck(check);
-      // setIsSendEmail(true)
     } else {
       setCurrentCheck(check);
       setIsUpload(true);
     }
-  }
-
-  const countRemainingChecks = (data: any) => {
-    let checksCompanies: any[] = [];
-    let checksIndividuals: any[] = [];
-
-    data.companies.map((item: any) =>
-      item.checks
-        .filter((check: any) => check.type !== CheckTypeEnum.aml)
-        .forEach((element: any) => checksCompanies.push(element)),
-    );
-
-    data.individuals.map((item: any) =>
-      item.checks
-        .filter((check: any) => check.type !== CheckTypeEnum.aml)
-        .forEach((element: any) => checksIndividuals.push(element)),
-    );
-
-    setRemainingChecksCompanies(
-      checksCompanies.filter((check: any) => check.status === CheckStatusEnum.in_progress).length,
-    );
-
-    setRemainingChecksIndividuals(
-      checksIndividuals.filter((check: any) => check.status === CheckStatusEnum.in_progress).length,
-    );
-
-    setChecksCompanies(checksCompanies.length);
-    setChecksIndividuals(checksIndividuals.length);
   };
+
+  const companies = useMemo(
+    () => data?.companies.filter((company: any) => company.checks.length > 0),
+    [data?.companies]
+  );
+  const hasCompaniesActions = useMemo(
+    () =>
+      (companies
+        ?.flatMap((company: any) => company.checks)
+        .filter((check: any) =>
+          [CheckStatusEnum.in_progress, CheckStatusEnum.rejected].includes(
+            check.status
+          )
+        ).length ?? 0) > 0,
+    [companies]
+  );
+
+  const individuals = useMemo(
+    () =>
+      data?.individuals.filter(
+        (individual: any) => individual.checks.length > 0
+      ),
+    [data?.individuals]
+  );
+  const hasIndividualsActions = useMemo(
+    () =>
+      (individuals
+        ?.flatMap((individual: any) => individual.checks)
+        .filter((check: any) =>
+          [CheckStatusEnum.in_progress, CheckStatusEnum.rejected].includes(
+            check.status
+          )
+        ).length ?? 0) > 0,
+    [individuals]
+  );
+
+  const hasCompanies = (companies?.length ?? 0) > 0;
+  const hasIndividuals = (individuals?.length ?? 0) > 0;
 
   return (
     <Stack spacing={5} pt={2}>
-      <Tabs>
-        <TabList>
-          {checksCompanies > 0 && (
-            <Tab>
+      <Tabs
+        mt="2"
+        pb="8"
+        // isLazy is necessary for accordion state, otherwise the accordion of the other tabs mount but
+        // is not visible and defaultOpen state is lost
+        // @see https://chakra-ui.com/docs/components/tabs/usage#lazily-mounting-tab-panels
+        isLazy
+        isFitted={isMobile}
+      >
+        <TabList
+          borderBottom="1px"
+          borderColor="gray.100"
+          position="sticky"
+          top="0"
+          bgColor="white"
+          zIndex="1"
+        >
+          {hasCompanies && (
+            <Tab mr={{ base: 0, md: 10 }}>
               {t('companies')}
-              <Badge variant="subtle" ml={5}>
-                {remainingChecksCompanies}
-              </Badge>
+              {hasCompaniesActions && (
+                <Indicator ml="2" boxSize="8px" color="orange" />
+              )}
             </Tab>
           )}
-          {checksIndividuals > 0 && (
-            <Tab>
-              {t('individuals')}{' '}
-              <Badge variant="subtle" ml={5}>
-                {remainingChecksIndividuals}
-              </Badge>
+          {hasIndividuals && (
+            <Tab lineHeight="0" mr={{ base: 0, md: 10 }}>
+              {t('individuals')}
+              {hasIndividualsActions && (
+                <Indicator ml="2" boxSize="8px" color="orange" />
+              )}
             </Tab>
           )}
         </TabList>
 
         <TabPanels>
-          {checksCompanies > 0 && (
+          {hasCompanies && (
             <TabPanel>
               <Stack spacing={5} pt={2}>
                 {data.companies.map((item: any, i: number) => (
@@ -136,7 +148,7 @@ const ChecksList = (props: any) => {
               </Stack>
             </TabPanel>
           )}
-          {checksIndividuals > 0 && (
+          {hasIndividuals && (
             <TabPanel>
               <Stack spacing={5} pt={2}>
                 {data.individuals.map((item: any, i: number) => (

@@ -21,7 +21,8 @@ const CompanySearch = (props: any) => {
   useEffect(() => {
     if (
       (props.company.name || props.company.registration_number) &&
-      props.company.country && !props.autoSearchDone
+      props.company.country &&
+      !props.autoSearchDone
     ) {
       props.getCompanies();
     }
