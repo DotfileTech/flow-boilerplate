@@ -5,7 +5,7 @@
 Manage the properties of a company. Each property is an object with: 
 
 - **id** (`string`): The name of the property, which is also useful for the translation system
-- **type** (`string`): The input type, default `text`. Can be `text`, `date` or `number`.
+- **type** (`string`): The input type, default `text`. Can be `text`, `url`, `date` or `number`.
 - **required** (`boolean`): To require the field in the company form
 - **enabled** (`boolean`): To display the field in the company form
 
@@ -18,7 +18,7 @@ Info: You can move a property in the array to change the form order.
 Manage the properties of an individual. Each property is an object with:
 
 - **id** (`string`): The name of the property, which is also useful for the translation system
-- **type** (`string`): The input type, default `text`. Can be `text`, `date` or `number`.
+- **type** (`string`): The input type, default `text`. Can be `text`, `url`, `date` or `number`.
 - **category** (`string`): Organizes the form. Can be `personal`, `address` or `roles`. (will be deprecated very soon)
 - **required** (`boolean`): To require the field in the company form
 - **enabled** (`boolean`): To display the field in the company form
@@ -37,7 +37,7 @@ For each additional step you can create an object with:
 - **after** (`string`): The position of the additional step. If the after property is not filled then the step will be displayed first.
 - **fields** (`array`): An array of fields for this step.
   - **id** (`string`): The name of the property, which is also useful for the translation system.
-  - **type** (`string`): The input type. Can be `text`, `date`, `number`, `select` or `radio`.
+  - **type** (`string`): The input type. Can be `text`, `date`, `number`, `url`, `select` or `radio`.
   - **isRequired** (`boolean`): To require the field
   - **hasHelper** (optional `boolean`): To display a text helper below the label
   - **options** (optional `array`): An array of string for the `select` and `radio` fields

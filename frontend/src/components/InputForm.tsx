@@ -12,7 +12,7 @@ type InputFormProps = {
   defaultValue: string;
   isRequired: boolean;
   hasHelper?: boolean;
-  type?: 'text' | 'date' | 'number';
+  type?: 'text' | 'date' | 'number' | 'url';
   onChange: any;
 };
 

@@ -28,6 +28,21 @@
       },
       "legal_form": {
         "label": "Legal form"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "Address line 1"
+      },
+      "street_address_2": {
+        "label": "Address line 2"
+      },
+      "postal_code": {
+        "label": "Postal code"
+      },
+      "city": {
+        "label": "City"
       }
     },
     "individual_edit": {

@@ -44,7 +44,7 @@ const Radio = (props: RadioProps) => {
         name={name}
         defaultValue={defaultValue}
       >
-        <Stack direction="row">
+        <Stack direction="row" spacing="5">
           {options.map((option: string) => (
             <ChakraRadio key={option} value={option}>
               {t(`steps.${stepId}.${name}.options.${option}`)}

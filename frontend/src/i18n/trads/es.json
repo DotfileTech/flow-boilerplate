@@ -28,6 +28,21 @@
       },
       "legal_form": {
         "label": "Forma jurídica"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "Dirección 1"
+      },
+      "street_address_2": {
+        "label": "Dirección 2"
+      },
+      "postal_code": {
+        "label": "Código postal"
+      },
+      "city": {
+        "label": "Ciudad"
       }
     },
     "individual_edit": {

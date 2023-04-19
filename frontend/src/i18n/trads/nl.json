@@ -28,6 +28,21 @@
       },
       "legal_form": {
         "label": "Wettelijk document"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "Adres 1"
+      },
+      "street_address_2": {
+        "label": "Adres 2"
+      },
+      "postal_code": {
+        "label": "Postcode"
+      },
+      "city": {
+        "label": "Stad"
       }
     },
     "individual_edit": {

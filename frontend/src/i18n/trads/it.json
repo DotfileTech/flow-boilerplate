@@ -28,6 +28,21 @@
       },
       "legal_form": {
         "label": "Forma giuridica"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "Indirizzo 1"
+      },
+      "street_address_2": {
+        "label": "Indirizzo 2"
+      },
+      "postal_code": {
+        "label": "CAP"
+      },
+      "city": {
+        "label": "Città"
       }
     },
     "individual_edit": {
