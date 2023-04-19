@@ -1,1 +1,150 @@
-{}
+{
+  "brand": {
+    "title": "The crypto payment platform"
+  },
+  "steps": {
+    "company_search": {
+      "title": "Find your company",
+      "description": "Please proceed with the necessary verifications listed below. \nOur team will analyze your data and keep you informed about the outcome of your case.",
+      "name": {
+        "label": "Name"
+      },
+      "button": "Search"
+    },
+    "company_list": {
+      "title": "Select your company",
+      "not_found": "You cannot find your company ?",
+      "button": "Fill details manually"
+    },
+    "company_edit": {
+      "title": "Verify your company's information",
+      "name": {
+        "label": "Company name"
+      },
+      "registration_number": {
+        "label": "Registration number"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "registration_date": {
+        "label": "Creation date"
+      },
+      "legal_form": {
+        "label": "Legal form"
+      },
+      "street_address": {
+        "label": "Address line 1"
+      },
+      "street_address_2": {
+        "label": "Address line 2"
+      },
+      "postal_code": {
+        "label": "Postal code"
+      },
+      "city": {
+        "label": "City"
+      }
+    },
+    "about_your_company": {
+      "title": "About your company",
+      "description": "Please proceed with the necessary verifications listed below. Our team will analyze your data and keep you informed about the outcome of your case.",
+      "company_website": {
+        "label": "Your company website",
+        "helper": "Please provide the URL of your company's website"
+      },
+      "company_operational_address": {
+        "label": "Your company operational address",
+        "helper": "Only fill this field if your operational address is different from the official headquarter address"
+      },
+      "company_activity": {
+        "label": "Your company activity",
+        "helper": "Please explain in a few words what your company does and how it is connected to cryptocurrencies"
+      },
+      "last_year_turnover": {
+        "label": "Last year turnover",
+        "helper": "In euros - Please enter the amount your company's turnover on 2022"
+      },
+      "company_assets": {
+        "label": "Company assets",
+        "helper": "In euros - Please mention how much are evaluated the assets owned by the company"
+      },
+      "phone": {
+        "label": "Your phone number"
+      },
+      "personal_address": {
+        "label": "Your personal address",
+        "helper": "Please provide your personal residential adress"
+      },
+      "are_you_a_pep": {
+        "label": "Are you, or any beneficial owner of the company, considered as a PEP?",
+        "helper": "A politically exposed person (PEP) is an individual with a high profile political role, or someone who has been entrusted with a prominent public function",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "are_you_a_us_person": {
+        "label": "Are you, or any beneficial owner of the company, a US Person?",
+        "helper": "A \"U.S. person\" is any citizen of the United States (including a person born in the United States who resides abroad and who has not renounced his American citizenship); any legal resident of the United States (including a US green card holder); and any permanent resident of the United States.",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      }
+    },
+    "payment_details": {
+      "title": "Your payment details",
+      "description": "Please provide instructions on what should be done with the funds received through Nilos",
+      "what_should_we_do_with_the_funds_you_receive_on_nilos": {
+        "label": "What should we do with the funds you receive on Nilos?",
+        "helper": "If you want your funds to be converted into FIAT and transferred to the bank account you will register, please select the first option and fill the next 3 fields. Your company must be the owner of the bank account. If you want your crypto funds to be sent to an external wallet, please select the second option and send an email to compliance@nilos.io with the beneficiary wallet address information. You don't need to fill the next 3 fields if you picked this option.",
+        "options": {
+          "Any crypto received on my Nilos account has to be automatically exchanged into FIAT and transferred to the bank account below": "Any crypto received on my Nilos account has to be automatically exchanged into FIAT and transferred to the bank account below",
+          "Any crypto received on my Nilos account has to be automatically transferred to an external wallet I will communicate to Nilos": "Any crypto received on my Nilos account has to be automatically transferred to an external wallet I will communicate to Nilos"
+        }
+      },
+      "iban_account_number": {
+        "label": "IBAN / Account number",
+        "helper": "Please enter here your IBAN or your Account Number"
+      },
+      "bic_swift": {
+        "label": "BIC / SWIFT"
+      },
+      "your_currency": {
+        "label": "Your currency",
+        "helper": "Please select the currency in which you would like to receive your funds. If your currency is not on the list, please send an email to compliance@nilos.io",
+        "options": {
+          "EUR": "EUR",
+          "USD": "USD",
+          "GBP": "GBP",
+          "CHF": "CHF"
+        }
+      }
+    },
+    "individuals_list": {
+      "title": "Verify your individuals list",
+      "missing_data": "Please correct",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add_individual": "Add individual"
+    },
+    "individual_edit": {
+      "title": "Fill in your individual's details",
+      "first_name": {
+        "label": "First name"
+      },
+      "last_name": {
+        "label": "Last name"
+      },
+      "birth_date": {
+        "label": "Birth date"
+      },
+      "roles": "Role(s)"
+    },
+    "checks_list": {
+      "title": "Help us run necessary verifications",
+      "description": "Please proceed with the necessary verifications listed below. \nOur team will analyze your data and keep you informed about the outcome of your case."
+    }
+  }
+}
