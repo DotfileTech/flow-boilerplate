@@ -25,7 +25,7 @@ const SelectLang = () => {
     >
       {languages.map((language: string, i: number) => (
         <option key={i} value={language}>
-          {t(language)}
+          {t(`domain.languages.${language}`)}
         </option>
       ))}
     </Select>

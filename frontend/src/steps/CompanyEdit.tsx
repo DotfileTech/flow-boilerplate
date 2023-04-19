@@ -43,7 +43,8 @@ const CompanyEdit = (props: any) => {
           .map((company: any) => (
             <InputForm
               key={company.id}
-              value={props.company[company.id] || ''}
+              stepId="company_edit"
+              defaultValue={props.company[company.id] || ''}
               onChange={props.changeHandler}
               name={company.id}
               isRequired={company.required}
@@ -53,12 +54,12 @@ const CompanyEdit = (props: any) => {
 
         <Box>
           <Button variant="next" onClick={props.next} isDisabled={!formValid}>
-            {t('next')}
+            {t('domain.form.next')}
           </Button>
         </Box>
       </SimpleGrid>
     </Stack>
   );
-}
+};
 
 export default CompanyEdit;

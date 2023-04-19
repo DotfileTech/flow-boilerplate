@@ -1,5 +1,3 @@
-# Introduction
-
 This is a sample application to demonstrate how to build a KYB process using Dotfile API.
 
 ## backend
@@ -18,37 +16,38 @@ A React application to manage a multi-step form to collect the information neces
 - Create Individuals
 - Free from to collect additional information
 
-### deployment
+More information in [frontend/readme.md](https://github.com/DotfileTech/flow-boilerplate/blob/main/frontend/src/config/README.md)
+
+## deployment
 
 The Application can be easily deployed to Render.com or Heroku.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/DotfileTech/flow-boilerplate)
 
---
 
-`NODE_ENV` Specify the node environment
+## Env variable
 
-Dotfile Config
+- `NODE_ENV` Specify the node environment
 
-`DOTFILE_KEY` API Key for the target Dotfile workspace
-`DOTFILE_BASE_URL` BASE URL for used Dotfile API environment
-`TEMPLATE_ID` Checks template to be used
+### Dotfile Config
 
-Email config
+- `DOTFILE_KEY` API Key for the target Dotfile workspace
+- `DOTFILE_BASE_URL` BASE URL for used Dotfile API environment
+- `TEMPLATE_ID` Checks template to be used
 
-`SMTP_HOST`
-`SMTP_PORT`
-`EMAIL_USER`
-`EMAIL_FROM`
-`EMAIL_PASSWORD`
+### Email config
 
-Other
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `EMAIL_USER`
+- `EMAIL_FROM`
+- `EMAIL_PASSWORD`
 
-`APP_URL` Frontend URL
-`LOGO_URL` Static logo to be used in emails
+### Other
 
---
+- `APP_URL` Frontend URL
+- `LOGO_URL` Static logo to be used in emails
 
-Webhooks
+## Webhooks
 
-Create a Webhook pointing to the bakckend URL (`${REACT_APP_HOST}/webhooks/checks`)
+Create a Webhook pointing to the backend URL (`${REACT_APP_HOST}/webhooks/checks`)

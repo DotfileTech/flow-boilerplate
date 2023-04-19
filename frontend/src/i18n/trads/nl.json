@@ -4,23 +4,66 @@
   },
   "steps": {
     "company_search": {
-      "title": "Help ons uw bedrijf te identificeren"
+      "title": "Help ons uw bedrijf te identificeren",
+      "name": {
+        "label": "Naam"
+      },
+      "button": "Zoek bedrijf"
     },
     "company_list": {
-      "title": "Selecteer uw bedrijf"
+      "title": "Selecteer uw bedrijf",
+      "not_found": "Kunt u uw bedrijf niet vinden?",
+      "button": "Vul gegevens handmatig in"
     },
     "company_edit": {
-      "title": "Controleer uw bedrijfsgegevens"
-    },
-    "custom_form": {
-      "title": "Extra informatie"
+      "title": "Controleer uw bedrijfsgegevens",
+      "name": {
+        "label": "Naam"
+      },
+      "registration_number": {
+        "label": "Registratie nummer"
+      },
+      "registration_date": {
+        "label": "Aanmaakdatum"
+      },
+      "legal_form": {
+        "label": "Wettelijk document"
+      }
     },
     "individual_edit": {
-      "title": "Controleer de informatie"
+      "title": "Controleer de informatie",
+      "first_name": {
+        "label": "Voornaam"
+      },
+      "last_name": {
+        "label": "Achternaam"
+      },
+      "birth_date": {
+        "label": "Geboortedatum"
+      },
+      "street_address": {
+        "label": "Adres 1"
+      },
+      "street_address_2": {
+        "label": "Adres 2"
+      },
+      "postal_code": {
+        "label": "Postcode"
+      },
+      "city": {
+        "label": "Stad"
+      },
+      "roles": "Rollen",
+      "ownership_percentage": {
+        "label": "Eigendomspercentage"
+      }
     },
     "individuals_list": {
       "title": "Controleer uw personenlijst",
-      "company": "Uiteindelijke begunstigden en aandeelhouders"
+      "missing_data": "Gelieve te corrigeren",
+      "edit": "Bewerking",
+      "delete": "Verwijderen",
+      "add_individual": "Individueel toevoegen"
     },
     "checks_list": {
       "title": "Help ons de nodige controles uit te voeren"
@@ -28,7 +71,10 @@
   },
   "domain": {
     "individual": {
-      "missing_data": "Gelieve te corrigeren"
+      "roles": {
+        "beneficial_owner": "uiteindelijke begunstigde",
+        "legal_representative": "wettelijke vertegenwoordiger"
+      }
     },
     "check": {
       "status": {
@@ -37,6 +83,20 @@
         "need_review": "In beoordeling",
         "expired": "Verlopen"
       }
+    },
+    "form": {
+      "select": "Selecteer",
+      "next": "Volgende",
+      "save": "Besparen"
+    },
+    "back": "Vorig",
+    "languages": {
+      "en": "Engels",
+      "fr": "Frans",
+      "es": "Spaans",
+      "it": "Italiaans",
+      "de": "Duits",
+      "nl": "Nederlands"
     }
   },
   "checks": {
@@ -93,48 +153,15 @@
       "title": "Agreement certificate"
     }
   },
-  "delete": "Verwijderen",
   "send_documents": "Stuur ter beoordeling",
   "verify_identity": "Identiteit verifiëren",
   "for": "voor",
-  "select": "Selecteer",
-  "roles": "Rollen",
-  "beneficial_owner": "uiteindelijke begunstigde",
-  "legal_representative": "wettelijke vertegenwoordiger",
   "individuals": "Individu(en)",
   "companies": "Bedrijf",
-  "back": "Vorig",
-  "next": "Volgende",
-  "edit": "Bewerking",
-  "remove": "Verwijderen",
-  "save": "Besparen",
-  "add_individual": "Individueel toevoegen",
-  "search": "Zoek bedrijf",
   "countries": "Land",
-  "name": "Naam",
-  "company_not_found": "Kunt u uw bedrijf niet vinden?",
-  "fill_manually": "Vul gegevens handmatig in",
   "upload_document": "Kies documenten)",
   "upload_document_front": "Voorzijde uploaden",
   "upload_document_back": "Upload terug",
-  "verify_company_information_title": "Controleer uw bedrijfsgegevens",
-  "en": "Engels",
-  "fr": "Frans",
-  "es": "Spaans",
-  "it": "Italiaans",
-  "de": "Duits",
-  "nl": "Nederlands",
-  "registration_number": "Registratie nummer",
-  "registration_date": "Aanmaakdatum",
-  "legal_form": "Wettelijk document",
-  "first_name": "Voornaam",
-  "last_name": "Achternaam",
-  "birth_date": "Geboortedatum",
   "birth_country": "Geboorteland",
-  "country": "Land",
-  "street_address": "Adres",
-  "street_address_2": "Adres 2",
-  "city": "Stad",
-  "postal_code": "Postcode",
-  "ownership_percentage": "Eigendomspercentage"
+  "country": "Land"
 }

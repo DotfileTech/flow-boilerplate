@@ -25,17 +25,17 @@ const CompanySearch = (props: any) => {
         ))}
       </SimpleGrid>
       <Box>
-        <Text pb={5}>{t('company_not_found')}</Text>
+        <Text pb={5}>{t('steps.company_list.not_found')}</Text>
         <Button
           leftIcon={<EditIcon />}
           variant="fill"
           onClick={() => props.selectCompany(null)}
         >
-          {t('fill_manually')}
+          {t('steps.company_list.button')}
         </Button>
       </Box>
     </Stack>
   );
-}
+};
 
 export default CompanySearch;

@@ -8,7 +8,7 @@ import {
   AccordionPanel,
   Spacer,
   VStack,
-  Divider
+  Divider,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
@@ -45,7 +45,7 @@ const CheckCard = (props: any) => {
               {props.type === 'individual' &&
                 props.item.roles.map((role: IndividualRoleEnum, i: number) => (
                   <Tag key={i} display={['none', 'flex', 'flex']} ml={5}>
-                    {t(role)}
+                    {t(`domain.individual.roles.${role}`)}
                   </Tag>
                 ))}
               <Spacer />
@@ -53,17 +53,17 @@ const CheckCard = (props: any) => {
             </AccordionButton>
             <AccordionPanel p={0}>
               <VStack spacing="0" divider={<Divider />}>
-              {props.item.checks
-                .filter((check: any) => check.type !== CheckTypeEnum.aml)
-                .map((check: any, i: number) => (
-                  <CheckItem
-                    key={i}
-                    item={props.item}
-                    check={check}
-                    selectCheck={props.selectCheck}
-                    setCurrentIndividual={props.setCurrentIndividual}
-                  />
-                ))}
+                {props.item.checks
+                  .filter((check: any) => check.type !== CheckTypeEnum.aml)
+                  .map((check: any, i: number) => (
+                    <CheckItem
+                      key={i}
+                      item={props.item}
+                      check={check}
+                      selectCheck={props.selectCheck}
+                      setCurrentIndividual={props.setCurrentIndividual}
+                    />
+                  ))}
               </VStack>
             </AccordionPanel>
           </>

@@ -17,7 +17,7 @@ const SelectFloatingLabel = (props: any) => {
         maxW="400px"
       >
         <option hidden disabled value="">
-          {t('select')}
+          {t('domain.form.select')}
         </option>
         {props.countries.map((country: any, i: number) => (
           <option key={i} value={country.code}>

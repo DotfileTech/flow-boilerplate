@@ -4,22 +4,41 @@ import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
 import InputForm from '../components/InputForm';
+import Select from '../components/Select';
+import Radio from '../components/Radio';
 
-const CustomForm = (props: any) => {
+type CustomFormProps = {
+  stepId: string;
+  fields: Field[];
+  metadata: any;
+  changeHandlerMetadata: any;
+  changeHandlerMetadataCustom: any;
+  next: any;
+};
+
+type Field = {
+  id: string;
+  type: 'select' | 'radio' | 'text' | 'date' | 'number';
+  isRequired: boolean;
+  hasHelper?: boolean;
+  options?: string[];
+};
+
+const CustomForm = (props: CustomFormProps) => {
+  const {
+    stepId,
+    fields,
+    metadata,
+    changeHandlerMetadata,
+    changeHandlerMetadataCustom,
+    next,
+  } = props;
   const { t } = useTranslation();
   const [formValid, setFormValid] = useState(false);
 
-  const rules = props.questions
-    .filter(
-      (ind: { required: any; enabled: any }) => ind.required && ind.enabled,
-    )
-    .reduce(
-      (acc: any, cur: { id: any }) => ({
-        ...acc,
-        [cur.id]: Joi.string().required(),
-      }),
-      {},
-    );
+  const rules = fields
+    .filter((field) => field.isRequired)
+    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
 
   const schema = Joi.object().keys(rules).unknown(true);
 
@@ -35,20 +54,51 @@ const CustomForm = (props: any) => {
   return (
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={5}>
-        {props.questions
-          .filter((question: { enabled: any }) => question.enabled)
-          .map((question: any) => (
+        {fields.map((field: Field) => {
+          if (field.type === 'select') {
+            return (
+              <Select
+                key={field.id}
+                stepId={stepId}
+                name={field.id}
+                defaultValue={metadata[field.id] || ''}
+                isRequired={field.isRequired}
+                hasHelper={field.hasHelper}
+                options={field.options || []}
+                onChange={changeHandlerMetadata}
+              />
+            );
+          }
+          if (field.type === 'radio') {
+            return (
+              <Radio
+                key={field.id}
+                stepId={stepId}
+                name={field.id}
+                defaultValue={metadata[field.id] || ''}
+                isRequired={field.isRequired}
+                hasHelper={field.hasHelper}
+                options={field.options || []}
+                onChange={changeHandlerMetadataCustom}
+              />
+            );
+          }
+          return (
             <InputForm
-              key={props.metadata.id}
-              value={props.metadata.id}
-              onChange={props.changeHandlerMetadata}
-              name={question.id}
-              isRequired={question.required}
+              key={field.id}
+              stepId={stepId}
+              name={field.id}
+              defaultValue={metadata[field.id] || ''}
+              isRequired={field.isRequired}
+              hasHelper={field.hasHelper}
+              type={field.type}
+              onChange={changeHandlerMetadata}
             />
-          ))}
+          );
+        })}
         <Box>
-          <Button variant="next" onClick={props.next} isDisabled={!formValid}>
-            {t('next')}
+          <Button variant="next" onClick={next} isDisabled={!formValid}>
+            {t('domain.form.next')}
           </Button>
         </Box>
       </SimpleGrid>

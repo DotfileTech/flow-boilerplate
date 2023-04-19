@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import {
   SimpleGrid,
   Button,
@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import InputForm from '../components/InputForm';
 import SelectFloatingLabel from '../components/SelectFloatingLabel';
 import { individualData } from '../config/Individual';
-import { IndividualRoleEnum } from '../constants'
+import { IndividualRoleEnum } from '../constants';
 
 const IndividualEdit = (props: any) => {
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ const IndividualEdit = (props: any) => {
     props.setIndividual({
       ...props.individual,
       [e.target.name]: e.target.value,
-    })
+    });
   };
 
   const checkBoxChangeHandler = (event: any) => {
@@ -51,14 +51,14 @@ const IndividualEdit = (props: any) => {
         roles: props.individual.roles
           ? [...props.individual.roles, event.target.value]
           : [event.target.value],
-      })
+      });
     } else {
-      let index = props.individual.roles.indexOf(event.target.value)
-      props.individual.roles.splice(index, 1)
+      let index = props.individual.roles.indexOf(event.target.value);
+      props.individual.roles.splice(index, 1);
       props.setIndividual({
         ...props.individual,
         roles: props.individual.roles,
-      })
+      });
     }
   };
 
@@ -70,8 +70,9 @@ const IndividualEdit = (props: any) => {
           .filter((ind) => ind.category === 'personal')
           .map((ind: any, i: number) => (
             <InputForm
-              key={i}
-              value={props.individual[ind.id] || ''}
+              key={`personal_${i}`}
+              stepId="individual_edit"
+              defaultValue={props.individual[ind.id] || ''}
               onChange={changeHandlerIndividual}
               name={ind.id}
               isRequired={ind.required}
@@ -90,11 +91,11 @@ const IndividualEdit = (props: any) => {
           .filter((ind) => ind.enabled)
           .filter((ind) => ind.category === 'address')
           .map((ind: any, i: number, array) => {
-            return(
-              <>
+            return (
+              <Fragment key={`address_${i}`}>
                 <InputForm
-                  key={i}
-                  value={props.individual[ind.id] || ''}
+                  stepId="individual_edit"
+                  defaultValue={props.individual[ind.id] || ''}
                   onChange={changeHandlerIndividual}
                   name={ind.id}
                   isRequired={ind.required}
@@ -108,34 +109,38 @@ const IndividualEdit = (props: any) => {
                     countries={props.countries}
                   />
                 )}
-              </>
+              </Fragment>
             );
           })}
 
         <FormControl>
-          <FormLabel>{t('roles')}</FormLabel>
+          <FormLabel>{t('steps.individual_edit.roles')}</FormLabel>
           <Stack spacing={5} direction="row">
             <Checkbox
               isChecked={
                 props.individual.roles
-                  ? props.individual.roles.includes(IndividualRoleEnum.beneficial_owner)
+                  ? props.individual.roles.includes(
+                      IndividualRoleEnum.beneficial_owner
+                    )
                   : false
               }
               value={IndividualRoleEnum.beneficial_owner}
               onChange={checkBoxChangeHandler}
             >
-              {t('beneficial_owner')}
+              {t('domain.individual.roles.beneficial_owner')}
             </Checkbox>
             <Checkbox
               isChecked={
                 props.individual.roles
-                  ? props.individual.roles.includes(IndividualRoleEnum.legal_representative)
+                  ? props.individual.roles.includes(
+                      IndividualRoleEnum.legal_representative
+                    )
                   : false
               }
               value={IndividualRoleEnum.legal_representative}
               onChange={checkBoxChangeHandler}
             >
-              {t('legal_representative')}
+              {t('domain.individual.roles.legal_representative')}
             </Checkbox>
           </Stack>
         </FormControl>
@@ -145,8 +150,9 @@ const IndividualEdit = (props: any) => {
           .filter((ind) => ind.category === 'roles')
           .map((ind: any, i: number) => (
             <InputForm
-              key={i}
-              value={props.individual[ind.id] || ''}
+              key={`roles_${i}`}
+              stepId="individual_edit"
+              defaultValue={props.individual[ind.id] || ''}
               onChange={changeHandlerIndividual}
               name={ind.id}
               isRequired={ind.required}
@@ -160,7 +166,7 @@ const IndividualEdit = (props: any) => {
             onClick={() => props.saveIndividual(null)}
             isDisabled={!formValid}
           >
-            {t('save')}
+            {t('domain.form.save')}
           </Button>
         </Box>
       </SimpleGrid>

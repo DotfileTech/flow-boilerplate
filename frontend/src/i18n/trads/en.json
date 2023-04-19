@@ -4,23 +4,66 @@
   },
   "steps": {
     "company_search": {
-      "title": "Help us identify your company"
+      "title": "Help us identify your company",
+      "name": {
+        "label": "Name"
+      },
+      "button": "Search company"
     },
     "company_list": {
-      "title": "Select your company"
+      "title": "Select your company",
+      "not_found": "You cannot find your company ?",
+      "button": "Fill details manually"
     },
     "company_edit": {
-      "title": "Verify your company information"
-    },
-    "custom_form": {
-      "title": "Additional information"
+      "title": "Verify your company information",
+      "name": {
+        "label": "Name"
+      },
+      "registration_number": {
+        "label": "Registration number"
+      },
+      "registration_date": {
+        "label": "Registration date"
+      },
+      "legal_form": {
+        "label": "Legal form"
+      }
     },
     "individual_edit": {
-      "title": "Check the information"
+      "title": "Check the information",
+      "first_name": {
+        "label": "First name"
+      },
+      "last_name": {
+        "label": "Last name"
+      },
+      "birth_date": {
+        "label": "Birth date"
+      },
+      "street_address": {
+        "label": "Address line 1"
+      },
+      "street_address_2": {
+        "label": "Address line 2"
+      },
+      "postal_code": {
+        "label": "Postal code"
+      },
+      "city": {
+        "label": "City"
+      },
+      "roles": "Roles",
+      "ownership_percentage": {
+        "label": "Ownership percentage"
+      }
     },
     "individuals_list": {
       "title": "Check the list of individuals attached to your company",
-      "company": "Beneficial owners and shareholders"
+      "missing_data": "Please correct",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add_individual": "Add individual"
     },
     "checks_list": {
       "title": "Help us carry out the necessary checks"
@@ -28,7 +71,10 @@
   },
   "domain": {
     "individual": {
-      "missing_data": "Please correct"
+      "roles": {
+        "beneficial_owner": "beneficial owner",
+        "legal_representative": "legal representative"
+      }
     },
     "check": {
       "status": {
@@ -37,6 +83,20 @@
         "need_review": "In review",
         "expired": "Expired"
       }
+    },
+    "form": {
+      "select": "Select",
+      "next": "Next",
+      "save": "Save"
+    },
+    "back": "Previous",
+    "languages": {
+      "en": "English",
+      "fr": "French",
+      "es": "Spanish",
+      "de": "German",
+      "it": "Italian",
+      "nl": "Dutch"
     }
   },
   "checks": {
@@ -93,48 +153,15 @@
       "title": "Agreement certificate"
     }
   },
-  "delete": "Delete",
   "send_documents": "Send for review",
   "verify_identity": "Verify identity",
   "for": "for",
-  "select": "Select",
-  "roles": "Roles",
-  "beneficial_owner": "beneficial owner",
-  "legal_representative": "legal representative",
   "individuals": "Individual(s)",
   "companies": "Company",
-  "back": "Previous",
-  "next": "Next",
-  "edit": "Edit",
-  "remove": "Remove",
-  "save": "Save",
-  "add_individual": "Add individual",
-  "search": "Search company",
   "countries": "Country",
-  "name": "Name",
-  "company_not_found": "You cannot find your company ?",
-  "fill_manually": "Fill details manually",
   "upload_document": "Choose file(s)",
   "upload_document_front": "Upload Front",
   "upload_document_back": "Upload Back",
-  "verify_company_information_title": "Verify your company information",
-  "en": "English",
-  "fr": "French",
-  "es": "Spanish",
-  "de": "German",
-  "it": "Italian",
-  "nl": "Dutch",
-  "registration_number": "Registration number",
-  "registration_date": "Registration date",
-  "legal_form": "Legal form",
-  "first_name": "First name",
-  "last_name": "Last name",
-  "birth_date": "Birth date",
   "birth_country": "Birth country",
-  "country": "Country",
-  "street_address": "Address line 1",
-  "street_address_2": "Address line 2",
-  "city": "City",
-  "postal_code": "Postal code",
-  "ownership_percentage": "Ownership percentage"
+  "country": "Country"
 }

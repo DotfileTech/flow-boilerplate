@@ -18,7 +18,7 @@ const Header = (props: any) => {
             onClick={props.back}
             leftIcon={<ChevronLeftIcon />}
           >
-            {t('back')}
+            {t('domain.back')}
           </Button>
         )}
         <Progress maxWidth="80vv" value={props.progress} />

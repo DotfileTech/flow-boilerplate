@@ -4,23 +4,66 @@
   },
   "steps": {
     "company_search": {
-      "title": "Helfen Sie uns, Ihr Unternehmen zu identifizieren"
+      "title": "Helfen Sie uns, Ihr Unternehmen zu identifizieren",
+      "name": {
+        "label": "Name"
+      },
+      "button": "Unternehmen suchen"
     },
     "company_list": {
-      "title": "Wählen Sie Ihr Unternehmen aus"
+      "title": "Wählen Sie Ihr Unternehmen aus",
+      "not_found": "Können Sie Ihr Unternehmen nicht finden?",
+      "button": "Details manuell ausfüllen"
     },
     "company_edit": {
-      "title": "Überprüfen Sie die Informationen Ihres Unternehmens"
-    },
-    "custom_form": {
-      "title": "Weitere Informationen"
+      "title": "Überprüfen Sie die Informationen Ihres Unternehmens",
+      "name": {
+        "label": "Name"
+      },
+      "registration_number": {
+        "label": "Registrierungsnummer"
+      },
+      "registration_date": {
+        "label": "Erstellungsdatum"
+      },
+      "legal_form": {
+        "label": "Rechtsform"
+      }
     },
     "individual_edit": {
-      "title": "Überprüfen oder vervollständigen Sie die Informationen über Ihr Unternehmen"
+      "title": "Überprüfen oder vervollständigen Sie die Informationen über Ihr Unternehmen",
+      "first_name": {
+        "label": "Vorname"
+      },
+      "last_name": {
+        "label": "Familienname, Nachname"
+      },
+      "birth_date": {
+        "label": "Geburtsdatum"
+      },
+      "street_address": {
+        "label": "Adresse"
+      },
+      "street_address_2": {
+        "label": "Adresse (Fortsetzung)"
+      },
+      "postal_code": {
+        "label": "Postleitzahl"
+      },
+      "city": {
+        "label": "Stadt"
+      },
+      "roles": "Rollen",
+      "ownership_percentage": {
+        "label": "Eigentumsprozentsatz"
+      }
     },
     "individuals_list": {
       "title": "Überprüfen oder ergänzen Sie die gesetzlichen Vertreter und wirtschaftlichen Eigentümer Ihres Unternehmens.",
-      "company": "Wirtschaftliche Eigentümer und Aktionäre"
+      "missing_data": "Bitte korrigieren",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "add_individual": "Person hinzufügen"
     },
     "checks_list": {
       "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen"
@@ -28,7 +71,10 @@
   },
   "domain": {
     "individual": {
-      "missing_data": "Bitte korrigieren"
+      "roles": {
+        "beneficial_owner": "wirtschaftlicher Eigentümer",
+        "legal_representative": "Vertretungsberechtigte Person/Betriebsleiter"
+      }
     },
     "check": {
       "status": {
@@ -37,6 +83,20 @@
         "need_review": "Im Rückblick",
         "expired": "Abgelaufen"
       }
+    },
+    "form": {
+      "select": "Auswählen",
+      "next": "Weiter",
+      "save": "Zu schützen"
+    },
+    "back": "Zurück",
+    "languages": {
+      "en": "Englisch",
+      "fr": "Französisch",
+      "es": "Spanisch",
+      "it": "Italienisch",
+      "nl": "Niederländisch",
+      "de": "Deutsch"
     }
   },
   "checks": {
@@ -93,48 +153,15 @@
       "title": "Agreement certificate"
     }
   },
-  "delete": "Löschen",
   "send_documents": "Zur Überprüfung senden",
   "verify_identity": "Identität überprüfen",
   "for": "für",
-  "select": "Auswählen",
-  "roles": "Rollen",
-  "beneficial_owner": "wirtschaftlicher Eigentümer",
-  "legal_representative": "Vertretungsberechtigte Person/Betriebsleiter",
   "individuals": "Person(en)",
   "companies": "Unternehmen",
-  "back": "Zurück",
-  "next": "Weiter",
-  "edit": "Bearbeiten",
-  "remove": "Entfernen",
-  "save": "Zu schützen",
-  "add_individual": "Person hinzufügen",
-  "search": "Unternehmen suchen",
   "countries": "Land",
-  "name": "Name",
-  "company_not_found": "Können Sie Ihr Unternehmen nicht finden?",
-  "fill_manually": "Details manuell ausfüllen",
   "upload_document": "Datei(en) auswählen",
   "upload_document_front": "Vorderseite hochladen",
   "upload_document_back": "Rückseite hochladen",
-  "verify_company_information_title": "Überprüfen Sie Ihre Firmendaten",
-  "en": "Englisch",
-  "fr": "Französisch",
-  "es": "Spanisch",
-  "it": "Italienisch",
-  "nl": "Niederländisch",
-  "de": "Deutsch",
-  "registration_number": "Registrierungsnummer",
-  "registration_date": "Erstellungsdatum",
-  "legal_form": "Rechtsform",
-  "first_name": "Vorname",
-  "last_name": "Familienname, Nachname",
-  "birth_date": "Geburtsdatum",
   "birth_country": "Geburtsland",
-  "country": "Land",
-  "street_address": "Adresse",
-  "street_address_2": "Adresse (Fortsetzung)",
-  "city": "Stadt",
-  "postal_code": "Postleitzahl",
-  "ownership_percentage": "Eigentumsprozentsatz"
+  "country": "Land"
 }

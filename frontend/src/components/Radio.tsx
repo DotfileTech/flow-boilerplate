@@ -1,29 +1,31 @@
 import {
+  RadioGroup,
+  Radio as ChakraRadio,
+  Stack,
+  FormLabel,
   FormControl,
   FormHelperText,
-  FormLabel,
-  Input,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
-type InputFormProps = {
+type RadioProps = {
   stepId: string;
   name: string;
   defaultValue: string;
   isRequired: boolean;
   hasHelper?: boolean;
-  type?: 'text' | 'date' | 'number';
+  options: string[];
   onChange: any;
 };
 
-const InputForm = (props: InputFormProps) => {
+const Radio = (props: RadioProps) => {
   const {
     stepId,
     name,
     defaultValue,
     isRequired,
     hasHelper = false,
-    type = 'text',
+    options,
     onChange,
   } = props;
 
@@ -31,21 +33,27 @@ const InputForm = (props: InputFormProps) => {
 
   return (
     <FormControl isRequired={isRequired}>
-      <FormLabel noOfLines={1}>{t(`steps.${stepId}.${name}.label`)}</FormLabel>
+      <FormLabel>{t(`steps.${stepId}.${name}.label`)}</FormLabel>
       {hasHelper && (
         <FormHelperText mt="0" mb="2">
           {t(`steps.${stepId}.${name}.helper`)}
         </FormHelperText>
       )}
-      <Input
+      <RadioGroup
+        onChange={(value) => onChange(name, value)}
         name={name}
-        type={type}
         defaultValue={defaultValue}
-        onChange={onChange}
-        maxW="400px"
-      />
+      >
+        <Stack direction="row">
+          {options.map((option: string) => (
+            <ChakraRadio key={option} value={option}>
+              {t(`steps.${stepId}.${name}.options.${option}`)}
+            </ChakraRadio>
+          ))}
+        </Stack>
+      </RadioGroup>
     </FormControl>
   );
 };
 
-export default InputForm;
+export default Radio;
