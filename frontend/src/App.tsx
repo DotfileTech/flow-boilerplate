@@ -10,7 +10,6 @@ import Header from './components/Header';
 import MobileHeader from './components/MobileHeader';
 import CompanySearch from './steps/CompanySearch';
 import CompaniesList from './steps/CompaniesList';
-import CustomRadio from './steps/CustomRadio';
 import CustomForm from './steps/CustomForm';
 import CompanyEdit from './steps/CompanyEdit';
 import IndividualEdit from './steps/IndividualEdit';
@@ -29,7 +28,7 @@ const AppContent = () => {
   const [caseId, setCaseId] = useState(
     searchParams.get('new') === 'true'
       ? undefined
-      : searchParams.get('caseId') || localStorage.getItem('caseId'),
+      : searchParams.get('caseId') || localStorage.getItem('caseId')
   );
 
   const email = searchParams.get('email');
@@ -86,7 +85,7 @@ const AppContent = () => {
       individuals,
       email,
       metadata,
-      externalId: searchParams.get('externalId')
+      externalId: searchParams.get('externalId'),
     });
     setCaseId(response.data.caseId);
     localStorage.setItem('caseId', response.data.caseId);
@@ -115,14 +114,14 @@ const AppContent = () => {
       };
 
       const response = await api.get(
-        `dotfile/companies?${new URLSearchParams(params).toString()}`,
+        `dotfile/companies?${new URLSearchParams(params).toString()}`
       );
 
       setAutoSearchDone(true);
 
       if (response.data.data.length === 0) {
-        setIsLoading(false)
-        setStep(step + 2)
+        setIsLoading(false);
+        setStep(step + 2);
       } else {
         setIsLoading(false);
         setCompanies(response.data.data);
@@ -181,7 +180,7 @@ const AppContent = () => {
     }
 
     setIndividualsValid(
-      !individuals.some((e: { isValid: boolean }) => !e.isValid),
+      !individuals.some((e: { isValid: boolean }) => !e.isValid)
     );
 
     setStep(step - 1);
@@ -269,27 +268,16 @@ const AppContent = () => {
   ];
 
   form.forEach((item: any) => {
-    let content;
-
-    if (item.type === 'radio') {
-      content = (
-        <CustomRadio
-          question={item.key}
-          choices={item.choices}
-          next={next}
-          changeHandlerMetadataCustom={changeHandlerMetadataCustom}
-        />
-      );
-    } else {
-      content = (
-        <CustomForm
-          metadata={metadata}
-          questions={item.questions}
-          changeHandlerMetadata={changeHandlerMetadata}
-          next={next}
-        />
-      );
-    }
+    const content = (
+      <CustomForm
+        stepId={item.key}
+        fields={item.fields}
+        metadata={metadata}
+        changeHandlerMetadata={changeHandlerMetadata}
+        changeHandlerMetadataCustom={changeHandlerMetadataCustom}
+        next={next}
+      />
+    );
 
     if (!item.after) {
       steps.unshift({
@@ -297,22 +285,20 @@ const AppContent = () => {
         content,
       });
     } else {
-      const index = steps.findIndex((element) => element.key === item.after) + 1;
+      const index =
+        steps.findIndex((element) => element.key === item.after) + 1;
       steps.splice(index, 0, {
         key: item.key,
         content,
       });
     }
-  })
+  });
 
   return (
     <Flex direction={{ base: 'column', md: 'row' }}>
       <MobileHeader />
       <Sidebar />
-      <Flex
-        width="100%"
-        ml={['0', '0', '25vw']}
-      >
+      <Flex width="100%" ml={['0', '0', '25vw']}>
         <Stack
           width="100%"
           maxW={{ base: 'auto', md: '880px' }}
@@ -342,4 +328,4 @@ const AppContent = () => {
 
 export default function App() {
   return <AppContent />;
-};
+}

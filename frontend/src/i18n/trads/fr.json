@@ -4,23 +4,66 @@
   },
   "steps": {
     "company_search": {
-      "title": "Aidez-nous à identifier votre entreprise"
+      "title": "Aidez-nous à identifier votre entreprise",
+      "name": {
+        "label": "Nom"
+      },
+      "button": "Chercher une entreprise"
     },
     "company_list": {
-      "title": "Sélectionnez votre entreprise"
+      "title": "Sélectionnez votre entreprise",
+      "not_found": "Vous ne trouvez pas votre entreprise ?",
+      "button": "Remplir les détails manuellement"
     },
     "company_edit": {
-      "title": "Vérifiez les informations de votre entreprise"
-    },
-    "custom_form": {
-      "title": "Informations additionnelles"
+      "title": "Vérifiez les informations de votre entreprise",
+      "name": {
+        "label": "Nom"
+      },
+      "registration_number": {
+        "label": "Numéro d'enregistrement"
+      },
+      "registration_date": {
+        "label": "Date de création"
+      },
+      "legal_form": {
+        "label": "Forme légale"
+      }
     },
     "individual_edit": {
-      "title": "Vérifiez ou completez les informations"
+      "title": "Vérifiez ou completez les informations",
+      "first_name": {
+        "label": "Prénom"
+      },
+      "last_name": {
+        "label": "Nom"
+      },
+      "birth_date": {
+        "label": "Date de naissance"
+      },
+      "street_address": {
+        "label": "Adresse ligne 1"
+      },
+      "street_address_2": {
+        "label": "Adresse ligne 2"
+      },
+      "postal_code": {
+        "label": "Code postal"
+      },
+      "city": {
+        "label": "Ville"
+      },
+      "roles": "Rôles",
+      "ownership_percentage": {
+        "label": "Pourcentage de détention"
+      }
     },
     "individuals_list": {
       "title": "Vérifiez ou complétez les représentants légaux et bénéficiaires effectifs de votre entreprise",
-      "company": "Bénéficiaires effectifs"
+      "missing_data": "A corriger",
+      "edit": "Éditer",
+      "delete": "Supprimer",
+      "add_individual": "Ajouter un individu"
     },
     "checks_list": {
       "title": "Aidez-nous à effectuer les vérifications nécessaires"
@@ -28,7 +71,10 @@
   },
   "domain": {
     "individual": {
-      "missing_data": "A corriger"
+      "roles": {
+        "beneficial_owner": "Bénéficiaire effectif",
+        "legal_representative": "Représentant légal"
+      }
     },
     "check": {
       "status": {
@@ -37,6 +83,20 @@
         "need_review": "En cours de vérification",
         "expired": "Expiré"
       }
+    },
+    "form": {
+      "select": "Sélectionner",
+      "next": "Suivant",
+      "save": "Sauvegarder"
+    },
+    "back": "Précédent",
+    "languages": {
+      "en": "Anglais",
+      "fr": "Français",
+      "it": "Italien",
+      "es": "Espagnol",
+      "nl": "Néerlandais",
+      "de": "Allemand"
     }
   },
   "checks": {
@@ -93,48 +153,15 @@
       "title": "Certificat d'agrément"
     }
   },
-  "delete": "Supprimer",
   "send_documents": "Envoyer pour vérification",
   "verify_identity": "Vérifier l'identité",
   "for": "pour",
-  "select": "Sélectionner",
-  "roles": "Rôles",
-  "beneficial_owner": "Bénéficiaire effectif",
-  "legal_representative": "Représentant légal",
   "individuals": "Individu(s)",
   "companies": "Entreprise",
-  "back": "Précédent",
-  "next": "Suivant",
-  "edit": "Éditer",
-  "remove": "Supprimer",
-  "save": "Sauvegarder",
-  "add_individual": "Ajouter un individu",
-  "search": "Chercher une entreprise",
   "countries": "Pays",
-  "name": "Nom",
-  "company_not_found": "Vous ne trouvez pas votre entreprise ?",
-  "fill_manually": "Remplir les détails manuellement",
   "upload_document": "Choisir un fichier",
   "upload_document_front": "Télécharger le Recto",
   "upload_document_back": "Télécharger le Verso",
-  "verify_company_information_title": "Vérifier ou compléter les informations de votre entreprise",
-  "en": "Anglais",
-  "fr": "Français",
-  "it": "Italien",
-  "es": "Espagnol",
-  "nl": "Néerlandais",
-  "de": "Allemand",
-  "registration_number": "Numéro d'enregistrement",
-  "registration_date": "Date de création",
-  "legal_form": "Forme légale",
-  "first_name": "Prénom",
-  "last_name": "Nom",
-  "birth_date": "Date de naissance",
   "birth_country": "Pays de naissance",
-  "country": "Pays",
-  "street_address": "Adresse ligne 1",
-  "street_address_2": "Adresse ligne 2",
-  "city": "Ville",
-  "postal_code": "Code postal",
-  "ownership_percentage": "Pourcentage de détention"
+  "country": "Pays"
 }

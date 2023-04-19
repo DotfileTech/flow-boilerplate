@@ -51,10 +51,10 @@ const CompanySearch = (props: any) => {
 
       <InputGroup size="md">
         <InputForm
-          pr="4.5rem"
+          stepId="company_search"
           type="text"
           isRequired
-          value={props.company?.name || ''}
+          defaultValue={props.company?.name || ''}
           onChange={props.changeHandler}
           name="name"
         />
@@ -68,7 +68,7 @@ const CompanySearch = (props: any) => {
           onClick={props.getCompanies}
           isDisabled={!formValid}
         >
-          {t('search')}
+          {t('steps.company_search.button')}
         </Button>
       </Box>
     </Stack>

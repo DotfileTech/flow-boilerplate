@@ -79,7 +79,7 @@ const IndividualsList = (props: any) => {
             <Spacer />
             {ubo.isValid === false && (
               <Tag colorScheme="yellow" mr={4} mt={{ base: '12px', md: '0' }}>
-                {t('domain.individual.missing_data')}
+                {t('steps.individuals_list.missing_data')}
               </Tag>
             )}
             <Show above="sm">
@@ -91,7 +91,7 @@ const IndividualsList = (props: any) => {
                   onClick={() => props.selectIndividual(i)}
                   variant="secondary"
                 >
-                  {t('edit')}
+                  {t('steps.individuals_list.edit')}
                 </Button>
                 <Button
                   leftIcon={<DeleteIcon />}
@@ -99,16 +99,17 @@ const IndividualsList = (props: any) => {
                   size="sl"
                   variant="secondary"
                 >
-                  {t('delete')}
+                  {t('steps.individuals_list.delete')}
                 </Button>
               </Box>
             </Show>
           </Flex>
-          {ubo.roles.map((role: any, j: number) => (
-            <Tag key={j} mt={4} mr={4}>
-              {t(role)}
-            </Tag>
-          ))}
+          {ubo.roles &&
+            ubo.roles.map((role: any, j: number) => (
+              <Tag key={j} mt={4} mr={4}>
+                {t(`domain.individual.roles.${role}`)}
+              </Tag>
+            ))}
           <Show below="sm">
             <Box mt={{ base: '12px', md: '0' }}>
               <Button
@@ -118,7 +119,7 @@ const IndividualsList = (props: any) => {
                 onClick={() => props.selectIndividual(i)}
                 variant="secondary"
               >
-                {t('edit')}
+                {t('steps.individuals_list.edit')}
               </Button>
               <Button
                 leftIcon={<DeleteIcon />}
@@ -126,7 +127,7 @@ const IndividualsList = (props: any) => {
                 size="sl"
                 variant="secondary"
               >
-                {t('delete')}
+                {t('steps.individuals_list.delete')}
               </Button>
             </Box>
           </Show>
@@ -138,7 +139,7 @@ const IndividualsList = (props: any) => {
           leftIcon={<PlusSquareIcon />}
           onClick={() => props.selectIndividual(null)}
         >
-          {t('add_individual')}
+          {t('steps.individuals_list.add_individual')}
         </Button>
       </Box>
       <Box>
@@ -147,7 +148,7 @@ const IndividualsList = (props: any) => {
           onClick={props.submit}
           isDisabled={props.individuals.length === 0 || !props.individualsValid}
         >
-          {t('next')}
+          {t('domain.form.next')}
         </Button>
       </Box>
     </Stack>

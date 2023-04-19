@@ -4,23 +4,66 @@
   },
   "steps": {
     "company_search": {
-      "title": "Aiutaci a identificare la tua azienda"
+      "title": "Aiutaci a identificare la tua azienda",
+      "name": {
+        "label": "Nome"
+      },
+      "button": "Cerca azienda"
     },
     "company_list": {
-      "title": "Seleziona la tua azienda"
+      "title": "Seleziona la tua azienda",
+      "not_found": "Non riesci a trovare la tua azienda?",
+      "button": "Compila i dettagli manualmente"
     },
     "company_edit": {
-      "title": "Verifica le informazioni sulla tua azienda"
-    },
-    "custom_form": {
-      "title": "Informazioni supplementari"
+      "title": "Verifica le informazioni sulla tua azienda",
+      "name": {
+        "label": "Nome"
+      },
+      "registration_number": {
+        "label": "Codice REA"
+      },
+      "registration_date": {
+        "label": "Data di creazione"
+      },
+      "legal_form": {
+        "label": "Forma giuridica"
+      }
     },
     "individual_edit": {
-      "title": "Verifica le informazioni"
+      "title": "Verifica le informazioni",
+      "first_name": {
+        "label": "Nome"
+      },
+      "last_name": {
+        "label": "Cognome"
+      },
+      "birth_date": {
+        "label": "Data di nascita"
+      },
+      "street_address": {
+        "label": "Indirizzo 1"
+      },
+      "street_address_2": {
+        "label": "Indirizzo 2"
+      },
+      "postal_code": {
+        "label": "CAP"
+      },
+      "city": {
+        "label": "Città"
+      },
+      "roles": "Ruoli",
+      "ownership_percentage": {
+        "label": "Percentuale di proprietà"
+      }
     },
     "individuals_list": {
       "title": "Verifica l'elenco delle persone",
-      "company": "Beneficiari effettivi e azionisti"
+      "missing_data": "Per favore Correggi",
+      "edit": "Modificare",
+      "delete": "Eliminare",
+      "add_individual": "Aggiungi individuo"
     },
     "checks_list": {
       "title": "Aiutaci ad effettuare i controlli necessari"
@@ -28,7 +71,10 @@
   },
   "domain": {
     "individual": {
-      "missing_data": "Per favore Correggi"
+      "roles": {
+        "beneficial_owner": "beneficiario effettivo",
+        "legal_representative": "rappresentante legale"
+      }
     },
     "check": {
       "status": {
@@ -37,6 +83,20 @@
         "need_review": "In revisione",
         "expired": "Scaduto"
       }
+    },
+    "form": {
+      "select": "Selezionare",
+      "next": "Prossimo",
+      "save": "Salvaguardare"
+    },
+    "back": "Precedente",
+    "languages": {
+      "en": "Inglese",
+      "fr": "Francese",
+      "it": "Italiano",
+      "es": "Spagnolo",
+      "de": "Tedesco",
+      "nl": "Olandese"
     }
   },
   "checks": {
@@ -93,48 +153,15 @@
       "title": "Agreement certificate"
     }
   },
-  "delete": "Eliminare",
   "send_documents": "Invia per la revisione",
   "verify_identity": "Verifica identità",
   "for": "per",
-  "select": "Selezionare",
-  "roles": "Ruoli",
-  "beneficial_owner": "beneficiario effettivo",
-  "legal_representative": "rappresentante legale",
   "individuals": "Individui",
   "companies": "Azienda",
-  "back": "Precedente",
-  "next": "Prossimo",
-  "edit": "Modificare",
-  "remove": "Rimuovere",
-  "save": "Salvaguardare",
-  "add_individual": "Aggiungi individuo",
-  "search": "Cerca azienda",
   "countries": "Paese",
-  "name": "Nome",
-  "company_not_found": "Non riesci a trovare la tua azienda?",
-  "fill_manually": "Compila i dettagli manualmente",
   "upload_document": "Scegliere i/il file",
   "upload_document_front": "Carica il fronte",
   "upload_document_back": "Carica il retro",
-  "verify_company_information_title": "Verifica i dati della tua azienda",
-  "en": "Inglese",
-  "fr": "Francese",
-  "it": "Italiano",
-  "es": "Spagnolo",
-  "de": "Tedesco",
-  "nl": "Olandese",
-  "registration_number": "Codice REA",
-  "registration_date": "Data di creazione",
-  "legal_form": "Forma giuridica",
-  "first_name": "Nome",
-  "last_name": "Cognome",
-  "birth_date": "Data di nascita",
   "birth_country": "Paese di nascita",
-  "country": "Paese",
-  "street_address": "Indirizzo",
-  "street_address_2": "Indirizzo 2",
-  "city": "Città",
-  "postal_code": "CAP",
-  "ownership_percentage": "Percentuale di proprietà"
+  "country": "Paese"
 }
