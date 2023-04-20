@@ -59,7 +59,10 @@ const languageDetector = new LanguageDetector({
   cookieOptions: { path: '/', sameSite: 'strict' },
 });
 
-i18next.use(languageDetector).use(initReactI18next).init({
-  debug: process.env.REACT_APP_ENV === 'development',
-  resources,
-});
+i18next
+  .use(languageDetector)
+  .use(initReactI18next)
+  .init({
+    debug: process.env.REACT_APP_ENV === 'development',
+    resources,
+  });

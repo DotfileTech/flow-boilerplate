@@ -40,17 +40,25 @@ const CompanyEdit = (props: any) => {
 
         {companyData
           .filter((company) => company.enabled)
-          .map((company: any) => (
-            <InputForm
-              key={company.id}
-              stepId="company_edit"
-              defaultValue={props.company[company.id] || ''}
-              onChange={props.changeHandler}
-              name={company.id}
-              isRequired={company.required}
-              type={company.type}
-            />
-          ))}
+          .map((company: any) => {
+            const defaultValue = company.nested
+              ? props.company[company.nested]
+                ? props.company[company.nested][company.id]
+                : ''
+              : props.company[company.id];
+
+            return (
+              <InputForm
+                key={company.id}
+                stepId="company_edit"
+                defaultValue={defaultValue || ''}
+                onChange={props.changeHandler}
+                name={company.id}
+                isRequired={company.required}
+                type={company.type}
+              />
+            );
+          })}
 
         <Box>
           <Button variant="next" onClick={props.next} isDisabled={!formValid}>

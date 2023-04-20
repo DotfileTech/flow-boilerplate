@@ -93,7 +93,7 @@ class DotfileController {
 
       for (const individual of company.merged_individuals) {
         individual.street_address = individual.address.street_address;
-        individual.street_address2 = individual.address.street_address_2;
+        individual.street_address_2 = individual.address.street_address_2;
         individual.postal_code = individual.address.postal_code;
         individual.city = individual.address.city;
       }
@@ -169,7 +169,7 @@ class DotfileController {
             birth_place: individual.birth_place,
             address: {
               street_address: individual.street_address,
-              street_address2: individual.street_address2,
+              street_address_2: individual.street_address_2,
               postal_code: individual.postal_code,
               city: individual.city,
               state: individual.state,
@@ -206,7 +206,7 @@ class DotfileController {
           legal_form: company.legal_form,
           address: {
             street_address: company.street_address,
-            street_address2: company.street_address2,
+            street_address_2: company.street_address_2,
             postal_code: company.postal_code,
             city: company.city,
             state: company.state,

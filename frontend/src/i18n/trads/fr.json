@@ -43,6 +43,21 @@
       },
       "city": {
         "label": "Ville"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
+      "tax_identification_number": {
+        "label": "Numéro de TVA"
+      },
+      "website_url": {
+        "label": "Site web"
+      },
+      "employer_identification_number": {
+        "label": "Numéro d'employeur"
       }
     },
     "individual_edit": {
