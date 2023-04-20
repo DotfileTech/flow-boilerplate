@@ -315,7 +315,11 @@ const AppContent = () => {
               {t(`steps.${steps[step].key}.title`)}
             </Header>
             {i18n.exists(`steps.${steps[step].key}.description`) && (
-              <Text>{t(`steps.${steps[step].key}.description`)}</Text>
+              <Text
+                dangerouslySetInnerHTML={{
+                  __html: t(`steps.${steps[step].key}.description`),
+                }}
+              ></Text>
             )}
             {isLoading && <LoadingSpinner />}
             {!isLoading && steps[step].content}

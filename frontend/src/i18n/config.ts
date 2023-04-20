@@ -68,4 +68,7 @@ i18next
     lng: languages.length === 1 ? languages[0] : undefined,
     fallbackLng: 'en',
     resources,
+    react: {
+      transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p', 'a'],
+    },
   });
