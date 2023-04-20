@@ -21,7 +21,9 @@ const Header = (props: any) => {
             {t('domain.back')}
           </Button>
         )}
-        <Progress maxWidth="80vv" value={props.progress} />
+        {props.progress <= 100 && (
+          <Progress maxWidth="80vv" value={props.progress} />
+        )}
       </Box>
       <Title>{props.children}</Title>
     </Stack>

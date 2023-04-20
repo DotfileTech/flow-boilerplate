@@ -309,7 +309,7 @@ const AppContent = () => {
           <Stack spacing={4}>
             <Header
               back={back}
-              progress={(step / steps.length) * 100}
+              progress={(step / (steps.length - 2)) * 100}
               hasBackButton={step !== 0 && step !== steps.length - 1}
             >
               {t(`steps.${steps[step].key}.title`)}
