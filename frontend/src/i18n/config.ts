@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+import { languages } from '../config/languages';
 import addEn from '../config/trads/en.json';
 import addFr from '../config/trads/fr.json';
 import addDe from '../config/trads/de.json';
@@ -64,5 +65,7 @@ i18next
   .use(initReactI18next)
   .init({
     debug: process.env.REACT_APP_ENV === 'development',
+    lng: languages.length === 1 ? languages[0] : undefined,
+    fallbackLng: 'en',
     resources,
   });

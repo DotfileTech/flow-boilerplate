@@ -2,7 +2,7 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import { Trans } from 'react-i18next';
 
 import { ReactComponent as Logo } from '../config/theme/logo.svg';
-import { languages } from '../config/languages'
+import { languages } from '../config/languages';
 import SelectLang from './SelectLang';
 import { ReactComponent as DotfileLogo } from './logos/dotfile.svg';
 
@@ -53,9 +53,7 @@ const Sidebar = () => {
         </Text>
         <DotfileLogo />
       </Flex>
-      {languages.length > 1 && (
-        <SelectLang />
-      )}
+      {languages.length > 1 && <SelectLang />}
     </Flex>
   );
 };
