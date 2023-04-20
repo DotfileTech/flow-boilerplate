@@ -21,7 +21,6 @@ export const individualData: IndividualData[] = [
   },
   {
     id: 'email',
-    label: 'Email address',
     type: 'email',
     required: true,
     enabled: true,

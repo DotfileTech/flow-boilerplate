@@ -1,67 +1,109 @@
 {
-  "steps": {
-    "company_search": {
-      "title": "Help us identify your business"
-    },
-    "company_list": {
-      "title": "Select your company"
-    },
-    "company_edit": {
-      "title": "Verify your business information"
-    },
-    "custom_form": {
-      "title": "Additional information"
-    },
-    "individual_edit": {
-      "title": "Check the information"
-    },
-    "individuals_list": {
-      "title": "Check the list of individuals attached to your company",
-      "company": "Beneficial owners and shareholders"
-    },
-    "checks_list": {
-      "title": "Help us carry out the necessary checks"
-    },
-    "company_structure": {
-      "title": "What is the form of your company?",
-      "private_company": "Private company",
-      "public_company": "Public company",
-      "association": "Association",
-      "self_employed": "Self-employed"
-    },
-    "activity_outside_eu": {
-      "title": "Does your company have a commercial activity outside the EU?",
-      "yes": "Yes, it has an activity outside of EU",
-      "no": "No, it only has activity in the EU"
-    }
-  },
   "brand": {
     "title": "The <1>community-led platform</1> for private market investments"
   },
-  "checks": {
-    "id_document": {
-      "title": "Identity document",
-      "description": "Please provide..."
+  "steps": {
+    "disclaimer": {
+      "title": "Before continuing, please pay attention to the following",
+      "description": "You will need the company’s incorporation certificate (KBIS, BCE extract, ...), the latest bylaws, the diagram of the cap table and the latest financial statements. For more information see here (lien à embed) https://docs.roundtable.eu/en/articles/6479467-how-do-i-perform-my-kyb-check All personal information is confidential, is only used for Anti-Money Laundering purposes, and won’t be shared with your co-investors."
     },
-    "id_verification": {
-      "title": "Identity Verification",
-      "description": "Please provide..."
+    "company_search": {
+      "title": "Help us identify your business",
+      "name": {
+        "label": "Name"
+      },
+      "button": "Search"
     },
-    "proof_of_address": {
-      "title": "Residence certificate",
-      "description": "Please provide..."
+    "company_list": {
+      "title": "Select your company",
+      "not_found": "You cannot find your company ?",
+      "button": "Fill details manually"
     },
-    "driving_license": {
-      "title": "Driver's license",
-      "description": "Please provide..."
+    "company_edit": {
+      "title": "Verify your business information",
+      "name": {
+        "label": "Name"
+      },
+      "registration_number": {
+        "label": "Registration number"
+      },
+      "registration_date": {
+        "label": "Registration date"
+      },
+      "legal_form": {
+        "label": "Legal form"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "HQ address line 1"
+      },
+      "street_address_2": {
+        "label": "HQ address line 2"
+      },
+      "postal_code": {
+        "label": "ZIP code"
+      },
+      "city": {
+        "label": "City"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
+      "tax_identification_number": {
+        "label": "VAT number"
+      },
+      "website_url": {
+        "label": "Website"
+      },
+      "employer_identification_number": {
+        "label": "Employer ID"
+      }
     },
-    "social_security_card": {
-      "title": "Vital card",
-      "description": "Please provide..."
+    "individual_edit": {
+      "title": "Check the information",
+      "first_name": {
+        "label": "First name"
+      },
+      "last_name": {
+        "label": "Last name"
+      },
+      "birth_date": {
+        "label": "Birth date"
+      },
+      "email": {
+        "label": "Email address"
+      },
+      "street_address": {
+        "label": "Address line 1"
+      },
+      "street_address_2": {
+        "label": "Address line 2"
+      },
+      "postal_code": {
+        "label": "Postal code"
+      },
+      "city": {
+        "label": "City"
+      },
+      "roles": "Roles",
+      "ownership_percentage": {
+        "label": "Ownership percentage"
+      }
     },
-    "ubo_registry_extract": {
-      "title": "Beneficial owners certificate",
-      "description": "Please provide..."
+    "individuals_list": {
+      "title": "Check the list of individuals attached to your company",
+      "missing_data": "Please correct",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add_individual": "Add individual"
+    },
+    "checks_list": {
+      "title": "Help us carry out the necessary checks"
     }
   }
 }

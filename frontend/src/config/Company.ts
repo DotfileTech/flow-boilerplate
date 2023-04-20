@@ -28,7 +28,7 @@ export const companyData: CompanyData[] = [
   },
   {
     id: 'legal_form',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -46,26 +46,11 @@ export const companyData: CompanyData[] = [
     id: 'registration_date',
     type: 'date',
     required: false,
-    enabled: true,
-  },{
-    id: 'vat_number',
-    label: 'VAT Number',
-    required: true,
-    enabled: true,
-  },{
-    id: 'hq_address',
-    label: 'HQ Address',
-    required: true,
-    enabled: true,
-  },{
-    id: 'hq_zip_code',
-    label: 'ZIP Code',
-    required: true,
-    enabled: true,
-  },{
-    id: 'hq_city',
-    label: 'HQ City',
-    required: true,
+    enabled: false,
+  },
+  {
+    id: 'tax_identification_number',
+    required: false,
     enabled: true,
   },
   {
@@ -99,7 +84,7 @@ export const companyData: CompanyData[] = [
   {
     id: 'street_address',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -111,13 +96,13 @@ export const companyData: CompanyData[] = [
   {
     id: 'postal_code',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'city',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -131,12 +116,33 @@ export const companyData: CompanyData[] = [
     id: 'iban',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'bic',
     nested: 'banking_information',
     required: false,
+<<<<<<< HEAD
     enabled: true,
+=======
+    enabled: false,
+  },
+  {
+    id: 'website_url',
+    type: 'url',
+    required: false,
+    enabled: false,
+  },
+  {
+    id: 'employer_identification_number',
+    required: false,
+    enabled: false,
+  },
+  {
+    id: 'code',
+    nested: 'classifications',
+    required: false,
+    enabled: false,
+>>>>>>> 1dcf1b3 (🔀 Rebase main with new features)
   },
 ];
