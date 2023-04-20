@@ -20,12 +20,6 @@ export const individualData: IndividualData[] = [
     enabled: true,
   },
   {
-    id: 'email',
-    type: 'email',
-    required: true,
-    enabled: true,
-  },
-  {
     id: 'maiden_name',
     required: false,
     enabled: true,
@@ -34,14 +28,14 @@ export const individualData: IndividualData[] = [
     // This field is mandatory to create an individual with the "applicant" role
     id: 'email',
     type: 'email',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'phone_number',
     type: 'tel',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual in a KYB
@@ -64,7 +58,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'position',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'tax_identification_number',
@@ -74,7 +68,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'social_security_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'birth_date',
@@ -97,7 +91,7 @@ export const individualData: IndividualData[] = [
     id: 'street_address',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'street_address_2',
@@ -122,18 +116,18 @@ export const individualData: IndividualData[] = [
     nested: 'address',
     type: 'country',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'iban',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'bic',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
 ];

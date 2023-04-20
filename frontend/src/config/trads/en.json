@@ -93,10 +93,14 @@
       "roles": "Roles",
       "ownership_percentage": {
         "label": "Ownership percentage"
+      },
+      "tax_identification_number": {
+        "label": "Tax ID"
       }
     },
     "individuals_list": {
       "title": "Check the list of individuals attached to your company",
+      "description": "UBOs have more than 10% of equity or management. How to find corporate UBOs in Europe? (https://docs.roundtable.eu/en/articles/6570037-how-to-find-corporate-ubos-in-europe)",
       "missing_data": "Please correct",
       "edit": "Edit",
       "delete": "Delete",
@@ -104,6 +108,61 @@
     },
     "checks_list": {
       "title": "Help us carry out the necessary checks"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identity document",
+      "description": "Please provide a color, unexpired, framed, untrimmed and clear document of the identity card (front / back) or passport (double inside page with the signature)"
+    },
+    "id_verification": {
+      "title": "Identity Verification"
+    },
+    "proof_of_address": {
+      "title": "Residence certificate",
+      "description": "E.g. utility bill less than 3 months old or bank statement"
+    },
+    "driving_license": {
+      "title": "Driver's license"
+    },
+    "social_security_card": {
+      "title": "Vital card"
+    },
+    "ubo_registry_extract": {
+      "title": "Beneficial owners certificate"
+    },
+    "articles_of_association": {
+      "title": "Bylaws"
+    },
+    "registration_certificate": {
+      "title": "Registration certificate"
+    },
+    "financial_statements": {
+      "title": "Financial statements"
+    },
+    "bank_details": {
+      "title": "Bank details"
+    },
+    "proof_of_insurance": {
+      "title": "Proof of insurance"
+    },
+    "visa": {
+      "title": "Visa"
+    },
+    "birth_certificate": {
+      "title": "Birth certificate"
+    },
+    "vehicle_registration_certificate": {
+      "title": "Vehicle registration certificate"
+    },
+    "criminal_record_extract": {
+      "title": "Criminal record extract"
+    },
+    "tax_notice": {
+      "title": "Tax notice"
+    },
+    "agreement_certificate": {
+      "title": "Agreement certificate"
     }
   }
 }
