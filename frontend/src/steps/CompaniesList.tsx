@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 const CompanySearch = (props: any) => {
   const { t } = useTranslation();
+  console.log(props.companies);
 
   return (
     <Stack spacing={10} pt={2}>
@@ -15,10 +16,16 @@ const CompanySearch = (props: any) => {
             onClick={() => props.selectCompany(company.search_ref)}
             justifyContent="flex"
             isTruncated
+            h="auto"
           >
-            <Radio value="1">
-              <Text isTruncated>
-                {company.name} - {company.registration_number}
+            <Radio value="1" py="3">
+              <Text textAlign="left" isTruncated>
+                {company.name}{' '}
+                {company.address.postal_code &&
+                  `(${company.address.postal_code})`}{' '}
+              </Text>
+              <Text color="gray.500" textAlign="left">
+                {company.registration_number}
               </Text>
             </Radio>
           </Button>
