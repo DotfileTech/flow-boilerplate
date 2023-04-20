@@ -5,7 +5,7 @@
   "steps": {
     "disclaimer": {
       "title": "Before continuing, please pay attention to the following",
-      "description": "You will need the company’s incorporation certificate (KBIS, BCE extract, ...), the latest bylaws, the diagram of the cap table and the latest financial statements. For more information see here (lien à embed) https://docs.roundtable.eu/en/articles/6479467-how-do-i-perform-my-kyb-check All personal information is confidential, is only used for Anti-Money Laundering purposes, and won’t be shared with your co-investors."
+      "description": "You will need the company’s incorporation certificate (KBIS, BCE extract, ...), the latest bylaws, the diagram of the cap table and the latest financial statements. For more information see <a href='https://docs.roundtable.eu/en/articles/6479467-how-do-i-perform-my-kyb-check' target='_blank'>here</a>.<br> All personal information is confidential, is only used for Anti-Money Laundering purposes, and won’t be shared with your co-investors."
     },
     "company_search": {
       "title": "Help us identify your business",
@@ -100,14 +100,15 @@
     },
     "individuals_list": {
       "title": "Check the list of individuals attached to your company",
-      "description": "UBOs have more than 10% of equity or management. How to find corporate UBOs in Europe? (https://docs.roundtable.eu/en/articles/6570037-how-to-find-corporate-ubos-in-europe)",
+      "description": "UBOs have more than 10% of equity or management.<br> <a href='https://docs.roundtable.eu/en/articles/6570037-how-to-find-corporate-ubos-in-europe' target='_blank'>How to find corporate UBOs in Europe?</a>",
       "missing_data": "Please correct",
       "edit": "Edit",
       "delete": "Delete",
       "add_individual": "Add individual"
     },
     "checks_list": {
-      "title": "Help us carry out the necessary checks"
+      "title": "Help us carry out the necessary checks",
+      "description": "Please proceed with the necessary verifications listed below.<br> Our team will analyze your data and keep you informed about the outcome of your case."
     }
   },
   "checks": {
