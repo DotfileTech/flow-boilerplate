@@ -14,6 +14,19 @@ export const stepsConfig: {
 }[] = [
   {
     key: 'company_structure',
+    fields: [
+      {
+        id: 'company_form',
+        type: 'select',
+        isRequired: true,
+        options: [
+          'private_company',
+          'public_company',
+          'association',
+          'self_employed',
+        ],
+      },
+    ],
   },
   {
     key: 'company_search',
@@ -23,9 +36,6 @@ export const stepsConfig: {
   },
   {
     key: 'company_edit',
-  },
-  {
-    key: 'additional_data',
   },
   {
     key: 'individuals_list',

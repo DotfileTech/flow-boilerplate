@@ -1,1 +1,157 @@
-{}
+{
+  "brand": {
+    "title": "De geïntegreerde oplossing voor zakelijk onkostenbeheer"
+  },
+  "steps": {
+    "company_form": {
+      "title": "",
+      "company_form": {
+        "label": "Wat is uw bedrijfsvorm?",
+        "options": {
+          "private_company": "Besloten vennootschap",
+          "public_company": "Naamloze vennootschap",
+          "association": "Vereniging",
+          "self_employed": "Zelfstandig ondernemer"
+        }
+      }
+    },
+    "company_search": {
+      "title": "Help ons uw bedrijf te identificeren",
+      "name": {
+        "label": "Naam"
+      },
+      "button": "Zoek bedrijf"
+    },
+    "company_list": {
+      "title": "Selecteer uw bedrijf",
+      "not_found": "Kunt u uw bedrijf niet vinden?",
+      "button": "Vul gegevens handmatig in"
+    },
+    "company_edit": {
+      "title": "Controleer uw bedrijfsgegevens",
+      "name": {
+        "label": "Naam"
+      },
+      "registration_number": {
+        "label": "Registratie nummer"
+      },
+      "registration_date": {
+        "label": "Aanmaakdatum"
+      },
+      "legal_form": {
+        "label": "Wettelijk document"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "Adres 1"
+      },
+      "street_address_2": {
+        "label": "Adres 2"
+      },
+      "postal_code": {
+        "label": "Postcode"
+      },
+      "city": {
+        "label": "Stad"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
+      "tax_identification_number": {
+        "label": "Tax ID"
+      },
+      "website_url": {
+        "label": "Website"
+      },
+      "employer_identification_number": {
+        "label": "Employer ID"
+      }
+    },
+    "individual_edit": {
+      "title": "Controleer de informatie",
+      "first_name": {
+        "label": "Voornaam"
+      },
+      "last_name": {
+        "label": "Achternaam"
+      },
+      "birth_date": {
+        "label": "Geboortedatum"
+      },
+      "street_address": {
+        "label": "Adres 1"
+      },
+      "street_address_2": {
+        "label": "Adres 2"
+      },
+      "postal_code": {
+        "label": "Postcode"
+      },
+      "city": {
+        "label": "Stad"
+      },
+      "roles": "Rollen",
+      "ownership_percentage": {
+        "label": "Eigendomspercentage"
+      }
+    },
+    "individuals_list": {
+      "title": "Controleer uw personenlijst",
+      "description": "We hebben documenten nodig voor elk van de uiteindelijke begunstigden van het bedrijf, evenals voor de wettelijke vertegenwoordiger die de opening van de Mooncard-rekening aanvraagt.<br/> Een uiteindelijk gerechtigde is een persoon die meer dan 25% van het kapitaal van de onderneming bezit.<br/> Als deze personen niet in de onderstaande lijst voorkomen, verzoeken wij u hun contactgegevens door te geven.",
+      "missing_data": "Gelieve te corrigeren",
+      "edit": "Bewerking",
+      "delete": "Verwijderen",
+      "add_individual": "Individueel toevoegen"
+    },
+    "checks_list": {
+      "title": "Help ons de nodige controles uit te voeren"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identiteitsbewijs",
+      "description": "Geef een kleur, niet-verlopen, ingelijst, niet bijgesneden en duidelijk document van de identiteitskaart (voor- / achterkant) of paspoort (dubbele binnenpagina met de handtekening)"
+    },
+    "id_verification": {
+      "title": "Identiteit verificatie",
+      "description": "Geef een document in kleur op, niet verlopen, niet bijgesneden, niet wazig."
+    },
+    "proof_of_address": {
+      "title": "bewijs van verblijf",
+      "description": "Gelieve een document in kleur te verstrekken, gedateerd minder dan 3 maanden geleden, ingelijst en duidelijk (vb.: laatste aanslagbiljet inkomstenbelasting, alleen factuur vaste lijn of box telecommunicatie, energie- en waterrekening, kwitantie of huurfactuur, enz.)"
+    },
+    "driving_license": {
+      "title": "Rijbewijs",
+      "description": "Geef een document in kleur op, niet verlopen, niet bijgesneden, niet wazig."
+    },
+    "social_security_card": {
+      "title": "Vitale kaart",
+      "description": "Geef een document in kleur op, niet verlopen, niet bijgesneden, niet wazig."
+    },
+    "ubo_registry_extract": {
+      "title": "Certificaat uiteindelijk gerechtigden",
+      "description": "Gelieve een document in kleur aan te leveren, niet bijgesneden, niet wazig."
+    },
+    "bank_details": { "title": "Bank details" },
+    "articles_of_association": { "title": "Statuten" },
+    "registration_certificate": { "title": "Registratie certificaat" },
+    "financial_statements": { "title": "Financial statements" },
+    "agreement_certificate": { "title": "Agreement certificate" },
+    "proof_of_insurance": { "title": "Proof of insurance" },
+    "birth_certificate": { "title": "Birth certificate" },
+    "vehicle_registration_certificate": { "title": "Vehicle registration certificate" },
+    "criminal_record_extract": { "title": "Criminal record extract" },
+    "tax_notice": { "title": "Tax notice" },
+    "visa": { "title": "Visa" },
+    "f791c550-7735-4c20-8131-6ff21a92da1e": { "title": "Annual accounts for the past year" },
+    "1c04b725-eeb3-4948-a1b6-cbe795d3bb43": { "title": "IBAN" },
+    "0d601ff7-43a8-42be-b9a3-c2cac28285b7": { "title": "SIRENE Extract" },
+    "55a34ef8-252d-4e4f-bed6-b09b81b5ecfd": { "title": "Minutes of last elections" },
+    "1721a398-147f-46eb-843c-a95e775afe0f": { "title": "Proof of registration" }
+  }
+}

@@ -1,1 +1,157 @@
-{}
+{
+  "brand": {
+    "title": "La soluzione completa per la gestione delle spese aziendali"
+  },
+  "steps": {
+    "company_form": {
+      "title": "",
+      "company_form": {
+        "label": "Qual è la forma giuridica della tua azienda?",
+        "options": {
+          "private_company": "Società a Responsabilità Limitata",
+          "public_company": "Società per Azioni",
+          "association": "Associazione",
+          "self_employed": "Lavoratore autonomo"
+        }
+      }
+    },
+    "company_search": {
+      "title": "Aiutaci a identificare la tua azienda",
+      "name": {
+        "label": "Nome"
+      },
+      "button": "Cerca azienda"
+    },
+    "company_list": {
+      "title": "Seleziona la tua azienda",
+      "not_found": "Non riesci a trovare la tua azienda?",
+      "button": "Compila i dettagli manualmente"
+    },
+    "company_edit": {
+      "title": "Verifica le informazioni sulla tua azienda",
+      "name": {
+        "label": "Nome"
+      },
+      "registration_number": {
+        "label": "Codice REA"
+      },
+      "registration_date": {
+        "label": "Data di creazione"
+      },
+      "legal_form": {
+        "label": "Forma giuridica"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "Indirizzo 1"
+      },
+      "street_address_2": {
+        "label": "Indirizzo 2"
+      },
+      "postal_code": {
+        "label": "CAP"
+      },
+      "city": {
+        "label": "Città"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
+      "tax_identification_number": {
+        "label": "Tax ID"
+      },
+      "website_url": {
+        "label": "Website"
+      },
+      "employer_identification_number": {
+        "label": "Employer ID"
+      }
+    },
+    "individual_edit": {
+      "title": "Verifica le informazioni",
+      "first_name": {
+        "label": "Nome"
+      },
+      "last_name": {
+        "label": "Cognome"
+      },
+      "birth_date": {
+        "label": "Data di nascita"
+      },
+      "street_address": {
+        "label": "Indirizzo 1"
+      },
+      "street_address_2": {
+        "label": "Indirizzo 2"
+      },
+      "postal_code": {
+        "label": "CAP"
+      },
+      "city": {
+        "label": "Città"
+      },
+      "roles": "Ruoli",
+      "ownership_percentage": {
+        "label": "Percentuale di proprietà"
+      }
+    },
+    "individuals_list": {
+      "title": "Verifica l'elenco delle persone",
+      "description": "Avremo bisogno di documenti per ciascuno dei titolari effettivi della società, nonché per il rappresentante legale che richiede l'apertura del conto Mooncard.<br/> Un beneficiario effettivo è una persona che detiene più del 25% del capitale della società.<br/> Se queste persone non compaiono nell'elenco sottostante, ti preghiamo di fornirci i loro recapiti.",
+      "missing_data": "Per favore Correggi",
+      "edit": "Modificare",
+      "delete": "Eliminare",
+      "add_individual": "Aggiungi individuo"
+    },
+    "checks_list": {
+      "title": "Aiutaci ad effettuare i controlli necessari"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Documento di identità",
+      "description": "Si prega di fornire un documento a colori, non scaduto, incorniciato, non rifilato e chiaro della carta d'identità (fronte/retro) o del passaporto (doppia pagina interna con la firma)"
+    },
+    "id_verification": {
+      "title": "Verifica dell'identità",
+      "description": "Fornisci un documento a colori, non scaduto, non ritagliato, non sfocato."
+    },
+    "proof_of_address": {
+      "title": "Certificato di residenza",
+      "description": "Si prega di fornire un documento a colori, datato meno di 3 mesi fa, incorniciato e chiaro (es: ultima cartella esattoriale, bolletta solo telefonia fissa o box, bolletta energia e acqua, ricevuta o fattura affitto, ecc.)"
+    },
+    "driving_license": {
+      "title": "Patente di guida",
+      "description": "Fornisci un documento a colori, non scaduto, non ritagliato, non sfocato."
+    },
+    "social_security_card": {
+      "title": "Tessera sanitaria",
+      "description": "Fornisci un documento a colori, non scaduto, non ritagliato, non sfocato."
+    },
+    "ubo_registry_extract": {
+      "title": "Certificato di beneficiari effettivi",
+      "description": "Fornisci un documento a colori, non ritagliato, non sfocato."
+    },
+    "bank_details": { "title": "Bank details" },
+    "articles_of_association": { "title": "Statuto" },
+    "registration_certificate": { "title": "Certificato di registrazione" },
+    "financial_statements": { "title": "Financial statements" },
+    "agreement_certificate": { "title": "Agreement certificate" },
+    "proof_of_insurance": { "title": "Proof of insurance" },
+    "birth_certificate": { "title": "Birth certificate" },
+    "vehicle_registration_certificate": { "title": "Vehicle registration certificate" },
+    "criminal_record_extract": { "title": "Criminal record extract" },
+    "tax_notice": { "title": "Tax notice" },
+    "visa": { "title": "Visa" },
+    "f791c550-7735-4c20-8131-6ff21a92da1e": { "title": "Annual accounts for the past year" },
+    "1c04b725-eeb3-4948-a1b6-cbe795d3bb43": { "title": "IBAN" },
+    "0d601ff7-43a8-42be-b9a3-c2cac28285b7": { "title": "SIRENE Extract" },
+    "55a34ef8-252d-4e4f-bed6-b09b81b5ecfd": { "title": "Minutes of last elections" },
+    "1721a398-147f-46eb-843c-a95e775afe0f": { "title": "Proof of registration" }
+  }
+}

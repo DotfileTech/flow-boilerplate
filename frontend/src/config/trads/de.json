@@ -1,1 +1,157 @@
-{}
+{
+  "brand": {
+    "title": "Die integrierte Lösung zur Verwaltung von Geschäftsausgaben"
+  },
+  "steps": {
+    "company_form": {
+      "title": "",
+      "company_form": {
+        "label": "Welche Gesellschaftsform hat Ihr Unternehmen?",
+        "options": {
+          "private_company": "Privatunternehmen",
+          "public_company": "Öffentliches Unternehmen",
+          "association": "Verein",
+          "self_employed": "Selbstständig"
+        }
+      }
+    },
+    "company_search": {
+      "title": "Helfen Sie uns, Ihr Unternehmen zu identifizieren",
+      "name": {
+        "label": "Name"
+      },
+      "button": "Unternehmen suchen"
+    },
+    "company_list": {
+      "title": "Wählen Sie Ihr Unternehmen aus",
+      "not_found": "Können Sie Ihr Unternehmen nicht finden?",
+      "button": "Details manuell ausfüllen"
+    },
+    "company_edit": {
+      "title": "Überprüfen Sie die Informationen Ihres Unternehmens",
+      "name": {
+        "label": "Name"
+      },
+      "registration_number": {
+        "label": "Registrierungsnummer"
+      },
+      "registration_date": {
+        "label": "Erstellungsdatum"
+      },
+      "legal_form": {
+        "label": "Rechtsform"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "Adresse"
+      },
+      "street_address_2": {
+        "label": "Adresse (Fortsetzung)"
+      },
+      "postal_code": {
+        "label": "Postleitzahl"
+      },
+      "city": {
+        "label": "Stadt"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
+      "tax_identification_number": {
+        "label": "Tax ID"
+      },
+      "website_url": {
+        "label": "Website"
+      },
+      "employer_identification_number": {
+        "label": "Employer ID"
+      }
+    },
+    "individual_edit": {
+      "title": "Überprüfen oder vervollständigen Sie die Informationen über Ihr Unternehmen",
+      "first_name": {
+        "label": "Vorname"
+      },
+      "last_name": {
+        "label": "Familienname, Nachname"
+      },
+      "birth_date": {
+        "label": "Geburtsdatum"
+      },
+      "street_address": {
+        "label": "Adresse"
+      },
+      "street_address_2": {
+        "label": "Adresse (Fortsetzung)"
+      },
+      "postal_code": {
+        "label": "Postleitzahl"
+      },
+      "city": {
+        "label": "Stadt"
+      },
+      "roles": "Rollen",
+      "ownership_percentage": {
+        "label": "Eigentumsprozentsatz"
+      }
+    },
+    "individuals_list": {
+      "title": "Überprüfen oder ergänzen Sie die gesetzlichen Vertreter und wirtschaftlichen Eigentümer Ihres Unternehmens.",
+      "description": "Wir benötigen Dokumente für jeden wirtschaftlichen Eigentümer des Unternehmens sowie für den gesetzlichen Vertreter, der die Eröffnung des Mooncard-Kontos beantragt.<br/> Ein wirtschaftlicher Eigentümer ist eine Person, die mehr als 25 % des Kapitals der Gesellschaft hält.<br/> Wenn diese Personen nicht in der Liste unten aufgeführt sind, teilen Sie uns bitte ihre Kontaktdaten mit.",
+      "missing_data": "Bitte korrigieren",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "add_individual": "Person hinzufügen"
+    },
+    "checks_list": {
+      "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identitätsnachweis",
+      "description": "Bitte legen Sie ein farbiges, nicht abgelaufenes, gerahmtes, unbeschnittenes und klares Dokument des Personalausweises (Vorder-/Rückseite) oder des Reisepasses (doppelte Innenseite mit der Unterschrift) vor."
+    },
+    "id_verification": {
+      "title": "Identitätsprüfung",
+      "description": "Bitte legen Sie ein farbiges Dokument vor, das nicht abgelaufen ist, nicht abgebeschnitten oder verschwommen ist."
+    },
+    "proof_of_address": {
+      "title": "Wohnsitzbescheinigung",
+      "description": "Bitte legen Sie ein Farbdokument vor, das weniger als 3 Monate zurückliegt, gerahmt und deutlich ist (z. B.: letzter Einkommensteuerbescheid, nur Festnetz- oder Festnetz-Telekommunikationsrechnung, Energie- und Wasserrechnung, Quittung oder Mietrechnung usw.)"
+    },
+    "driving_license": {
+      "title": "Führerschein",
+      "description": "Bitte legen Sie ein farbiges Dokument vor, das nicht abgelaufen ist, nicht abgebeschnitten oder verschwommen ist."
+    },
+    "social_security_card": {
+      "title": "Krankenversicherungskarte",
+      "description": "Bitte legen Sie ein farbiges Dokument vor, das nicht abgelaufen ist, nicht abgebeschnitten oder verschwommen ist."
+    },
+    "ubo_registry_extract": {
+      "title": "Bescheinigung des wirtschaftlich Berechtigten",
+      "description": "Bitte legen Sie ein farbiges Dokument vor, das nicht abgeschnitten oder verschwommen ist."
+    },
+    "bank_details": { "title": "Bank details" },
+    "articles_of_association": { "title": "Gesellschaftsvertrag" },
+    "registration_certificate": { "title": "Handelsregister" },
+    "financial_statements": { "title": "Financial statements" },
+    "agreement_certificate": { "title": "Agreement certificate" },
+    "proof_of_insurance": { "title": "Proof of insurance" },
+    "birth_certificate": { "title": "Birth certificate" },
+    "vehicle_registration_certificate": { "title": "Vehicle registration certificate" },
+    "criminal_record_extract": { "title": "Criminal record extract" },
+    "tax_notice": { "title": "Tax notice" },
+    "visa": { "title": "Visa" },
+    "f791c550-7735-4c20-8131-6ff21a92da1e": { "title": "Annual accounts for the past year" },
+    "1c04b725-eeb3-4948-a1b6-cbe795d3bb43": { "title": "IBAN" },
+    "0d601ff7-43a8-42be-b9a3-c2cac28285b7": { "title": "SIRENE Extract" },
+    "55a34ef8-252d-4e4f-bed6-b09b81b5ecfd": { "title": "Minutes of last elections" },
+    "1721a398-147f-46eb-843c-a95e775afe0f": { "title": "Proof of registration" }
+  }
+}

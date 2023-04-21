@@ -134,7 +134,6 @@ const AppContent = () => {
   const submit = async () => {
     setIsLoading(true);
     metadata.locale = i18next.languages[0];
-
     const response = await api.post(`dotfile/cases`, {
       company,
       individuals,

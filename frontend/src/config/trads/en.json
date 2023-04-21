@@ -1,1 +1,157 @@
-{}
+{
+  "brand": {
+    "title": "The integrated business expense management solution"
+  },
+  "steps": {
+    "company_form": {
+      "title": "",
+      "company_form": {
+        "label": "What is the form of your company?",
+        "options": {
+          "private_company": "Private company",
+          "public_company": "Public company",
+          "association": "Association",
+          "self_employed": "Self-employed"
+        }
+      }
+    },
+    "company_search": {
+      "title": "Help us identify your company",
+      "name": {
+        "label": "Name"
+      },
+      "button": "Search company"
+    },
+    "company_list": {
+      "title": "Select your company",
+      "not_found": "You cannot find your company ?",
+      "button": "Fill details manually"
+    },
+    "company_edit": {
+      "title": "Verify your company information",
+      "name": {
+        "label": "Name"
+      },
+      "registration_number": {
+        "label": "Registration number"
+      },
+      "registration_date": {
+        "label": "Registration date"
+      },
+      "legal_form": {
+        "label": "Legal form"
+      },
+      "status": {
+        "label": "Status"
+      },
+      "street_address": {
+        "label": "Address line 1"
+      },
+      "street_address_2": {
+        "label": "Address line 2"
+      },
+      "postal_code": {
+        "label": "Postal code"
+      },
+      "city": {
+        "label": "City"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
+      "tax_identification_number": {
+        "label": "Tax ID"
+      },
+      "website_url": {
+        "label": "Website"
+      },
+      "employer_identification_number": {
+        "label": "Employer ID"
+      }
+    },
+    "individual_edit": {
+      "title": "Check the information",
+      "first_name": {
+        "label": "First name"
+      },
+      "last_name": {
+        "label": "Last name"
+      },
+      "birth_date": {
+        "label": "Birth date"
+      },
+      "street_address": {
+        "label": "Address line 1"
+      },
+      "street_address_2": {
+        "label": "Address line 2"
+      },
+      "postal_code": {
+        "label": "Postal code"
+      },
+      "city": {
+        "label": "City"
+      },
+      "roles": "Roles",
+      "ownership_percentage": {
+        "label": "Ownership percentage"
+      }
+    },
+    "individuals_list": {
+      "title": "Check the list of individuals attached to your company",
+      "description": "We will need documents for each of the beneficial owners of the company as well as for the legal representative requesting the opening of the Mooncard account.<br/> A beneficial owner is a person holding more than 25% of the capital of the company.<br/> If these people do not appear in the list below, please provide us with their contact details.",
+      "missing_data": "Please correct",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add_individual": "Add individual"
+    },
+    "checks_list": {
+      "title": "Help us carry out the necessary checks"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Identity document",
+      "description": "Please provide a color, unexpired, framed, untrimmed and clear document of the identity card (front / back) or passport (double inside page with the signature)"
+    },
+    "id_verification": {
+      "title": "Identity Verification",
+      "description": "Please provide a color document, non-expired, non-croped, non-blur."
+    },
+    "proof_of_address": {
+      "title": "Residence certificate",
+      "description": "Please provide a color document, dated less than 3 months ago, framed and clear (eg: last income tax notice, fixed line or box telecommunications bill only, energy and water bill , receipt or rent invoice, etc.)"
+    },
+    "driving_license": {
+      "title": "Driver's license",
+      "description": "Please provide a color document, non-expired, non-croped, non-blur."
+    },
+    "social_security_card": {
+      "title": "Vital card",
+      "description": "Please provide a color document, non-expired, non-croped, non-blur."
+    },
+    "ubo_registry_extract": {
+      "title": "Beneficial owners certificate",
+      "description": "Please provide a color document, non-croped, non-blur."
+    },
+    "bank_details": { "title": "Bank details" },
+    "articles_of_association": { "title": "Articles of association" },
+    "registration_certificate": { "title": "Registration certificate" },
+    "financial_statements": { "title": "Financial statements" },
+    "agreement_certificate": { "title": "Agreement certificate" },
+    "proof_of_insurance": { "title": "Proof of insurance" },
+    "birth_certificate": { "title": "Birth certificate" },
+    "vehicle_registration_certificate": { "title": "Vehicle registration certificate" },
+    "criminal_record_extract": { "title": "Criminal record extract" },
+    "tax_notice": { "title": "Tax notice" },
+    "visa": { "title": "Visa" },
+    "f791c550-7735-4c20-8131-6ff21a92da1e": { "title": "Annual accounts for the past year" },
+    "1c04b725-eeb3-4948-a1b6-cbe795d3bb43": { "title": "IBAN Proof" },
+    "0d601ff7-43a8-42be-b9a3-c2cac28285b7": { "title": "SIRENE Extract" },
+    "55a34ef8-252d-4e4f-bed6-b09b81b5ecfd": { "title": "Minutes of last elections" },
+    "1721a398-147f-46eb-843c-a95e775afe0f": { "title": "Proof of registration" }
+  }
+}
