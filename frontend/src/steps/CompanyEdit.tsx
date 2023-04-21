@@ -18,7 +18,13 @@ const CompanyEdit = (props: any) => {
   const schema = Joi.object().keys(rules).unknown(true);
 
   useEffect(() => {
-    const check = schema.validate(props.company);
+    const { address, ...data } = props.company;
+    let values = data;
+    if (address) {
+      values = { ...address, ...values };
+    }
+
+    const check = schema.validate(values);
     if (check.error) {
       setFormValid(false);
     } else {
