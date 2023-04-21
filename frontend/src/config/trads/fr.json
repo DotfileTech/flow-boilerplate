@@ -5,7 +5,7 @@
   "steps": {
     "disclaimer": {
       "title": "Before continuing, please pay attention to the following",
-      "description": "You will need the company’s incorporation certificate (KBIS, BCE extract, ...), the latest bylaws, the diagram of the cap table and the latest financial statements. For more information see here (lien à embed) https://docs.roundtable.eu/en/articles/6479467-how-do-i-perform-my-kyb-check All personal information is confidential, is only used for Anti-Money Laundering purposes, and won’t be shared with your co-investors."
+      "description": "You will need the company’s incorporation certificate (KBIS, BCE extract, ...), the latest bylaws, the diagram of the cap table and the latest financial statements. For more information see <a href='https://docs.roundtable.eu/en/articles/6479467-how-do-i-perform-my-kyb-check' target='_blank'>here</a>.<br> All personal information is confidential, is only used for Anti-Money Laundering purposes, and won’t be shared with your co-investors."
     },
     "company_search": {
       "title": "Aidez-nous à identifier votre entreprise",
