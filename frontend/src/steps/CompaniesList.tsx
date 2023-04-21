@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 const CompanySearch = (props: any) => {
   const { t } = useTranslation();
-  console.log(props.companies);
 
   return (
     <Stack spacing={10} pt={2}>
