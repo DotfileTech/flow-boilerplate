@@ -11,7 +11,7 @@ const Sidebar = () => {
     <Flex
       minH="100%"
       position="fixed"
-      background="brand.sidebar"
+      background="brand.sidebarBg"
       display={{ base: 'none', md: 'flex' }}
       direction="column"
       p="2vw"
@@ -23,7 +23,7 @@ const Sidebar = () => {
       <Box flexGrow={1}>
         <Text
           fontWeight={700}
-          color={'white'}
+          color="brand.sidebarColor"
           fontSize={{ base: '3xl', sm: '3xl', md: '3xl' }}
         >
           <Trans i18nKey="brand.title">
@@ -42,7 +42,7 @@ const Sidebar = () => {
       </Box>
       <Flex alignItems="center" mb="5vh">
         <Text
-          color="white"
+          color="brand.sidebarColor"
           mr="10px"
           fontSize="14px"
           lineHeight="2Opx"

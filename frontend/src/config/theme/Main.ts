@@ -1,11 +1,13 @@
-import { extendTheme } from '@chakra-ui/react'
-import type { StyleFunctionProps } from '@chakra-ui/styled-system'
+import { extendTheme } from '@chakra-ui/react';
+import type { StyleFunctionProps } from '@chakra-ui/styled-system';
+
+// @TODO - OF-11 - Refactor style config file
 
 const disabledStyles = {
   backgroundColor: 'gray.100',
   borderColor: 'gray.100',
   color: 'gray.500',
-}
+};
 
 const theme = extendTheme({
   colors: {
@@ -15,7 +17,8 @@ const theme = extendTheme({
       'main-2': '#23272F',
       'main-3': '#23272F',
       accent: '#0176FF',
-      sidebar: '#23272F',
+      sidebarBg: '#23272F',
+      sidebarColor: '#FFFFFF',
     },
   },
   fonts: {
@@ -27,7 +30,9 @@ const theme = extendTheme({
   },
   styles: {
     global: {
-      body: {},
+      body: {
+        backgroundColor: 'white',
+      },
       a: {
         color: 'teal.500',
         _hover: {
@@ -56,7 +61,7 @@ const theme = extendTheme({
           },
         },
         tablist: {
-          //
+          backgroundColor: 'transparent',
         },
       },
     },
@@ -125,6 +130,6 @@ const theme = extendTheme({
       // },
     },
   },
-})
+});
 
-export default theme
+export default theme;

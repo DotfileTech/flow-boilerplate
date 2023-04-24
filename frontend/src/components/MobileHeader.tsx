@@ -13,7 +13,7 @@ const Sidebar = () => {
       borderBottomWidth="1px"
       position="static"
       justifyContent="flex-start"
-      background="brand.sidebar"
+      background="brand.sidebarBg"
     >
       <Box pt={2} pb={2}>
         <Logo width="80%" />

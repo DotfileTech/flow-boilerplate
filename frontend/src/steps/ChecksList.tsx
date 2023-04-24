@@ -111,7 +111,6 @@ const ChecksList = (props: any) => {
           borderColor="gray.100"
           position="sticky"
           top="0"
-          bgColor="white"
           zIndex="1"
         >
           {hasCompanies && (
