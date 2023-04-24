@@ -9,7 +9,7 @@ import {
   Heading,
   Show,
 } from '@chakra-ui/react';
-import { DeleteIcon, EditIcon, PlusSquareIcon } from '@chakra-ui/icons';
+import { Trash2, EditIcon, PlusSquareIcon } from 'lucide-react';
 import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
@@ -92,7 +92,7 @@ const IndividualsList = (props: any) => {
               <Box mt={{ base: '12px', md: '0' }}>
                 <Button
                   mr={5}
-                  leftIcon={<EditIcon />}
+                  leftIcon={<EditIcon size={16} />}
                   size="sl"
                   onClick={() => props.selectIndividual(i)}
                   variant="secondary"
@@ -100,7 +100,7 @@ const IndividualsList = (props: any) => {
                   {t('steps.individuals_list.edit')}
                 </Button>
                 <Button
-                  leftIcon={<DeleteIcon />}
+                  leftIcon={<Trash2 size={16} />}
                   onClick={() => deleteIndividual(i)}
                   size="sl"
                   variant="secondary"
@@ -120,7 +120,7 @@ const IndividualsList = (props: any) => {
             <Box mt={{ base: '12px', md: '0' }}>
               <Button
                 mr={5}
-                leftIcon={<EditIcon />}
+                leftIcon={<EditIcon size={16} />}
                 size="sl"
                 onClick={() => props.selectIndividual(i)}
                 variant="secondary"
@@ -128,7 +128,7 @@ const IndividualsList = (props: any) => {
                 {t('steps.individuals_list.edit')}
               </Button>
               <Button
-                leftIcon={<DeleteIcon />}
+                leftIcon={<Trash2 size={16} />}
                 onClick={() => deleteIndividual(i)}
                 size="sl"
                 variant="secondary"
@@ -142,7 +142,7 @@ const IndividualsList = (props: any) => {
       <Box>
         <Button
           variant="add_individual"
-          leftIcon={<PlusSquareIcon />}
+          leftIcon={<PlusSquareIcon size={16} />}
           onClick={() => props.selectIndividual(null)}
         >
           {t('steps.individuals_list.add_individual')}

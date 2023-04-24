@@ -1,4 +1,4 @@
-import { EditIcon } from '@chakra-ui/icons';
+import { EditIcon } from 'lucide-react';
 import { SimpleGrid, Button, Text, Radio, Stack, Box } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
@@ -33,7 +33,7 @@ const CompanySearch = (props: any) => {
       <Box>
         <Text pb={5}>{t('steps.company_list.not_found')}</Text>
         <Button
-          leftIcon={<EditIcon />}
+          leftIcon={<EditIcon size={16} />}
           variant="fill"
           onClick={() => props.selectCompany(null)}
         >

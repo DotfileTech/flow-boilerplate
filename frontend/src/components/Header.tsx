@@ -1,5 +1,5 @@
 import { Stack, Progress, Button, Box } from '@chakra-ui/react';
-import { ChevronLeftIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import Title from '../components/Title';
@@ -16,7 +16,7 @@ const Header = (props: any) => {
             width="100px"
             variant="back"
             onClick={props.back}
-            leftIcon={<ChevronLeftIcon />}
+            leftIcon={<ChevronLeftIcon size={16} />}
           >
             {t('domain.back')}
           </Button>

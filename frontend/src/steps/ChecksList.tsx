@@ -122,7 +122,7 @@ const ChecksList = (props: any) => {
             </Tab>
           )}
           {hasIndividuals && (
-            <Tab lineHeight="0" mr={{ base: 0, md: 10 }}>
+            <Tab mr={{ base: 0, md: 10 }}>
               {t('individuals')}
               {hasIndividualsActions && (
                 <Indicator ml="2" boxSize="8px" color="orange" />

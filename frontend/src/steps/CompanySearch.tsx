@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { InputGroup, Button, Stack, Box } from '@chakra-ui/react';
 import Joi from 'joi';
-import { ChevronRightIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import InputForm from '../components/InputForm';
@@ -64,7 +64,7 @@ const CompanySearch = (props: any) => {
       <Box>
         <Button
           variant="next"
-          rightIcon={<ChevronRightIcon />}
+          rightIcon={<ChevronRightIcon size={16} />}
           isLoading={props.isLoading}
           onClick={props.getCompanies}
           isDisabled={!formValid}
