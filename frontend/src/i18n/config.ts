@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import merge from 'deepmerge';
 
 import { languages } from '../config/languages';
 import addEn from '../config/trads/en.json';
@@ -17,12 +18,12 @@ import baseIt from './trads/it.json';
 import baseNl from './trads/nl.json';
 
 export const resources = {
-  en: { translation: { ...baseEn, ...addEn } },
-  fr: { translation: { ...baseFr, ...addFr } },
-  de: { translation: { ...baseDe, ...addDe } },
-  es: { translation: { ...baseEs, ...addEs } },
-  it: { translation: { ...baseIt, ...addIt } },
-  nl: { translation: { ...baseNl, ...addNl } },
+  en: { translation: merge(baseEn, addEn) },
+  fr: { translation: merge(baseFr, addFr) },
+  de: { translation: merge(baseDe, addDe) },
+  es: { translation: merge(baseEs, addEs) },
+  it: { translation: merge(baseIt, addIt) },
+  nl: { translation: merge(baseNl, addNl) },
 };
 
 const languageDetector = new LanguageDetector({
