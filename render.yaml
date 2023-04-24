@@ -1,51 +1,64 @@
 services:
+  # API (backend)
   - type: web
-    name: backend
+    name: xxxxx-api # replace xxxxx with the customer name
     env: node
     region: frankfurt
-    plan: free
     rootDir: backend
+    buildCommand: npm run build
+    startCommand: npm run prod
+    plan: starter
+    autoDeploy: true
     buildFilter:
       paths:
         - backend/src
-    buildCommand: npm run build
-    startCommand: npm run prod
     envVars:
+      - key: NODE_ENV
+        value: production
+      # Dotfile
+      - key: DOTFILE_BASE_URL
+        value: https://api.dotfile.com/v1
       - key: DOTFILE_KEY
         sync: false
-      - key: DOTFILE_BASE_URL
+      - key: TEMPLATE_ID
         sync: false
+      # Email
       - key: SMTP_HOST
-        sync: false
+        value: smtp.postmarkapp.com
       - key: SMTP_PORT
-        sync: false
+        value: 587
       - key: EMAIL_FROM
-        sync: false
+        value: noreply-xxxxx@dotfile.com # replace xxxxx with the customer name
       - key: EMAIL_USER
         sync: false
       - key: EMAIL_PASSWORD
         sync: false
-      - key: APP_URL
-        sync: false
-      - key: TEMPLATE_ID
-        sync: false
+      # Other
       - key: LOGO_URL
         sync: false
+      - key: APP_URL
+        fromService:
+          type: web
+          name: xxxxx-app
+          envVarKey: CUSTOM_DOMAIN # APP (frontend) url
+  # APP (frontend)
   - type: web
-    name: frontend
-    healthCheckPath: /health
+    name: xxxxx-app # replace xxxxx with the customer name
     env: static
     rootDir: frontend
+    buildCommand: npm run build
+    staticPublishPath: build
+    autoDeploy: true
     buildFilter:
       paths:
         - frontend/src
-    buildCommand: npm run build
-    staticPublishPath: ./build
+    domains:
+      - xxxxx.onboarding.dotfile.com # replace xxxxx with the customer name
     envVars:
       - key: REACT_APP_HOST
         fromService:
           type: web
-          name: backend
-          envVarKey: RENDER_EXTERNAL_URL
-      - key: REACT_APP_CONFIG
-        sync: false
+          name: xxxxx-api
+          envVarKey: RENDER_EXTERNAL_URL # API (backend) url
+      - key: REACT_APP_ENV
+        value: production
