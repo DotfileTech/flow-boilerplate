@@ -8,6 +8,9 @@
       "name": {
         "label": "Naam"
       },
+      "country": {
+        "label": "Land"
+      },
       "button": "Zoek bedrijf"
     },
     "company_list": {
@@ -44,6 +47,9 @@
       "city": {
         "label": "Stad"
       },
+      "country": {
+        "label": "Land"
+      },
       "iban": {
         "label": "IBAN"
       },
@@ -68,8 +74,46 @@
       "last_name": {
         "label": "Achternaam"
       },
+      "email": {
+        "label": "Email"
+      },
+      "phone_number": {
+        "label": "Telefoonnummer"
+      },
+      "roles": {
+        "label": "Rollen",
+        "options": {
+          "beneficial_owner": "Uiteindelijke begunstigde",
+          "legal_representative": "Wettelijke vertegenwoordiger",
+          "shareholder": "Aandeelhouder"
+        }
+      },
+      "ownership_percentage": {
+        "label": "Eigendomspercentage"
+      },
+      "position": {
+        "label": "Positie"
+      },
+      "tax_identification_number": {
+        "label": "BTW-nummer"
+      },
+      "social_security_number": {
+        "label": "Burgerservicenummer"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
       "birth_date": {
         "label": "Geboortedatum"
+      },
+      "birth_place": {
+        "label": "Geboorte plaats"
+      },
+      "birth_country": {
+        "label": "Geboorteland"
       },
       "street_address": {
         "label": "Adres 1"
@@ -83,9 +127,8 @@
       "city": {
         "label": "Stad"
       },
-      "roles": "Rollen",
-      "ownership_percentage": {
-        "label": "Eigendomspercentage"
+      "country": {
+        "label": "Land"
       }
     },
     "individuals_list": {
@@ -102,8 +145,9 @@
   "domain": {
     "individual": {
       "roles": {
-        "beneficial_owner": "uiteindelijke begunstigde",
-        "legal_representative": "wettelijke vertegenwoordiger"
+        "beneficial_owner": "Uiteindelijke begunstigde",
+        "legal_representative": "Wettelijke vertegenwoordiger",
+        "shareholder": "Aandeelhouder"
       }
     },
     "check": {
@@ -191,7 +235,5 @@
   "countries": "Land",
   "upload_document": "Kies documenten)",
   "upload_document_front": "Voorzijde uploaden",
-  "upload_document_back": "Upload terug",
-  "birth_country": "Geboorteland",
-  "country": "Land"
+  "upload_document_back": "Upload terug"
 }

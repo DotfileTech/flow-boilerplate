@@ -1,24 +1,25 @@
 import {
-  RadioGroup,
-  Radio as ChakraRadio,
+  CheckboxGroup,
+  Checkbox as ChakraCheckbox,
   Stack,
   FormLabel,
   FormControl,
   FormHelperText,
+  Text,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
-type RadioProps = {
+type CheckboxProps = {
   stepId: string;
   name: string;
-  defaultValue: string;
+  defaultValue: string[];
   isRequired: boolean;
   hasHelper?: boolean;
   options: string[];
   onChange: any;
 };
 
-const Radio = (props: RadioProps) => {
+const Checkbox = (props: CheckboxProps) => {
   const {
     stepId,
     name,
@@ -32,28 +33,31 @@ const Radio = (props: RadioProps) => {
   const { t } = useTranslation();
 
   return (
-    <FormControl isRequired={isRequired}>
-      <FormLabel>{t(`steps.${stepId}.${name}.label`)}</FormLabel>
+    <FormControl>
+      <FormLabel>
+        {t(`steps.${stepId}.${name}.label`)}{' '}
+        {isRequired && (
+          <Text as="span" color="red.500">
+            *
+          </Text>
+        )}
+      </FormLabel>
       {hasHelper && (
         <FormHelperText mt="0" mb="2">
           {t(`steps.${stepId}.${name}.helper`)}
         </FormHelperText>
       )}
-      <RadioGroup
-        onChange={(value) => onChange(name, value)}
-        name={name}
-        defaultValue={defaultValue}
-      >
+      <CheckboxGroup defaultValue={defaultValue}>
         <Stack direction={{ base: 'column', sm: 'row' }} spacing="5">
           {options.map((option: string) => (
-            <ChakraRadio key={option} value={option}>
+            <ChakraCheckbox key={option} value={option} onChange={onChange}>
               {t(`steps.${stepId}.${name}.options.${option}`)}
-            </ChakraRadio>
+            </ChakraCheckbox>
           ))}
         </Stack>
-      </RadioGroup>
+      </CheckboxGroup>
     </FormControl>
   );
 };
 
-export default Radio;
+export default Checkbox;

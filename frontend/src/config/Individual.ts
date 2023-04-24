@@ -1,52 +1,117 @@
+import { IndividualRoleEnum } from '../constants';
+
 export const individualData = [
   {
     id: 'first_name',
-    category: 'personal',
     required: true,
     enabled: true,
   },
   {
     id: 'last_name',
-    category: 'personal',
     required: true,
     enabled: true,
   },
   {
+    id: 'email',
+    type: 'email',
+    required: true,
+    enabled: true,
+  },
+  {
+    id: 'phone_number',
+    required: true,
+    enabled: true,
+  },
+  {
+    id: 'roles',
+    type: 'checkbox',
+    required: true,
+    enabled: true,
+    options: [
+      IndividualRoleEnum.beneficial_owner,
+      IndividualRoleEnum.legal_representative,
+      IndividualRoleEnum.shareholder,
+    ],
+  },
+  {
+    id: 'ownership_percentage',
+    type: 'number',
+    required: false,
+    enabled: true,
+  },
+  {
+    id: 'position',
+    required: false,
+    enabled: true,
+  },
+  {
+    id: 'tax_identification_number',
+    required: false,
+    enabled: true,
+  },
+  {
+    id: 'social_security_number',
+    required: false,
+    enabled: true,
+  },
+  {
+    id: 'iban',
+    nested: 'banking_information',
+    required: false,
+    enabled: true,
+  },
+  {
+    id: 'bic',
+    nested: 'banking_information',
+    required: false,
+    enabled: true,
+  },
+  {
     id: 'birth_date',
-    category: 'personal',
     type: 'date',
     required: true,
     enabled: true,
   },
   {
-    id: 'street_address',
-    category: 'address',
+    id: 'birth_place',
     required: true,
     enabled: true,
   },
   {
+    id: 'birth_country',
+    type: 'country',
+    required: true,
+    enabled: true,
+  },
+  {
+    id: 'street_address',
+    nested: 'address',
+    required: false,
+    enabled: true,
+  },
+  {
     id: 'street_address_2',
-    category: 'address',
+    nested: 'address',
     required: false,
     enabled: true,
   },
   {
     id: 'postal_code',
-    category: 'address',
+    nested: 'address',
     required: true,
     enabled: true,
   },
   {
     id: 'city',
-    category: 'address',
+    nested: 'address',
     required: true,
     enabled: true,
   },
   {
-    id: 'ownership_percentage',
-    category: 'roles',
-    type: 'number',
-    required: false,
+    id: 'country',
+    nested: 'address',
+    type: 'country',
+    required: true,
     enabled: true,
   },
-]
+];

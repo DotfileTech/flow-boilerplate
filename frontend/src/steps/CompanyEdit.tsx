@@ -4,7 +4,7 @@ import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
 import InputForm from '../components/InputForm';
-import SelectFloatingLabel from '../components/SelectFloatingLabel';
+import CountrySelect from '../components/CountrySelect';
 import { companyData } from '../config/Company';
 
 const CompanyEdit = (props: any) => {
@@ -35,15 +35,6 @@ const CompanyEdit = (props: any) => {
   return (
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={5}>
-        <SelectFloatingLabel
-          value={props.company?.country || ''}
-          onChange={props.changeHandler}
-          name="country"
-          isRequired
-          placeholder="Country"
-          countries={props.countries}
-        />
-
         {companyData
           .filter((company) => company.enabled)
           .map((company: any) => {
@@ -52,6 +43,20 @@ const CompanyEdit = (props: any) => {
                 ? props.company[company.nested][company.id]
                 : ''
               : props.company[company.id];
+
+            if (company.type === 'country') {
+              return (
+                <CountrySelect
+                  key={`company_${company.id}`}
+                  stepId="company_edit"
+                  defaultValue={defaultValue || ''}
+                  onChange={props.changeHandler}
+                  name={company.id}
+                  countries={props.countries}
+                  isRequired={company.required}
+                />
+              );
+            }
 
             return (
               <InputForm

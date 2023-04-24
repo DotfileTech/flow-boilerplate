@@ -8,6 +8,9 @@
       "name": {
         "label": "Nom"
       },
+      "country": {
+        "label": "Pays"
+      },
       "button": "Chercher une entreprise"
     },
     "company_list": {
@@ -44,6 +47,9 @@
       "city": {
         "label": "Ville"
       },
+      "country": {
+        "label": "Pays"
+      },
       "iban": {
         "label": "IBAN"
       },
@@ -68,8 +74,46 @@
       "last_name": {
         "label": "Nom"
       },
+      "email": {
+        "label": "Email"
+      },
+      "phone_number": {
+        "label": "Numéro de téléphone"
+      },
+      "roles": {
+        "label": "Rôles",
+        "options": {
+          "beneficial_owner": "Bénéficiaire effectif",
+          "legal_representative": "Représentant légal",
+          "shareholder": "Actionnaire"
+        }
+      },
+      "ownership_percentage": {
+        "label": "Pourcentage de détention"
+      },
+      "position": {
+        "label": "Position"
+      },
+      "tax_identification_number": {
+        "label": "Identifiant fiscal"
+      },
+      "social_security_number": {
+        "label": "Numéro de sécurité sociale"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
       "birth_date": {
         "label": "Date de naissance"
+      },
+      "birth_place": {
+        "label": "Lieu de naissance"
+      },
+      "birth_country": {
+        "label": "Pays de naissance"
       },
       "street_address": {
         "label": "Adresse ligne 1"
@@ -83,9 +127,8 @@
       "city": {
         "label": "Ville"
       },
-      "roles": "Rôles",
-      "ownership_percentage": {
-        "label": "Pourcentage de détention"
+      "country": {
+        "label": "Pays"
       }
     },
     "individuals_list": {
@@ -103,7 +146,8 @@
     "individual": {
       "roles": {
         "beneficial_owner": "Bénéficiaire effectif",
-        "legal_representative": "Représentant légal"
+        "legal_representative": "Représentant légal",
+        "shareholder": "Actionnaire"
       }
     },
     "check": {
@@ -191,7 +235,5 @@
   "countries": "Pays",
   "upload_document": "Choisir un fichier",
   "upload_document_front": "Télécharger le Recto",
-  "upload_document_back": "Télécharger le Verso",
-  "birth_country": "Pays de naissance",
-  "country": "Pays"
+  "upload_document_back": "Télécharger le Verso"
 }

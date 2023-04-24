@@ -18,7 +18,7 @@ type CustomFormProps = {
 
 type Field = {
   id: string;
-  type: 'select' | 'radio' | 'text' | 'date' | 'number' | 'url';
+  type: 'select' | 'radio' | 'text' | 'date' | 'number' | 'url' | 'email';
   isRequired: boolean;
   hasHelper?: boolean;
   options?: string[];

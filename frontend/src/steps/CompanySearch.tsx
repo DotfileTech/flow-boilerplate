@@ -5,7 +5,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { useTranslation } from 'react-i18next';
 
 import InputForm from '../components/InputForm';
-import SelectFloatingLabel from '../components/SelectFloatingLabel';
+import CountrySelect from '../components/CountrySelect';
 
 const CompanySearch = (props: any) => {
   const { t } = useTranslation();
@@ -41,12 +41,13 @@ const CompanySearch = (props: any) => {
 
   return (
     <Stack spacing={5} pt={2}>
-      <SelectFloatingLabel
-        value={props.company?.country || ''}
-        isRequired
+      <CountrySelect
+        stepId="company_search"
+        defaultValue={props.company?.country || ''}
         onChange={props.changeHandler}
         name="country"
         countries={props.countries}
+        isRequired
       />
 
       <InputGroup size="md">

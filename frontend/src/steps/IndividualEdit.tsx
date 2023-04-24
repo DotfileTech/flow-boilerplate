@@ -1,33 +1,31 @@
-import { useState, useEffect, Fragment } from 'react';
-import {
-  SimpleGrid,
-  Button,
-  Checkbox,
-  Stack,
-  FormControl,
-  FormLabel,
-  Box,
-} from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import { SimpleGrid, Button, Stack, Box } from '@chakra-ui/react';
 import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
 import InputForm from '../components/InputForm';
-import SelectFloatingLabel from '../components/SelectFloatingLabel';
+import CountrySelect from '../components/CountrySelect';
+import Checkbox from '../components/Checkbox';
 import { individualData } from '../config/Individual';
-import { IndividualRoleEnum } from '../constants';
 
 const IndividualEdit = (props: any) => {
   const { t } = useTranslation();
   const [formValid, setFormValid] = useState(false);
 
   const rules = individualData
-    .filter((ind) => ind.required && ind.enabled)
+    .filter((ind) => ind.required && ind.enabled && ind.type !== 'checkbox')
     .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
 
   const schema = Joi.object().keys(rules).unknown(true);
 
   useEffect(() => {
-    const check = schema.validate(props.individual);
+    const { address, ...data } = props.individual;
+    let values = data;
+    if (address) {
+      values = { ...address, ...values };
+    }
+
+    const check = schema.validate(values);
     if (check.error) {
       setFormValid(false);
     } else {
@@ -67,98 +65,53 @@ const IndividualEdit = (props: any) => {
       <SimpleGrid columns={1} spacing={6}>
         {individualData
           .filter((ind) => ind.enabled)
-          .filter((ind) => ind.category === 'personal')
-          .map((ind: any, i: number) => (
-            <InputForm
-              key={`personal_${i}`}
-              stepId="individual_edit"
-              defaultValue={props.individual[ind.id] || ''}
-              onChange={changeHandlerIndividual}
-              name={ind.id}
-              isRequired={ind.required}
-              type={ind.type}
-            />
-          ))}
+          .map((ind: any) => {
+            const defaultValue = ind.nested
+              ? props.individual[ind.nested]
+                ? props.individual[ind.nested][ind.id]
+                : ''
+              : props.individual[ind.id];
 
-        <SelectFloatingLabel
-          value={props.individual?.birth_country || ''}
-          onChange={changeHandlerIndividual}
-          name="birth_country"
-          countries={props.countries}
-        />
-
-        {individualData
-          .filter((ind) => ind.enabled)
-          .filter((ind) => ind.category === 'address')
-          .map((ind: any, i: number, array) => {
-            return (
-              <Fragment key={`address_${i}`}>
-                <InputForm
+            if (ind.type === 'checkbox') {
+              return (
+                <Checkbox
+                  key={`individual_${ind.id}`}
                   stepId="individual_edit"
-                  defaultValue={props.individual[ind.id] || ''}
+                  name={ind.id}
+                  defaultValue={defaultValue || ''}
+                  isRequired={ind.required}
+                  options={ind.options || []}
+                  onChange={checkBoxChangeHandler}
+                />
+              );
+            }
+
+            if (ind.type === 'country') {
+              return (
+                <CountrySelect
+                  key={`individual_${ind.id}`}
+                  stepId="individual_edit"
+                  defaultValue={defaultValue || ''}
                   onChange={changeHandlerIndividual}
                   name={ind.id}
+                  countries={props.countries}
                   isRequired={ind.required}
-                  type={ind.type}
                 />
-                {i + 1 === array.length && (
-                  <SelectFloatingLabel
-                    value={props.individual?.address?.country || ''}
-                    onChange={changeHandlerIndividual}
-                    name="country"
-                    countries={props.countries}
-                  />
-                )}
-              </Fragment>
+              );
+            }
+
+            return (
+              <InputForm
+                key={`individual_${ind.id}`}
+                stepId="individual_edit"
+                defaultValue={defaultValue || ''}
+                onChange={changeHandlerIndividual}
+                name={ind.id}
+                isRequired={ind.required}
+                type={ind.type}
+              />
             );
           })}
-
-        <FormControl>
-          <FormLabel>{t('steps.individual_edit.roles')}</FormLabel>
-          <Stack spacing={5} direction="row">
-            <Checkbox
-              isChecked={
-                props.individual.roles
-                  ? props.individual.roles.includes(
-                      IndividualRoleEnum.beneficial_owner
-                    )
-                  : false
-              }
-              value={IndividualRoleEnum.beneficial_owner}
-              onChange={checkBoxChangeHandler}
-            >
-              {t('domain.individual.roles.beneficial_owner')}
-            </Checkbox>
-            <Checkbox
-              isChecked={
-                props.individual.roles
-                  ? props.individual.roles.includes(
-                      IndividualRoleEnum.legal_representative
-                    )
-                  : false
-              }
-              value={IndividualRoleEnum.legal_representative}
-              onChange={checkBoxChangeHandler}
-            >
-              {t('domain.individual.roles.legal_representative')}
-            </Checkbox>
-          </Stack>
-        </FormControl>
-
-        {individualData
-          .filter((ind) => ind.enabled)
-          .filter((ind) => ind.category === 'roles')
-          .map((ind: any, i: number) => (
-            <InputForm
-              key={`roles_${i}`}
-              stepId="individual_edit"
-              defaultValue={props.individual[ind.id] || ''}
-              onChange={changeHandlerIndividual}
-              name={ind.id}
-              isRequired={ind.required}
-              type={ind.type}
-            />
-          ))}
 
         <Box>
           <Button

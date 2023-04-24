@@ -19,7 +19,7 @@ const IndividualsList = (props: any) => {
   const { t } = useTranslation();
 
   const rules = individualData
-    .filter((ind) => ind.required && ind.enabled)
+    .filter((ind) => ind.required && ind.enabled && ind.type !== 'checkbox')
     .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
 
   const schema = Joi.object().keys(rules).unknown(true);
@@ -27,7 +27,13 @@ const IndividualsList = (props: any) => {
   useEffect(() => {
     props.setIndividuals(
       props.individuals.map((individual: any) => {
-        const check = schema.validate(individual);
+        const { address, ...data } = individual;
+        let values = data;
+        if (address) {
+          values = { ...address, ...values };
+        }
+
+        const check = schema.validate(values);
         if (check.error) {
           individual.isValid = false;
         } else {

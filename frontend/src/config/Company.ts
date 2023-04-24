@@ -50,6 +50,13 @@ export const companyData = [
     enabled: true,
   },
   {
+    id: 'country',
+    nested: 'address',
+    type: 'country',
+    required: true,
+    enabled: true,
+  },
+  {
     id: 'iban',
     nested: 'banking_information',
     required: false,

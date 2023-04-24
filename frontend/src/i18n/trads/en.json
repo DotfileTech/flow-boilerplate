@@ -8,6 +8,9 @@
       "name": {
         "label": "Name"
       },
+      "country": {
+        "label": "Country"
+      },
       "button": "Search company"
     },
     "company_list": {
@@ -44,6 +47,9 @@
       "city": {
         "label": "City"
       },
+      "country": {
+        "label": "Country"
+      },
       "iban": {
         "label": "IBAN"
       },
@@ -68,8 +74,46 @@
       "last_name": {
         "label": "Last name"
       },
+      "email": {
+        "label": "Email"
+      },
+      "phone_number": {
+        "label": "Phone number"
+      },
+      "roles": {
+        "label": "Roles",
+        "options": {
+          "beneficial_owner": "Beneficial owner",
+          "legal_representative": "Legal representative",
+          "shareholder": "Shareholder"
+        }
+      },
+      "ownership_percentage": {
+        "label": "Ownership percentage"
+      },
+      "position": {
+        "label": "Position"
+      },
+      "tax_identification_number": {
+        "label": "Tax ID"
+      },
+      "social_security_number": {
+        "label": "Social security number"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
       "birth_date": {
         "label": "Birth date"
+      },
+      "birth_place": {
+        "label": "Birth place"
+      },
+      "birth_country": {
+        "label": "Birth country"
       },
       "street_address": {
         "label": "Address line 1"
@@ -83,9 +127,8 @@
       "city": {
         "label": "City"
       },
-      "roles": "Roles",
-      "ownership_percentage": {
-        "label": "Ownership percentage"
+      "country": {
+        "label": "Country"
       }
     },
     "individuals_list": {
@@ -102,8 +145,9 @@
   "domain": {
     "individual": {
       "roles": {
-        "beneficial_owner": "beneficial owner",
-        "legal_representative": "legal representative"
+        "beneficial_owner": "Beneficial owner",
+        "legal_representative": "Legal representative",
+        "shareholder": "Shareholder"
       }
     },
     "check": {
@@ -191,7 +235,5 @@
   "countries": "Country",
   "upload_document": "Choose file(s)",
   "upload_document_front": "Upload Front",
-  "upload_document_back": "Upload Back",
-  "birth_country": "Birth country",
-  "country": "Country"
+  "upload_document_back": "Upload Back"
 }
