@@ -91,13 +91,6 @@ class DotfileController {
         {}
       );
 
-      for (const individual of company.merged_individuals) {
-        individual.street_address = individual.address.street_address;
-        individual.street_address_2 = individual.address.street_address_2;
-        individual.postal_code = individual.address.postal_code;
-        individual.city = individual.address.city;
-      }
-
       res.status(200).json(company);
     } catch (err: any) {
       res.status(400).send({
@@ -168,17 +161,17 @@ class DotfileController {
             birth_country: individual.birth_country,
             birth_place: individual.birth_place,
             address: {
-              street_address: individual.street_address,
-              street_address_2: individual.street_address_2,
-              postal_code: individual.postal_code,
-              city: individual.city,
-              state: individual.state,
-              region: individual.region,
-              country: individual.country,
+              street_address: individual.address.street_address,
+              street_address_2: individual.address.street_address_2,
+              postal_code: individual.address.postal_code,
+              city: individual.address.city,
+              state: individual.address.state,
+              region: individual.address.region,
+              country: individual.address.country,
             },
             banking_information: {
-              iban: individual.iban,
-              bic: individual.bic,
+              iban: individual.banking_information.iban,
+              bic: individual.banking_information.bic,
             },
             tax_identification_number: individual.tax_identification_number,
             social_security_number: individual.social_security_number,
@@ -205,17 +198,17 @@ class DotfileController {
           status: company.status,
           legal_form: company.legal_form,
           address: {
-            street_address: company.street_address,
-            street_address_2: company.street_address_2,
-            postal_code: company.postal_code,
-            city: company.city,
-            state: company.state,
-            region: company.region,
-            country: company.country,
+            street_address: company.address.street_address,
+            street_address_2: company.address.street_address_2,
+            postal_code: company.address.postal_code,
+            city: company.address.city,
+            state: company.address.state,
+            region: company.address.region,
+            country: company.address.country,
           },
           banking_information: {
-            iban: company.iban,
-            bic: company.bic,
+            iban: company.banking_information.iban,
+            bic: company.banking_information.bic,
           },
           tax_identification_number: company.tax_identification_number,
           website_url: company.website_url,
@@ -231,7 +224,27 @@ class DotfileController {
     } catch (err: any) {
       res.status(400).send({
         type: 'error',
-        message: 'Something went wrong while creating case.',
+        message:
+          'Something went wrong while creating case: ' +
+          err.response.data.errors,
+      });
+    }
+  };
+
+  public getCases = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const cases = await this.dotfileApi.request(
+        'get',
+        `cases`,
+        { external_id: req.query.externalId },
+        {},
+        {}
+      );
+      res.status(200).json(cases.data[0]);
+    } catch (err: any) {
+      res.status(400).send({
+        type: 'error',
+        message: 'Something went wrong while getting cases.',
       });
     }
   };

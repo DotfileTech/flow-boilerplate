@@ -18,10 +18,13 @@ const CompanyEdit = (props: any) => {
   const schema = Joi.object().keys(rules).unknown(true);
 
   useEffect(() => {
-    const { address, ...data } = props.company;
+    const { address, banking_information, ...data } = props.company;
     let values = data;
     if (address) {
       values = { ...address, ...values };
+    }
+    if (banking_information) {
+      values = { ...banking_information, ...values };
     }
 
     const check = schema.validate(values);
@@ -63,7 +66,7 @@ const CompanyEdit = (props: any) => {
                 key={company.id}
                 stepId="company_edit"
                 defaultValue={defaultValue || ''}
-                onChange={props.changeHandler}
+                onChange={(e: any) => props.changeHandler(e, company.nested)}
                 name={company.id}
                 isRequired={company.required}
                 type={company.type}

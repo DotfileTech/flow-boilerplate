@@ -27,10 +27,13 @@ const IndividualsList = (props: any) => {
   useEffect(() => {
     props.setIndividuals(
       props.individuals.map((individual: any) => {
-        const { address, ...data } = individual;
+        const { address, banking_information, ...data } = individual;
         let values = data;
         if (address) {
           values = { ...address, ...values };
+        }
+        if (banking_information) {
+          values = { ...banking_information, ...values };
         }
 
         const check = schema.validate(values);
@@ -51,7 +54,16 @@ const IndividualsList = (props: any) => {
 
   useEffect(() => {
     props.individuals.map((individual: any) => {
-      const check = schema.validate(individual);
+      const { address, banking_information, ...data } = individual;
+      let values = data;
+      if (address) {
+        values = { ...address, ...values };
+      }
+      if (banking_information) {
+        values = { ...banking_information, ...values };
+      }
+
+      const check = schema.validate(values);
       if (check.error) props.setIndividualsValid(false);
       return individual;
     });

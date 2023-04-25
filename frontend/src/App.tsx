@@ -35,8 +35,19 @@ const AppContent = () => {
   const sid = searchParams.get('sid');
 
   async function fetchMyAPI() {
-    if (caseId)
+    const externalId = searchParams.get('externalId');
+    if (externalId) {
+      const response = await api.get(`/dotfile/cases?externalId=${externalId}`);
+
+      if (response.data.id) {
+        setCaseId(response.data.id);
+        setStep(steps.findIndex((element) => element.key === 'checks_list'));
+      }
+    }
+
+    if (caseId) {
       setStep(steps.findIndex((element) => element.key === 'checks_list'));
+    }
 
     const response = await api.get('/dotfile/countries');
     setCountries(response.data);
@@ -157,8 +168,21 @@ const AppContent = () => {
     setStep(steps.length - 2);
   };
 
-  const changeHandler = (e: any) => {
-    setCompany({ ...company, [e.target.name]: e.target.value });
+  const changeHandler = (e: any, nested: string) => {
+    if (nested) {
+      setCompany({
+        ...company,
+        [nested]: {
+          ...company[nested],
+          [e.target.name]: e.target.value,
+        },
+      });
+    } else {
+      setCompany({
+        ...company,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   const changeHandlerMetadata = (e: any) => {

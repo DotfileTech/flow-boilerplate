@@ -36,9 +36,9 @@ You can add several query params in the url to set a specific config or pre-fill
 - `new`: Use `true` value to launch a new onboarding flow
 - `caseId`: Use and ID value from dotfile to redirect user to the checks section
 - `email`: To define the applicant of the onboarding flow (this is the contact for the recollection email)
-- `sid`: ?
 - `company`: To pre-fill the company name
 - `country`: To pre-fill the country (country code 2 char)
 - `registrationNumber`: To pre-fill the registration number of the company
-- `externalId`: ?
+- `externalId`: Your personal ID to map a dotfile case with your data. If set and a case already exists, the user will be redirected to the checks section.
 - `lng`: To override the language if needed
+- `sid`: DEPRECATED

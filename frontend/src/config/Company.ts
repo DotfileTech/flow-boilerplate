@@ -15,6 +15,7 @@ export const companyData = [
     enabled: true,
   },
   {
+    // Format validation
     id: 'status',
     required: true,
     enabled: true,
@@ -57,12 +58,14 @@ export const companyData = [
     enabled: true,
   },
   {
+    // Format validation ISO 13616 IBAN (eg: IE12BOFI90000112345678)
     id: 'iban',
     nested: 'banking_information',
     required: false,
     enabled: true,
   },
   {
+    // Format validation ISO 9362 BIC (eg: DEUTDEFF)
     id: 'bic',
     nested: 'banking_information',
     required: false,
@@ -74,6 +77,7 @@ export const companyData = [
     enabled: true,
   },
   {
+    // Format validation
     id: 'website_url',
     type: 'url',
     required: false,

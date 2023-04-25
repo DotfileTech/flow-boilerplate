@@ -12,12 +12,14 @@ export const individualData = [
     enabled: true,
   },
   {
+    // Format validation
     id: 'email',
     type: 'email',
     required: true,
     enabled: true,
   },
   {
+    // Format validation E.164 phoneNumber (eg +XXXXXXXXXXX)
     id: 'phone_number',
     required: true,
     enabled: true,
@@ -55,12 +57,14 @@ export const individualData = [
     enabled: true,
   },
   {
+    // Format validation ISO 13616 IBAN (eg: IE12BOFI90000112345678)
     id: 'iban',
     nested: 'banking_information',
     required: false,
     enabled: true,
   },
   {
+    // Format validation ISO 9362 BIC (eg: DEUTDEFF)
     id: 'bic',
     nested: 'banking_information',
     required: false,

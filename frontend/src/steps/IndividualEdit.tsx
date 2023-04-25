@@ -19,10 +19,13 @@ const IndividualEdit = (props: any) => {
   const schema = Joi.object().keys(rules).unknown(true);
 
   useEffect(() => {
-    const { address, ...data } = props.individual;
+    const { address, banking_information, ...data } = props.individual;
     let values = data;
     if (address) {
       values = { ...address, ...values };
+    }
+    if (banking_information) {
+      values = { ...banking_information, ...values };
     }
 
     const check = schema.validate(values);
@@ -33,11 +36,21 @@ const IndividualEdit = (props: any) => {
     }
   }, [props.individual, schema]);
 
-  const changeHandlerIndividual = (e: any) => {
-    props.setIndividual({
-      ...props.individual,
-      [e.target.name]: e.target.value,
-    });
+  const changeHandlerIndividual = (e: any, nested: string) => {
+    if (nested) {
+      props.setIndividual({
+        ...props.individual,
+        [nested]: {
+          ...props.individual[nested],
+          [e.target.name]: e.target.value,
+        },
+      });
+    } else {
+      props.setIndividual({
+        ...props.individual,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   const checkBoxChangeHandler = (event: any) => {
@@ -105,7 +118,7 @@ const IndividualEdit = (props: any) => {
                 key={`individual_${ind.id}`}
                 stepId="individual_edit"
                 defaultValue={defaultValue || ''}
-                onChange={changeHandlerIndividual}
+                onChange={(e: any) => changeHandlerIndividual(e, ind.nested)}
                 name={ind.id}
                 isRequired={ind.required}
                 type={ind.type}

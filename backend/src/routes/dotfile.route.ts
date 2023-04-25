@@ -34,6 +34,8 @@ class PublicApiRoute implements Routes {
 
     this.router.post(`${this.path}cases`, this.dotfileController.createCase);
 
+    this.router.get(`${this.path}cases`, this.dotfileController.getCases);
+
     this.router.get(`${this.path}cases/:id`, this.dotfileController.fetchCase);
 
     this.router.post(`${this.path}checks`, this.dotfileController.fetchCheck);
