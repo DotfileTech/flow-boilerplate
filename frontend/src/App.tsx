@@ -132,7 +132,7 @@ const AppContent = () => {
 
       if (response.data.data.length === 0) {
         setIsLoading(false);
-        setStep(step + 2);
+        setStep(step);
       } else {
         setIsLoading(false);
         setCompanies(response.data.data);
