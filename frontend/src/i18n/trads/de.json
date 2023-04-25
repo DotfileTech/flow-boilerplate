@@ -147,7 +147,8 @@
       "roles": {
         "beneficial_owner": "Wirtschaftlicher Eigentümer",
         "legal_representative": "Vertretungsberechtigte Person/Betriebsleiter",
-        "shareholder": "Aktionär"
+        "shareholder": "Aktionär",
+        "applicant": "Applicant"
       }
     },
     "check": {

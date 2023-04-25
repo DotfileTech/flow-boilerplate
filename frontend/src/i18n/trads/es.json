@@ -147,7 +147,8 @@
       "roles": {
         "beneficial_owner": "Proprietarios efectivos",
         "legal_representative": "Representante legal",
-        "shareholder": "Accionista"
+        "shareholder": "Accionista",
+        "applicant": "Applicant"
       }
     },
     "check": {
