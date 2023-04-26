@@ -140,7 +140,14 @@
       "birth_date": {
         "label": "Birth date"
       },
-      "roles": "Role(s)"
+      "roles": {
+        "label": "Role(s)",
+        "options": {
+          "beneficial_owner": "Beneficial owner",
+          "legal_representative": "Legal representative",
+          "shareholder": "Shareholder"
+        }
+      }
     },
     "checks_list": {
       "title": "Help us run necessary verifications",

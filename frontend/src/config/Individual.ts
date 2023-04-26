@@ -58,17 +58,17 @@ export const individualData: IndividualData[] = [
   {
     id: 'position',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'tax_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'social_security_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'birth_date',
@@ -91,7 +91,7 @@ export const individualData: IndividualData[] = [
     id: 'street_address',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'street_address_2',
@@ -122,12 +122,12 @@ export const individualData: IndividualData[] = [
     id: 'iban',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'bic',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
 ];
