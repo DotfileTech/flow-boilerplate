@@ -400,7 +400,7 @@ class DotfileController {
       let back_upload_ref;
 
       if (req.files[1]) {
-        back_upload_ref = await this.upload(req.files[0]);
+        back_upload_ref = await this.upload(req.files[1]);
       }
 
       const completedChecks = await this.dotfileApi.request(
