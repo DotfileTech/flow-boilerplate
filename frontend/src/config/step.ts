@@ -13,25 +13,45 @@ export const stepsConfig: {
   pdfUrl?: string;
 }[] = [
   {
-    key: 'company_search',
+    key: 'disclaimer',
+    fields: [],
   },
   {
-    key: 'company_list',
-  },
-  {
-    key: 'company_edit',
-  },
-  {
-    key: 'individuals_list',
-    hasApplicant: true,
-  },
-  // Enable the individual_edit step only for a KYC
-  /*{
     key: 'individual_edit',
-  },*/
-  // A step with a pdf viewer and a checkbox (like T&Cs) must contain "pdf_viewer" in the key (eg: pdf_viewer_terms)
+  },
   {
-    key: 'pdf_viewer_terms',
-    pdfUrl: 'https://acme.onboarding.dotfile.com/terms-and-conditions.pdf',
+    key: 'personal_details',
+    fields: [
+      {
+        id: 'us_tax_payer_status',
+        type: 'radio',
+        isRequired: true,
+        options: ['yes', 'no'],
+      },
+      {
+        id: 'are_you_a_pep',
+        type: 'radio',
+        isRequired: true,
+        options: ['yes', 'no'],
+      },
+    ],
+  },
+  {
+    key: 'origin_funds',
+    fields: [
+      {
+        id: 'origin_funds',
+        type: 'select',
+        isRequired: true,
+        options: [
+          'professional_income',
+          'holding_revenue',
+          'sale_of_securities',
+          'sales_of_property',
+          'inheritance_donation',
+          'other_source',
+        ],
+      },
+    ],
   },
 ];

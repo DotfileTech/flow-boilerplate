@@ -1,1 +1,74 @@
-{}
+{
+  "brand": {
+    "title": "The <1>community-led platform</1> for private market investments"
+  },
+  "steps": {
+    "disclaimer": {
+      "title": "Before continuing, please pay attention to the following",
+      "description": "<strong>Before continue, please pay attention to the following.</strong><br/>You will need an ID, a proof of address (<a href='https://docs.roundtable.eu/en/articles/6479354-how-do-i-perform-my-kyc-check' target='_blank'>e.g. utility bill</a>), a proof of fund provenance (e.g. last pay slip or last tax report) and your Tax ID Number.<br/>All personal information is confidential, is only used for <a href='https://docs.roundtable.eu/en/articles/6442473-why-do-i-need-to-do-kyc-kyb-checks' target='_blank'>Anti-Money Laundering purposes</a>, and won’t be shared with your co-investors."
+    },
+    "individual_edit": {
+      "title": "Fill in your personal details",
+      "tax_identification_number": {
+        "label": "Tax ID number"
+      },
+      "birth_date": {
+        "label": "Date of birth"
+      },
+      "birth_place": {
+        "label": "City of birth"
+      },
+      "birth_country": {
+        "label": "Country of birth"
+      },
+      "street_address": {
+        "label": "Street address"
+      },
+      "postal_code": {
+        "label": "ZIP code"
+      },
+      "city": {
+        "label": "City"
+      },
+      "country": {
+        "label": "Country of residence"
+      }
+    },
+    "personal_details": {
+      "title": "Fill in your personal details",
+      "us_tax_payer_status": {
+        "label": "US tax payer status",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "are_you_a_pep": {
+        "label": "Are you a PEP?",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      }
+    },
+    "origin_funds": {
+      "title": "What is the origin of funds you're investing?",
+      "description": "A bank statement IS NOT a proof of fund provenance, <a href=\"https://docs.roundtable.eu/en/articles/6479354-how-do-i-perform-my-kyc-check\" target=\"_blank\">see here the proofs of fund provenance accepted</a>",
+      "origin_funds": {
+        "label": "What is the origin of funds you're investing?",
+        "options": {
+          "professional_income": "Professional income",
+          "holding_revenue": "Holding revenue",
+          "sale_of_securities": "Sale of securities",
+          "sales_of_property": "Sales of property",
+          "inheritance_donation": "Inheritance / Donation",
+          "other_source": "Other source"
+        }
+      }
+    },
+    "checks_list": {
+      "title": "Help us run necessary verifications",
+      "description": "Please proceed with the necessary verifications listed below.<br/> Our team will analyze your data and keep you informed about the outcome of your case."
+    }
+  }
+}
