@@ -1,3 +1,5 @@
+import { CompanyStatusEnum } from '../constants/company-status.enum';
+
 export const companyData = [
   {
     id: 'name',
@@ -11,25 +13,30 @@ export const companyData = [
   },
   {
     id: 'legal_form',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
-    // Format validation
     id: 'status',
-    required: true,
+    type: 'select',
+    required: false,
     enabled: true,
+    options: [
+      CompanyStatusEnum.live,
+      CompanyStatusEnum.closed,
+      CompanyStatusEnum.registered,
+    ],
   },
   {
     id: 'registration_date',
     type: 'date',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'street_address',
     nested: 'address',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
@@ -41,13 +48,13 @@ export const companyData = [
   {
     id: 'postal_code',
     nested: 'address',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'city',
     nested: 'address',
-    required: true,
+    required: false,
     enabled: true,
   },
   {

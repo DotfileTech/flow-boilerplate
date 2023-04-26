@@ -15,13 +15,13 @@ export const individualData = [
     // Format validation
     id: 'email',
     type: 'email',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     // Format validation E.164 phoneNumber (eg +XXXXXXXXXXX)
     id: 'phone_number',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
@@ -73,18 +73,18 @@ export const individualData = [
   {
     id: 'birth_date',
     type: 'date',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'birth_place',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'birth_country',
     type: 'country',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
@@ -102,20 +102,20 @@ export const individualData = [
   {
     id: 'postal_code',
     nested: 'address',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'city',
     nested: 'address',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'country',
     nested: 'address',
     type: 'country',
-    required: true,
+    required: false,
     enabled: true,
   },
 ];

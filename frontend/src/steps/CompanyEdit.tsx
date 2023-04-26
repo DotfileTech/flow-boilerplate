@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import InputForm from '../components/InputForm';
 import CountrySelect from '../components/CountrySelect';
 import { companyData } from '../config/Company';
+import Select from '../components/Select';
 
 const CompanyEdit = (props: any) => {
   const { t } = useTranslation();
@@ -46,6 +47,20 @@ const CompanyEdit = (props: any) => {
                 ? props.company[company.nested][company.id]
                 : ''
               : props.company[company.id];
+
+            if (company.type === 'select') {
+              return (
+                <Select
+                  key={`company_${company.id}`}
+                  stepId="company_edit"
+                  name={company.id}
+                  defaultValue={defaultValue || ''}
+                  isRequired={company.required}
+                  options={company.options || []}
+                  onChange={(e: any) => props.changeHandler(e, company.nested)}
+                />
+              );
+            }
 
             if (company.type === 'country') {
               return (

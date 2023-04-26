@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import { Stack, Flex, Text } from '@chakra-ui/react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,7 @@ import IndividualsList from './steps/IndividualsList';
 import ChecksList from './steps/ChecksList';
 import useApi from './hooks/useApi';
 import { form } from './config/Forms';
+import { hasKyb, hasKyc } from './config/step';
 
 const AppContent = () => {
   const { t, i18n } = useTranslation();
@@ -74,11 +75,17 @@ const AppContent = () => {
     sid,
   });
 
-  const [company, setCompany] = useState<any>({
-    name: searchParams.get('company'),
-    country: searchParams.get('country'),
-    registration_number: searchParams.get('registrationNumber'),
-  });
+  const [company, setCompany] = useState<any>();
+
+  useEffect(() => {
+    if (hasKyb) {
+      setCompany({
+        name: searchParams.get('company'),
+        country: searchParams.get('country'),
+        registration_number: searchParams.get('registrationNumber'),
+      });
+    }
+  }, [searchParams]);
 
   const [individualIndex, setIndividualIndex] = useState(null);
 
@@ -157,17 +164,6 @@ const AppContent = () => {
     }
   };
 
-  const selectIndividual = (i: any) => {
-    if (i === null) {
-      setIndividual({});
-      setIndividualIndex(null);
-    } else {
-      setIndividualIndex(i);
-      setIndividual(individuals[i]);
-    }
-    setStep(steps.length - 2);
-  };
-
   const changeHandler = (e: any, nested: string) => {
     if (nested) {
       setCompany({
@@ -183,6 +179,17 @@ const AppContent = () => {
         [e.target.name]: e.target.value,
       });
     }
+  };
+
+  const selectIndividual = (i: any) => {
+    if (i === null) {
+      setIndividual({});
+      setIndividualIndex(null);
+    } else {
+      setIndividualIndex(i);
+      setIndividual(individuals[i]);
+    }
+    setStep(steps.length - 2);
   };
 
   const changeHandlerMetadata = (e: any) => {
@@ -210,86 +217,96 @@ const AppContent = () => {
     setStep(step - 1);
   };
 
-  const steps = [
-    {
-      key: 'company_search',
-      content: (
-        <CompanySearch
-          getCompanies={getCompanies}
-          countries={countries}
-          company={company}
-          changeHandler={changeHandler}
-          isLoading={isLoading}
-          autoSearchDone={autoSearchDone}
-        />
-      ),
-    },
-    {
-      key: 'company_list',
-      content: (
-        <CompaniesList
-          selectCompany={selectCompany}
-          companies={companies}
-          isLoading={isLoading}
-          back={back}
-        />
-      ),
-    },
-    {
-      key: 'company_edit',
-      content: (
-        <CompanyEdit
-          company={company}
-          changeHandler={changeHandler}
-          next={next}
-          back={back}
-          countries={countries}
-        />
-      ),
-    },
-    {
-      key: 'individuals_list',
-      content: (
-        <IndividualsList
-          selectIndividual={selectIndividual}
-          individuals={individuals}
-          setIndividuals={setIndividuals}
-          submit={submit}
-          individualsValid={individualsValid}
-          setIndividualsValid={setIndividualsValid}
-        />
-      ),
-    },
-    {
-      key: 'individual_edit',
-      content: (
-        <IndividualEdit
-          individual={individual}
-          setIndividual={setIndividual}
-          saveIndividual={saveIndividual}
-          next={next}
-          back={back}
-          countries={countries}
-          setIndividualsValid={setIndividualsValid}
-        />
-      ),
-    },
-    {
-      key: 'checks_list',
-      content: (
-        <ChecksList
-          individual={individual}
-          setIndividual={setIndividual}
-          saveIndividual={saveIndividual}
-          next={next}
-          back={back}
-          countries={countries}
-          caseId={caseId}
-          setIsLoading={setIsLoading}
-        />
-      ),
-    },
-  ];
+  const steps: { key: string; content: ReactElement }[] = [];
+
+  if (hasKyb) {
+    steps.push(
+      {
+        key: 'company_search',
+        content: (
+          <CompanySearch
+            getCompanies={getCompanies}
+            countries={countries}
+            company={company}
+            changeHandler={changeHandler}
+            isLoading={isLoading}
+            autoSearchDone={autoSearchDone}
+          />
+        ),
+      },
+      {
+        key: 'company_list',
+        content: (
+          <CompaniesList
+            selectCompany={selectCompany}
+            companies={companies}
+            isLoading={isLoading}
+            back={back}
+          />
+        ),
+      },
+      {
+        key: 'company_edit',
+        content: (
+          <CompanyEdit
+            company={company}
+            changeHandler={changeHandler}
+            next={next}
+            back={back}
+            countries={countries}
+          />
+        ),
+      }
+    );
+  }
+
+  if (hasKyc) {
+    steps.push(
+      {
+        key: 'individuals_list',
+        content: (
+          <IndividualsList
+            selectIndividual={selectIndividual}
+            individuals={individuals}
+            setIndividuals={setIndividuals}
+            submit={submit}
+            individualsValid={individualsValid}
+            setIndividualsValid={setIndividualsValid}
+          />
+        ),
+      },
+      {
+        key: 'individual_edit',
+        content: (
+          <IndividualEdit
+            individual={individual}
+            setIndividual={setIndividual}
+            saveIndividual={saveIndividual}
+            next={next}
+            back={back}
+            countries={countries}
+            setIndividualsValid={setIndividualsValid}
+          />
+        ),
+      }
+    );
+  }
+
+  steps.push({
+    key: 'checks_list',
+    content: (
+      <ChecksList
+        individual={individual}
+        setIndividual={setIndividual}
+        saveIndividual={saveIndividual}
+        next={next}
+        back={back}
+        countries={countries}
+        caseId={caseId}
+        setIsLoading={setIsLoading}
+      />
+    ),
+  });
 
   form.forEach((item: any) => {
     const content = (

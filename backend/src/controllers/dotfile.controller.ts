@@ -129,12 +129,16 @@ class DotfileController {
           template_id = process.env.TEMPLATE_ID
       }*/
 
+      const caseName = company
+        ? `KYB - ${company.name}`
+        : `KYC - ${individuals[0].first_name} ${individuals[0].last_name}`;
+
       const createdCase = await this.dotfileApi.request(
         'post',
         'cases',
         {},
         {
-          name: company.name,
+          name: caseName,
           ...(externalId && { external_id: externalId }),
           template_id: template_id || null,
           metadata: Object.keys(metadata)
@@ -144,79 +148,83 @@ class DotfileController {
         {}
       );
 
-      for (const individual of individuals) {
+      if (individuals.length > 0) {
+        for (const individual of individuals) {
+          await this.dotfileApi.request(
+            'post',
+            'individuals',
+            {},
+            {
+              // Required
+              case_id: createdCase.id,
+              roles: individual.roles,
+              first_name: individual.first_name,
+              last_name: individual.last_name,
+              // Optional
+              email: individual.email,
+              birth_date: individual.birth_date,
+              birth_country: individual.birth_country,
+              birth_place: individual.birth_place,
+              address: {
+                street_address: individual.address?.street_address,
+                street_address_2: individual.address?.street_address_2,
+                postal_code: individual.address?.postal_code,
+                city: individual.address?.city,
+                state: individual.address?.state,
+                region: individual.address?.region,
+                country: individual.address?.country,
+              },
+              banking_information: {
+                iban: individual.banking_information?.iban,
+                bic: individual.banking_information?.bic,
+              },
+              tax_identification_number: individual.tax_identification_number,
+              social_security_number: individual.social_security_number,
+              phone_number: individual.phone_number,
+              position: individual.position,
+              ownership_percentage: individual.ownership_percentage,
+            },
+            {}
+          );
+        }
+      }
+
+      if (company) {
         await this.dotfileApi.request(
           'post',
-          'individuals',
+          'companies',
           {},
           {
             // Required
             case_id: createdCase.id,
-            roles: individual.roles,
-            first_name: individual.first_name,
-            last_name: individual.last_name,
+            name: company.name,
+            registration_number: company.registration_number,
+            country: company.country,
             // Optional
-            email: individual.email,
-            birth_date: individual.birth_date,
-            birth_country: individual.birth_country,
-            birth_place: individual.birth_place,
+            registration_date: company.registration_date,
+            status: company.status,
+            legal_form: company.legal_form,
             address: {
-              street_address: individual.address.street_address,
-              street_address_2: individual.address.street_address_2,
-              postal_code: individual.address.postal_code,
-              city: individual.address.city,
-              state: individual.address.state,
-              region: individual.address.region,
-              country: individual.address.country,
+              street_address: company.address?.street_address,
+              street_address_2: company.address?.street_address_2,
+              postal_code: company.address?.postal_code,
+              city: company.address?.city,
+              state: company.address?.state,
+              region: company.address?.region,
+              country: company.address?.country,
             },
             banking_information: {
-              iban: individual.banking_information.iban,
-              bic: individual.banking_information.bic,
+              iban: company.banking_information?.iban,
+              bic: company.banking_information?.bic,
             },
-            tax_identification_number: individual.tax_identification_number,
-            social_security_number: individual.social_security_number,
-            phone_number: individual.phone_number,
-            position: individual.position,
-            ownership_percentage: individual.ownership_percentage,
+            tax_identification_number: company.tax_identification_number,
+            website_url: company.website_url,
+            employer_identification_number:
+              company.employer_identification_number,
           },
           {}
         );
       }
-
-      await this.dotfileApi.request(
-        'post',
-        'companies',
-        {},
-        {
-          // Required
-          case_id: createdCase.id,
-          name: company.name,
-          registration_number: company.registration_number,
-          country: company.country,
-          // Optional
-          registration_date: company.registration_date,
-          status: company.status,
-          legal_form: company.legal_form,
-          address: {
-            street_address: company.address.street_address,
-            street_address_2: company.address.street_address_2,
-            postal_code: company.address.postal_code,
-            city: company.address.city,
-            state: company.address.state,
-            region: company.address.region,
-            country: company.address.country,
-          },
-          banking_information: {
-            iban: company.banking_information.iban,
-            bic: company.banking_information.bic,
-          },
-          tax_identification_number: company.tax_identification_number,
-          website_url: company.website_url,
-          employer_identification_number:
-            company.employer_identification_number,
-        },
-        {}
-      );
 
       res.status(200).json({
         caseId: createdCase.id,
@@ -226,7 +234,7 @@ class DotfileController {
         type: 'error',
         message:
           'Something went wrong while creating case: ' +
-          err.response.data.errors,
+          err?.response?.data?.errors,
       });
     }
   };
