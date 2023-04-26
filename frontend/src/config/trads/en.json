@@ -90,7 +90,14 @@
       "city": {
         "label": "City"
       },
-      "roles": "Roles",
+      "roles": {
+        "label": "Roles",
+        "options": {
+          "beneficial_owner": "Beneficial owner",
+          "legal_representative": "Legal representative",
+          "shareholder": "Shareholder"
+        }
+      },
       "ownership_percentage": {
         "label": "Ownership percentage"
       },
