@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import {
   Tag,
   Heading,
@@ -20,7 +21,15 @@ import { useTranslation } from 'react-i18next';
 
 import { CheckResultEnum, CheckStatusEnum, CheckTypeEnum } from '../constants';
 
-const CheckItem = (props: any) => {
+type CheckItemProps = {
+  item: any;
+  check: any;
+  selectCheck: any;
+  setCurrentIndividual: any;
+};
+
+const CheckItem = (props: CheckItemProps) => {
+  const { check, selectCheck, setCurrentIndividual, item } = props;
   const { t } = useTranslation();
 
   const exactType = (currentCheck: any) => {
@@ -29,18 +38,29 @@ const CheckItem = (props: any) => {
       : currentCheck.type;
   };
 
+  // @NOTE Add a fallback title when a custom document type created after the onboarding flow init
+  const checkTitleFallBack = useMemo(() => {
+    if (
+      check.type === CheckTypeEnum.document &&
+      check.data.settings.custom_document_type
+    ) {
+      return check.data.settings.custom_document_type.label;
+    }
+    // eslint-disable-next-line
+  }, [check.type]);
+
   return (
     <Box px="4" py="6" width="100%">
       <Flex direction={{ base: 'column', sm: 'row' }} alignItems="center">
         <Show above="sm">
           <Heading size="sm">
-            {props.check && t(`checks.${exactType(props.check)}.title`)}
+            {check && t(`checks.${exactType(check)}.title`, checkTitleFallBack)}
           </Heading>
         </Show>
 
         <Spacer />
 
-        {props.check.status === CheckStatusEnum.rejected && (
+        {check.status === CheckStatusEnum.rejected && (
           <Tag mr={5} colorScheme="red">
             <Box as="span" mr="2">
               <XCircle size={16} />
@@ -48,7 +68,7 @@ const CheckItem = (props: any) => {
             {t('domain.check.status.rejected')}
           </Tag>
         )}
-        {props.check.status === CheckStatusEnum.approved && (
+        {check.status === CheckStatusEnum.approved && (
           <Tag mr={5} colorScheme="green">
             <Box as="span" mr="2">
               <CheckCircle2 size={16} />
@@ -56,8 +76,8 @@ const CheckItem = (props: any) => {
             {t('domain.check.status.approved')}
           </Tag>
         )}
-        {(props.check.status === CheckStatusEnum.need_review ||
-          props.check.status === CheckStatusEnum.processing) && (
+        {(check.status === CheckStatusEnum.need_review ||
+          check.status === CheckStatusEnum.processing) && (
           <Tag mr={5} colorScheme="blue">
             <Box as="span" mr="2">
               <PlayCircle size={16} />
@@ -65,7 +85,7 @@ const CheckItem = (props: any) => {
             {t('domain.check.status.need_review')}
           </Tag>
         )}
-        {props.check.status === CheckStatusEnum.expired && (
+        {check.status === CheckStatusEnum.expired && (
           <Tag mr={5} colorScheme="yellow">
             <Box as="span" mr="2">
               <Timer size={16} />
@@ -77,35 +97,35 @@ const CheckItem = (props: any) => {
         <>
           <Button
             leftIcon={
-              props.check.type === CheckTypeEnum.id_verification ? (
+              check.type === CheckTypeEnum.id_verification ? (
                 <ExternalLinkIcon size={16} />
               ) : (
                 <DownloadIcon size={16} />
               )
             }
             width={['100%', 'auto', 'auto']}
-            id={props.check.id}
-            name={props.check.type}
+            id={check.id}
+            name={check.type}
             variant="outline"
             onClick={() => {
-              props.selectCheck(props.check);
-              props.setCurrentIndividual(props.item);
+              selectCheck(check);
+              setCurrentIndividual(item);
             }}
             isDisabled={
-              props.check.status !== CheckStatusEnum.in_progress &&
-              props.check.data.result !== CheckResultEnum.rejected
+              check.status !== CheckStatusEnum.in_progress &&
+              check.data.result !== CheckResultEnum.rejected
             }
             mt={{ base: '12px', md: '0' }}
           >
             <Show below="sm">
-              {props.check && t(`checks.${exactType(props.check)}.title`)}
+              {check && t(`checks.${exactType(check)}.title`)}
             </Show>
 
             <Show above="sm">
-              {props.check.data.result === CheckResultEnum.rejected
+              {check.data.result === CheckResultEnum.rejected
                 ? t('upload_document')
-                : props.check.status === CheckStatusEnum.in_progress
-                ? props.check.type === CheckTypeEnum.id_verification
+                : check.status === CheckStatusEnum.in_progress
+                ? check.type === CheckTypeEnum.id_verification
                   ? t('verify_identity')
                   : t('upload_document')
                 : t('upload_document')}
@@ -113,9 +133,9 @@ const CheckItem = (props: any) => {
           </Button>
         </>
       </Flex>
-      {props.check.status === 'rejected' && (
+      {check.status === 'rejected' && (
         <Text color="red.600" mt={{ base: '12px', md: '0' }}>
-          {props.check.data.review.comment}
+          {check.data.review.comment}
         </Text>
       )}
     </Box>
