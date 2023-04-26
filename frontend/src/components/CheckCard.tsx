@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 
 import CheckItem from '../components/CheckItem';
 import { CheckTypeEnum, IndividualRoleEnum } from '../constants';
+import { hasKyb } from '../config/step';
 
 const CheckCard = (props: any) => {
   const { t } = useTranslation();
@@ -43,6 +44,7 @@ const CheckCard = (props: any) => {
                   : props.item.name}
               </Heading>
               {props.type === 'individual' &&
+                hasKyb &&
                 props.item.roles.map((role: IndividualRoleEnum, i: number) => (
                   <Tag key={i} display={['none', 'flex', 'flex']} ml={5}>
                     {t(`domain.individual.roles.${role}`)}

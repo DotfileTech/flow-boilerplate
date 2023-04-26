@@ -1,2 +1,2 @@
-export const hasKyb = false;
+export const hasKyb = true;
 export const hasKyc = true;

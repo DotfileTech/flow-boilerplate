@@ -106,7 +106,7 @@ class DotfileController {
     next: NextFunction
   ) => {
     try {
-      const { company, individuals, metadata, externalId } = req.body;
+      const { company, individuals, metadata, email, externalId } = req.body;
 
       let template_id: string = process.env.TEMPLATE_ID;
 
@@ -150,6 +150,12 @@ class DotfileController {
 
       if (individuals.length > 0) {
         for (const individual of individuals) {
+          let individualEmail = individual.email;
+
+          // @NOTE If there is no roles, it's a KYC and the default role is "applicant" with a required email
+          if (!individual.roles && email) {
+            individualEmail = email;
+          }
           await this.dotfileApi.request(
             'post',
             'individuals',
@@ -157,11 +163,11 @@ class DotfileController {
             {
               // Required
               case_id: createdCase.id,
-              roles: individual.roles,
+              roles: individual.roles || ['applicant'],
               first_name: individual.first_name,
               last_name: individual.last_name,
               // Optional
-              email: individual.email,
+              email: individualEmail,
               birth_date: individual.birth_date,
               birth_country: individual.birth_country,
               birth_place: individual.birth_place,

@@ -15,6 +15,7 @@ import UploadDocuments from '../components/UploadDocuments';
 import CheckCard from '../components/CheckCard';
 import { CheckStatusEnum, CheckTypeEnum } from '../constants';
 import { Indicator } from '../components/indicator';
+import { hasKyb } from '../config/step';
 
 const ChecksList = (props: any) => {
   const { t } = useTranslation();
@@ -106,30 +107,32 @@ const ChecksList = (props: any) => {
         isLazy
         isFitted={isMobile}
       >
-        <TabList
-          borderBottom="1px"
-          borderColor="gray.100"
-          position="sticky"
-          top="0"
-          zIndex="1"
-        >
-          {hasCompanies && (
-            <Tab mr={{ base: 0, md: 10 }}>
-              {t('companies')}
-              {hasCompaniesActions && (
-                <Indicator ml="2" boxSize="8px" color="orange" />
-              )}
-            </Tab>
-          )}
-          {hasIndividuals && (
-            <Tab mr={{ base: 0, md: 10 }}>
-              {t('individuals')}
-              {hasIndividualsActions && (
-                <Indicator ml="2" boxSize="8px" color="orange" />
-              )}
-            </Tab>
-          )}
-        </TabList>
+        {hasKyb && (
+          <TabList
+            borderBottom="1px"
+            borderColor="gray.100"
+            position="sticky"
+            top="0"
+            zIndex="1"
+          >
+            {hasCompanies && (
+              <Tab mr={{ base: 0, md: 10 }}>
+                {t('companies')}
+                {hasCompaniesActions && (
+                  <Indicator ml="2" boxSize="8px" color="orange" />
+                )}
+              </Tab>
+            )}
+            {hasIndividuals && (
+              <Tab mr={{ base: 0, md: 10 }}>
+                {t('individuals')}
+                {hasIndividualsActions && (
+                  <Indicator ml="2" boxSize="8px" color="orange" />
+                )}
+              </Tab>
+            )}
+          </TabList>
+        )}
 
         <TabPanels>
           {hasCompanies && (

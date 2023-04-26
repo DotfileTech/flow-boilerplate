@@ -2,6 +2,7 @@ services:
   # API (backend)
   - type: web
     name: xxxxx-api # replace xxxxx with the customer name
+    branch: xxxxx # replace xxxxx with the customer name
     env: node
     region: frankfurt
     rootDir: backend
@@ -13,8 +14,6 @@ services:
       paths:
         - backend/src
     envVars:
-      - key: NODE_ENV
-        value: production
       # Dotfile
       - key: DOTFILE_BASE_URL
         value: https://api.dotfile.com/v1
@@ -39,11 +38,12 @@ services:
       - key: APP_URL
         fromService:
           type: web
-          name: xxxxx-app
+          name: xxxxx-app # replace xxxxx with the customer name
           envVarKey: CUSTOM_DOMAIN # APP (frontend) url
   # APP (frontend)
   - type: web
     name: xxxxx-app # replace xxxxx with the customer name
+    branch: xxxxx # replace xxxxx with the customer name
     env: static
     rootDir: frontend
     buildCommand: npm run build
@@ -58,7 +58,7 @@ services:
       - key: REACT_APP_HOST
         fromService:
           type: web
-          name: xxxxx-api
+          name: xxxxx-api # replace xxxxx with the customer name
           envVarKey: RENDER_EXTERNAL_URL # API (backend) url
       - key: REACT_APP_ENV
         value: production

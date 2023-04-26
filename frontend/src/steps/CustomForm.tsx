@@ -13,7 +13,9 @@ type CustomFormProps = {
   metadata: any;
   changeHandlerMetadata: any;
   changeHandlerMetadataCustom: any;
-  next: any;
+  isLastStep?: boolean;
+  next?: any;
+  submit?: any;
 };
 
 type Field = {
@@ -31,7 +33,9 @@ const CustomForm = (props: CustomFormProps) => {
     metadata,
     changeHandlerMetadata,
     changeHandlerMetadataCustom,
+    isLastStep = false,
     next,
+    submit,
   } = props;
   const { t } = useTranslation();
   const [formValid, setFormValid] = useState(false);
@@ -97,7 +101,11 @@ const CustomForm = (props: CustomFormProps) => {
           );
         })}
         <Box>
-          <Button variant="next" onClick={next} isDisabled={!formValid}>
+          <Button
+            variant="next"
+            onClick={isLastStep ? submit : next}
+            isDisabled={!formValid}
+          >
             {t('domain.form.next')}
           </Button>
         </Box>

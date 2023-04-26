@@ -214,7 +214,7 @@ const AppContent = () => {
       !individuals.some((e: { isValid: boolean }) => !e.isValid)
     );
 
-    setStep(step - 1);
+    setStep(hasKyb ? step - 1 : step + 1);
   };
 
   const steps: { key: string; content: ReactElement }[] = [];
@@ -256,12 +256,7 @@ const AppContent = () => {
             countries={countries}
           />
         ),
-      }
-    );
-  }
-
-  if (hasKyc) {
-    steps.push(
+      },
       {
         key: 'individuals_list',
         content: (
@@ -274,22 +269,25 @@ const AppContent = () => {
             setIndividualsValid={setIndividualsValid}
           />
         ),
-      },
-      {
-        key: 'individual_edit',
-        content: (
-          <IndividualEdit
-            individual={individual}
-            setIndividual={setIndividual}
-            saveIndividual={saveIndividual}
-            next={next}
-            back={back}
-            countries={countries}
-            setIndividualsValid={setIndividualsValid}
-          />
-        ),
       }
     );
+  }
+
+  if (hasKyc) {
+    steps.push({
+      key: 'individual_edit',
+      content: (
+        <IndividualEdit
+          individual={individual}
+          setIndividual={setIndividual}
+          saveIndividual={saveIndividual}
+          next={next}
+          back={back}
+          countries={countries}
+          setIndividualsValid={setIndividualsValid}
+        />
+      ),
+    });
   }
 
   steps.push({
@@ -316,6 +314,8 @@ const AppContent = () => {
         metadata={metadata}
         changeHandlerMetadata={changeHandlerMetadata}
         changeHandlerMetadataCustom={changeHandlerMetadataCustom}
+        isLastStep={item.isLastStep}
+        submit={submit}
         next={next}
       />
     );
