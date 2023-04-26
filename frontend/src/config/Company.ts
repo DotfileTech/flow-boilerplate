@@ -28,7 +28,7 @@ export const companyData: CompanyData[] = [
   },
   {
     id: 'legal_form',
-    required: false,
+    required: true,
     enabled: true,
   },
   {

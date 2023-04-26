@@ -73,7 +73,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'birth_date',
     type: 'date',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -102,13 +102,13 @@ export const individualData: IndividualData[] = [
   {
     id: 'postal_code',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'city',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
