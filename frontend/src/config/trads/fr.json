@@ -25,7 +25,7 @@
     "company_list": {
       "title": "Sélectionnez votre entreprise",
       "not_found": "Vous ne trouvez pas votre entreprise ?",
-      "button": "Remplir les détails manuellement"
+      "button": "Remplir les informations manuellement"
     },
     "company_edit": {
       "title": "Vérifiez les informations de votre entreprise",
@@ -95,7 +95,6 @@
       "city": {
         "label": "Ville"
       },
-      "roles": "Rôles",
       "ownership_percentage": {
         "label": "Pourcentage de détention"
       }

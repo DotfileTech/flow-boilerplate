@@ -95,7 +95,6 @@
       "city": {
         "label": "Stadt"
       },
-      "roles": "Rollen",
       "ownership_percentage": {
         "label": "Eigentumsprozentsatz"
       }

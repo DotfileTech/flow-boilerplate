@@ -29,13 +29,13 @@ export const individualData: IndividualData[] = [
     id: 'email',
     type: 'email',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'phone_number',
     type: 'tel',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual in a KYB
@@ -58,17 +58,17 @@ export const individualData: IndividualData[] = [
   {
     id: 'position',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'tax_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'social_security_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'birth_date',
@@ -79,7 +79,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'birth_place',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'birth_country',
@@ -90,7 +90,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'street_address',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -122,12 +122,12 @@ export const individualData: IndividualData[] = [
     id: 'iban',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'bic',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
 ];

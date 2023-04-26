@@ -95,7 +95,6 @@
       "city": {
         "label": "Città"
       },
-      "roles": "Ruoli",
       "ownership_percentage": {
         "label": "Percentuale di proprietà"
       }
