@@ -118,7 +118,8 @@ const CheckItem = (props: CheckItemProps) => {
             mt={{ base: '12px', md: '0' }}
           >
             <Show below="sm">
-              {check && t(`checks.${exactType(check)}.title`)}
+              {check &&
+                t(`checks.${exactType(check)}.title`, checkTitleFallBack)}
             </Show>
 
             <Show above="sm">

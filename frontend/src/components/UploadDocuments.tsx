@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import {
   Button,
   Box,
@@ -22,7 +22,7 @@ const UploadDocuments = (props: any) => {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    setFiles([])
+    setFiles([]);
   }, []);
 
   const api = useApi();
@@ -107,6 +107,14 @@ const UploadDocuments = (props: any) => {
     ? props.currentIndividual.name
     : `${props.currentIndividual.first_name} ${props.currentIndividual.last_name}`;
 
+  // @NOTE Add a fallback title when a custom document type created after the onboarding flow init
+  const checkTitleFallBack = useMemo(() => {
+    if (props.currentCheck.data.settings.custom_document_type) {
+      return props.currentCheck.data.settings.custom_document_type.label;
+    }
+    // eslint-disable-next-line
+  }, [props.currentCheck.type]);
+
   return (
     <Modal
       isOpen={props.isUpload}
@@ -119,11 +127,12 @@ const UploadDocuments = (props: any) => {
       <ModalOverlay />
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{t(`checks.${exactType}.title`)}</ModalHeader>
+        <ModalHeader>{t(`checks.${exactType}.title`, 'Document')}</ModalHeader>
         <ModalCloseButton color="white" />
         <ModalBody padding={5}>
           <Text mb={5}>
-            {t(`checks.${exactType}.title`)} {t(`for`)} {entityName}
+            {t(`checks.${exactType}.title`, checkTitleFallBack)} {t(`for`)}{' '}
+            {entityName}
           </Text>
           {i18n.exists(`checks.${exactType}.description`) && (
             <Text>{t(`checks.${exactType}.description`)}</Text>

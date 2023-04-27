@@ -121,6 +121,7 @@ const IndividualEdit = (props: any) => {
                 onChange={(e: any) => changeHandlerIndividual(e, ind.nested)}
                 name={ind.id}
                 isRequired={ind.required}
+                hasHelper={ind.hasHelper}
                 type={ind.type}
               />
             );
