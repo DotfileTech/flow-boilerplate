@@ -9,6 +9,10 @@
     },
     "individual_edit": {
       "title": "Fill in your personal details",
+      "phone_number": {
+        "label": "Phone number",
+        "helper": "International standard (eg +33611223344)"
+      },
       "tax_identification_number": {
         "label": "Tax ID number"
       },
@@ -45,6 +49,7 @@
       },
       "are_you_a_pep": {
         "label": "Are you a PEP?",
+        "helper": "PEP is a Politically Exposed Person",
         "options": {
           "yes": "Yes",
           "no": "No"
