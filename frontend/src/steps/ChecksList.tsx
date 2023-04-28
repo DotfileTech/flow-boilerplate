@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   Stack,
   Tabs,
@@ -17,6 +17,9 @@ import CheckCard from '../components/CheckCard';
 import { CheckStatusEnum, CheckTypeEnum } from '../constants';
 import { Indicator } from '../components/indicator';
 import { hasKyb } from '../config/step';
+import { EmptyState } from '../components/EmptyState';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { NotFound } from '../components/NotFound';
 
 const ChecksList = (props: any) => {
   const { t } = useTranslation();
@@ -24,17 +27,27 @@ const ChecksList = (props: any) => {
   const [isMobile] = useMediaQuery('(max-width: 48em)');
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  async function fetchMyAPI() {
-    const response = await api.get(`/dotfile/cases/${props.caseId}`);
-    setData(response.data);
-  }
+  const [data, setData] = useState<any | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchMyAPI = useCallback(async () => {
+    try {
+      const response = await api.get(`/dotfile/cases/${props.caseId}`);
+      setData(response.data);
+      setError(null);
+    } catch (err: any) {
+      setError(err.message);
+      setData(null);
+    } finally {
+      setLoading(false);
+    }
+  }, [api, props.caseId]);
 
   useEffect(() => {
-    props.setIsLoading(true);
-    fetchMyAPI();
-    props.setIsLoading(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setLoading(true);
+    fetchMyAPI().catch(console.error);
+  }, [fetchMyAPI]);
 
   const processIdentityCheck = async (check: any) => {
     const response = await api.post(`dotfile/checks`, {
@@ -43,8 +56,6 @@ const ChecksList = (props: any) => {
     });
     window.open(response.data.url, '_blank', 'noreferrer');
   };
-
-  const [data, setData] = useState<any>();
 
   const [currentCheck, setCurrentCheck] = useState({});
   const [currentIndividual, setCurrentIndividual] = useState({});
@@ -96,6 +107,18 @@ const ChecksList = (props: any) => {
   const hasCompanies = (companies?.length ?? 0) > 0;
   const hasIndividuals = (individuals?.length ?? 0) > 0;
 
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <NotFound />;
+  }
+
+  if (!hasCompanies && !hasIndividuals) {
+    return <EmptyState />;
+  }
+
   return (
     <Stack spacing={5} pt={2}>
       <Tabs
@@ -138,7 +161,7 @@ const ChecksList = (props: any) => {
           {hasCompanies && (
             <TabPanel>
               <Stack spacing={5} pt={2}>
-                {data.companies.map((item: any, i: number) => (
+                {data?.companies.map((item: any, i: number) => (
                   <CheckCard
                     key={i}
                     item={item}
@@ -154,7 +177,7 @@ const ChecksList = (props: any) => {
           {hasIndividuals && (
             <TabPanel>
               <Stack spacing={5} pt={2}>
-                {data.individuals.map((item: any, i: number) => (
+                {data?.individuals.map((item: any, i: number) => (
                   <CheckCard
                     key={i}
                     item={item}

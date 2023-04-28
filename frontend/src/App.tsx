@@ -50,8 +50,10 @@ const AppContent = () => {
       setStep(steps.findIndex((element) => element.key === 'checks_list'));
     }
 
-    const response = await api.get('/dotfile/countries');
-    setCountries(response.data);
+    if (!externalId && !caseId) {
+      const response = await api.get('/dotfile/countries');
+      setCountries(response.data);
+    }
     setIsLoading(false);
   }
 
@@ -105,10 +107,12 @@ const AppContent = () => {
       metadata,
       externalId: searchParams.get('externalId'),
     });
-    setCaseId(response.data.caseId);
     localStorage.setItem('caseId', response.data.caseId);
-    setStep(steps.findIndex((element) => element.key === 'checks_list'));
-    setIsLoading(false);
+
+    // redirect to the completion step with the caseId query param
+    const url = new URL(window.location.origin);
+    url.searchParams.set('caseId', response.data.caseId);
+    window.location.href = url.href;
   };
 
   const back = async () => {
