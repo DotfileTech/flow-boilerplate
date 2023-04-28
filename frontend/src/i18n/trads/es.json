@@ -33,7 +33,12 @@
         "label": "Forma jurídica"
       },
       "status": {
-        "label": "Status"
+        "label": "Status",
+        "options": {
+          "live": "Live",
+          "closed": "Closed",
+          "registered": "Registered"
+        }
       },
       "street_address": {
         "label": "Dirección 1"
@@ -162,7 +167,8 @@
     "form": {
       "select": "Seleccionar",
       "next": "Próximo",
-      "save": "Respaldo"
+      "save": "Respaldo",
+      "cancel": "Cancelar"
     },
     "back": "Anterior",
     "languages": {
@@ -236,5 +242,6 @@
   "countries": "País",
   "upload_document": "Seleccionar archivo(s)",
   "upload_document_front": "Subir recto",
-  "upload_document_back": "Subir verso"
+  "upload_document_back": "Subir verso",
+  "document_add": "Agregar un archivo"
 }

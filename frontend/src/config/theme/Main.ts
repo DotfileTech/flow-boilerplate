@@ -1,5 +1,6 @@
 import { extendTheme } from '@chakra-ui/react';
 import type { StyleFunctionProps } from '@chakra-ui/styled-system';
+import { defineStyle } from '@chakra-ui/styled-system';
 
 // @TODO - OF-11 - Refactor style config file
 
@@ -70,24 +71,93 @@ const theme = extendTheme({
         header: {
           color: 'white',
           bg: 'brand.main-2',
+          textAlign: 'center',
+          fontWeight: '500',
+          padding: 4,
+          borderTopRadius: 'md',
         },
-        tablist: {},
+        footer: {
+          borderTop: '1px solid',
+          borderColor: 'gray.200',
+          justifyContent: 'center',
+        },
+        closeButton: {
+          top: 3,
+          right: 4,
+          color: 'gray.300',
+        },
+        body: {
+          p: 'unset',
+          m: 6,
+        },
+        dialog: {
+          padding: 0,
+        },
+        overlay: {
+          backdropFilter: 'blur(3px)',
+        },
       },
     },
     Button: {
       baseStyle: {
-        borderRadius: '4px',
+        lineHeight: '1.5',
+        borderRadius: 'base',
+        fontWeight: 'medium',
+        transitionProperty: 'common',
+        transitionDuration: 'normal',
+        _focusVisible: {
+          boxShadow: 'outline',
+        },
+        _disabled: {
+          opacity: 0.4,
+          cursor: 'not-allowed',
+          boxShadow: 'none',
+        },
+        _hover: {
+          _disabled: {
+            bg: 'initial',
+          },
+        },
       },
       sizes: {
-        xl: {
-          h: '56px',
-          fontSize: 'lg',
-          px: '32px',
-        },
+        lg: defineStyle({
+          fontSize: 'md',
+          px: '8',
+          py: '3',
+        }),
+        md: defineStyle({
+          fontSize: 'md',
+          px: '8',
+          py: '2',
+        }),
+        sm: defineStyle({
+          fontSize: 'sm',
+          px: '4',
+          py: '1',
+        }),
+        xs: defineStyle({
+          fontSize: 'xs',
+          px: '2',
+          py: '1',
+        }),
       },
       variants: {
         solid: (props: StyleFunctionProps) => ({
           bg: 'brand.main-2',
+          color: 'white',
+          _hover: {
+            bg: 'brand.main-2',
+            _disabled: {
+              bgColor: 'brand.main-2',
+            },
+          },
+          _active: { bg: 'brand.main-2' },
+        }),
+        outline: (props: StyleFunctionProps) => ({
+          border: '1px solid',
+          borderColor: 'brand.main-2',
+          bg: 'transparent',
+          color: 'brand.main-2',
         }),
         back: (props: StyleFunctionProps) => ({}),
         next: (props: StyleFunctionProps) => ({

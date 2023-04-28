@@ -33,7 +33,12 @@
         "label": "Forme légale"
       },
       "status": {
-        "label": "Status"
+        "label": "Status",
+        "options": {
+          "live": "Live",
+          "closed": "Closed",
+          "registered": "Registered"
+        }
       },
       "street_address": {
         "label": "Adresse ligne 1"
@@ -162,7 +167,8 @@
     "form": {
       "select": "Sélectionner",
       "next": "Suivant",
-      "save": "Sauvegarder"
+      "save": "Sauvegarder",
+      "cancel": "Annuler"
     },
     "back": "Précédent",
     "languages": {
@@ -236,5 +242,6 @@
   "countries": "Pays",
   "upload_document": "Choisir un fichier",
   "upload_document_front": "Télécharger le Recto",
-  "upload_document_back": "Télécharger le Verso"
+  "upload_document_back": "Télécharger le Verso",
+  "document_add": "Ajouter un fichier"
 }

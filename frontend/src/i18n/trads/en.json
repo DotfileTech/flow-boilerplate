@@ -167,7 +167,8 @@
     "form": {
       "select": "Select",
       "next": "Next",
-      "save": "Save"
+      "save": "Save",
+      "cancel": "Cancel"
     },
     "back": "Previous",
     "languages": {
@@ -239,7 +240,8 @@
   "individuals": "Individual(s)",
   "companies": "Company",
   "countries": "Country",
-  "upload_document": "Choose file(s)",
+  "upload_document": "Choose file",
   "upload_document_front": "Upload Front",
-  "upload_document_back": "Upload Back"
+  "upload_document_back": "Upload Back",
+  "document_add": "Add a file"
 }

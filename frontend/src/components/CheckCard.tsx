@@ -18,6 +18,7 @@ import { hasKyb } from '../config/step';
 
 const CheckCard = (props: any) => {
   const { t } = useTranslation();
+  const { onOpen } = props;
 
   return (
     <Accordion defaultIndex={[0]} allowMultiple>
@@ -64,6 +65,7 @@ const CheckCard = (props: any) => {
                       check={check}
                       selectCheck={props.selectCheck}
                       setCurrentIndividual={props.setCurrentIndividual}
+                      onOpen={onOpen}
                     />
                   ))}
               </VStack>

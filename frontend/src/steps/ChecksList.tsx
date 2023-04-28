@@ -7,11 +7,12 @@ import {
   Tab,
   TabPanel,
   useMediaQuery,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 import useApi from '../hooks/useApi';
-import UploadDocuments from '../components/UploadDocuments';
+import ModalDocument from '../components/ModalDocument';
 import CheckCard from '../components/CheckCard';
 import { CheckStatusEnum, CheckTypeEnum } from '../constants';
 import { Indicator } from '../components/indicator';
@@ -21,6 +22,7 @@ const ChecksList = (props: any) => {
   const { t } = useTranslation();
   const api = useApi();
   const [isMobile] = useMediaQuery('(max-width: 48em)');
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   async function fetchMyAPI() {
     const response = await api.get(`/dotfile/cases/${props.caseId}`);
@@ -44,8 +46,6 @@ const ChecksList = (props: any) => {
 
   const [data, setData] = useState<any>();
 
-  const [isUpload, setIsUpload] = useState(false);
-
   const [currentCheck, setCurrentCheck] = useState({});
   const [currentIndividual, setCurrentIndividual] = useState({});
 
@@ -54,7 +54,7 @@ const ChecksList = (props: any) => {
       processIdentityCheck(check);
     } else {
       setCurrentCheck(check);
-      setIsUpload(true);
+      onClose();
     }
   };
 
@@ -145,6 +145,7 @@ const ChecksList = (props: any) => {
                     type="company"
                     selectCheck={selectCheck}
                     setCurrentIndividual={setCurrentIndividual}
+                    onOpen={onOpen}
                   />
                 ))}
               </Stack>
@@ -160,6 +161,7 @@ const ChecksList = (props: any) => {
                     type="individual"
                     selectCheck={selectCheck}
                     setCurrentIndividual={setCurrentIndividual}
+                    onOpen={onOpen}
                   />
                 ))}
               </Stack>
@@ -168,13 +170,15 @@ const ChecksList = (props: any) => {
         </TabPanels>
       </Tabs>
 
-      <UploadDocuments
-        currentCheck={currentCheck}
-        currentIndividual={currentIndividual}
-        setIsUpload={setIsUpload}
-        fetchMyAPI={fetchMyAPI}
-        isUpload={isUpload}
-      />
+      {isOpen && (
+        <ModalDocument
+          currentCheck={currentCheck}
+          currentIndividual={currentIndividual}
+          fetchMyAPI={fetchMyAPI}
+          isOpen={isOpen}
+          onClose={onClose}
+        />
+      )}
     </Stack>
   );
 };

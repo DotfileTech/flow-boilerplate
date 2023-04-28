@@ -33,7 +33,12 @@
         "label": "Wettelijk document"
       },
       "status": {
-        "label": "Status"
+        "label": "Status",
+        "options": {
+          "live": "Live",
+          "closed": "Closed",
+          "registered": "Registered"
+        }
       },
       "street_address": {
         "label": "Adres 1"
@@ -162,7 +167,8 @@
     "form": {
       "select": "Selecteer",
       "next": "Volgende",
-      "save": "Besparen"
+      "save": "Besparen",
+      "cancel": "Annuleren"
     },
     "back": "Vorig",
     "languages": {
@@ -236,5 +242,6 @@
   "countries": "Land",
   "upload_document": "Kies documenten)",
   "upload_document_front": "Voorzijde uploaden",
-  "upload_document_back": "Upload terug"
+  "upload_document_back": "Upload terug",
+  "document_add": "Voeg een bestand toe"
 }

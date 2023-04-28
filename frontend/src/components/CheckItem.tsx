@@ -26,10 +26,11 @@ type CheckItemProps = {
   check: any;
   selectCheck: any;
   setCurrentIndividual: any;
+  onOpen: any;
 };
 
 const CheckItem = (props: CheckItemProps) => {
-  const { check, selectCheck, setCurrentIndividual, item } = props;
+  const { check, selectCheck, setCurrentIndividual, item, onOpen } = props;
   const { t } = useTranslation();
 
   const exactType = (currentCheck: any) => {
@@ -110,6 +111,7 @@ const CheckItem = (props: CheckItemProps) => {
             onClick={() => {
               selectCheck(check);
               setCurrentIndividual(item);
+              onOpen();
             }}
             isDisabled={
               check.status !== CheckStatusEnum.in_progress &&
