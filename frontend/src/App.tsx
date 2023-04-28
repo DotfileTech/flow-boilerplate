@@ -50,7 +50,7 @@ const AppContent = () => {
       setStep(steps.findIndex((element) => element.key === 'checks_list'));
     }
 
-    if (!externalId && !caseId) {
+    if (!caseId) {
       const response = await api.get('/dotfile/countries');
       setCountries(response.data);
     }
