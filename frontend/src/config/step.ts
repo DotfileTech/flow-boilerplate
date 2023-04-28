@@ -2,7 +2,7 @@ import { CustomField } from '../types';
 
 // @deprecated
 // To apply a specific design on the Checks list and card
-export const hasKyb = true;
+export const hasKyb = false;
 
 export const stepsConfig: {
   key: string;
