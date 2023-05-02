@@ -1,0 +1,65 @@
+image: node:16.17.1
+
+stages:
+  - setup
+  - quality
+  #- test
+
+.distributed:
+  interruptible: true
+  only:
+    - merge_requests
+  cache:
+    key:
+      files:
+        - frontend/package-lock.json
+        - backend/package-lock.json
+    paths:
+      - frontend/node_modules/
+      - backend/node_modules/
+    policy: pull
+
+########################################################################################################################
+# SETUP
+########################################################################################################################
+
+setup:
+  stage: setup
+  extends: .distributed
+  cache:
+    policy: pull-push
+  script:
+    - echo "Check versions"
+    - node --version
+    - npm --version
+    - echo "Server setup"
+    - cd backend && npm ci && cd ..
+    - echo "Client setup"
+    - cd frontend && npm ci && cd ..
+    - echo "Install successfully!"
+
+########################################################################################################################
+# QUALITY STAGE
+########################################################################################################################
+
+format-check:
+  stage: quality
+  extends: .distributed
+  script:
+    - echo "Start format check"
+    - cd frontend && npx prettier --check "src/**/*.(js|jsx|ts|tsx|json)" && cd ..
+    - cd backend && npx prettier --check "src/**/*.(js|ts|json)" && cd ..
+    - echo "Format check successfully!"
+
+lint:
+  stage: quality
+  extends: .distributed
+  script:
+    - echo "Start lint"
+    - cd frontend && npx eslint "src/**" && cd ..
+    - cd backend && npx eslint "src/**" && cd ..
+    - echo "Lint successfully!"
+
+#########################################################################################################################
+# TEST
+#########################################################################################################################

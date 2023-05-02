@@ -11,6 +11,7 @@ const SelectLang = () => {
 
   const changeHandler = (e: any) => {
     setSelectedLang(e.target.value);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     i18next.changeLanguage(e.target.value).then(() => {});
   };
 

@@ -26,7 +26,6 @@ const CompanySearch = (props: any) => {
     ) {
       props.getCompanies();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

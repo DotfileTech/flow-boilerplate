@@ -59,7 +59,6 @@ const AppContent = () => {
 
   useEffect(() => {
     fetchMyAPI();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [countries, setCountries] = useState([]);

@@ -105,7 +105,7 @@ const IndividualEdit = (props: any) => {
           : [event.target.value],
       });
     } else {
-      let index = props.individual.roles.indexOf(event.target.value);
+      const index = props.individual.roles.indexOf(event.target.value);
       props.individual.roles.splice(index, 1);
       props.setIndividual({
         ...props.individual,

@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import FormData from 'form-data';
 import Dotfile from '../api/dotfile.api';
 
@@ -27,11 +27,7 @@ class DotfileController {
     return upload_ref;
   };
 
-  public getCountries = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public getCountries = async (req: Request, res: Response) => {
     try {
       const countries = await this.dotfileApi.request(
         'get',
@@ -49,11 +45,7 @@ class DotfileController {
     }
   };
 
-  public searchCompanies = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public searchCompanies = async (req: Request, res: Response) => {
     try {
       const { country, name, registration_number } = req.query;
 
@@ -77,11 +69,7 @@ class DotfileController {
     }
   };
 
-  public fetchCompany = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public fetchCompany = async (req: Request, res: Response) => {
     try {
       const company = await this.dotfileApi.request(
         'get',
@@ -100,15 +88,11 @@ class DotfileController {
     }
   };
 
-  public createCase = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public createCase = async (req: Request, res: Response) => {
     try {
       const { company, individuals, metadata, email, externalId } = req.body;
 
-      let template_id: string = process.env.TEMPLATE_ID;
+      const template_id: string = process.env.TEMPLATE_ID;
 
       // Custom config
       // For several templates, create a mapping between a metadata and the corresponding template
@@ -245,7 +229,7 @@ class DotfileController {
     }
   };
 
-  public getCases = async (req: Request, res: Response, next: NextFunction) => {
+  public getCases = async (req: Request, res: Response) => {
     try {
       const cases = await this.dotfileApi.request(
         'get',
@@ -263,11 +247,7 @@ class DotfileController {
     }
   };
 
-  public fetchCase = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public fetchCase = async (req: Request, res: Response) => {
     try {
       const caseData = await this.dotfileApi.request(
         'get',
@@ -277,10 +257,10 @@ class DotfileController {
         {}
       );
 
-      let enrichedCompanies = [];
+      const enrichedCompanies = [];
 
       for (const company of caseData.companies) {
-        let enrichedChecks = [];
+        const enrichedChecks = [];
         for (const check of company.checks) {
           const enrichedCheck = await this.dotfileApi.request(
             'get',
@@ -296,10 +276,10 @@ class DotfileController {
         enrichedCompanies.push(company);
       }
 
-      let enrichedIndividuals = [];
+      const enrichedIndividuals = [];
 
       for (const individual of caseData.individuals) {
-        let enrichedChecks = [];
+        const enrichedChecks = [];
         for (const check of individual.checks) {
           // enrichedChecks.push(check)
           const enrichedCheck = await this.dotfileApi.request(
@@ -328,11 +308,7 @@ class DotfileController {
     }
   };
 
-  public fetchCheck = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public fetchCheck = async (req: Request, res: Response) => {
     try {
       const { checkId, type } = req.body;
 
@@ -355,13 +331,9 @@ class DotfileController {
     }
   };
 
-  public uploadDocument = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public uploadDocument = async (req: Request, res: Response) => {
     try {
-      let files = [];
+      const files = [];
 
       for (let i = 0; i < (req.files.length as number); i++) {
         const uploadRef = await this.upload(req.files[i]);
@@ -391,11 +363,7 @@ class DotfileController {
     }
   };
 
-  public uploadIdentityDocument = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public uploadIdentityDocument = async (req: Request, res: Response) => {
     try {
       if (!req.files[0]) throw new Error('missing file');
 

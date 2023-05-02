@@ -1,0 +1,4 @@
+# Add files here to ignore them from prettier formatting
+
+/backend/node_modules
+/frontend/node_modules

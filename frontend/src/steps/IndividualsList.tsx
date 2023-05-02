@@ -49,7 +49,6 @@ const IndividualsList = (props: any) => {
     props.setIndividualsValid(
       !props.individuals.some((e: { isValid: boolean }) => !e.isValid)
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -67,7 +66,6 @@ const IndividualsList = (props: any) => {
       if (check.error) props.setIndividualsValid(false);
       return individual;
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.individuals]);
 
   const deleteIndividual = (index: any) => {

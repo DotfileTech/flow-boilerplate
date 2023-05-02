@@ -1,5 +1,4 @@
 import { extendTheme } from '@chakra-ui/react';
-import type { StyleFunctionProps } from '@chakra-ui/styled-system';
 import { defineStyle } from '@chakra-ui/styled-system';
 
 // @TODO - OF-11 - Refactor style config file
@@ -142,7 +141,7 @@ const theme = extendTheme({
         }),
       },
       variants: {
-        solid: (props: StyleFunctionProps) => ({
+        solid: () => ({
           bg: 'brand.main-2',
           color: 'white',
           _hover: {
@@ -153,14 +152,14 @@ const theme = extendTheme({
           },
           _active: { bg: 'brand.main-2' },
         }),
-        outline: (props: StyleFunctionProps) => ({
+        outline: () => ({
           border: '1px solid',
           borderColor: 'brand.main-2',
           bg: 'transparent',
           color: 'brand.main-2',
         }),
-        back: (props: StyleFunctionProps) => ({}),
-        next: (props: StyleFunctionProps) => ({
+        back: () => ({}),
+        next: () => ({
           bg: 'brand.main-2',
           color: 'white',
           _disabled: {
@@ -170,17 +169,17 @@ const theme = extendTheme({
             },
           },
         }),
-        upload: (props: StyleFunctionProps) => ({
+        upload: () => ({
           bg: 'brand.main-2',
           fontSize: 'xs',
           size: 'xs',
           color: 'white',
         }),
-        select: (props: StyleFunctionProps) => ({
+        select: () => ({
           boxShadow: '1px 1px 16px rgba(153, 153, 153, 0.1)',
           border: '1px solid #F9F9F9',
         }),
-        fill: (props: StyleFunctionProps) => ({
+        fill: () => ({
           fontSize: 'sl',
           // maxWidth: '200px',
           border: '1px solid',
@@ -188,7 +187,7 @@ const theme = extendTheme({
           color: 'brand.secondary',
           padding: '1rem',
         }),
-        add_individual: (props: StyleFunctionProps) => ({
+        add_individual: () => ({
           fontSize: 'sl',
           padding: '1rem',
         }),
