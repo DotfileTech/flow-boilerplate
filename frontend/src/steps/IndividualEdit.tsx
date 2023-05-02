@@ -13,8 +13,49 @@ const IndividualEdit = (props: any) => {
   const [formValid, setFormValid] = useState(false);
 
   const rules = individualData
-    .filter((ind) => ind.required && ind.enabled && ind.type !== 'checkbox')
-    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
+    .filter((ind) => ind.enabled && ind.type !== 'checkbox')
+    .reduce((acc, cur) => {
+      let schema;
+
+      switch (cur.type) {
+        case 'email':
+          schema = Joi.string()
+            .empty('')
+            .email({ tlds: { allow: false } });
+          break;
+        case 'tel':
+          schema = Joi.string()
+            .empty('')
+            .regex(/^\+(?:[0-9] ?){6,14}[0-9]$/);
+          break;
+        case 'url':
+          schema = Joi.string().empty('').uri();
+          break;
+        case 'number':
+          schema = Joi.number();
+          break;
+        case 'date':
+          schema = Joi.date();
+          break;
+        default:
+          schema = Joi.string().empty('');
+      }
+
+      switch (cur.id) {
+        case 'iban':
+          schema = schema.min(15);
+          break;
+        case 'bic':
+          schema = schema.min(8);
+          break;
+      }
+
+      if (cur.required) {
+        schema = schema.required();
+      }
+
+      return { ...acc, [cur.id]: schema };
+    }, {});
 
   const schema = Joi.object().keys(rules).unknown(true);
 

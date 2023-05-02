@@ -13,8 +13,36 @@ const CompanyEdit = (props: any) => {
   const [formValid, setFormValid] = useState(false);
 
   const rules = companyData
-    .filter((company) => company.required && company.enabled)
-    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
+    .filter((company) => company.enabled)
+    .reduce((acc, cur) => {
+      let schema;
+
+      switch (cur.type) {
+        case 'url':
+          schema = Joi.string().empty('').uri();
+          break;
+        case 'date':
+          schema = Joi.date();
+          break;
+        default:
+          schema = Joi.string().empty('');
+      }
+
+      switch (cur.id) {
+        case 'iban':
+          schema = schema.min(15);
+          break;
+        case 'bic':
+          schema = schema.min(8);
+          break;
+      }
+
+      if (cur.required) {
+        schema = schema.required();
+      }
+
+      return { ...acc, [cur.id]: schema };
+    }, {});
 
   const schema = Joi.object().keys(rules).unknown(true);
 
@@ -67,7 +95,7 @@ const CompanyEdit = (props: any) => {
                 <CountrySelect
                   key={`company_${company.id}`}
                   stepId="company_edit"
-                  defaultValue={defaultValue || ''}
+                  defaultValue={defaultValue || props.company.country || ''}
                   onChange={props.changeHandler}
                   name={company.id}
                   countries={props.countries}

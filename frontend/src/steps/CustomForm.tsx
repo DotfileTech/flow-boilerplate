@@ -20,7 +20,15 @@ type CustomFormProps = {
 
 type Field = {
   id: string;
-  type: 'select' | 'radio' | 'text' | 'date' | 'number' | 'url' | 'email';
+  type:
+    | 'select'
+    | 'radio'
+    | 'text'
+    | 'date'
+    | 'number'
+    | 'url'
+    | 'email'
+    | 'tel';
   isRequired: boolean;
   hasHelper?: boolean;
   options?: string[];
@@ -42,7 +50,39 @@ const CustomForm = (props: CustomFormProps) => {
 
   const rules = fields
     .filter((field) => field.isRequired)
-    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
+    .reduce((acc, cur) => {
+      let schema;
+
+      switch (cur.type) {
+        case 'email':
+          schema = Joi.string()
+            .empty('')
+            .email({ tlds: { allow: false } });
+          break;
+        case 'tel':
+          schema = Joi.string()
+            .empty('')
+            .regex(/^\+(?:[0-9] ?){6,14}[0-9]$/);
+          break;
+        case 'url':
+          schema = Joi.string().empty('').uri();
+          break;
+        case 'number':
+          schema = Joi.number();
+          break;
+        case 'date':
+          schema = Joi.date();
+          break;
+        default:
+          schema = Joi.string().empty('');
+      }
+
+      if (cur.isRequired) {
+        schema = schema.required();
+      }
+
+      return { ...acc, [cur.id]: schema };
+    }, {});
 
   const schema = Joi.object().keys(rules).unknown(true);
 
