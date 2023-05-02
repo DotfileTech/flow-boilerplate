@@ -141,14 +141,24 @@ const AppContent = () => {
 
       setAutoSearchDone(true);
 
-      if (response.data.data.length === 0) {
-        setIsLoading(false);
+      if (
+        response.data.data.length === 0 &&
+        searchParams.get('registrationNumber')
+      ) {
         setStep(step);
-      } else {
-        setIsLoading(false);
+        setCompany({
+          name: searchParams.get('company'),
+          country: searchParams.get('country'),
+          registration_number: null,
+        });
+      } else if (response.data.data.length > 0) {
         setCompanies(response.data.data);
         setStep(step + 1);
+      } else {
+        setStep(step + 1);
       }
+
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }

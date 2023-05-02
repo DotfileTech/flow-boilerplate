@@ -16,6 +16,7 @@
     "company_list": {
       "title": "Select your company",
       "not_found": "You cannot find your company ?",
+      "no_result": "No result",
       "button": "Fill details manually"
     },
     "company_edit": {
