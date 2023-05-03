@@ -40,19 +40,22 @@
     },
     "personal_details": {
       "title": "Fill in your personal details",
+      "tax_residency_country": {
+        "label": "Tax residency country"
+      },
       "us_tax_payer_status": {
         "label": "US tax payer status",
         "options": {
-          "yes": "Yes",
-          "no": "No"
+          "true": "Yes",
+          "false": "No"
         }
       },
       "are_you_a_pep": {
         "label": "Are you a PEP?",
         "helper": "PEP is a Politically Exposed Person",
         "options": {
-          "yes": "Yes",
-          "no": "No"
+          "true": "Yes",
+          "false": "No"
         }
       }
     },
@@ -74,6 +77,15 @@
     "checks_list": {
       "title": "Help us run necessary verifications",
       "description": "Please proceed with the necessary verifications listed below.<br/> Our team will analyze your data and keep you informed about the outcome of your case."
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "ID document",
+      "description": "Please provide a color, unexpired, framed, untrimmed and clear document of the identity card (front / back) or passport (double inside page with the signature)"
+    },
+    "proof_of_address": {
+      "title": "Proof of address"
     }
   }
 }

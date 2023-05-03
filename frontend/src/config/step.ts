@@ -23,16 +23,22 @@ export const stepsConfig: {
     key: 'personal_details',
     fields: [
       {
+        id: 'tax_residency_country',
+        type: 'country',
+        isRequired: true,
+      },
+      {
         id: 'us_tax_payer_status',
         type: 'radio',
         isRequired: true,
-        options: ['yes', 'no'],
+        options: ['true', 'false'],
       },
       {
         id: 'are_you_a_pep',
         type: 'radio',
         isRequired: true,
-        options: ['yes', 'no'],
+        hasHelper: true,
+        options: ['true', 'false'],
       },
     ],
   },
