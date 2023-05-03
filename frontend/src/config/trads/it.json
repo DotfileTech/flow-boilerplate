@@ -8,10 +8,10 @@
       "company_form": {
         "label": "Qual è la forma giuridica della tua azienda?",
         "options": {
-          "private_company": "Società a Responsabilità Limitata",
-          "public_company": "Società per Azioni",
+          "private_company": "Società di Capitali",
+          "public_company": "Società di Persona",
           "association": "Associazione",
-          "self_employed": "Lavoratore autonomo"
+          "self_employed": "Libero professionista"
         }
       }
     },
