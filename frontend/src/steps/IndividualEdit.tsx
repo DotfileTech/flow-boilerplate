@@ -52,6 +52,8 @@ const IndividualEdit = (props: any) => {
 
       if (cur.required) {
         schema = schema.required();
+      } else {
+        schema = schema.allow(null);
       }
 
       return { ...acc, [cur.id]: schema };
@@ -146,7 +148,7 @@ const IndividualEdit = (props: any) => {
                   key={`individual_${ind.id}`}
                   stepId="individual_edit"
                   defaultValue={defaultValue || ''}
-                  onChange={changeHandlerIndividual}
+                  onChange={(e: any) => changeHandlerIndividual(e, ind.nested)}
                   name={ind.id}
                   countries={props.countries}
                   isRequired={ind.required}

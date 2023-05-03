@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import InputForm from '../components/InputForm';
 import Select from '../components/Select';
 import Radio from '../components/Radio';
+import CountrySelect from '../components/CountrySelect';
 
 type CustomFormProps = {
   stepId: string;
@@ -13,6 +14,7 @@ type CustomFormProps = {
   metadata: any;
   changeHandlerMetadata: any;
   changeHandlerMetadataCustom: any;
+  countries?: string[];
   isLastStep?: boolean;
   next?: any;
   submit?: any;
@@ -28,7 +30,8 @@ type Field = {
     | 'number'
     | 'url'
     | 'email'
-    | 'tel';
+    | 'tel'
+    | 'country';
   isRequired: boolean;
   hasHelper?: boolean;
   options?: string[];
@@ -41,6 +44,7 @@ const CustomForm = (props: CustomFormProps) => {
     metadata,
     changeHandlerMetadata,
     changeHandlerMetadataCustom,
+    countries = [],
     isLastStep = false,
     next,
     submit,
@@ -48,41 +52,39 @@ const CustomForm = (props: CustomFormProps) => {
   const { t } = useTranslation();
   const [formValid, setFormValid] = useState(false);
 
-  const rules = fields
-    .filter((field) => field.isRequired)
-    .reduce((acc, cur) => {
-      let schema;
+  const rules = fields.reduce((acc, cur) => {
+    let schema;
 
-      switch (cur.type) {
-        case 'email':
-          schema = Joi.string()
-            .empty('')
-            .email({ tlds: { allow: false } });
-          break;
-        case 'tel':
-          schema = Joi.string()
-            .empty('')
-            .regex(/^\+(?:[0-9] ?){6,14}[0-9]$/);
-          break;
-        case 'url':
-          schema = Joi.string().empty('').uri();
-          break;
-        case 'number':
-          schema = Joi.number();
-          break;
-        case 'date':
-          schema = Joi.date();
-          break;
-        default:
-          schema = Joi.string().empty('');
-      }
+    switch (cur.type) {
+      case 'email':
+        schema = Joi.string()
+          .empty('')
+          .email({ tlds: { allow: false } });
+        break;
+      case 'tel':
+        schema = Joi.string()
+          .empty('')
+          .regex(/^\+(?:[0-9] ?){6,14}[0-9]$/);
+        break;
+      case 'url':
+        schema = Joi.string().empty('').uri();
+        break;
+      case 'number':
+        schema = Joi.number();
+        break;
+      case 'date':
+        schema = Joi.date();
+        break;
+      default:
+        schema = Joi.string().empty('');
+    }
 
-      if (cur.isRequired) {
-        schema = schema.required();
-      }
+    if (cur.isRequired) {
+      schema = schema.required();
+    }
 
-      return { ...acc, [cur.id]: schema };
-    }, {});
+    return { ...acc, [cur.id]: schema };
+  }, {});
 
   const schema = Joi.object().keys(rules).unknown(true);
 
@@ -124,6 +126,20 @@ const CustomForm = (props: CustomFormProps) => {
                 hasHelper={field.hasHelper}
                 options={field.options || []}
                 onChange={changeHandlerMetadataCustom}
+              />
+            );
+          }
+          if (field.type === 'country') {
+            return (
+              <CountrySelect
+                key={field.id}
+                stepId={stepId}
+                name={field.id}
+                defaultValue={metadata[field.id] || ''}
+                isRequired={field.isRequired}
+                hasHelper={field.hasHelper}
+                onChange={changeHandlerMetadata}
+                countries={countries}
               />
             );
           }

@@ -39,6 +39,8 @@ const CompanyEdit = (props: any) => {
 
       if (cur.required) {
         schema = schema.required();
+      } else {
+        schema = schema.allow(null);
       }
 
       return { ...acc, [cur.id]: schema };

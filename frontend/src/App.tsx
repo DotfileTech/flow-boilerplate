@@ -327,6 +327,7 @@ const AppContent = () => {
         metadata={metadata}
         changeHandlerMetadata={changeHandlerMetadata}
         changeHandlerMetadataCustom={changeHandlerMetadataCustom}
+        countries={countries}
         isLastStep={item.isLastStep}
         submit={submit}
         next={next}
