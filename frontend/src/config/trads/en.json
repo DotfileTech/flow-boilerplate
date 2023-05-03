@@ -64,6 +64,12 @@
         "label": "Employer ID"
       }
     },
+    "company_details": {
+      "title": "Fill your company details",
+      "trade_registry_location": {
+        "label": "Trade registry location"
+      }
+    },
     "individual_edit": {
       "title": "Check the information",
       "first_name": {
