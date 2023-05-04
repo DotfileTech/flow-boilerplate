@@ -1,21 +1,29 @@
 import { EditIcon } from 'lucide-react';
 import { SimpleGrid, Button, Text, Radio, Stack, Box } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { CompanySearch } from '../types';
 
-const CompanySearch = (props: any) => {
+type CompaniesListProps = {
+  selectCompany: (searchRef: string | null) => void;
+  companies: CompanySearch[];
+};
+
+const CompaniesList = (props: CompaniesListProps) => {
+  const { selectCompany, companies } = props;
+
   const { t } = useTranslation();
 
   return (
-    <Stack spacing={10} pt={2}>
-      <SimpleGrid columns={1} spacing={5}>
-        {props.companies.length === 0 ? (
-          <Text pb={5}>{t('steps.company_list.no_result')}</Text>
+    <Stack spacing="10" pt="2">
+      <SimpleGrid columns={1} spacing="5">
+        {companies.length === 0 ? (
+          <Text pb="5">{t('steps.company_list.no_result')}</Text>
         ) : (
-          props.companies.map((company: any, i: number) => (
+          companies.map((company: CompanySearch) => (
             <Button
-              key={i}
+              key={company.search_ref}
               variant="select"
-              onClick={() => props.selectCompany(company.search_ref)}
+              onClick={() => selectCompany(company.search_ref)}
               justifyContent="flex"
               isTruncated
               h="auto"
@@ -35,13 +43,13 @@ const CompanySearch = (props: any) => {
         )}
       </SimpleGrid>
       <Box>
-        {props.companies.length > 0 && (
+        {companies.length > 0 && (
           <Text pb={5}>{t('steps.company_list.not_found')}</Text>
         )}
         <Button
-          leftIcon={<EditIcon size={16} />}
+          leftIcon={<EditIcon size="16" />}
           variant="fill"
-          onClick={() => props.selectCompany(null)}
+          onClick={() => selectCompany(null)}
         >
           {t('steps.company_list.button')}
         </Button>
@@ -50,4 +58,4 @@ const CompanySearch = (props: any) => {
   );
 };
 
-export default CompanySearch;
+export default CompaniesList;

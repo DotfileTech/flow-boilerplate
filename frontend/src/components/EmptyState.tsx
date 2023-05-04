@@ -1,5 +1,5 @@
 import { Heading, Text, Center, Flex, Box, Button } from '@chakra-ui/react';
-import { EmptyStateImage } from './assets/empty-state-image';
+import { EmptyStateImage } from '../assets/empty-state-image';
 
 export interface EmptyStateProps {
   title?: string;

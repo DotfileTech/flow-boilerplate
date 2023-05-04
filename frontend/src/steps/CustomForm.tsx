@@ -3,38 +3,22 @@ import { SimpleGrid, Button, Stack, Box } from '@chakra-ui/react';
 import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
-import InputForm from '../components/InputForm';
-import Select from '../components/Select';
-import Radio from '../components/Radio';
-import CountrySelect from '../components/CountrySelect';
+import InputForm from '../components/form/InputForm';
+import Select from '../components/form/Select';
+import Radio from '../components/form/Radio';
+import CountrySelect from '../components/form/CountrySelect';
+import { Country, CustomField } from '../types';
 
 type CustomFormProps = {
   stepId: string;
-  fields: Field[];
-  metadata: any;
-  changeHandlerMetadata: any;
-  changeHandlerMetadataCustom: any;
-  countries?: string[];
-  isLastStep?: boolean;
-  next?: any;
-  submit?: any;
-};
-
-type Field = {
-  id: string;
-  type:
-    | 'select'
-    | 'radio'
-    | 'text'
-    | 'date'
-    | 'number'
-    | 'url'
-    | 'email'
-    | 'tel'
-    | 'country';
-  isRequired: boolean;
-  hasHelper?: boolean;
-  options?: string[];
+  fields: CustomField[];
+  metadata: { [key: string]: string | null };
+  changeHandlerMetadata: (e: any) => void;
+  changeHandlerMetadataCustom: (question: string, answer: string) => void;
+  countries: Country[];
+  isLastStep: boolean;
+  next: () => void;
+  submit: () => void;
 };
 
 const CustomForm = (props: CustomFormProps) => {
@@ -49,10 +33,12 @@ const CustomForm = (props: CustomFormProps) => {
     next,
     submit,
   } = props;
-  const { t } = useTranslation();
-  const [formValid, setFormValid] = useState(false);
 
-  const rules = fields.reduce((acc, cur) => {
+  const { t } = useTranslation();
+
+  const [formValid, setFormValid] = useState<boolean>(false);
+
+  const rules = fields.reduce((acc, cur: CustomField) => {
     let schema;
 
     switch (cur.type) {
@@ -100,7 +86,7 @@ const CustomForm = (props: CustomFormProps) => {
   return (
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={5}>
-        {fields.map((field: Field) => {
+        {fields.map((field: CustomField) => {
           if (field.type === 'select') {
             return (
               <Select

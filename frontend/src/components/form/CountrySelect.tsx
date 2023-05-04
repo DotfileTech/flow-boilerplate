@@ -6,6 +6,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { Country } from '../../types';
 
 type CountrySelectProps = {
   stepId: string;
@@ -14,7 +15,7 @@ type CountrySelectProps = {
   isRequired: boolean;
   hasHelper?: boolean;
   onChange: any;
-  countries: any;
+  countries: Country[];
 };
 
 const CountrySelect = (props: CountrySelectProps) => {
@@ -50,7 +51,7 @@ const CountrySelect = (props: CountrySelectProps) => {
         <option hidden disabled value="">
           {t('domain.form.select')}
         </option>
-        {countries.map((country: any) => (
+        {countries.map((country: Country) => (
           <option key={country.code} value={country.code}>
             {country.name}
           </option>

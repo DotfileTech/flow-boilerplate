@@ -20,10 +20,18 @@ import { useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
 import { CheckTypeEnum } from '../constants';
 import { Plus } from 'lucide-react';
-import FileUpload from './FileUpload';
+import FileUpload from './form/FileUpload';
+import { CheckInterface } from '../types';
 
-const ModalDocument = (props: any) => {
-  const { isOpen, onClose } = props;
+type ModalDocumentProps = {
+  currentCheck: CheckInterface;
+  fetchMyAPI: () => void;
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const ModalDocument = (props: ModalDocumentProps) => {
+  const { currentCheck, fetchMyAPI, isOpen, onClose } = props;
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -57,21 +65,21 @@ const ModalDocument = (props: any) => {
     setIsLoading(true);
     const data = new FormData();
 
-    data.append('checkId', props.currentCheck.id);
-    data.append('type', props.currentCheck.type);
+    data.append('checkId', currentCheck.id);
+    data.append('type', currentCheck.type);
 
-    if (props.currentCheck.type === CheckTypeEnum.document) {
+    if (currentCheck.type === CheckTypeEnum.document) {
       for (let i = 0; i < files.length; i++) {
         data.append('file[]', files[i]);
       }
       await api.post(`/dotfile/documents`, data);
-      await props.fetchMyAPI();
+      await fetchMyAPI();
       setIsLoading(false);
       onClose();
       setFiles([]);
     }
 
-    if (props.currentCheck.type === CheckTypeEnum.id_document) {
+    if (currentCheck.type === CheckTypeEnum.id_document) {
       if (fileFront) {
         data.append('file[]', fileFront);
       }
@@ -79,7 +87,7 @@ const ModalDocument = (props: any) => {
         data.append('file[]', fileBack);
       }
       await api.post(`/dotfile/identity_documents`, data);
-      await props.fetchMyAPI();
+      await fetchMyAPI();
       setIsLoading(false);
       onClose();
       setFileFront(undefined);
@@ -106,24 +114,20 @@ const ModalDocument = (props: any) => {
   };
 
   const exactType =
-    props.currentCheck.type === CheckTypeEnum.document
-      ? props.currentCheck.subtype.split(':')[1]
-      : props.currentCheck.type;
-
-  const entityName = props.currentIndividual.name
-    ? props.currentIndividual.name
-    : `${props.currentIndividual.first_name} ${props.currentIndividual.last_name}`;
+    currentCheck.type === CheckTypeEnum.document && currentCheck.subtype
+      ? currentCheck.subtype.split(':')[1]
+      : currentCheck.type;
 
   // @NOTE Add a fallback title when a custom document type created after the onboarding flow init
   const checkTitleFallBack = useMemo(() => {
     if (
-      props.currentCheck.type === CheckTypeEnum.document &&
-      props.currentCheck.data.settings.custom_document_type
+      currentCheck.type === CheckTypeEnum.document &&
+      currentCheck.data.settings.custom_document_type
     ) {
-      return props.currentCheck.data.settings.custom_document_type.label;
+      return currentCheck.data.settings.custom_document_type.label;
     }
     // eslint-disable-next-line
-  }, [props.currentCheck.type]);
+  }, [currentCheck.type]);
 
   return (
     <Modal
@@ -140,27 +144,28 @@ const ModalDocument = (props: any) => {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{entityName}</ModalHeader>
+        <ModalHeader>
+          {t(`checks.${exactType}.title`, checkTitleFallBack as string)}
+        </ModalHeader>
         <ModalCloseButton color="white" />
         <ModalBody>
           <FormControl>
             <FormLabel>
-              {props.currentCheck &&
-                t(`checks.${exactType}.title`, checkTitleFallBack)}
+              {t(`checks.${exactType}.title`, checkTitleFallBack as string)}
             </FormLabel>
             {i18n.exists(`checks.${exactType}.description`) && (
               <FormHelperText mt="0" mb="2">
                 {t(`checks.${exactType}.description`)}
               </FormHelperText>
             )}
-            {props.currentCheck.type === CheckTypeEnum.id_document && (
+            {currentCheck.type === CheckTypeEnum.id_document && (
               <Box>
                 <input
                   accept=".gif, .pdf, .jpeg, .png"
                   id="raised-button-file"
                   style={{ display: 'none' }}
                   ref={inputRefFront}
-                  name={props.currentCheck.type}
+                  name={currentCheck.type}
                   required
                   onChange={handleFileFront}
                   type="file"
@@ -177,7 +182,7 @@ const ModalDocument = (props: any) => {
                   id="raised-button-file"
                   style={{ display: 'none' }}
                   ref={inputRefBack}
-                  name={props.currentCheck.type}
+                  name={currentCheck.type}
                   required
                   onChange={handleFileBack}
                   type="file"
@@ -190,20 +195,20 @@ const ModalDocument = (props: any) => {
               </Box>
             )}
 
-            {props.currentCheck.type === CheckTypeEnum.document && (
+            {currentCheck.type === CheckTypeEnum.document && (
               <Box>
                 <input
                   accept=".gif, .pdf, .jpeg, .png"
                   id="raised-button-file"
                   style={{ display: 'none' }}
                   ref={inputRef}
-                  name={props.currentCheck.type}
+                  name={currentCheck.type}
                   required
                   onChange={handleFiles}
                   multiple
                   type="file"
                 />
-                {files.map((file: any, i: number) => (
+                {files.map((file: File, i: number) => (
                   <FileUpload
                     key={`file_${i}`}
                     onChange={handleClick}

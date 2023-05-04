@@ -1,10 +1,10 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { Trans } from 'react-i18next';
 
-import { ReactComponent as Logo } from '../config/theme/logo.svg';
-import { languages } from '../config/languages';
-import SelectLang from './SelectLang';
-import { ReactComponent as DotfileLogo } from './assets/dotfile.svg';
+import { ReactComponent as Logo } from '../../config/theme/logo.svg';
+import { languages } from '../../config/languages';
+import SelectLang from '../SelectLang';
+import { ReactComponent as DotfileLogo } from '../../assets/dotfile.svg';
 
 const Sidebar = () => {
   return (

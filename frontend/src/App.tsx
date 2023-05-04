@@ -4,10 +4,10 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/layout/Sidebar';
 import LoadingSpinner from './components/LoadingSpinner';
-import Header from './components/Header';
-import MobileHeader from './components/MobileHeader';
+import Header from './components/layout/Header';
+import MobileHeader from './components/layout/MobileHeader';
 import CompanySearch from './steps/CompanySearch';
 import CompaniesList from './steps/CompaniesList';
 import CustomForm from './steps/CustomForm';
@@ -18,22 +18,43 @@ import ChecksList from './steps/ChecksList';
 import useApi from './hooks/useApi';
 import { form } from './config/Forms';
 import { hasKyb, hasKyc } from './config/step';
+import {
+  CompanySearch as CompanySearchType,
+  Country,
+  CustomField,
+} from './types';
 
 const AppContent = () => {
   const { t, i18n } = useTranslation();
+  const [searchParams] = useSearchParams();
 
   const api = useApi();
 
-  const [searchParams] = useSearchParams();
+  const email = searchParams.get('email');
+  // @TODO - OF-28 - Remove sid (salesforceId)
+  const sid = searchParams.get('sid');
 
-  const [caseId, setCaseId] = useState(
+  const [caseId, setCaseId] = useState<string | undefined | null>(
     searchParams.get('new') === 'true'
       ? undefined
       : searchParams.get('caseId') || localStorage.getItem('caseId')
   );
-
-  const email = searchParams.get('email');
-  const sid = searchParams.get('sid');
+  const [step, setStep] = useState<number>(0);
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [companiesSearch, setCompaniesSearch] = useState<CompanySearchType[]>(
+    []
+  );
+  const [individuals, setIndividuals] = useState<any>([]);
+  const [individual, setIndividual] = useState<any>({});
+  const [metadata, setMetadata] = useState<{ [key: string]: string | null }>({
+    email,
+    sid,
+  });
+  const [company, setCompany] = useState<any>();
+  const [individualIndex, setIndividualIndex] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [autoSearchDone, setAutoSearchDone] = useState<boolean>(false);
+  const [individualsValid, setIndividualsValid] = useState<boolean>(true);
 
   async function fetchMyAPI() {
     const externalId = searchParams.get('externalId');
@@ -61,23 +82,6 @@ const AppContent = () => {
     fetchMyAPI();
   }, []);
 
-  const [countries, setCountries] = useState([]);
-
-  const [step, setStep] = useState(0);
-
-  const [companies, setCompanies] = useState<any>([]);
-
-  const [individuals, setIndividuals] = useState<any>([]);
-
-  const [individual, setIndividual] = useState<any>({});
-
-  const [metadata, setMetadata] = useState<any>({
-    email,
-    sid,
-  });
-
-  const [company, setCompany] = useState<any>();
-
   useEffect(() => {
     if (hasKyb) {
       setCompany({
@@ -87,10 +91,6 @@ const AppContent = () => {
       });
     }
   }, [searchParams]);
-
-  const [individualIndex, setIndividualIndex] = useState(null);
-
-  const [isLoading, setIsLoading] = useState(true);
 
   const next = async () => {
     setStep(step + 1);
@@ -117,8 +117,6 @@ const AppContent = () => {
   const back = async () => {
     setStep(step - 1);
   };
-
-  const [autoSearchDone, setAutoSearchDone] = useState(false);
 
   const getCompanies = async () => {
     try {
@@ -151,10 +149,10 @@ const AppContent = () => {
           registration_number: null,
         });
       } else if (response.data.data.length > 0) {
-        setCompanies(response.data.data);
-        setStep(step + 1);
+        setCompaniesSearch(response.data.data);
+        setStep(steps.findIndex((step) => step.key === 'company_list'));
       } else {
-        setStep(step + 1);
+        setStep(steps.findIndex((step) => step.key === 'company_list'));
       }
 
       setIsLoading(false);
@@ -163,21 +161,21 @@ const AppContent = () => {
     }
   };
 
-  const selectCompany = async (id: any) => {
-    if (id === null) {
+  const selectCompany = async (searchRef: string | null) => {
+    if (searchRef === null) {
       setIndividuals([]);
-      setStep(step + 1);
+      setStep(steps.findIndex((step) => step.key === 'company_edit'));
     } else {
       setIsLoading(true);
-      const response = await api.get(`/dotfile/companies/${id}`);
+      const response = await api.get(`/dotfile/companies/${searchRef}`);
       setCompany(response.data);
       setIndividuals(response.data.merged_individuals);
       setIsLoading(false);
-      setStep(step + 1);
+      setStep(steps.findIndex((step) => step.key === 'company_edit'));
     }
   };
 
-  const changeHandler = (e: any, nested: string) => {
+  const changeHandler = (e: any, nested: string | undefined) => {
     if (nested) {
       setCompany({
         ...company,
@@ -194,7 +192,7 @@ const AppContent = () => {
     }
   };
 
-  const selectIndividual = (i: any) => {
+  const selectIndividual = (i: number | null) => {
     if (i === null) {
       setIndividual({});
       setIndividualIndex(null);
@@ -202,7 +200,7 @@ const AppContent = () => {
       setIndividualIndex(i);
       setIndividual(individuals[i]);
     }
-    setStep(steps.length - 2);
+    setStep(steps.findIndex((step) => step.key === 'individual_edit'));
   };
 
   const changeHandlerMetadata = (e: any) => {
@@ -212,8 +210,6 @@ const AppContent = () => {
   const changeHandlerMetadataCustom = (question: string, answer: string) => {
     setMetadata({ ...metadata, [question]: answer });
   };
-
-  const [individualsValid, setIndividualsValid] = useState(true);
 
   const saveIndividual = () => {
     individual.isValid = true;
@@ -232,18 +228,18 @@ const AppContent = () => {
 
   const steps: { key: string; content: ReactElement }[] = [];
 
-  if (hasKyb) {
+  if (hasKyb && !caseId) {
     steps.push(
       {
         key: 'company_search',
         content: (
           <CompanySearch
-            getCompanies={getCompanies}
             countries={countries}
             company={company}
-            changeHandler={changeHandler}
+            getCompanies={getCompanies}
             isLoading={isLoading}
             autoSearchDone={autoSearchDone}
+            onChange={changeHandler}
           />
         ),
       },
@@ -252,9 +248,7 @@ const AppContent = () => {
         content: (
           <CompaniesList
             selectCompany={selectCompany}
-            companies={companies}
-            isLoading={isLoading}
-            back={back}
+            companies={companiesSearch}
           />
         ),
       },
@@ -263,9 +257,8 @@ const AppContent = () => {
         content: (
           <CompanyEdit
             company={company}
-            changeHandler={changeHandler}
+            onChange={changeHandler}
             next={next}
-            back={back}
             countries={countries}
           />
         ),
@@ -286,7 +279,7 @@ const AppContent = () => {
     );
   }
 
-  if (hasKyc) {
+  if (hasKyc && !caseId) {
     steps.push({
       key: 'individual_edit',
       content: (
@@ -294,60 +287,57 @@ const AppContent = () => {
           individual={individual}
           setIndividual={setIndividual}
           saveIndividual={saveIndividual}
-          next={next}
-          back={back}
           countries={countries}
-          setIndividualsValid={setIndividualsValid}
         />
       ),
     });
   }
 
-  steps.push({
-    key: 'checks_list',
-    content: (
-      <ChecksList
-        individual={individual}
-        setIndividual={setIndividual}
-        saveIndividual={saveIndividual}
-        next={next}
-        back={back}
-        countries={countries}
-        caseId={caseId}
-        setIsLoading={setIsLoading}
-      />
-    ),
-  });
+  if (caseId) {
+    steps.push({
+      key: 'checks_list',
+      content: <ChecksList caseId={caseId} />,
+    });
+  }
 
-  form.forEach((item: any) => {
-    const content = (
-      <CustomForm
-        stepId={item.key}
-        fields={item.fields}
-        metadata={metadata}
-        changeHandlerMetadata={changeHandlerMetadata}
-        changeHandlerMetadataCustom={changeHandlerMetadataCustom}
-        countries={countries}
-        isLastStep={item.isLastStep}
-        submit={submit}
-        next={next}
-      />
+  if (!caseId) {
+    form.forEach(
+      (item: {
+        key: string;
+        after?: string;
+        isLastStep?: boolean;
+        fields: CustomField[];
+      }) => {
+        const content = (
+          <CustomForm
+            stepId={item.key}
+            fields={item.fields}
+            metadata={metadata}
+            changeHandlerMetadata={changeHandlerMetadata}
+            changeHandlerMetadataCustom={changeHandlerMetadataCustom}
+            countries={countries}
+            isLastStep={item.isLastStep || false}
+            submit={submit}
+            next={next}
+          />
+        );
+
+        if (!item.after) {
+          steps.unshift({
+            key: item.key,
+            content,
+          });
+        } else {
+          const index =
+            steps.findIndex((element) => element.key === item.after) + 1;
+          steps.splice(index, 0, {
+            key: item.key,
+            content,
+          });
+        }
+      }
     );
-
-    if (!item.after) {
-      steps.unshift({
-        key: item.key,
-        content,
-      });
-    } else {
-      const index =
-        steps.findIndex((element) => element.key === item.after) + 1;
-      steps.splice(index, 0, {
-        key: item.key,
-        content,
-      });
-    }
-  });
+  }
 
   return (
     <Flex direction={{ base: 'column', md: 'row' }}>
@@ -364,11 +354,11 @@ const AppContent = () => {
           <Stack spacing={4}>
             <Header
               back={back}
-              progress={(step / (steps.length - 2)) * 100}
-              hasBackButton={step !== 0 && step !== steps.length - 1}
-            >
-              {t(`steps.${steps[step].key}.title`)}
-            </Header>
+              progress={(step / (steps.length - 1)) * 100}
+              hasBackButton={step !== 0 && !caseId}
+              isCheckStep={!!caseId}
+              title={t(`steps.${steps[step].key}.title`)}
+            />
             {i18n.exists(`steps.${steps[step].key}.description`) && (
               <Text
                 dangerouslySetInnerHTML={{

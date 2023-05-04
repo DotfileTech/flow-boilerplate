@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { Dispatch, SetStateAction, useMemo } from 'react';
 import {
   Tag,
   Heading,
@@ -20,21 +20,22 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import { CheckResultEnum, CheckStatusEnum, CheckTypeEnum } from '../constants';
+import { CheckInterface, Company, Individual } from '../types';
 
 type CheckItemProps = {
-  item: any;
-  check: any;
-  selectCheck: any;
-  setCurrentIndividual: any;
-  onOpen: any;
+  entity: Company | Individual | null;
+  check: CheckInterface;
+  selectCheck: (check: CheckInterface) => void;
+  setCurrentEntity: Dispatch<SetStateAction<Company | Individual | null>>;
+  onOpen: () => void;
 };
 
 const CheckItem = (props: CheckItemProps) => {
-  const { check, selectCheck, setCurrentIndividual, item, onOpen } = props;
+  const { check, selectCheck, setCurrentEntity, entity, onOpen } = props;
   const { t } = useTranslation();
 
-  const exactType = (currentCheck: any) => {
-    return currentCheck.type === CheckTypeEnum.document
+  const exactType = (currentCheck: CheckInterface) => {
+    return currentCheck.type === CheckTypeEnum.document && currentCheck.subtype
       ? currentCheck.subtype.split(':')[1]
       : currentCheck.type;
   };
@@ -55,7 +56,10 @@ const CheckItem = (props: CheckItemProps) => {
       <Flex direction={{ base: 'column', sm: 'row' }} alignItems="center">
         <Show above="sm">
           <Heading size="sm">
-            {check && t(`checks.${exactType(check)}.title`, checkTitleFallBack)}
+            {t(
+              `checks.${exactType(check)}.title`,
+              checkTitleFallBack as string
+            )}
           </Heading>
         </Show>
 
@@ -110,7 +114,7 @@ const CheckItem = (props: CheckItemProps) => {
             variant="outline"
             onClick={() => {
               selectCheck(check);
-              setCurrentIndividual(item);
+              setCurrentEntity(entity);
               onOpen();
             }}
             isDisabled={
@@ -120,8 +124,10 @@ const CheckItem = (props: CheckItemProps) => {
             mt={{ base: '12px', md: '0' }}
           >
             <Show below="sm">
-              {check &&
-                t(`checks.${exactType(check)}.title`, checkTitleFallBack)}
+              {t(
+                `checks.${exactType(check)}.title`,
+                checkTitleFallBack as string
+              )}
             </Show>
 
             <Show above="sm">

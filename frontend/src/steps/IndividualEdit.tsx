@@ -3,18 +3,29 @@ import { SimpleGrid, Button, Stack, Box } from '@chakra-ui/react';
 import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
-import InputForm from '../components/InputForm';
-import CountrySelect from '../components/CountrySelect';
-import Checkbox from '../components/Checkbox';
+import InputForm from '../components/form/InputForm';
+import CountrySelect from '../components/form/CountrySelect';
+import Checkbox from '../components/form/Checkbox';
 import { individualData } from '../config/Individual';
+import { Country, Field } from '../types';
 
-const IndividualEdit = (props: any) => {
+type IndividualEditProps = {
+  individual: any;
+  setIndividual: any;
+  saveIndividual: any;
+  countries: Country[];
+};
+
+const IndividualEdit = (props: IndividualEditProps) => {
+  const { individual, setIndividual, saveIndividual, countries } = props;
+
   const { t } = useTranslation();
-  const [formValid, setFormValid] = useState(false);
+
+  const [formValid, setFormValid] = useState<boolean>(false);
 
   const rules = individualData
-    .filter((ind) => ind.enabled && ind.type !== 'checkbox')
-    .reduce((acc, cur) => {
+    .filter((field: Field) => field.enabled && field.type !== 'checkbox')
+    .reduce((acc, cur: Field) => {
       let schema;
 
       switch (cur.type) {
@@ -62,7 +73,7 @@ const IndividualEdit = (props: any) => {
   const schema = Joi.object().keys(rules).unknown(true);
 
   useEffect(() => {
-    const { address, banking_information, ...data } = props.individual;
+    const { address, banking_information, ...data } = individual;
     let values = data;
     if (address) {
       values = { ...address, ...values };
@@ -77,20 +88,20 @@ const IndividualEdit = (props: any) => {
     } else {
       setFormValid(true);
     }
-  }, [props.individual, schema]);
+  }, [individual, schema]);
 
-  const changeHandlerIndividual = (e: any, nested: string) => {
+  const changeHandlerIndividual = (e: any, nested: string | undefined) => {
     if (nested) {
-      props.setIndividual({
-        ...props.individual,
+      setIndividual({
+        ...individual,
         [nested]: {
-          ...props.individual[nested],
+          ...individual[nested],
           [e.target.name]: e.target.value,
         },
       });
     } else {
-      props.setIndividual({
-        ...props.individual,
+      setIndividual({
+        ...individual,
         [e.target.name]: e.target.value,
       });
     }
@@ -100,18 +111,18 @@ const IndividualEdit = (props: any) => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      props.setIndividual({
-        ...props.individual,
-        roles: props.individual.roles
-          ? [...props.individual.roles, event.target.value]
+      setIndividual({
+        ...individual,
+        roles: individual.roles
+          ? [...individual.roles, event.target.value]
           : [event.target.value],
       });
     } else {
-      const index = props.individual.roles.indexOf(event.target.value);
-      props.individual.roles.splice(index, 1);
-      props.setIndividual({
-        ...props.individual,
-        roles: props.individual.roles,
+      const index = individual.roles.indexOf(event.target.value);
+      individual.roles.splice(index, 1);
+      setIndividual({
+        ...individual,
+        roles: individual.roles,
       });
     }
   };
@@ -120,52 +131,54 @@ const IndividualEdit = (props: any) => {
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={6}>
         {individualData
-          .filter((ind) => ind.enabled)
-          .map((ind: any) => {
-            const defaultValue = ind.nested
-              ? props.individual[ind.nested]
-                ? props.individual[ind.nested][ind.id]
+          .filter((field) => field.enabled)
+          .map((field: Field) => {
+            const defaultValue = field.nested
+              ? individual[field.nested]
+                ? individual[field.nested][field.id]
                 : ''
-              : props.individual[ind.id];
+              : individual[field.id];
 
-            if (ind.type === 'checkbox') {
+            if (field.type === 'checkbox') {
               return (
                 <Checkbox
-                  key={`individual_${ind.id}`}
+                  key={`individual_${field.id}`}
                   stepId="individual_edit"
-                  name={ind.id}
+                  name={field.id}
                   defaultValue={defaultValue || ''}
-                  isRequired={ind.required}
-                  options={ind.options || []}
+                  isRequired={field.required}
+                  options={field.options || []}
                   onChange={checkBoxChangeHandler}
                 />
               );
             }
 
-            if (ind.type === 'country') {
+            if (field.type === 'country') {
               return (
                 <CountrySelect
-                  key={`individual_${ind.id}`}
+                  key={`individual_${field.id}`}
                   stepId="individual_edit"
                   defaultValue={defaultValue || ''}
-                  onChange={(e: any) => changeHandlerIndividual(e, ind.nested)}
-                  name={ind.id}
-                  countries={props.countries}
-                  isRequired={ind.required}
+                  onChange={(e: any) =>
+                    changeHandlerIndividual(e, field.nested)
+                  }
+                  name={field.id}
+                  countries={countries}
+                  isRequired={field.required}
                 />
               );
             }
 
             return (
               <InputForm
-                key={`individual_${ind.id}`}
+                key={`individual_${field.id}`}
                 stepId="individual_edit"
                 defaultValue={defaultValue || ''}
-                onChange={(e: any) => changeHandlerIndividual(e, ind.nested)}
-                name={ind.id}
-                isRequired={ind.required}
-                hasHelper={ind.hasHelper}
-                type={ind.type}
+                onChange={(e: any) => changeHandlerIndividual(e, field.nested)}
+                name={field.id}
+                isRequired={field.required}
+                hasHelper={field.hasHelper}
+                type={field.type}
               />
             );
           })}
@@ -173,7 +186,7 @@ const IndividualEdit = (props: any) => {
         <Box>
           <Button
             variant="next"
-            onClick={() => props.saveIndividual(null)}
+            onClick={() => saveIndividual(null)}
             isDisabled={!formValid}
           >
             {t('domain.form.save')}

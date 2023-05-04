@@ -2,30 +2,40 @@ import { Stack, Progress, Button, Box } from '@chakra-ui/react';
 import { ChevronLeftIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import Title from '../components/Title';
+import Title from '../Title';
 
-const Header = (props: any) => {
+type HeaderProps = {
+  hasBackButton: boolean;
+  isCheckStep: boolean;
+  back: () => void;
+  progress: number;
+  title: string | null;
+};
+
+const Header = (props: HeaderProps) => {
+  const { hasBackButton, isCheckStep, back, progress, title } = props;
+
   const { t } = useTranslation();
 
   return (
     <Stack spacing={8} pb={5}>
       <Box>
-        {props.hasBackButton && (
+        {hasBackButton && (
           <Button
             pb={4}
             width="100px"
             variant="back"
-            onClick={props.back}
+            onClick={back}
             leftIcon={<ChevronLeftIcon size={16} />}
           >
             {t('domain.back')}
           </Button>
         )}
-        {props.progress <= 100 && (
-          <Progress maxWidth="80vv" value={props.progress} />
+        {progress <= 100 && !isCheckStep && (
+          <Progress maxWidth="80vv" value={progress} />
         )}
       </Box>
-      <Title>{props.children}</Title>
+      {title && <Title value={title}></Title>}
     </Stack>
   );
 };

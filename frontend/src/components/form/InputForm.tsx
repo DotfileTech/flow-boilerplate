@@ -14,7 +14,7 @@ type InputFormProps = {
   defaultValue: string;
   isRequired: boolean;
   hasHelper?: boolean;
-  type?: 'text' | 'date' | 'number' | 'url' | 'email' | 'tel';
+  type?: string;
   onChange: any;
 };
 

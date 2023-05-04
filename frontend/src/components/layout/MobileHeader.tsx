@@ -1,6 +1,6 @@
 import { Flex, Box } from '@chakra-ui/react';
 
-import { ReactComponent as Logo } from '../config/theme/logo.svg';
+import { ReactComponent as Logo } from '../../config/theme/logo.svg';
 
 const Sidebar = () => {
   return (

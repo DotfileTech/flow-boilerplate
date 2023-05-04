@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 import {
   Heading,
   Tag,
@@ -15,10 +16,27 @@ import { useTranslation } from 'react-i18next';
 import CheckItem from '../components/CheckItem';
 import { CheckTypeEnum, IndividualRoleEnum } from '../constants';
 import { hasKyb } from '../config/step';
+import type { Individual, Company, CheckInterface } from '../types';
 
-const CheckCard = (props: any) => {
+type Entity =
+  | {
+      entityType: 'company';
+      entity: Company;
+    }
+  | {
+      entityType: 'individual';
+      entity: Individual;
+    };
+
+type CheckCardProps = {
+  selectCheck: (check: CheckInterface) => void;
+  setCurrentEntity: Dispatch<SetStateAction<Company | Individual | null>>;
+  onOpen: () => void;
+} & Entity;
+
+const CheckCard = (props: CheckCardProps) => {
   const { t } = useTranslation();
-  const { onOpen } = props;
+  const { entity, entityType, selectCheck, setCurrentEntity, onOpen } = props;
 
   return (
     <Accordion defaultIndex={[0]} allowMultiple>
@@ -40,14 +58,14 @@ const CheckCard = (props: any) => {
               borderWidth="0 0 1px 0"
             >
               <Heading size="sm">
-                {props.type === 'individual'
-                  ? `${props.item.first_name} ${props.item.last_name}`
-                  : props.item.name}
+                {entityType === 'individual'
+                  ? `${entity.first_name} ${entity.last_name}`
+                  : entity.name}
               </Heading>
-              {props.type === 'individual' &&
+              {entityType === 'individual' &&
                 hasKyb &&
-                props.item.roles.map((role: IndividualRoleEnum, i: number) => (
-                  <Tag key={i} display={['none', 'flex', 'flex']} ml={5}>
+                entity.roles.map((role: IndividualRoleEnum) => (
+                  <Tag key={role} display={['none', 'flex', 'flex']} ml={5}>
                     {t(`domain.individual.roles.${role}`)}
                   </Tag>
                 ))}
@@ -56,15 +74,17 @@ const CheckCard = (props: any) => {
             </AccordionButton>
             <AccordionPanel p={0}>
               <VStack spacing="0" divider={<Divider />}>
-                {props.item.checks
-                  .filter((check: any) => check.type !== CheckTypeEnum.aml)
-                  .map((check: any, i: number) => (
+                {entity.checks
+                  .filter(
+                    (check: CheckInterface) => check.type !== CheckTypeEnum.aml
+                  )
+                  .map((check: CheckInterface) => (
                     <CheckItem
-                      key={i}
-                      item={props.item}
+                      key={check.id}
+                      entity={entity}
                       check={check}
-                      selectCheck={props.selectCheck}
-                      setCurrentIndividual={props.setCurrentIndividual}
+                      selectCheck={selectCheck}
+                      setCurrentEntity={setCurrentEntity}
                       onOpen={onOpen}
                     />
                   ))}

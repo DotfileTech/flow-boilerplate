@@ -3,18 +3,28 @@ import { SimpleGrid, Button, Stack, Box } from '@chakra-ui/react';
 import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
-import InputForm from '../components/InputForm';
-import CountrySelect from '../components/CountrySelect';
+import InputForm from '../components/form/InputForm';
+import CountrySelect from '../components/form/CountrySelect';
 import { companyData } from '../config/Company';
-import Select from '../components/Select';
+import Select from '../components/form/Select';
+import { Country, Field } from '../types';
 
-const CompanyEdit = (props: any) => {
+type CompanyEditProps = {
+  countries: Country[];
+  company: any;
+  onChange: (e: any, nested: string | undefined) => void;
+  next: () => void;
+};
+
+const CompanyEdit = (props: CompanyEditProps) => {
+  const { company, onChange, next, countries } = props;
+
   const { t } = useTranslation();
-  const [formValid, setFormValid] = useState(false);
+  const [formValid, setFormValid] = useState<boolean>(false);
 
   const rules = companyData
-    .filter((company) => company.enabled)
-    .reduce((acc, cur) => {
+    .filter((field: Field) => field.enabled)
+    .reduce((acc, cur: Field) => {
       let schema;
 
       switch (cur.type) {
@@ -49,7 +59,7 @@ const CompanyEdit = (props: any) => {
   const schema = Joi.object().keys(rules).unknown(true);
 
   useEffect(() => {
-    const { address, banking_information, ...data } = props.company;
+    const { address, banking_information, ...data } = company;
     let values = data;
     if (address) {
       values = { ...address, ...values };
@@ -64,63 +74,63 @@ const CompanyEdit = (props: any) => {
     } else {
       setFormValid(true);
     }
-  }, [props.company, schema]);
+  }, [company, schema]);
 
   return (
     <Stack spacing={5} pt={2}>
       <SimpleGrid columns={1} spacing={5}>
         {companyData
-          .filter((company) => company.enabled)
-          .map((company: any) => {
-            const defaultValue = company.nested
-              ? props.company[company.nested]
-                ? props.company[company.nested][company.id]
+          .filter((field: Field) => field.enabled)
+          .map((field: Field) => {
+            const defaultValue = field.nested
+              ? company[field.nested]
+                ? company[field.nested][field.id]
                 : ''
-              : props.company[company.id];
+              : company[field.id];
 
-            if (company.type === 'select') {
+            if (field.type === 'select') {
               return (
                 <Select
-                  key={`company_${company.id}`}
+                  key={`company_${field.id}`}
                   stepId="company_edit"
-                  name={company.id}
+                  name={field.id}
                   defaultValue={defaultValue || ''}
-                  isRequired={company.required}
-                  options={company.options || []}
-                  onChange={(e: any) => props.changeHandler(e, company.nested)}
+                  isRequired={field.required}
+                  options={field.options || []}
+                  onChange={(e: any) => onChange(e, field.nested)}
                 />
               );
             }
 
-            if (company.type === 'country') {
+            if (field.type === 'country') {
               return (
                 <CountrySelect
-                  key={`company_${company.id}`}
+                  key={`company_${field.id}`}
                   stepId="company_edit"
-                  defaultValue={defaultValue || props.company.country || ''}
-                  onChange={props.changeHandler}
-                  name={company.id}
-                  countries={props.countries}
-                  isRequired={company.required}
+                  defaultValue={defaultValue || company.country || ''}
+                  onChange={onChange}
+                  name={field.id}
+                  countries={countries}
+                  isRequired={field.required}
                 />
               );
             }
 
             return (
               <InputForm
-                key={company.id}
+                key={field.id}
                 stepId="company_edit"
                 defaultValue={defaultValue || ''}
-                onChange={(e: any) => props.changeHandler(e, company.nested)}
-                name={company.id}
-                isRequired={company.required}
-                type={company.type}
+                onChange={(e: any) => onChange(e, field.nested)}
+                name={field.id}
+                isRequired={field.required}
+                type={field.type}
               />
             );
           })}
 
         <Box>
-          <Button variant="next" onClick={props.next} isDisabled={!formValid}>
+          <Button variant="next" onClick={next} isDisabled={!formValid}>
             {t('domain.form.next')}
           </Button>
         </Box>

@@ -1,5 +1,5 @@
 import { Heading, Text, Image, Center, Flex, Box } from '@chakra-ui/react';
-import AlertIcon from './assets/alert-icon.png';
+import AlertIcon from '../assets/alert-icon.png';
 
 export const NotFound = () => {
   return (

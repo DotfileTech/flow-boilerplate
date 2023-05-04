@@ -4,48 +4,72 @@ import Joi from 'joi';
 import { ChevronRightIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import InputForm from '../components/InputForm';
-import CountrySelect from '../components/CountrySelect';
+import InputForm from '../components/form/InputForm';
+import CountrySelect from '../components/form/CountrySelect';
+import { Country } from '../types';
 
-const CompanySearch = (props: any) => {
+const schema = Joi.object()
+  .keys({
+    country: Joi.string().required(),
+    name: Joi.string().required(),
+  })
+  .unknown(true);
+
+type CompanySearchProps = {
+  countries: Country[];
+  company: {
+    name: string | null;
+    country: string | null;
+    registration_number: string | null;
+  };
+  getCompanies: () => void;
+  isLoading: boolean;
+  autoSearchDone: boolean;
+  onChange: any;
+};
+
+const CompanySearch = (props: CompanySearchProps) => {
+  const {
+    countries,
+    company,
+    getCompanies,
+    isLoading,
+    autoSearchDone,
+    onChange,
+  } = props;
+
   const { t } = useTranslation();
-  const [formValid, setFormValid] = useState(false);
 
-  const schema = Joi.object()
-    .keys({
-      country: Joi.string().required(),
-      name: Joi.string().required(),
-    })
-    .unknown(true);
+  const [formValid, setFormValid] = useState<boolean>(false);
 
   useEffect(() => {
     if (
-      (props.company.name || props.company.registration_number) &&
-      props.company.country &&
-      !props.autoSearchDone
+      (company.name || company.registration_number) &&
+      company.country &&
+      !autoSearchDone
     ) {
-      props.getCompanies();
+      getCompanies();
     }
   }, []);
 
   useEffect(() => {
-    const check = schema.validate(props.company);
+    const check = schema.validate(company);
 
     if (check.error) {
       setFormValid(false);
     } else {
       setFormValid(true);
     }
-  }, [props.company, schema]);
+  }, [company, schema]);
 
   return (
     <Stack spacing={5} pt={2}>
       <CountrySelect
         stepId="company_search"
-        defaultValue={props.company?.country || ''}
-        onChange={props.changeHandler}
+        defaultValue={company?.country || ''}
+        onChange={onChange}
         name="country"
-        countries={props.countries}
+        countries={countries}
         isRequired
       />
 
@@ -54,8 +78,8 @@ const CompanySearch = (props: any) => {
           stepId="company_search"
           type="text"
           isRequired
-          defaultValue={props.company?.name || ''}
-          onChange={props.changeHandler}
+          defaultValue={company?.name || ''}
+          onChange={onChange}
           name="name"
         />
       </InputGroup>
@@ -64,8 +88,8 @@ const CompanySearch = (props: any) => {
         <Button
           variant="next"
           rightIcon={<ChevronRightIcon size={16} />}
-          isLoading={props.isLoading}
-          onClick={props.getCompanies}
+          isLoading={isLoading}
+          onClick={getCompanies}
           isDisabled={!formValid}
         >
           {t('steps.company_search.button')}

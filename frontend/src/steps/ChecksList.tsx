@@ -20,49 +20,57 @@ import { hasKyb } from '../config/step';
 import { EmptyState } from '../components/EmptyState';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { NotFound } from '../components/NotFound';
+import { CheckInterface, Company, Individual, Case } from '../types';
 
-const ChecksList = (props: any) => {
+type ChecksListProps = {
+  caseId: string;
+};
+
+const ChecksList = (props: ChecksListProps) => {
+  const { caseId } = props;
+
   const { t } = useTranslation();
   const api = useApi();
-  const [isMobile] = useMediaQuery('(max-width: 48em)');
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isMobile] = useMediaQuery('(max-width: 48em)');
 
-  const [data, setData] = useState<any | null>(null);
+  const [caseData, setCaseData] = useState<Case | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentCheck, setCurrentCheck] = useState<CheckInterface | null>(null);
+  const [currentEntity, setCurrentEntity] = useState<
+    Company | Individual | null
+  >(null);
 
   const fetchMyAPI = useCallback(async () => {
     try {
-      const response = await api.get(`/dotfile/cases/${props.caseId}`);
-      setData(response.data);
+      const response = await api.get(`/dotfile/cases/${caseId}`);
+      setCaseData(response.data);
       setError(null);
     } catch (err: any) {
       setError(err.message);
-      setData(null);
+      setCaseData(null);
     } finally {
       setLoading(false);
     }
-  }, [api, props.caseId]);
+  }, [api, caseId]);
 
   useEffect(() => {
     setLoading(true);
     fetchMyAPI().catch(console.error);
   }, [fetchMyAPI]);
 
-  const processIdentityCheck = async (check: any) => {
+  const handleIDVCheck = useCallback(async (check: CheckInterface) => {
     const response = await api.post(`dotfile/checks`, {
       checkId: check.id,
       type: check.type,
     });
     window.open(response.data.url, '_blank', 'noreferrer');
-  };
+  }, []);
 
-  const [currentCheck, setCurrentCheck] = useState({});
-  const [currentIndividual, setCurrentIndividual] = useState({});
-
-  const selectCheck = (check: any) => {
+  const selectCheck = (check: CheckInterface) => {
     if (check.type === CheckTypeEnum.id_verification) {
-      processIdentityCheck(check);
+      handleIDVCheck(check);
     } else {
       setCurrentCheck(check);
       onClose();
@@ -70,14 +78,17 @@ const ChecksList = (props: any) => {
   };
 
   const companies = useMemo(
-    () => data?.companies.filter((company: any) => company.checks.length > 0),
-    [data?.companies]
+    () =>
+      caseData?.companies.filter(
+        (company: Company) => company.checks.length > 0
+      ),
+    [caseData?.companies]
   );
   const hasCompaniesActions = useMemo(
     () =>
       (companies
-        ?.flatMap((company: any) => company.checks)
-        .filter((check: any) =>
+        ?.flatMap((company: Company) => company.checks)
+        .filter((check: CheckInterface) =>
           [CheckStatusEnum.in_progress, CheckStatusEnum.rejected].includes(
             check.status
           )
@@ -87,16 +98,16 @@ const ChecksList = (props: any) => {
 
   const individuals = useMemo(
     () =>
-      data?.individuals.filter(
-        (individual: any) => individual.checks.length > 0
+      caseData?.individuals.filter(
+        (individual: Individual) => individual.checks.length > 0
       ),
-    [data?.individuals]
+    [caseData?.individuals]
   );
   const hasIndividualsActions = useMemo(
     () =>
       (individuals
-        ?.flatMap((individual: any) => individual.checks)
-        .filter((check: any) =>
+        ?.flatMap((individual: Individual) => individual.checks)
+        .filter((check: CheckInterface) =>
           [CheckStatusEnum.in_progress, CheckStatusEnum.rejected].includes(
             check.status
           )
@@ -161,13 +172,13 @@ const ChecksList = (props: any) => {
           {hasCompanies && (
             <TabPanel>
               <Stack spacing={5} pt={2}>
-                {data?.companies.map((item: any, i: number) => (
+                {caseData?.companies.map((entity: Company) => (
                   <CheckCard
-                    key={i}
-                    item={item}
-                    type="company"
+                    key={entity.id}
+                    entity={entity}
+                    entityType="company"
                     selectCheck={selectCheck}
-                    setCurrentIndividual={setCurrentIndividual}
+                    setCurrentEntity={setCurrentEntity}
                     onOpen={onOpen}
                   />
                 ))}
@@ -177,13 +188,13 @@ const ChecksList = (props: any) => {
           {hasIndividuals && (
             <TabPanel>
               <Stack spacing={5} pt={2}>
-                {data?.individuals.map((item: any, i: number) => (
+                {caseData?.individuals.map((entity: Individual) => (
                   <CheckCard
-                    key={i}
-                    item={item}
-                    type="individual"
+                    key={entity.id}
+                    entity={entity}
+                    entityType="individual"
                     selectCheck={selectCheck}
-                    setCurrentIndividual={setCurrentIndividual}
+                    setCurrentEntity={setCurrentEntity}
                     onOpen={onOpen}
                   />
                 ))}
@@ -193,10 +204,9 @@ const ChecksList = (props: any) => {
         </TabPanels>
       </Tabs>
 
-      {isOpen && (
+      {isOpen && currentCheck && currentEntity && (
         <ModalDocument
           currentCheck={currentCheck}
-          currentIndividual={currentIndividual}
           fetchMyAPI={fetchMyAPI}
           isOpen={isOpen}
           onClose={onClose}
