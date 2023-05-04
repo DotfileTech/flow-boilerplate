@@ -59,13 +59,16 @@ const CompanyEdit = (props: CompanyEditProps) => {
   const schema = Joi.object().keys(rules).unknown(true);
 
   useEffect(() => {
-    const { address, banking_information, ...data } = company;
+    const { address, banking_information, classifications, ...data } = company;
     let values = data;
     if (address) {
       values = { ...address, ...values };
     }
     if (banking_information) {
       values = { ...banking_information, ...values };
+    }
+    if (classifications && classifications.length > 0) {
+      values = { ...classifications[0], ...values };
     }
 
     const check = schema.validate(values);
@@ -82,11 +85,23 @@ const CompanyEdit = (props: CompanyEditProps) => {
         {companyData
           .filter((field: Field) => field.enabled)
           .map((field: Field) => {
-            const defaultValue = field.nested
-              ? company[field.nested]
-                ? company[field.nested][field.id]
-                : ''
-              : company[field.id];
+            let defaultValue = '';
+
+            if (company[field.id]) {
+              defaultValue = company[field.id];
+            }
+
+            if (field.nested && company[field.nested]) {
+              defaultValue = company[field.nested][field.id];
+            }
+
+            if (
+              field.nested === 'classifications' &&
+              company[field.nested] &&
+              company[field.nested].length > 0
+            ) {
+              defaultValue = company[field.nested][0][field.id];
+            }
 
             if (field.type === 'select') {
               return (

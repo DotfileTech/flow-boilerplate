@@ -180,6 +180,15 @@ class DotfileController {
       }
 
       if (company) {
+        const classifications = [];
+        if (company.classifications.length > 0 && company.country === 'FR') {
+          classifications.push({
+            type: company.classifications[0].type ?? 'NAF',
+            code: company.classifications[0].code,
+            description: company.classifications[0].description,
+          });
+        }
+
         await this.dotfileApi.request(
           'post',
           'companies',
@@ -207,6 +216,7 @@ class DotfileController {
               iban: company.banking_information?.iban,
               bic: company.banking_information?.bic,
             },
+            classifications,
             tax_identification_number: company.tax_identification_number,
             website_url: company.website_url,
             employer_identification_number:

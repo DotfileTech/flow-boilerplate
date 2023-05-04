@@ -92,4 +92,10 @@ export const companyData = [
     required: false,
     enabled: true,
   },
+  {
+    id: 'code',
+    nested: 'classifications',
+    required: false,
+    enabled: true,
+  },
 ];

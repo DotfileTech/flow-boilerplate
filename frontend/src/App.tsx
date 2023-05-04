@@ -177,13 +177,24 @@ const AppContent = () => {
 
   const changeHandler = (e: any, nested: string | undefined) => {
     if (nested) {
-      setCompany({
-        ...company,
-        [nested]: {
-          ...company[nested],
-          [e.target.name]: e.target.value,
-        },
-      });
+      if (nested === 'classifications') {
+        setCompany({
+          ...company,
+          [nested]: [
+            {
+              [e.target.name]: e.target.value,
+            },
+          ],
+        });
+      } else {
+        setCompany({
+          ...company,
+          [nested]: {
+            ...company[nested],
+            [e.target.name]: e.target.value,
+          },
+        });
+      }
     } else {
       setCompany({
         ...company,
