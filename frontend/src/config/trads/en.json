@@ -1,1 +1,25 @@
-{}
+{
+  "brand": {
+    "title": "Payments that boost your business."
+  },
+  "steps": {
+    "additional_data": {
+      "title": "Tell us more about how your activity",
+      "revenue_online": {
+        "label": "Share of your revenue done online, excluding marketplaces",
+        "helper": "in %"
+      },
+      "revenue_offline": {
+        "label": "Share of your revenue done offline",
+        "helper": "in %"
+      },
+      "revenue_marketplace": {
+        "label": "Share of your revenue done on marketplaces",
+        "helper": "in %"
+      },
+      "active_marketplace": {
+        "label": "On which marketplaces are you active?"
+      }
+    }
+  }
+}
