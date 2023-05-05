@@ -181,7 +181,11 @@ class DotfileController {
 
       if (company) {
         const classifications = [];
-        if (company.classifications.length > 0 && company.country === 'FR') {
+        if (
+          company.classifications &&
+          company.classifications.length > 0 &&
+          company.country === 'FR'
+        ) {
           classifications.push({
             type: company.classifications[0].type ?? 'NAF',
             code: company.classifications[0].code,
