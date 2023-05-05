@@ -115,6 +115,12 @@ const AppContent = () => {
   };
 
   const back = async () => {
+    if (steps.findIndex((step) => step.key === 'company_edit')) {
+      setCompany({
+        ...company,
+        registration_number: null,
+      });
+    }
     setStep(step - 1);
   };
 
