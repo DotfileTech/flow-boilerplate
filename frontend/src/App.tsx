@@ -22,6 +22,7 @@ import {
   CompanySearch as CompanySearchType,
   Country,
   CustomField,
+  FormData,
 } from './types';
 
 const AppContent = () => {
@@ -318,42 +319,36 @@ const AppContent = () => {
   }
 
   if (!caseId) {
-    form.forEach(
-      (item: {
-        key: string;
-        after?: string;
-        isLastStep?: boolean;
-        fields: CustomField[];
-      }) => {
-        const content = (
-          <CustomForm
-            stepId={item.key}
-            fields={item.fields}
-            metadata={metadata}
-            changeHandlerMetadata={changeHandlerMetadata}
-            changeHandlerMetadataCustom={changeHandlerMetadataCustom}
-            countries={countries}
-            isLastStep={item.isLastStep || false}
-            submit={submit}
-            next={next}
-          />
-        );
+    // @ts-expect-error - type error to fix
+    form.forEach((item: FormData) => {
+      const content = (
+        <CustomForm
+          stepId={item.key}
+          fields={item.fields}
+          metadata={metadata}
+          changeHandlerMetadata={changeHandlerMetadata}
+          changeHandlerMetadataCustom={changeHandlerMetadataCustom}
+          countries={countries}
+          isLastStep={item.isLastStep || false}
+          submit={submit}
+          next={next}
+        />
+      );
 
-        if (!item.after) {
-          steps.unshift({
-            key: item.key,
-            content,
-          });
-        } else {
-          const index =
-            steps.findIndex((element) => element.key === item.after) + 1;
-          steps.splice(index, 0, {
-            key: item.key,
-            content,
-          });
-        }
+      if (!item.after) {
+        steps.unshift({
+          key: item.key,
+          content,
+        });
+      } else {
+        const index =
+          steps.findIndex((element) => element.key === item.after) + 1;
+        steps.splice(index, 0, {
+          key: item.key,
+          content,
+        });
       }
-    );
+    });
   }
 
   return (

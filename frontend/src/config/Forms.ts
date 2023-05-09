@@ -1,1 +1,1 @@
-export const form = [];
+export const form: FormData[] = [];

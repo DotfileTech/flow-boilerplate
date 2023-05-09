@@ -1,12 +1,15 @@
 import { CompanyStatusEnum } from '../constants/company-status.enum';
+import { CompanyData } from '../types';
 
-export const companyData = [
+export const companyData: CompanyData[] = [
   {
+    // This field is mandatory to create a company
     id: 'name',
     required: true,
     enabled: true,
   },
   {
+    // This field is mandatory to create a company
     id: 'registration_number',
     required: true,
     enabled: true,
@@ -14,13 +17,13 @@ export const companyData = [
   {
     id: 'legal_form',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'status',
     type: 'select',
     required: false,
-    enabled: true,
+    enabled: false,
     options: [
       CompanyStatusEnum.live,
       CompanyStatusEnum.closed,
@@ -30,7 +33,7 @@ export const companyData = [
   {
     id: 'registration_date',
     type: 'date',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -58,6 +61,7 @@ export const companyData = [
     enabled: true,
   },
   {
+    // This field is mandatory to create a company
     id: 'country',
     nested: 'address',
     type: 'country',

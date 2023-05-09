@@ -5,10 +5,11 @@
 Manage the properties of a company. Each property is an object with: 
 
 - **id** (`string`): The name of the property, which is also useful for the translation system
-- **type** (`string`): The input type, default `text`. Can be `text`, `url`, `date` or `number`.
-- **nested** (`string`): For nested object: `banking_information` or `address`.
+- **type** (optional `string`): The input type, default `text`. Can be `text`, `url`, `date`, `tel`, `email`, `select`, `country` or `number`.
+- **nested** (optional `string`): For nested object: `banking_information`, `classifications` or `address`.
 - **required** (`boolean`): To require the field in the company form
 - **enabled** (`boolean`): To display the field in the company form
+- **options** (optional `array`): An array of string for the `select` field
 
 ```
 Info: You can move a property in the array to change the form order.
@@ -19,7 +20,7 @@ Info: You can move a property in the array to change the form order.
 Manage the properties of an individual. Each property is an object with:
 
 - **id** (`string`): The name of the property, which is also useful for the translation system
-- **type** (`string`): The input type, default `text`. Can be `text`, `url`, `date`, `number`, `email`, `checkbox` or `country`.
+- **type** (`string`): The input type, default `text`. Can be `text`, `url`, `date`, `number`, `email`, `checkbox`, `tel` or `country`.
 - **nested** (`string`): For nested object: `banking_information` or `address`.
 - **required** (`boolean`): To require the field in the individual form
 - **enabled** (`boolean`): To display the field in the individual form

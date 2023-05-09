@@ -1,17 +1,21 @@
 import { IndividualRoleEnum } from '../constants';
+import { IndividualData } from '../types';
 
-export const individualData = [
+export const individualData: IndividualData[] = [
   {
+    // This field is mandatory to create an individual
     id: 'first_name',
     required: true,
     enabled: true,
   },
   {
+    // This field is mandatory to create an individual
     id: 'last_name',
     required: true,
     enabled: true,
   },
   {
+    // This field is mandatory to create an individual with the "applicant" role
     id: 'email',
     type: 'email',
     required: false,
@@ -24,6 +28,7 @@ export const individualData = [
     enabled: true,
   },
   {
+    // This field is mandatory to create an individual
     id: 'roles',
     type: 'checkbox',
     required: true,

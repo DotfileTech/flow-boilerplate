@@ -24,6 +24,7 @@
     "i18next": "^22.4.14",
     "i18next-browser-languagedetector": "^7.0.1",
     "joi": "^17.9.1",
+    "jsdoc": "^4.0.2",
     "lucide-react": "^0.176.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
