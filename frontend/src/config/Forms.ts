@@ -15,4 +15,16 @@ export const form: FormData[] = [
       },
     ],
   },
+  {
+    key: 'origin_funds',
+    after: 'company_details',
+    fields: [
+      {
+        id: 'origin_funds',
+        type: 'select',
+        isRequired: true,
+        options: ['company_revenue', 'shareholder_contribution'],
+      },
+    ],
+  },
 ];

@@ -7,5 +7,18 @@ export const templateMapping = (
   individuals: IndividualInput[],
   metadata: CaseMetadata
 ): string => {
-  return process.env.TEMPLATE_ID;
+  let template_id = process.env.TEMPLATE_ID;
+
+  switch (metadata['origin_funds']) {
+    case 'company_revenue':
+      template_id = process.env.TEMPLATE_COMPANY_REVENUE;
+      break;
+    case 'shareholder_contribution':
+      template_id = process.env.TEMPLATE_SHAREHOLDER_CONTRIBUTION;
+      break;
+    default:
+      template_id = process.env.TEMPLATE_COMPANY_REVENUE;
+  }
+
+  return template_id;
 };
