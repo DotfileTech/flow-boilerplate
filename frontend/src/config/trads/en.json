@@ -70,7 +70,8 @@
           "sale_of_securities": "Sale of securities",
           "sales_of_property": "Sales of property",
           "inheritance_donation": "Inheritance / Donation",
-          "other_source": "Other source"
+          "other_source": "Other source",
+          "legal_entity": "I'm only investing via a legal entity"
         }
       }
     },

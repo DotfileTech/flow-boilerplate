@@ -56,6 +56,7 @@ export const stepsConfig: {
           'sales_of_property',
           'inheritance_donation',
           'other_source',
+          'legal_entity',
         ],
       },
     ],
