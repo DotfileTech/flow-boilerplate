@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Stack,
   Button,
@@ -10,82 +10,60 @@ import {
   Show,
 } from '@chakra-ui/react';
 import { Trash2, EditIcon, PlusSquareIcon } from 'lucide-react';
-import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
-import { individualData } from '../config/Individual';
 import { Individual } from '../types';
 import { IndividualRoleEnum } from '../constants';
+import { individualSchema } from './validation/individual.schema';
 
 type IndividualsListProps = {
   selectIndividual: (i: number | null) => void;
   individuals: any;
   setIndividuals: any;
   submit: () => void;
-  individualsValid: boolean;
-  setIndividualsValid: Dispatch<SetStateAction<boolean>>;
 };
 
 const IndividualsList = (props: IndividualsListProps) => {
-  const {
-    selectIndividual,
-    individuals,
-    setIndividuals,
-    submit,
-    individualsValid,
-    setIndividualsValid,
-  } = props;
+  const { selectIndividual, individuals, setIndividuals, submit } = props;
 
   const { t } = useTranslation();
 
-  const rules = individualData
-    .filter((ind) => ind.required && ind.enabled && ind.type !== 'checkbox')
-    .reduce((acc, cur) => ({ ...acc, [cur.id]: Joi.string().required() }), {});
-
-  const schema = Joi.object().keys(rules).unknown(true);
+  const [individualsAreValid, setIndividualsAreValid] = useState<boolean>(true);
+  const [individualIsValid, setIndividualIsValid] = useState<
+    { key: number; isValid: boolean }[]
+  >([]);
 
   useEffect(() => {
-    setIndividuals(
-      individuals.map((individual: Individual & { isValid: boolean }) => {
-        const { address, banking_information, ...data } = individual;
-        let values = data;
-        if (address) {
-          values = { ...address, ...values };
-        }
-        if (banking_information) {
-          values = { ...banking_information, ...values };
+    const validIndividuals = async () => {
+      for (const [key, individual] of individuals.entries()) {
+        const isValid = await individualSchema.isValid(individual);
+
+        if (!isValid) {
+          setIndividualsAreValid(false);
         }
 
-        const check = schema.validate(values);
-        if (check.error) {
-          individual.isValid = false;
+        if (
+          individualIsValid.length > 0 &&
+          individualIsValid.find((t) => t.key === key)
+        ) {
+          setIndividualIsValid(
+            individualIsValid.map((t) =>
+              t.key === key ? { ...t, isValid } : { ...t }
+            )
+          );
         } else {
-          individual.isValid = true;
+          setIndividualIsValid((prevFriends) => [
+            ...prevFriends,
+            {
+              key,
+              isValid,
+            },
+          ]);
         }
-        return individual;
-      })
-    );
-
-    setIndividualsValid(
-      !individuals.some((e: { isValid: boolean }) => !e.isValid)
-    );
-  }, []);
-
-  useEffect(() => {
-    individuals.map((individual: Individual) => {
-      const { address, banking_information, ...data } = individual;
-      let values = data;
-      if (address) {
-        values = { ...address, ...values };
       }
-      if (banking_information) {
-        values = { ...banking_information, ...values };
-      }
+    };
 
-      const check = schema.validate(values);
-      if (check.error) setIndividualsValid(false);
-      return individual;
-    });
+    validIndividuals();
   }, [individuals]);
 
   const deleteIndividual = (index: number) => {
@@ -94,8 +72,8 @@ const IndividualsList = (props: IndividualsListProps) => {
 
   return (
     <Stack spacing={5} pt={2}>
-      {individuals.map(
-        (individual: Individual & { isValid: boolean }, i: number) => (
+      {individuals.map((individual: Individual, i: number) => {
+        return (
           <Box
             borderWidth="1px"
             borderRadius="lg"
@@ -112,11 +90,19 @@ const IndividualsList = (props: IndividualsListProps) => {
                 {individual.first_name} {individual.last_name}
               </Heading>
               <Spacer />
-              {!individual.isValid && (
-                <Tag colorScheme="yellow" mr={4} mt={{ base: '12px', md: '0' }}>
-                  {t('steps.individuals_list.missing_data')}
-                </Tag>
-              )}
+              {individualIsValid.length > 0 &&
+                individualIsValid.find((t) => t.key === i) &&
+                !individualIsValid[
+                  individualIsValid.findIndex((t) => t.key === i)
+                ].isValid && (
+                  <Tag
+                    colorScheme="yellow"
+                    mr={4}
+                    mt={{ base: '12px', md: '0' }}
+                  >
+                    {t('steps.individuals_list.missing_data')}
+                  </Tag>
+                )}
               <Show above="sm">
                 <Box mt={{ base: '12px', md: '0' }}>
                   <Button
@@ -167,8 +153,8 @@ const IndividualsList = (props: IndividualsListProps) => {
               </Box>
             </Show>
           </Box>
-        )
-      )}
+        );
+      })}
       <Box>
         <Button
           variant="add_individual"
@@ -182,7 +168,7 @@ const IndividualsList = (props: IndividualsListProps) => {
         <Button
           variant="next"
           onClick={submit}
-          isDisabled={individuals.length === 0 || !individualsValid}
+          isDisabled={individuals.length === 0 || !individualsAreValid}
         >
           {t('domain.form.next')}
         </Button>

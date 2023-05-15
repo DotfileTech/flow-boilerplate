@@ -31,7 +31,7 @@ export const individualData: IndividualData[] = [
     // This field is mandatory to create an individual
     id: 'roles',
     type: 'checkbox',
-    required: true,
+    required: false,
     enabled: true,
     options: [
       IndividualRoleEnum.beneficial_owner,

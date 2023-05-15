@@ -1,17 +1,69 @@
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { EditIcon } from 'lucide-react';
 import { SimpleGrid, Button, Text, Radio, Stack, Box } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import { CompanySearch } from '../types';
+import useApi from '../hooks/useApi';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 type CompaniesListProps = {
+  company: any;
+  setCompany: Dispatch<SetStateAction<any>>;
   selectCompany: (searchRef: string | null) => void;
-  companies: CompanySearch[];
+  back: () => void;
 };
 
 const CompaniesList = (props: CompaniesListProps) => {
-  const { selectCompany, companies } = props;
+  const { company, setCompany, selectCompany, back } = props;
 
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+  const api = useApi();
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [companies, setCompanies] = useState<CompanySearch[]>([]);
+
+  const getCompanies = async () => {
+    const params = {
+      country: company.country,
+      ...(company.registration_number && {
+        registration_number: company.registration_number,
+      }),
+      ...(company.name && {
+        name: company.name,
+      }),
+    };
+
+    const response = await api.get(
+      `dotfile/companies?${new URLSearchParams(params).toString()}`
+    );
+
+    if (
+      response.data.data.length === 0 &&
+      searchParams.get('registrationNumber') &&
+      company.registration_number
+    ) {
+      // Go to the search company step when the registration number in query param is bad
+      setCompany({
+        name: searchParams.get('company'),
+        country: searchParams.get('country'),
+        registration_number: null,
+      });
+      back();
+    } else if (response.data.data.length > 0) {
+      setCompanies(response.data.data);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getCompanies();
+  }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <Stack spacing="10" pt="2">

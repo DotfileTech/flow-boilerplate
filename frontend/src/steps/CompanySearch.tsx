@@ -1,19 +1,23 @@
-import { useState, useEffect } from 'react';
-import { InputGroup, Button, Stack, Box } from '@chakra-ui/react';
-import Joi from 'joi';
+import { Button, VStack, Box, Input } from '@chakra-ui/react';
+import * as Yup from 'yup';
 import { ChevronRightIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-import InputForm from '../components/form/InputForm';
-import CountrySelect from '../components/form/CountrySelect';
 import { Country } from '../types';
+import CountrySelect from '../components/form/CountrySelect';
+import { GroupController } from '../components/form/group-controller';
 
-const schema = Joi.object()
-  .keys({
-    country: Joi.string().required(),
-    name: Joi.string().required(),
-  })
-  .unknown(true);
+interface FormValues {
+  country: string;
+  name: string;
+}
+
+const validationSchema = Yup.object({
+  country: Yup.string().required(),
+  name: Yup.string().required(),
+});
 
 type CompanySearchProps = {
   countries: Country[];
@@ -22,80 +26,83 @@ type CompanySearchProps = {
     country: string | null;
     registration_number: string | null;
   };
-  getCompanies: () => void;
   isLoading: boolean;
-  autoSearchDone: boolean;
-  onChange: any;
+  onChange: (values: any) => void;
+  next: () => void;
 };
 
 const CompanySearch = (props: CompanySearchProps) => {
-  const {
-    countries,
-    company,
-    getCompanies,
-    isLoading,
-    autoSearchDone,
-    onChange,
-  } = props;
+  const { countries, company, isLoading, onChange, next } = props;
 
   const { t } = useTranslation();
 
-  const [formValid, setFormValid] = useState<boolean>(false);
+  const defaultValues: FormValues = {
+    country: company.country || '',
+    name: company.name || '',
+  };
 
-  useEffect(() => {
-    if (
-      (company.name || company.registration_number) &&
-      company.country &&
-      !autoSearchDone
-    ) {
-      getCompanies();
-    }
-  }, []);
+  const methods = useForm<FormValues>({
+    mode: 'all',
+    criteriaMode: 'all',
+    resolver: yupResolver(validationSchema),
+    defaultValues,
+  });
 
-  useEffect(() => {
-    const check = schema.validate(company);
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    formState: { isValid, isDirty },
+  } = methods;
 
-    if (check.error) {
-      setFormValid(false);
-    } else {
-      setFormValid(true);
-    }
-  }, [company, schema]);
+  const onSubmit: SubmitHandler<FormValues> = async (formData) => {
+    onChange(formData);
+    next();
+  };
 
   return (
-    <Stack spacing={5} pt={2}>
-      <CountrySelect
-        stepId="company_search"
-        defaultValue={company?.country || ''}
-        onChange={onChange}
-        name="country"
-        countries={countries}
-        isRequired
-      />
-
-      <InputGroup size="md">
-        <InputForm
-          stepId="company_search"
-          type="text"
-          isRequired
-          defaultValue={company?.name || ''}
-          onChange={onChange}
-          name="name"
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <VStack spacing="6" alignItems="start">
+        <GroupController
+          name="country"
+          label={t(`steps.company_search.country.label`) || 'Country'}
+          isRequired={true}
+          control={control}
+          render={(field) => (
+            <CountrySelect
+              onChange={(value: string) => {
+                setValue('country', value ?? '', {
+                  shouldDirty: true,
+                  shouldValidate: true,
+                });
+              }}
+              countries={countries}
+              defaultValue={field.value}
+            />
+          )}
         />
-      </InputGroup>
 
-      <Box>
-        <Button
-          variant="next"
-          rightIcon={<ChevronRightIcon size={16} />}
-          isLoading={isLoading}
-          onClick={getCompanies}
-          isDisabled={!formValid}
-        >
-          {t('steps.company_search.button')}
-        </Button>
-      </Box>
-    </Stack>
+        <GroupController
+          name="name"
+          label={t(`steps.company_search.name.label`) || 'Name'}
+          isRequired={true}
+          control={control}
+          render={(field) => <Input type="text" maxW="400px" {...field} />}
+        />
+
+        <Box>
+          <Button
+            variant="next"
+            rightIcon={<ChevronRightIcon size={16} />}
+            isLoading={isLoading}
+            isDisabled={!isValid || !isDirty}
+            type="submit"
+          >
+            {t('steps.company_search.button')}
+          </Button>
+        </Box>
+      </VStack>
+    </form>
   );
 };
 

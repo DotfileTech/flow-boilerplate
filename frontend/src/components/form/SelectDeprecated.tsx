@@ -1,14 +1,12 @@
 import {
-  RadioGroup,
-  Radio as ChakraRadio,
-  VStack,
   FormLabel,
   FormControl,
+  Select as ChakraSelect,
   FormHelperText,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
-type RadioProps = {
+type SelectProps = {
   stepId: string;
   name: string;
   defaultValue: string;
@@ -18,7 +16,7 @@ type RadioProps = {
   onChange: any;
 };
 
-const Radio = (props: RadioProps) => {
+const SelectDeprecated = (props: SelectProps) => {
   const {
     stepId,
     name,
@@ -39,21 +37,21 @@ const Radio = (props: RadioProps) => {
           {t(`steps.${stepId}.${name}.helper`)}
         </FormHelperText>
       )}
-      <RadioGroup
-        onChange={(value) => onChange(name, value)}
+      <ChakraSelect
         name={name}
+        onChange={onChange}
         defaultValue={defaultValue}
+        maxW="400px"
       >
-        <VStack spacing="5" alignItems="start">
-          {options.map((option: string) => (
-            <ChakraRadio key={option} value={option}>
-              {t(`steps.${stepId}.${name}.options.${option}`)}
-            </ChakraRadio>
-          ))}
-        </VStack>
-      </RadioGroup>
+        <option hidden disabled value=""></option>
+        {options.map((option: string) => (
+          <option key={option} value={option}>
+            {t(`steps.${stepId}.${name}.options.${option}`)}
+          </option>
+        ))}
+      </ChakraSelect>
     </FormControl>
   );
 };
 
-export default Radio;
+export default SelectDeprecated;

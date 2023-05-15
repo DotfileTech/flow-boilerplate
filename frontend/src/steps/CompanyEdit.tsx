@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react';
-import { SimpleGrid, Button, Stack, Box } from '@chakra-ui/react';
-import Joi from 'joi';
+import { useMemo } from 'react';
+import { Button, Box, VStack, Input } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-import InputForm from '../components/form/InputForm';
-import CountrySelect from '../components/form/CountrySelect';
 import { companyData } from '../config/Company';
+import { Company, Country, Field } from '../types';
 import Select from '../components/form/Select';
-import { Country, Field } from '../types';
+import { GroupController } from '../components/form/group-controller';
+import CountrySelect from '../components/form/CountrySelect';
+import { CompanyEditFormValues } from './utils';
+import { companySchema } from './validation/company.schema';
 
 type CompanyEditProps = {
   countries: Country[];
-  company: any;
-  onChange: (e: any, nested: string | undefined) => void;
+  company: Omit<Company, 'id' | 'checks'>;
+  onChange: (values: Omit<Company, 'id' | 'checks'>) => void;
   next: () => void;
 };
 
@@ -20,137 +23,172 @@ const CompanyEdit = (props: CompanyEditProps) => {
   const { company, onChange, next, countries } = props;
 
   const { t } = useTranslation();
-  const [formValid, setFormValid] = useState<boolean>(false);
 
-  const rules = companyData
-    .filter((field: Field) => field.enabled)
-    .reduce((acc, cur: Field) => {
-      let schema;
+  const defaultValues = useMemo(() => {
+    const defaultValues: CompanyEditFormValues = {
+      name: company.name || '',
+      registration_number: company.registration_number || '',
+      country: company.country || '',
+      legal_form: company.legal_form || '',
+      status: company.status || '',
+      registration_date: company.registration_date || '',
+      address: {
+        street_address: company.address?.street_address || '',
+        street_address_2: company.address?.street_address_2 || '',
+        postal_code: company.address?.postal_code || '',
+        city: company.address?.city || '',
+        country: company.address?.country || '',
+      },
+      banking_information: {
+        iban: company.banking_information?.iban || '',
+        bic: company.banking_information?.bic || '',
+      },
+      tax_identification_number: company.tax_identification_number || '',
+      employer_identification_number:
+        company.employer_identification_number || '',
+      classifications: company.classifications
+        ? [
+            {
+              code: company.classifications[0]?.code || '',
+            },
+          ]
+        : [],
+    };
 
-      switch (cur.type) {
-        case 'url':
-          schema = Joi.string().empty('').uri();
-          break;
-        case 'date':
-          schema = Joi.date();
-          break;
-        default:
-          schema = Joi.string().empty('');
-      }
+    return defaultValues;
+  }, [company]);
 
-      switch (cur.id) {
-        case 'iban':
-          schema = schema.min(15);
-          break;
-        case 'bic':
-          schema = schema.min(8);
-          break;
-      }
+  const methods = useForm<CompanyEditFormValues>({
+    mode: 'all',
+    criteriaMode: 'all',
+    resolver: yupResolver(companySchema),
+    defaultValues,
+  });
 
-      if (cur.required) {
-        schema = schema.required();
-      } else {
-        schema = schema.allow(null);
-      }
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    formState: { isValid, isSubmitting },
+  } = methods;
 
-      return { ...acc, [cur.id]: schema };
-    }, {});
-
-  const schema = Joi.object().keys(rules).unknown(true);
-
-  useEffect(() => {
-    const { address, banking_information, classifications, ...data } = company;
-    let values = data;
-    if (address) {
-      values = { ...address, ...values };
-    }
-    if (banking_information) {
-      values = { ...banking_information, ...values };
-    }
-    if (classifications && classifications.length > 0) {
-      values = { ...classifications[0], ...values };
-    }
-
-    const check = schema.validate(values);
-    if (check.error) {
-      setFormValid(false);
-    } else {
-      setFormValid(true);
-    }
-  }, [company, schema]);
+  const onSubmit: SubmitHandler<CompanyEditFormValues> = async (formData) => {
+    onChange(formData);
+    next();
+  };
 
   return (
-    <Stack spacing={5} pt={2}>
-      <SimpleGrid columns={1} spacing={5}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <VStack spacing="6" alignItems="start">
         {companyData
           .filter((field: Field) => field.enabled)
           .map((field: Field) => {
-            let defaultValue = '';
-
-            if (company[field.id]) {
-              defaultValue = company[field.id];
-            }
-
-            if (field.nested && company[field.nested]) {
-              defaultValue = company[field.nested][field.id];
-            }
-
-            if (
-              field.nested === 'classifications' &&
-              company[field.nested] &&
-              company[field.nested].length > 0
-            ) {
-              defaultValue = company[field.nested][0][field.id];
-            }
-
             if (field.type === 'select') {
               return (
-                <Select
-                  key={`company_${field.id}`}
-                  stepId="company_edit"
-                  name={field.id}
-                  defaultValue={defaultValue || ''}
+                <GroupController
+                  key={
+                    field.nested
+                      ? `company_${field.nested}_${field.id}`
+                      : `company_${field.id}`
+                  }
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  name={field.nested ? `${field.nested}.${field.id}` : field.id}
+                  label={t(`steps.company_edit.${field.id}.label`) || field.id}
                   isRequired={field.required}
-                  options={field.options || []}
-                  onChange={(e: any) => onChange(e, field.nested)}
+                  control={control}
+                  render={(f) => (
+                    <Select
+                      stepId="company_edit"
+                      name={field.id}
+                      onChange={(value: string) => {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        setValue(field.id, value ?? '', {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                      options={field.options || []}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      defaultValue={f.value}
+                    />
+                  )}
                 />
               );
             }
 
             if (field.type === 'country') {
               return (
-                <CountrySelect
-                  key={`company_${field.id}`}
-                  stepId="company_edit"
-                  defaultValue={defaultValue || company.country || ''}
-                  onChange={onChange}
-                  name={field.id}
-                  countries={countries}
+                <GroupController
+                  key={
+                    field.nested
+                      ? `company_${field.nested}_${field.id}`
+                      : `company_${field.id}`
+                  }
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  name={field.nested ? `${field.nested}.${field.id}` : field.id}
+                  label={t(`steps.company_edit.${field.id}.label`) || field.id}
                   isRequired={field.required}
+                  control={control}
+                  render={(f) => (
+                    <CountrySelect
+                      onChange={(value: string) => {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        setValue(field.id, value ?? '', {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                      countries={countries}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      defaultValue={f.value}
+                    />
+                  )}
                 />
               );
             }
 
             return (
-              <InputForm
+              <GroupController
                 key={field.id}
-                stepId="company_edit"
-                defaultValue={defaultValue || ''}
-                onChange={(e: any) => onChange(e, field.nested)}
-                name={field.id}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                name={
+                  field.nested
+                    ? field.nested === 'classifications'
+                      ? `${field.nested}.0.${field.id}`
+                      : `${field.nested}.${field.id}`
+                    : field.id
+                }
+                label={t(`steps.company_edit.${field.id}.label`) || field.id}
                 isRequired={field.required}
-                type={field.type}
+                control={control}
+                render={(f) => {
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  return <Input type={field.type} maxW="400px" {...f} />;
+                }}
               />
             );
           })}
 
         <Box>
-          <Button variant="next" onClick={next} isDisabled={!formValid}>
+          <Button
+            variant="next"
+            isLoading={isSubmitting}
+            isDisabled={!isValid}
+            type="submit"
+          >
             {t('domain.form.next')}
           </Button>
         </Box>
-      </SimpleGrid>
-    </Stack>
+      </VStack>
+    </form>
   );
 };
 

@@ -4,9 +4,9 @@ import Joi from 'joi';
 import { useTranslation } from 'react-i18next';
 
 import InputForm from '../components/form/InputForm';
-import Select from '../components/form/Select';
+import SelectDeprecated from '../components/form/SelectDeprecated';
 import Radio from '../components/form/Radio';
-import CountrySelect from '../components/form/CountrySelect';
+import CountrySelectDeprecated from '../components/form/CountrySelectDeprecated';
 import { Country, CustomField } from '../types';
 
 type CustomFormProps = {
@@ -89,7 +89,7 @@ const CustomForm = (props: CustomFormProps) => {
         {fields.map((field: CustomField) => {
           if (field.type === 'select') {
             return (
-              <Select
+              <SelectDeprecated
                 key={field.id}
                 stepId={stepId}
                 name={field.id}
@@ -117,7 +117,7 @@ const CustomForm = (props: CustomFormProps) => {
           }
           if (field.type === 'country') {
             return (
-              <CountrySelect
+              <CountrySelectDeprecated
                 key={field.id}
                 stepId={stepId}
                 name={field.id}

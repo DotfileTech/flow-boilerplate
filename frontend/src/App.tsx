@@ -18,12 +18,7 @@ import ChecksList from './steps/ChecksList';
 import useApi from './hooks/useApi';
 import { form } from './config/Forms';
 import { hasKyb, hasKyc } from './config/step';
-import {
-  CompanySearch as CompanySearchType,
-  Country,
-  CustomField,
-  FormData,
-} from './types';
+import { Country, FormData, Company, Individual } from './types';
 
 const AppContent = () => {
   const { t, i18n } = useTranslation();
@@ -42,9 +37,6 @@ const AppContent = () => {
   );
   const [step, setStep] = useState<number>(0);
   const [countries, setCountries] = useState<Country[]>([]);
-  const [companiesSearch, setCompaniesSearch] = useState<CompanySearchType[]>(
-    []
-  );
   const [individuals, setIndividuals] = useState<any>([]);
   const [individual, setIndividual] = useState<any>({});
   const [metadata, setMetadata] = useState<{ [key: string]: string | null }>({
@@ -54,8 +46,6 @@ const AppContent = () => {
   const [company, setCompany] = useState<any>();
   const [individualIndex, setIndividualIndex] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [autoSearchDone, setAutoSearchDone] = useState<boolean>(false);
-  const [individualsValid, setIndividualsValid] = useState<boolean>(true);
 
   async function fetchMyAPI() {
     const externalId = searchParams.get('externalId');
@@ -93,6 +83,18 @@ const AppContent = () => {
     }
   }, [searchParams]);
 
+  useEffect(() => {
+    // Skip search company step when the registration number is set in query param
+    if (
+      steps[step].key === 'company_search' &&
+      company &&
+      company.registration_number &&
+      company.country
+    ) {
+      next();
+    }
+  }, [company]);
+
   const next = async () => {
     setStep(step + 1);
   };
@@ -116,56 +118,13 @@ const AppContent = () => {
   };
 
   const back = async () => {
-    if (steps.findIndex((step) => step.key === 'company_edit')) {
+    if (steps[step].key === 'company_edit') {
       setCompany({
         ...company,
         registration_number: null,
       });
     }
     setStep(step - 1);
-  };
-
-  const getCompanies = async () => {
-    try {
-      setIsLoading(true);
-
-      const params = {
-        country: company.country,
-        ...(company.registration_number && {
-          registration_number: company.registration_number,
-        }),
-        ...(company.name && {
-          name: company.name,
-        }),
-      };
-
-      const response = await api.get(
-        `dotfile/companies?${new URLSearchParams(params).toString()}`
-      );
-
-      setAutoSearchDone(true);
-
-      if (
-        response.data.data.length === 0 &&
-        searchParams.get('registrationNumber')
-      ) {
-        setStep(step);
-        setCompany({
-          name: searchParams.get('company'),
-          country: searchParams.get('country'),
-          registration_number: null,
-        });
-      } else if (response.data.data.length > 0) {
-        setCompaniesSearch(response.data.data);
-        setStep(steps.findIndex((step) => step.key === 'company_list'));
-      } else {
-        setStep(steps.findIndex((step) => step.key === 'company_list'));
-      }
-
-      setIsLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const selectCompany = async (searchRef: string | null) => {
@@ -182,32 +141,11 @@ const AppContent = () => {
     }
   };
 
-  const changeHandler = (e: any, nested: string | undefined) => {
-    if (nested) {
-      if (nested === 'classifications') {
-        setCompany({
-          ...company,
-          [nested]: [
-            {
-              [e.target.name]: e.target.value,
-            },
-          ],
-        });
-      } else {
-        setCompany({
-          ...company,
-          [nested]: {
-            ...company[nested],
-            [e.target.name]: e.target.value,
-          },
-        });
-      }
-    } else {
-      setCompany({
-        ...company,
-        [e.target.name]: e.target.value,
-      });
-    }
+  const handleCompany = (values: Omit<Company, 'id' | 'checks'>) => {
+    setCompany({
+      ...company,
+      ...values,
+    });
   };
 
   const selectIndividual = (i: number | null) => {
@@ -221,27 +159,30 @@ const AppContent = () => {
     setStep(steps.findIndex((step) => step.key === 'individual_edit'));
   };
 
+  const handleIndividual = (values: Omit<Individual, 'id' | 'checks'>) => {
+    if (individualIndex !== null) {
+      individuals[individualIndex] = values;
+    } else {
+      individuals.push(values);
+    }
+
+    if (hasKyb) {
+      setStep(step - 1);
+    } else {
+      if (steps.length === step + 1) {
+        submit();
+      } else {
+        setStep(step + 1);
+      }
+    }
+  };
+
   const changeHandlerMetadata = (e: any) => {
     setMetadata({ ...metadata, [e.target.name]: e.target.value });
   };
 
   const changeHandlerMetadataCustom = (question: string, answer: string) => {
     setMetadata({ ...metadata, [question]: answer });
-  };
-
-  const saveIndividual = () => {
-    individual.isValid = true;
-    if (individualIndex !== null) {
-      individuals[individualIndex] = individual;
-    } else {
-      individuals.push(individual);
-    }
-
-    setIndividualsValid(
-      !individuals.some((e: { isValid: boolean }) => !e.isValid)
-    );
-
-    setStep(hasKyb ? step - 1 : step + 1);
   };
 
   const steps: { key: string; content: ReactElement }[] = [];
@@ -254,10 +195,9 @@ const AppContent = () => {
           <CompanySearch
             countries={countries}
             company={company}
-            getCompanies={getCompanies}
             isLoading={isLoading}
-            autoSearchDone={autoSearchDone}
-            onChange={changeHandler}
+            onChange={handleCompany}
+            next={next}
           />
         ),
       },
@@ -265,8 +205,10 @@ const AppContent = () => {
         key: 'company_list',
         content: (
           <CompaniesList
+            company={company}
+            setCompany={setCompany}
             selectCompany={selectCompany}
-            companies={companiesSearch}
+            back={back}
           />
         ),
       },
@@ -275,7 +217,7 @@ const AppContent = () => {
         content: (
           <CompanyEdit
             company={company}
-            onChange={changeHandler}
+            onChange={handleCompany}
             next={next}
             countries={countries}
           />
@@ -289,8 +231,6 @@ const AppContent = () => {
             individuals={individuals}
             setIndividuals={setIndividuals}
             submit={submit}
-            individualsValid={individualsValid}
-            setIndividualsValid={setIndividualsValid}
           />
         ),
       }
@@ -303,8 +243,7 @@ const AppContent = () => {
       content: (
         <IndividualEdit
           individual={individual}
-          setIndividual={setIndividual}
-          saveIndividual={saveIndividual}
+          onChange={handleIndividual}
           countries={countries}
         />
       ),
@@ -319,7 +258,8 @@ const AppContent = () => {
   }
 
   if (!caseId) {
-    // @ts-expect-error - type error to fix
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     form.forEach((item: FormData) => {
       const content = (
         <CustomForm

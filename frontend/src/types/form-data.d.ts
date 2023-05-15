@@ -9,12 +9,12 @@ export type FormData = {
   /**
    * @description To indicate the position of the custom step in the flow. Indicate the key of the step which should be before. If the after property is not filled then the step will be displayed first
    */
-  after: string;
+  after?: string;
 
   /**
    * @description To indicate if the custom step is the last step to submit the flow
    */
-  isLastStep: boolean;
+  isLastStep?: boolean;
 
   /**
    * @description The list of custom fields to display in the custom step

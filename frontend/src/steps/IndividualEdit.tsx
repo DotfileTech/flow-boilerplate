@@ -1,199 +1,207 @@
-import { useState, useEffect } from 'react';
-import { SimpleGrid, Button, Stack, Box } from '@chakra-ui/react';
-import Joi from 'joi';
+import { useMemo } from 'react';
+import { Box, Button, Input, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import InputForm from '../components/form/InputForm';
-import CountrySelect from '../components/form/CountrySelect';
 import Checkbox from '../components/form/Checkbox';
 import { individualData } from '../config/Individual';
-import { Country, Field } from '../types';
+import { Individual, Country, Field } from '../types';
+import CountrySelect from '../components/form/CountrySelect';
+import { GroupController } from '../components/form/group-controller';
+import { IndividualEditFormValues } from './utils';
+import { individualSchema } from './validation/individual.schema';
 
 type IndividualEditProps = {
-  individual: any;
-  setIndividual: any;
-  saveIndividual: any;
+  individual: Omit<Individual, 'id' | 'checks'>;
   countries: Country[];
+  onChange: (values: Omit<Individual, 'id' | 'checks'>) => void;
 };
 
 const IndividualEdit = (props: IndividualEditProps) => {
-  const { individual, setIndividual, saveIndividual, countries } = props;
+  const { individual, countries, onChange } = props;
 
   const { t } = useTranslation();
 
-  const [formValid, setFormValid] = useState<boolean>(false);
+  const defaultValues = useMemo(() => {
+    const defaultValues: IndividualEditFormValues = {
+      first_name: individual.first_name || '',
+      last_name: individual.last_name || '',
+      email: individual.email || '',
+      roles: individual.roles || [],
+      birth_date: individual.birth_date || '',
+      birth_country: individual.birth_country || '',
+      birth_place: individual.birth_place || '',
+      address: {
+        street_address: individual.address?.street_address || '',
+        street_address_2: individual.address?.street_address_2 || '',
+        postal_code: individual.address?.postal_code || '',
+        city: individual.address?.city || '',
+        country: individual.address?.country || '',
+      },
+      banking_information: {
+        iban: individual.banking_information?.iban || '',
+        bic: individual.banking_information?.bic || '',
+      },
+      tax_identification_number: individual.tax_identification_number || '',
+      social_security_number: individual.social_security_number || '',
+      phone_number: individual.phone_number || '',
+      position: individual.position || '',
+      ownership_percentage: individual.ownership_percentage || null,
+    };
 
-  const rules = individualData
-    .filter((field: Field) => field.enabled && field.type !== 'checkbox')
-    .reduce((acc, cur: Field) => {
-      let schema;
+    return defaultValues;
+  }, [individual]);
 
-      switch (cur.type) {
-        case 'email':
-          schema = Joi.string()
-            .empty('')
-            .email({ tlds: { allow: false } });
-          break;
-        case 'tel':
-          schema = Joi.string()
-            .empty('')
-            .regex(/^\+(?:[0-9] ?){6,14}[0-9]$/);
-          break;
-        case 'url':
-          schema = Joi.string().empty('').uri();
-          break;
-        case 'number':
-          schema = Joi.number();
-          break;
-        case 'date':
-          schema = Joi.date();
-          break;
-        default:
-          schema = Joi.string().empty('');
-      }
+  const methods = useForm<IndividualEditFormValues>({
+    mode: 'all',
+    criteriaMode: 'all',
+    resolver: yupResolver(individualSchema),
+    defaultValues,
+  });
 
-      switch (cur.id) {
-        case 'iban':
-          schema = schema.min(15);
-          break;
-        case 'bic':
-          schema = schema.min(8);
-          break;
-      }
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    formState: { isValid, isSubmitting },
+  } = methods;
 
-      if (cur.required) {
-        schema = schema.required();
-      } else {
-        schema = schema.allow(null);
-      }
-
-      return { ...acc, [cur.id]: schema };
-    }, {});
-
-  const schema = Joi.object().keys(rules).unknown(true);
-
-  useEffect(() => {
-    const { address, banking_information, ...data } = individual;
-    let values = data;
-    if (address) {
-      values = { ...address, ...values };
-    }
-    if (banking_information) {
-      values = { ...banking_information, ...values };
-    }
-
-    const check = schema.validate(values);
-    if (check.error) {
-      setFormValid(false);
-    } else {
-      setFormValid(true);
-    }
-  }, [individual, schema]);
-
-  const changeHandlerIndividual = (e: any, nested: string | undefined) => {
-    if (nested) {
-      setIndividual({
-        ...individual,
-        [nested]: {
-          ...individual[nested],
-          [e.target.name]: e.target.value,
-        },
-      });
-    } else {
-      setIndividual({
-        ...individual,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
-
-  const checkBoxChangeHandler = (event: any) => {
-    const isChecked = event.target.checked;
-
-    if (isChecked) {
-      setIndividual({
-        ...individual,
-        roles: individual.roles
-          ? [...individual.roles, event.target.value]
-          : [event.target.value],
-      });
-    } else {
-      const index = individual.roles.indexOf(event.target.value);
-      individual.roles.splice(index, 1);
-      setIndividual({
-        ...individual,
-        roles: individual.roles,
-      });
-    }
+  const onSubmit: SubmitHandler<IndividualEditFormValues> = async (
+    formData
+  ) => {
+    onChange(formData);
   };
 
   return (
-    <Stack spacing={5} pt={2}>
-      <SimpleGrid columns={1} spacing={6}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <VStack spacing="6" alignItems="start">
         {individualData
           .filter((field) => field.enabled)
           .map((field: Field) => {
-            const defaultValue = field.nested
-              ? individual[field.nested]
-                ? individual[field.nested][field.id]
-                : ''
-              : individual[field.id];
-
             if (field.type === 'checkbox') {
               return (
-                <Checkbox
-                  key={`individual_${field.id}`}
-                  stepId="individual_edit"
-                  name={field.id}
-                  defaultValue={defaultValue || ''}
+                <GroupController
+                  key={
+                    field.nested
+                      ? `individual_${field.nested}_${field.id}`
+                      : `individual_${field.id}`
+                  }
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  name={field.nested ? `${field.nested}.${field.id}` : field.id}
+                  label={
+                    t(`steps.individual_edit.${field.id}.label`) + ' *' ||
+                    field.id
+                  }
                   isRequired={field.required}
-                  options={field.options || []}
-                  onChange={checkBoxChangeHandler}
+                  defaultValue="false"
+                  control={control}
+                  render={(f) => {
+                    return (
+                      <Checkbox
+                        stepId="individual_edit"
+                        name={field.id}
+                        onChange={(values: any) => {
+                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                          // @ts-ignore
+                          setValue(field.id, values, {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          });
+                        }}
+                        options={field.options || []}
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        defaultValue={f.value}
+                      />
+                    );
+                  }}
                 />
               );
             }
 
             if (field.type === 'country') {
               return (
-                <CountrySelect
-                  key={`individual_${field.id}`}
-                  stepId="individual_edit"
-                  defaultValue={defaultValue || ''}
-                  onChange={(e: any) =>
-                    changeHandlerIndividual(e, field.nested)
+                <GroupController
+                  key={
+                    field.nested
+                      ? `individual_${field.nested}_${field.id}`
+                      : `individual_${field.id}`
                   }
-                  name={field.id}
-                  countries={countries}
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  name={field.nested ? `${field.nested}.${field.id}` : field.id}
+                  label={
+                    t(`steps.individual_edit.${field.id}.label`) || field.id
+                  }
                   isRequired={field.required}
+                  control={control}
+                  render={(f) => (
+                    <CountrySelect
+                      onChange={(value: string) => {
+                        setValue(
+                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                          // @ts-ignore
+                          field.nested
+                            ? `${field.nested}.${field.id}`
+                            : field.id,
+                          value ?? '',
+                          {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          }
+                        );
+                      }}
+                      countries={countries}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      defaultValue={f.value}
+                    />
+                  )}
                 />
               );
             }
 
             return (
-              <InputForm
-                key={`individual_${field.id}`}
-                stepId="individual_edit"
-                defaultValue={defaultValue || ''}
-                onChange={(e: any) => changeHandlerIndividual(e, field.nested)}
-                name={field.id}
+              <GroupController
+                key={field.id}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                name={field.nested ? `${field.nested}.${field.id}` : field.id}
+                label={t(`steps.individual_edit.${field.id}.label`) || field.id}
                 isRequired={field.required}
-                hasHelper={field.hasHelper}
-                type={field.type}
+                //hasHelper={field.hasHelper}
+                control={control}
+                render={(f) => {
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  return (
+                    <Input
+                      type={field.type}
+                      maxW="400px"
+                      {...f}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      value={f.value ?? ''}
+                    />
+                  );
+                }}
               />
             );
           })}
-
         <Box>
           <Button
             variant="next"
-            onClick={() => saveIndividual(null)}
-            isDisabled={!formValid}
+            isLoading={isSubmitting}
+            isDisabled={!isValid}
+            type="submit"
           >
             {t('domain.form.save')}
           </Button>
         </Box>
-      </SimpleGrid>
-    </Stack>
+      </VStack>
+    </form>
   );
 };
 
