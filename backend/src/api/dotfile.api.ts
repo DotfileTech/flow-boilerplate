@@ -5,9 +5,15 @@ class Dotfile {
   serverUrl: string;
   secretKey: string;
   isDev: boolean;
+  webhookSecret: string;
 
   constructor(
-    config: { host?: string; secretKey?: string; isDev?: boolean } = {}
+    config: {
+      host?: string;
+      secretKey?: string;
+      isDev?: boolean;
+      webhookSecret?: string;
+    } = {}
   ) {
     config.host = config.host || 'https://api.dotfile.com/v1';
     this.serverUrl = config.host;
@@ -26,6 +32,7 @@ class Dotfile {
 
     this.secretKey = config.secretKey || '';
     this.isDev = config.isDev || true;
+    this.webhookSecret = config.webhookSecret || '';
   }
 
   public async request(

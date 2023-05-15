@@ -1,5 +1,6 @@
-import { Routes } from '../interfaces/routes.interface';
 import express, { Router } from 'express';
+import bodyParser from 'body-parser';
+import { Routes } from '../interfaces/routes.interface';
 import WebhookController from '../controllers/webhooks.controller';
 
 class PublicApiRoute implements Routes {
@@ -12,7 +13,16 @@ class PublicApiRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.use(express.json());
+    this.router.use(
+      express.json({
+        verify: (req, res, buf) => {
+          req['rawBody'] = buf.toString();
+        },
+      })
+    );
+
+    // Parse the request body
+    this.router.use(bodyParser.json());
 
     this.router.post(
       `${this.path}checks`,

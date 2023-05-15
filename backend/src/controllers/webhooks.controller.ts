@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { createHmac } from 'crypto';
 import EmailService from '../services/email.service';
 import Dotfile from '../api/dotfile.api';
 
@@ -7,6 +8,7 @@ class WebhooksController {
     host: process.env.DOTFILE_BASE_URL,
     secretKey: process.env.DOTFILE_KEY,
     isDev: process.env.NODE_ENV === 'development',
+    webhookSecret: process.env.WEBHOOK_SECRET,
   });
 
   private emailService = new EmailService();
@@ -14,6 +16,19 @@ class WebhooksController {
   checksConsumer = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const payload = req.body;
+      const rawBody = req['rawBody'];
+
+      // Verify signature
+      if (this.dotfileApi.webhookSecret) {
+        const signature = createHmac('sha256', this.dotfileApi.webhookSecret)
+          .update(rawBody)
+          .digest('hex');
+        if (signature !== req.headers['dotfile-signature']) {
+          res.sendStatus(400);
+          console.error('Invalid signature');
+          return;
+        }
+      }
 
       if (
         payload.event !== 'Check.Rejected' &&

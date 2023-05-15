@@ -21,6 +21,8 @@ services:
         sync: false
       - key: TEMPLATE_ID
         sync: false
+      - key: WEBHOOK_SECRET
+        value: dotsecret.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # generate a token to replace xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (https://it-tools.tech/token-generator?length=32)
       # Email
       - key: SMTP_HOST
         value: smtp.postmarkapp.com
