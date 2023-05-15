@@ -31,7 +31,21 @@ const mailOptions = {
 };
 
 class EmailService {
-  public sendEmail = async (email, options, context, locale) => {
+  public sendEmail = async (
+    email: string,
+    options: {
+      template: string;
+      subject: string;
+      message: string;
+    },
+    context: {
+      link: string;
+      appLogoUrl: string;
+      checkTitle: string;
+      comment?: string;
+    },
+    locale: string
+  ) => {
     const transporter = nodemailer.createTransport(mailOptions);
 
     transporter.use(

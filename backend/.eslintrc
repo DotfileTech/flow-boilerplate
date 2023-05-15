@@ -16,7 +16,7 @@
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-var-requires": "off",
     "no-console": [
-      "error",
+      "warn",
       { "allow": ["debug", "info", "warn", "error"] }
     ]
   }

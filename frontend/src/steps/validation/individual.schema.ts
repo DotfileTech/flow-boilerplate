@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 
 import {
+  isEnabledField,
   isRequiredField,
   optionalStringRule,
 } from '../../helpers/schema.helper';
@@ -20,9 +21,11 @@ export const individualSchema = mandatoryFields.shape({
         .transform((v) => (v === '' ? null : v))
         .required()
     : optionalStringRule.email(),
-  roles: Yup.array(Yup.mixed().oneOf(Object.values(IndividualRoleEnum)))
-    .min(1)
-    .required(),
+  roles: isEnabledField(individualData, 'roles')
+    ? Yup.array(Yup.mixed().oneOf(Object.values(IndividualRoleEnum)))
+        .min(1)
+        .required()
+    : Yup.array(Yup.mixed().oneOf(Object.values(IndividualRoleEnum))),
   birth_date: isRequiredField(individualData, 'birth_date')
     ? Yup.string().required()
     : optionalStringRule,

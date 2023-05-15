@@ -2,6 +2,13 @@ import { NextFunction, Request, Response } from 'express';
 import { createHmac } from 'crypto';
 import EmailService from '../services/email.service';
 import Dotfile from '../api/dotfile.api';
+import { Check } from '../types';
+import {
+  CaseFlagEnum,
+  CheckResultEnum,
+  CheckStatusEnum,
+  CheckTypeEnum,
+} from '../constants';
 
 class WebhooksController {
   public dotfileApi = new Dotfile({
@@ -37,9 +44,9 @@ class WebhooksController {
         return res.status(200).json({});
       }
 
-      const caseId = payload.context.case.id;
+      const caseId: string = payload.context.case.id;
       const check = payload.check;
-      const checkResult = payload.check.data.result;
+      const checkResult: CheckResultEnum = check.data.result;
 
       const caseData = await this.dotfileApi.request(
         'get',
@@ -50,14 +57,14 @@ class WebhooksController {
       );
 
       const { email, locale } = caseData.metadata;
-      const flags = caseData.flags;
+      const flags: CaseFlagEnum[] = caseData.flags;
 
       if (!email) {
         return res.status(200).json({});
       }
 
-      const exactType = (currentCheck: any) => {
-        return currentCheck.type === 'document'
+      const exactType = (currentCheck: Check) => {
+        return currentCheck.type === CheckTypeEnum.document
           ? currentCheck.subtype.split(':')[1]
           : currentCheck.type;
       };
@@ -65,10 +72,10 @@ class WebhooksController {
       // Check.Started
       if (
         email &&
-        check.status === 'in_progress' &&
-        (flags.includes('for_review') ||
-          flags.includes('for_recollection') ||
-          flags.includes('all_checks_approved'))
+        check.status === CheckStatusEnum.in_progress &&
+        (flags.includes(CaseFlagEnum.for_review) ||
+          flags.includes(CaseFlagEnum.for_recollection) ||
+          flags.includes(CaseFlagEnum.all_checks_approved))
       ) {
         await this.emailService.sendEmail(
           email,
@@ -88,7 +95,7 @@ class WebhooksController {
 
       // Check.Rejected
       switch (checkResult) {
-        case 'rejected':
+        case CheckResultEnum.rejected:
           if (email)
             await this.emailService.sendEmail(
               email,
@@ -106,7 +113,7 @@ class WebhooksController {
               locale
             );
           break;
-        case 'approved':
+        case CheckResultEnum.approved:
         default:
       }
 

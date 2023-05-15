@@ -1,6 +1,22 @@
 import { Request, Response } from 'express';
 import FormData from 'form-data';
+import axios from 'axios';
+
 import Dotfile from '../api/dotfile.api';
+import {
+  Case,
+  CaseDetailed,
+  CompanyData,
+  CompanySearch,
+  Country,
+  CaseMetadata,
+  CompanyInput,
+  IndividualInput,
+} from '../types';
+
+type GetCasesResponse = {
+  data: Case[];
+};
 
 class DotfileController {
   public dotfileApi = new Dotfile({
@@ -14,22 +30,17 @@ class DotfileController {
     bodyFormData.append('file', file.buffer, {
       filename: file.originalname,
     });
-    const { upload_ref } = await this.dotfileApi.request(
-      'post',
-      `files/upload`,
-      {},
-      bodyFormData,
-      {
+    const { upload_ref }: { upload_ref: string } =
+      await this.dotfileApi.request('post', `files/upload`, {}, bodyFormData, {
         ...bodyFormData.getHeaders(),
-      }
-    );
+      });
 
     return upload_ref;
   };
 
   public getCountries = async (req: Request, res: Response) => {
     try {
-      const countries = await this.dotfileApi.request(
+      const countries: Country[] = await this.dotfileApi.request(
         'get',
         'company-data/countries',
         {},
@@ -37,11 +48,22 @@ class DotfileController {
         {}
       );
       res.status(200).json(countries);
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message: 'Something went wrong while fetching countries list.',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
+        });
+      } else {
+        console.error('[getCountries] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[getCountries] An unexpected error occurred',
+        });
+      }
     }
   };
 
@@ -49,7 +71,7 @@ class DotfileController {
     try {
       const { country, name, registration_number } = req.query;
 
-      const companies = await this.dotfileApi.request(
+      const companies: CompanySearch[] = await this.dotfileApi.request(
         'get',
         'company-data/search',
         {
@@ -61,17 +83,28 @@ class DotfileController {
         {}
       );
       res.status(200).json(companies);
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message: 'Something went wrong while searching company.',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
+        });
+      } else {
+        console.error('[searchCompanies] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[searchCompanies] An unexpected error occurred',
+        });
+      }
     }
   };
 
   public fetchCompany = async (req: Request, res: Response) => {
     try {
-      const company = await this.dotfileApi.request(
+      const company: CompanyData = await this.dotfileApi.request(
         'get',
         `company-data/fetch/${req.params.id}`,
         {},
@@ -80,17 +113,40 @@ class DotfileController {
       );
 
       res.status(200).json(company);
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message: 'Something went wrong while fetch company details.',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
+        });
+      } else {
+        console.error('[fetchCompany] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[fetchCompany] An unexpected error occurred',
+        });
+      }
     }
   };
 
   public createCase = async (req: Request, res: Response) => {
     try {
-      const { company, individuals, metadata, email, externalId } = req.body;
+      const {
+        company,
+        individuals,
+        metadata,
+        email,
+        externalId,
+      }: {
+        company: CompanyInput;
+        individuals: IndividualInput[];
+        metadata: CaseMetadata;
+        email: string;
+        externalId: string;
+      } = req.body;
 
       const template_id: string = process.env.TEMPLATE_ID;
 
@@ -117,7 +173,7 @@ class DotfileController {
         ? `KYB - ${company.name}`
         : `KYC - ${individuals[0].first_name} ${individuals[0].last_name}`;
 
-      const createdCase = await this.dotfileApi.request(
+      const createdCase: Case = await this.dotfileApi.request(
         'post',
         'cases',
         {},
@@ -233,19 +289,28 @@ class DotfileController {
       res.status(200).json({
         caseId: createdCase.id,
       });
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message:
-          'Something went wrong while creating case: ' +
-          err?.response?.data?.errors,
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}.\n\n${error.response.data.errors}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}. ${error.response.data.errors}`,
+        });
+      } else {
+        console.error('[createCase] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[createCase] An unexpected error occurred',
+        });
+      }
     }
   };
 
   public getCases = async (req: Request, res: Response) => {
     try {
-      const cases = await this.dotfileApi.request(
+      const cases: GetCasesResponse = await this.dotfileApi.request(
         'get',
         `cases`,
         { external_id: req.query.externalId },
@@ -253,17 +318,28 @@ class DotfileController {
         {}
       );
       res.status(200).json(cases.data[0]);
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message: 'Something went wrong while getting cases.',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
+        });
+      } else {
+        console.error('[getCases] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[getCases] An unexpected error occurred',
+        });
+      }
     }
   };
 
   public fetchCase = async (req: Request, res: Response) => {
     try {
-      const caseData = await this.dotfileApi.request(
+      const caseData: CaseDetailed = await this.dotfileApi.request(
         'get',
         `cases/${req.params.id}`,
         {},
@@ -295,7 +371,6 @@ class DotfileController {
       for (const individual of caseData.individuals) {
         const enrichedChecks = [];
         for (const check of individual.checks) {
-          // enrichedChecks.push(check)
           const enrichedCheck = await this.dotfileApi.request(
             'get',
             `checks/${check.type}/${check.id}`,
@@ -314,11 +389,22 @@ class DotfileController {
       caseData.individuals = enrichedIndividuals;
 
       res.status(200).json(caseData);
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message: 'Something went wrong while fetching case.',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
+        });
+      } else {
+        console.error('[fetchCase] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[fetchCase] An unexpected error occurred',
+        });
+      }
     }
   };
 
@@ -337,11 +423,22 @@ class DotfileController {
       res.status(200).json({
         url: check.data.vendor.verification_url,
       });
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message: 'Something went wrong while fetching check.',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
+        });
+      } else {
+        console.error('[fetchCheck] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[fetchCheck] An unexpected error occurred',
+        });
+      }
     }
   };
 
@@ -369,17 +466,30 @@ class DotfileController {
       );
 
       res.status(200).json(completedChecks);
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message: 'Something went wrong while uploading documents',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
+        });
+      } else {
+        console.error('[uploadDocument] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[uploadDocument] An unexpected error occurred',
+        });
+      }
     }
   };
 
   public uploadIdentityDocument = async (req: Request, res: Response) => {
     try {
-      if (!req.files[0]) throw new Error('missing file');
+      if (!req.files[0]) {
+        throw new Error('missing file');
+      }
 
       const { checkId, type } = req.body;
 
@@ -403,11 +513,22 @@ class DotfileController {
       );
 
       res.status(200).json(completedChecks);
-    } catch (err: any) {
-      res.status(400).send({
-        type: 'error',
-        message: 'Something went wrong while uploading identity documents',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
+        );
+        res.status(error.response.status).send({
+          type: 'error',
+          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
+        });
+      } else {
+        console.error('[uploadIdentityDocument] Unexpected error: ', error);
+        res.status(400).send({
+          type: 'error',
+          message: '[uploadIdentityDocument] An unexpected error occurred',
+        });
+      }
     }
   };
 }
