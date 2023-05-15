@@ -1,1 +1,11 @@
-{}
+{
+  "brand": {
+    "title": "Pagos que <1>impulsan su negocio</1>."
+  },
+  "steps": {
+    "individuals_list": {
+      "title": "Marque o complete los representantes legales (personas físicas) y proprietarios efectivos de su empresa",
+      "description": "Para ser aceptada, su solicitud debe incluir al menos un representante legal y un beneficiario efectivo (que pueden ser la misma persona)."
+    }
+  }
+}
