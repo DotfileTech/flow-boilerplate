@@ -41,4 +41,3 @@ You can add several query params in the url to set a specific config or pre-fill
 - `registrationNumber`: To pre-fill the registration number of the company
 - `externalId`: Your personal ID to map a dotfile case with your data. If set and a case already exists, the user will be redirected to the checks section.
 - `lng`: To override the language if needed
-- `sid`: DEPRECATED

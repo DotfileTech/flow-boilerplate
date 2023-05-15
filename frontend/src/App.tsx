@@ -27,8 +27,6 @@ const AppContent = () => {
   const api = useApi();
 
   const email = searchParams.get('email');
-  // @TODO - OF-28 - Remove sid (salesforceId)
-  const sid = searchParams.get('sid');
 
   const [caseId, setCaseId] = useState<string | undefined | null>(
     searchParams.get('new') === 'true'
@@ -41,7 +39,6 @@ const AppContent = () => {
   const [individual, setIndividual] = useState<any>({});
   const [metadata, setMetadata] = useState<{ [key: string]: string | null }>({
     email,
-    sid,
   });
   const [company, setCompany] = useState<any>();
   const [individualIndex, setIndividualIndex] = useState<number | null>(null);
