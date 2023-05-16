@@ -38,32 +38,25 @@ class DotfileController {
     return upload_ref;
   };
 
-  public getCountries = async (req: Request, res: Response) => {
+  private getCountries = async (): Promise<Country[]> => {
     try {
-      const countries: Country[] = await this.dotfileApi.request(
+      return await this.dotfileApi.request(
         'get',
         'company-data/countries',
         {},
         {},
         {}
       );
-      res.status(200).json(countries);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(
           `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
         );
-        res.status(error.response.status).send({
-          type: 'error',
-          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
-        });
       } else {
         console.error('[getCountries] Unexpected error: ', error);
-        res.status(400).send({
-          type: 'error',
-          message: '[getCountries] An unexpected error occurred',
-        });
       }
+
+      return [];
     }
   };
 
@@ -71,18 +64,24 @@ class DotfileController {
     try {
       const { country, name, registration_number } = req.query;
 
-      const companies: CompanySearch[] = await this.dotfileApi.request(
-        'get',
-        'company-data/search',
-        {
-          country,
-          name,
-          registration_number,
-        },
-        {},
-        {}
-      );
-      res.status(200).json(companies);
+      const availableCountries = await this.getCountries();
+
+      if (availableCountries.some((c: Country) => c.code === country)) {
+        const companies: CompanySearch[] = await this.dotfileApi.request(
+          'get',
+          'company-data/search',
+          {
+            country,
+            name,
+            registration_number,
+          },
+          {},
+          {}
+        );
+        res.status(200).json(companies);
+      } else {
+        res.status(200).json({ data: { data: [] } });
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(

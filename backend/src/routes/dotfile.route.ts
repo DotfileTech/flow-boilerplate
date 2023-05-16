@@ -18,11 +18,6 @@ class PublicApiRoute implements Routes {
     // this.router.use(rateLimiterMiddleware, bearerCheck)
 
     this.router.get(
-      `${this.path}countries`,
-      this.dotfileController.getCountries
-    );
-
-    this.router.get(
       `${this.path}companies`,
       this.dotfileController.searchCompanies
     );

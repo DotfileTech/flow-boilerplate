@@ -7,7 +7,7 @@ import InputForm from '../components/form/InputForm';
 import SelectDeprecated from '../components/form/SelectDeprecated';
 import Radio from '../components/form/Radio';
 import CountrySelectDeprecated from '../components/form/CountrySelectDeprecated';
-import { Country, CustomField } from '../types';
+import { CustomField } from '../types';
 
 type CustomFormProps = {
   stepId: string;
@@ -15,7 +15,6 @@ type CustomFormProps = {
   metadata: { [key: string]: string | null };
   changeHandlerMetadata: (e: any) => void;
   changeHandlerMetadataCustom: (question: string, answer: string) => void;
-  countries: Country[];
   isLastStep: boolean;
   next: () => void;
   submit: () => void;
@@ -28,7 +27,6 @@ const CustomForm = (props: CustomFormProps) => {
     metadata,
     changeHandlerMetadata,
     changeHandlerMetadataCustom,
-    countries = [],
     isLastStep = false,
     next,
     submit,
@@ -125,7 +123,6 @@ const CustomForm = (props: CustomFormProps) => {
                 isRequired={field.isRequired}
                 hasHelper={field.hasHelper}
                 onChange={changeHandlerMetadata}
-                countries={countries}
               />
             );
           }

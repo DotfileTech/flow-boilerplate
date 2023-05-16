@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { Country } from '../types';
 import CountrySelect from '../components/form/CountrySelect';
 import { GroupController } from '../components/form/group-controller';
+import { CUSTOM_COUNTRIES } from '../config/countries';
 
 interface FormValues {
   country: string;
@@ -20,7 +20,6 @@ const validationSchema = Yup.object({
 });
 
 type CompanySearchProps = {
-  countries: Country[];
   company: {
     name: string | null;
     country: string | null;
@@ -32,7 +31,7 @@ type CompanySearchProps = {
 };
 
 const CompanySearch = (props: CompanySearchProps) => {
-  const { countries, company, isLoading, onChange, next } = props;
+  const { company, isLoading, onChange, next } = props;
 
   const { t } = useTranslation();
 
@@ -76,7 +75,7 @@ const CompanySearch = (props: CompanySearchProps) => {
                   shouldValidate: true,
                 });
               }}
-              countries={countries}
+              countries={CUSTOM_COUNTRIES}
               defaultValue={field.value}
             />
           )}

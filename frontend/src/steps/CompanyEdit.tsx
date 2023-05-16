@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { companyData } from '../config/Company';
-import { Company, Country, Field } from '../types';
+import { Company, Field } from '../types';
 import Select from '../components/form/Select';
 import { GroupController } from '../components/form/group-controller';
 import CountrySelect from '../components/form/CountrySelect';
@@ -13,14 +13,13 @@ import { CompanyEditFormValues } from './utils';
 import { companySchema } from './validation/company.schema';
 
 type CompanyEditProps = {
-  countries: Country[];
   company: Omit<Company, 'id' | 'checks'>;
   onChange: (values: Omit<Company, 'id' | 'checks'>) => void;
   next: () => void;
 };
 
 const CompanyEdit = (props: CompanyEditProps) => {
-  const { company, onChange, next, countries } = props;
+  const { company, onChange, next } = props;
 
   const { t } = useTranslation();
 
@@ -153,7 +152,6 @@ const CompanyEdit = (props: CompanyEditProps) => {
                           shouldValidate: true,
                         });
                       }}
-                      countries={countries}
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
                       defaultValue={f.value}

@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Checkbox from '../components/form/Checkbox';
 import { individualData } from '../config/Individual';
-import { Individual, Country, Field } from '../types';
+import { Individual, Field } from '../types';
 import CountrySelect from '../components/form/CountrySelect';
 import { GroupController } from '../components/form/group-controller';
 import { IndividualEditFormValues } from './utils';
@@ -14,12 +14,11 @@ import { individualSchema } from './validation/individual.schema';
 
 type IndividualEditProps = {
   individual: Omit<Individual, 'id' | 'checks'>;
-  countries: Country[];
   onChange: (values: Omit<Individual, 'id' | 'checks'>) => void;
 };
 
 const IndividualEdit = (props: IndividualEditProps) => {
-  const { individual, countries, onChange } = props;
+  const { individual, onChange } = props;
 
   const { t } = useTranslation();
 
@@ -163,7 +162,6 @@ const IndividualEdit = (props: IndividualEditProps) => {
                           }
                         );
                       }}
-                      countries={countries}
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
                       defaultValue={f.value}

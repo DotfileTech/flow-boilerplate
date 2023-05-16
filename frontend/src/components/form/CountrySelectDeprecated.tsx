@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Country } from '../../types';
+import { COUNTRIES } from '../../constants/all-iso31661-alpha2-codes.constant';
 
 type CountrySelectDeprecatedProps = {
   stepId: string;
@@ -15,7 +16,6 @@ type CountrySelectDeprecatedProps = {
   isRequired: boolean;
   hasHelper?: boolean;
   onChange: any;
-  countries: Country[];
 };
 
 const CountrySelectDeprecated = (props: CountrySelectDeprecatedProps) => {
@@ -26,7 +26,6 @@ const CountrySelectDeprecated = (props: CountrySelectDeprecatedProps) => {
     isRequired,
     hasHelper = false,
     onChange,
-    countries,
   } = props;
 
   const { t } = useTranslation();
@@ -51,9 +50,9 @@ const CountrySelectDeprecated = (props: CountrySelectDeprecatedProps) => {
         <option hidden disabled value="">
           {t('domain.form.select')}
         </option>
-        {countries.map((country: Country) => (
-          <option key={country.code} value={country.code}>
-            {country.name}
+        {COUNTRIES.map((country: Country) => (
+          <option key={country.value} value={country.value}>
+            {country.label}
           </option>
         ))}
       </Select>

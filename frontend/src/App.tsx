@@ -18,7 +18,7 @@ import ChecksList from './steps/ChecksList';
 import useApi from './hooks/useApi';
 import { form } from './config/Forms';
 import { hasKyb, hasKyc } from './config/step';
-import { Country, FormData, Company, Individual } from './types';
+import { FormData, Company, Individual } from './types';
 
 const AppContent = () => {
   const { t, i18n } = useTranslation();
@@ -34,7 +34,6 @@ const AppContent = () => {
       : searchParams.get('caseId') || localStorage.getItem('caseId')
   );
   const [step, setStep] = useState<number>(0);
-  const [countries, setCountries] = useState<Country[]>([]);
   const [individuals, setIndividuals] = useState<any>([]);
   const [individual, setIndividual] = useState<any>({});
   const [metadata, setMetadata] = useState<{ [key: string]: string | null }>({
@@ -59,10 +58,6 @@ const AppContent = () => {
       setStep(steps.findIndex((element) => element.key === 'checks_list'));
     }
 
-    if (!caseId) {
-      const response = await api.get('/dotfile/countries');
-      setCountries(response.data);
-    }
     setIsLoading(false);
   }
 
@@ -190,7 +185,6 @@ const AppContent = () => {
         key: 'company_search',
         content: (
           <CompanySearch
-            countries={countries}
             company={company}
             isLoading={isLoading}
             onChange={handleCompany}
@@ -212,12 +206,7 @@ const AppContent = () => {
       {
         key: 'company_edit',
         content: (
-          <CompanyEdit
-            company={company}
-            onChange={handleCompany}
-            next={next}
-            countries={countries}
-          />
+          <CompanyEdit company={company} onChange={handleCompany} next={next} />
         ),
       },
       {
@@ -238,11 +227,7 @@ const AppContent = () => {
     steps.push({
       key: 'individual_edit',
       content: (
-        <IndividualEdit
-          individual={individual}
-          onChange={handleIndividual}
-          countries={countries}
-        />
+        <IndividualEdit individual={individual} onChange={handleIndividual} />
       ),
     });
   }
@@ -265,7 +250,6 @@ const AppContent = () => {
           metadata={metadata}
           changeHandlerMetadata={changeHandlerMetadata}
           changeHandlerMetadataCustom={changeHandlerMetadataCustom}
-          countries={countries}
           isLastStep={item.isLastStep || false}
           submit={submit}
           next={next}

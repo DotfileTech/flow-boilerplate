@@ -1,10 +1,11 @@
 import { Select } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Country } from '../../types';
+import { COUNTRIES } from '../../constants/all-iso31661-alpha2-codes.constant';
 
 type CountrySelectProps = {
   onChange: any;
-  countries: Country[];
+  countries?: Country[];
   defaultValue: string;
 };
 
@@ -12,6 +13,9 @@ const CountrySelect = (props: CountrySelectProps) => {
   const { onChange, countries, defaultValue } = props;
 
   const { t } = useTranslation();
+
+  const countryList =
+    countries && countries?.length > 0 ? countries : COUNTRIES;
 
   return (
     <Select
@@ -22,9 +26,9 @@ const CountrySelect = (props: CountrySelectProps) => {
       <option hidden disabled value="">
         {t('domain.form.select')}
       </option>
-      {countries.map((country: Country) => (
-        <option key={country.code} value={country.code}>
-          {country.name}
+      {countryList.map((country: Country) => (
+        <option key={country.value} value={country.value}>
+          {country.label}
         </option>
       ))}
     </Select>
