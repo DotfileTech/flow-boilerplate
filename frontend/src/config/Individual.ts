@@ -29,13 +29,13 @@ export const individualData: IndividualData[] = [
     id: 'email',
     type: 'email',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'phone_number',
     type: 'tel',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual in a KYB
@@ -73,7 +73,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'birth_date',
     type: 'date',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -116,7 +116,7 @@ export const individualData: IndividualData[] = [
     nested: 'address',
     type: 'country',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'iban',

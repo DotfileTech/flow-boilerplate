@@ -79,7 +79,7 @@ export const companyData: CompanyData[] = [
   {
     id: 'street_address',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -91,20 +91,20 @@ export const companyData: CompanyData[] = [
   {
     id: 'postal_code',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'city',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'country',
     nested: 'address',
     type: 'country',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
