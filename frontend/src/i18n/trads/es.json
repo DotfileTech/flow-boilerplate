@@ -16,6 +16,7 @@
     "company_list": {
       "title": "Selecciona tu empresa",
       "not_found": "¿No encuentras tu empresa?",
+      "no_result": "Sin resultados",
       "button": "Rellene los detalles manualmente"
     },
     "company_edit": {
@@ -62,10 +63,10 @@
         "label": "BIC/SWIFT"
       },
       "tax_identification_number": {
-        "label": "Tax ID"
+        "label": "Número de identificación fiscal"
       },
       "website_url": {
-        "label": "Website"
+        "label": "Página web"
       },
       "employer_identification_number": {
         "label": "Employer ID"
@@ -201,37 +202,37 @@
       "title": "Tarjeta sanitaria"
     },
     "ubo_registry_extract": {
-      "title": "Certificado de los proprietarios efectivos"
+      "title": "Declaración de Beneficiarios Finales"
     },
     "articles_of_association": {
       "title": "Estatutos"
     },
     "registration_certificate": {
-      "title": "Certificado de registro"
+      "title": "Certificado de registro Mercantil"
     },
     "financial_statements": {
-      "title": "Financial statements"
+      "title": "Estados financieros"
     },
     "bank_details": {
-      "title": "Bank details"
+      "title": "Datos bancarios"
     },
     "proof_of_insurance": {
-      "title": "Proof of insurance"
+      "title": "Comprobante de seguro"
     },
     "visa": {
       "title": "Visa"
     },
     "birth_certificate": {
-      "title": "Birth certificate"
+      "title": "Certificado de nacimiento"
     },
     "vehicle_registration_certificate": {
-      "title": "Vehicle registration certificate"
+      "title": "Permiso de circulación"
     },
     "criminal_record_extract": {
-      "title": "Criminal record extract"
+      "title": "Certificado de antecedentes penales"
     },
     "tax_notice": {
-      "title": "Tax notice"
+      "title": "Justificante de liquidación de impuestos"
     },
     "agreement_certificate": {
       "title": "Agreement certificate"

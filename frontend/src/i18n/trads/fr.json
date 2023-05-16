@@ -202,7 +202,7 @@
       "title": "Carte Vitale"
     },
     "ubo_registry_extract": {
-      "title": "Certificat de bénéficiaire effectif"
+      "title": "Déclaration des bénéficiaires effectifs"
     },
     "articles_of_association": {
       "title": "Statuts de la société"
@@ -211,10 +211,10 @@
       "title": "KBIS à jour"
     },
     "financial_statements": {
-      "title": "Rapport financier"
+      "title": "Etats financier"
     },
     "bank_details": {
-      "title": "Relevé de compte"
+      "title": "Coordonnées bancaires"
     },
     "proof_of_insurance": {
       "title": "Justificatif d'assurance"

@@ -16,6 +16,7 @@
     "company_list": {
       "title": "Selecteer uw bedrijf",
       "not_found": "Kunt u uw bedrijf niet vinden?",
+      "no_result": "Geen resultaat",
       "button": "Vul gegevens handmatig in"
     },
     "company_edit": {

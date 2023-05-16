@@ -193,22 +193,22 @@
       "title": "Identity Verification"
     },
     "proof_of_address": {
-      "title": "Residence certificate"
+      "title": "Proof of address"
     },
     "driving_license": {
       "title": "Driver's license"
     },
     "social_security_card": {
-      "title": "Vital card"
+      "title": "Social security card"
     },
     "ubo_registry_extract": {
-      "title": "Beneficial owners certificate"
+      "title": "Ultimate beneficial owner certificate"
     },
     "articles_of_association": {
       "title": "Articles of association"
     },
     "registration_certificate": {
-      "title": "Registration certificate"
+      "title": "Certificate of registration"
     },
     "financial_statements": {
       "title": "Financial statements"

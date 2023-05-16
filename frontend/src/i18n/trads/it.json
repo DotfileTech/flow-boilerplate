@@ -16,6 +16,7 @@
     "company_list": {
       "title": "Seleziona la tua azienda",
       "not_found": "Non riesci a trovare la tua azienda?",
+      "no_result": "Nessun risultato",
       "button": "Compila i dettagli manualmente"
     },
     "company_edit": {
