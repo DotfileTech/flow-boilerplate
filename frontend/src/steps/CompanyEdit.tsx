@@ -145,12 +145,18 @@ const CompanyEdit = (props: CompanyEditProps) => {
                   render={(f) => (
                     <CountrySelect
                       onChange={(value: string) => {
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-ignore
-                        setValue(field.id, value ?? '', {
-                          shouldDirty: true,
-                          shouldValidate: true,
-                        });
+                        setValue(
+                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                          // @ts-ignore
+                          field.nested
+                            ? `${field.nested}.${field.id}`
+                            : field.id,
+                          value ?? '',
+                          {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          }
+                        );
                       }}
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
