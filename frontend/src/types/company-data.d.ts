@@ -36,6 +36,11 @@ export type CompanyData = {
     | 'email';
 
   /**
+   * @description To display a helper (the text will be defined in the translations files)
+   */
+  hasHelper?: boolean;
+
+  /**
    * @description When the field type is a select, you have to define the list of options
    */
   options?: string[];

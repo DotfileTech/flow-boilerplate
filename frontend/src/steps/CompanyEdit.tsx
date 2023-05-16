@@ -95,6 +95,11 @@ const CompanyEdit = (props: CompanyEditProps) => {
                   // @ts-ignore
                   name={field.nested ? `${field.nested}.${field.id}` : field.id}
                   label={t(`steps.company_edit.${field.id}.label`) || field.id}
+                  helper={
+                    field.hasHelper
+                      ? t(`steps.company_edit.${field.id}.helper`)
+                      : null
+                  }
                   isRequired={field.required}
                   control={control}
                   render={(f) => (
@@ -131,6 +136,11 @@ const CompanyEdit = (props: CompanyEditProps) => {
                   // @ts-ignore
                   name={field.nested ? `${field.nested}.${field.id}` : field.id}
                   label={t(`steps.company_edit.${field.id}.label`) || field.id}
+                  helper={
+                    field.hasHelper
+                      ? t(`steps.company_edit.${field.id}.helper`)
+                      : null
+                  }
                   isRequired={field.required}
                   control={control}
                   render={(f) => (
@@ -166,6 +176,11 @@ const CompanyEdit = (props: CompanyEditProps) => {
                     : field.id
                 }
                 label={t(`steps.company_edit.${field.id}.label`) || field.id}
+                helper={
+                  field.hasHelper
+                    ? t(`steps.company_edit.${field.id}.helper`)
+                    : null
+                }
                 isRequired={field.required}
                 control={control}
                 render={(f) => {

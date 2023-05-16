@@ -16,7 +16,7 @@ export type GroupControlProps = FormControlProps & {
   labelFor?: string;
   labelPosition?: 'top' | 'right';
   labelOptionalBadge?: boolean;
-  helper?: string;
+  helper?: string | null;
   children?: ReactNode;
 };
 

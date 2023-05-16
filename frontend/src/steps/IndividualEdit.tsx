@@ -94,6 +94,11 @@ const IndividualEdit = (props: IndividualEditProps) => {
                     t(`steps.individual_edit.${field.id}.label`) + ' *' ||
                     field.id
                   }
+                  helper={
+                    field.hasHelper
+                      ? t(`steps.individual_edit.${field.id}.helper`)
+                      : null
+                  }
                   isRequired={field.required}
                   defaultValue="false"
                   control={control}
@@ -135,6 +140,11 @@ const IndividualEdit = (props: IndividualEditProps) => {
                   label={
                     t(`steps.individual_edit.${field.id}.label`) || field.id
                   }
+                  helper={
+                    field.hasHelper
+                      ? t(`steps.individual_edit.${field.id}.helper`)
+                      : null
+                  }
                   isRequired={field.required}
                   control={control}
                   render={(f) => (
@@ -170,6 +180,11 @@ const IndividualEdit = (props: IndividualEditProps) => {
                 // @ts-ignore
                 name={field.nested ? `${field.nested}.${field.id}` : field.id}
                 label={t(`steps.individual_edit.${field.id}.label`) || field.id}
+                helper={
+                  field.hasHelper
+                    ? t(`steps.individual_edit.${field.id}.helper`)
+                    : null
+                }
                 isRequired={field.required}
                 //hasHelper={field.hasHelper}
                 control={control}
