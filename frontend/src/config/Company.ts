@@ -109,7 +109,7 @@ export const companyData: CompanyData[] = [
     id: 'country',
     nested: 'address',
     type: 'country',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
