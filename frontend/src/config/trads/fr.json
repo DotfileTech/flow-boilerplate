@@ -6,6 +6,16 @@
     "individuals_list": {
       "title": "Vérifiez ou complétez les représentants légaux (personnes physiques) et bénéficiaires effectifs de votre entreprise",
       "description": "Pour être accepté, votre dossier devra inclure au minimum un représentant légal et un bénéficiaire effectif (qui peuvent être la même personne)."
+    },
+    "additional_data": {
+      "title": "",
+      "self_employed": {
+        "label": "Êtes-vous un auto-entrepreneur ?",
+        "options": {
+          "yes": "Oui",
+          "no": "Non"
+        }
+      }
     }
   }
 }
