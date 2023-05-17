@@ -105,7 +105,7 @@ export const companyData: CompanyData[] = [
     nested: 'address',
     type: 'country',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'iban',
