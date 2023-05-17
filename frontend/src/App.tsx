@@ -51,6 +51,8 @@ const AppContent = () => {
       if (response.data.id) {
         setCaseId(response.data.id);
         setStep(steps.findIndex((element) => element.key === 'checks_list'));
+      } else {
+        setCaseId(null);
       }
     }
 
