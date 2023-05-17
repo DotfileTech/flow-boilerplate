@@ -6,13 +6,14 @@ import Dotfile from '../api/dotfile.api';
 import {
   Case,
   CaseDetailed,
+  CaseMetadata,
   CompanyData,
+  CompanyInput,
   CompanySearch,
   Country,
-  CaseMetadata,
-  CompanyInput,
   IndividualInput,
 } from '../types';
+import { IndividualRoleEnum } from '../constants';
 
 type GetCasesResponse = {
   data: Case[];
@@ -189,12 +190,18 @@ class DotfileController {
 
       if (individuals.length > 0) {
         for (const individual of individuals) {
+          const roles = individual.roles;
           let individualEmail = individual.email;
 
           // @NOTE If there is no roles, it's a KYC and the default role is "applicant" with a required email
-          if (!individual.roles && email) {
-            individualEmail = email;
+          if (roles.length === 0) {
+            roles.push(IndividualRoleEnum.applicant);
+
+            if (email) {
+              individualEmail = email;
+            }
           }
+
           await this.dotfileApi.request(
             'post',
             'individuals',
@@ -202,7 +209,7 @@ class DotfileController {
             {
               // Required
               case_id: createdCase.id,
-              roles: individual.roles || ['applicant'],
+              roles,
               first_name: individual.first_name,
               last_name: individual.last_name,
               // Optional
