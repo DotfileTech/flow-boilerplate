@@ -95,7 +95,7 @@ const AppContent = () => {
     ) {
       next();
     }
-  }, [company]);
+  }, [company, step]);
 
   const next = async () => {
     setStep(step + 1);
