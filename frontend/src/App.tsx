@@ -69,10 +69,18 @@ const AppContent = () => {
 
   useEffect(() => {
     if (hasKyb) {
+      const country = searchParams.get('country');
+      let registrationNumber = searchParams.get('registrationNumber');
+
+      // Only for FRENCH companies, transform the SIRET(14) to SIREN(9) and store it in the registrationNumber
+      if (country === 'FR' && registrationNumber?.length === 14) {
+        registrationNumber = registrationNumber.slice(0, -5);
+      }
+
       setCompany({
         name: searchParams.get('company'),
-        country: searchParams.get('country'),
-        registration_number: searchParams.get('registrationNumber'),
+        country,
+        registration_number: registrationNumber,
       });
     }
   }, [searchParams]);
