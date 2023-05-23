@@ -7,5 +7,20 @@ export const templateMapping = (
   individuals: IndividualInput[],
   metadata: CaseMetadata
 ): string => {
+  if (metadata['self_employed'] === 'yes') {
+    if (company.country === 'FR') {
+      return process.env.TEMPLATE_SELF_EMPLOYED_FR;
+    } else {
+      return process.env.TEMPLATE_SELF_EMPLOYED;
+    }
+  }
+  if (metadata['self_employed'] === 'no') {
+    if (company.country === 'FR') {
+      return process.env.TEMPLATE_MERCHANT_FR;
+    } else {
+      return process.env.TEMPLATE_MERCHANT;
+    }
+  }
+
   return process.env.TEMPLATE_ID;
 };
