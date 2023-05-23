@@ -13,6 +13,10 @@ export const stepsConfig: {
   pdfUrl?: string;
 }[] = [
   {
+    key: 'disclaimer',
+    fields: [],
+  },
+  {
     key: 'company_search',
   },
   {
@@ -20,6 +24,23 @@ export const stepsConfig: {
   },
   {
     key: 'company_edit',
+  },
+  {
+    key: 'company_details',
+    fields: [
+      {
+        id: 'revenue_online',
+        type: 'number',
+        isRequired: true,
+        hasHelper: true,
+      },
+      {
+        id: 'revenue_offline',
+        type: 'number',
+        isRequired: true,
+        hasHelper: true,
+      },
+    ],
   },
   {
     key: 'individuals_list',

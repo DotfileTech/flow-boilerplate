@@ -1,1 +1,27 @@
-{}
+{
+  "brand": {
+    "title": "<1>Private bank</1> around the world"
+  },
+  "steps": {
+    "disclaimer": {
+      "title": "Before continuing, please pay attention to the following",
+      "subtitle": "<strong>This is an optional custom disclaimer.</strong><br/>You will add text with <a href='https://dotfile.com' target='_blank'>link</a> if you want."
+    },
+    "company_details": {
+      "title": "Tell us more about how your activity",
+      "revenue_online": {
+        "label": "Share of your revenue done online",
+        "helper": "in %"
+      },
+      "revenue_offline": {
+        "label": "Share of your revenue done offline",
+        "helper": "in %"
+      }
+    },
+    "individual_edit": {
+      "phone_number": {
+        "helper": "International standard (eg +33611223344)"
+      }
+    }
+  }
+}
