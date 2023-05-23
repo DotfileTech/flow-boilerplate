@@ -113,6 +113,7 @@ const theme = extendTheme({
           boxShadow: 'none',
         },
         _hover: {
+          textDecoration: 'none',
           _disabled: {
             bg: 'initial',
           },

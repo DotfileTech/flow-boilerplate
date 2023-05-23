@@ -60,18 +60,8 @@ const ChecksList = (props: ChecksListProps) => {
     fetchMyAPI().catch(console.error);
   }, [fetchMyAPI]);
 
-  const handleIDVCheck = useCallback(async (check: CheckInterface) => {
-    const response = await api.post(`dotfile/checks`, {
-      checkId: check.id,
-      type: check.type,
-    });
-    window.open(response.data.url, '_blank', 'noreferrer');
-  }, []);
-
   const selectCheck = (check: CheckInterface) => {
-    if (check.type === CheckTypeEnum.id_verification) {
-      handleIDVCheck(check);
-    } else {
+    if (check.type !== CheckTypeEnum.id_verification) {
       setCurrentCheck(check);
       onClose();
     }

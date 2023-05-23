@@ -1,21 +1,22 @@
 import { Dispatch, SetStateAction, useMemo } from 'react';
 import {
-  Tag,
-  Heading,
-  Flex,
-  Spacer,
-  Button,
-  Show,
-  Text,
   Box,
+  Button,
+  Flex,
+  Heading,
+  Link,
+  Show,
+  Spacer,
+  Tag,
+  Text,
 } from '@chakra-ui/react';
 import {
+  CheckCircle2,
   DownloadIcon,
   ExternalLinkIcon,
-  CheckCircle2,
-  XCircle,
   PlayCircle,
   Timer,
+  XCircle,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -100,46 +101,50 @@ const CheckItem = (props: CheckItemProps) => {
         )}
 
         <>
-          <Button
-            leftIcon={
-              check.type === CheckTypeEnum.id_verification ? (
-                <ExternalLinkIcon size={16} />
-              ) : (
-                <DownloadIcon size={16} />
-              )
-            }
-            width={['100%', 'auto', 'auto']}
-            id={check.id}
-            name={check.type}
-            variant="outline"
-            onClick={() => {
-              selectCheck(check);
-              setCurrentEntity(entity);
-              onOpen();
-            }}
-            isDisabled={
-              check.status !== CheckStatusEnum.in_progress &&
-              check.data.result !== CheckResultEnum.rejected
-            }
-            mt={{ base: '12px', md: '0' }}
-          >
-            <Show below="sm">
-              {t(
-                `checks.${exactType(check)}.title`,
-                checkTitleFallBack as string
-              )}
-            </Show>
+          {check.type === CheckTypeEnum.id_verification ? (
+            <Button
+              as={Link}
+              variant="outline"
+              href={check.data.vendor.verification_url}
+              leftIcon={<ExternalLinkIcon size={16} />}
+              width={['100%', 'auto', 'auto']}
+              isDisabled={
+                check.status !== CheckStatusEnum.in_progress &&
+                check.data.result !== CheckResultEnum.rejected
+              }
+              mt={{ base: '12px', md: '0' }}
+              isExternal
+            >
+              {t('verify_identity')}
+            </Button>
+          ) : (
+            <Button
+              leftIcon={<DownloadIcon size={16} />}
+              width={['100%', 'auto', 'auto']}
+              id={check.id}
+              name={check.type}
+              variant="outline"
+              onClick={() => {
+                selectCheck(check);
+                setCurrentEntity(entity);
+                onOpen();
+              }}
+              isDisabled={
+                check.status !== CheckStatusEnum.in_progress &&
+                check.data.result !== CheckResultEnum.rejected
+              }
+              mt={{ base: '12px', md: '0' }}
+            >
+              <Show below="sm">
+                {t(
+                  `checks.${exactType(check)}.title`,
+                  checkTitleFallBack as string
+                )}
+              </Show>
 
-            <Show above="sm">
-              {check.data.result === CheckResultEnum.rejected
-                ? t('upload_document')
-                : check.status === CheckStatusEnum.in_progress
-                ? check.type === CheckTypeEnum.id_verification
-                  ? t('verify_identity')
-                  : t('upload_document')
-                : t('upload_document')}
-            </Show>
-          </Button>
+              <Show above="sm">{t('upload_document')}</Show>
+            </Button>
+          )}
         </>
       </Flex>
       {check.status === 'rejected' && (
