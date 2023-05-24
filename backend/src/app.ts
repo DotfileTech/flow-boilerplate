@@ -40,14 +40,8 @@ app.get('/health', (req, res) => {
 app.use('/webhooks', new WebhooksRoute().router);
 app.use('/dotfile', new DotfileRoute().router);
 
-interface ResponseError extends Error {
-  status?: number;
-}
-
-app.use((req, res, next) => {
-  const err: ResponseError = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use((req, res, next, err) => {
+  console.error(err);
 });
 
 export default app;

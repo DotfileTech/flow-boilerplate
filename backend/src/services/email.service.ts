@@ -47,6 +47,11 @@ class EmailService {
     locale: string
   ) => {
     const transporter = nodemailer.createTransport(mailOptions);
+    let defaultLocale = 'en';
+
+    if (locale && ['fr', 'es', 'en', 'de', 'it', 'nl'].includes(locale)) {
+      defaultLocale = locale;
+    }
 
     transporter.use(
       'compile',
@@ -58,7 +63,7 @@ class EmailService {
           defaultLayout: options.template,
           helpers: {
             translate: function (str) {
-              return trads[locale][str];
+              return trads[defaultLocale][str];
             },
           },
         },
@@ -70,7 +75,7 @@ class EmailService {
     const message = {
       from: process.env.EMAIL_FROM,
       to: email,
-      subject: trads[locale]['titleValue'],
+      subject: trads[defaultLocale]['titleValue'],
       // text: 'Plaintext version of the message',
       template: options.template,
       context,

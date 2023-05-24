@@ -26,7 +26,7 @@ class WebhooksController {
       const rawBody = req['rawBody'];
 
       // Verify signature
-      if (this.dotfileApi.webhookSecret) {
+      if (this.dotfileApi.webhookSecret && rawBody) {
         const signature = createHmac('sha256', this.dotfileApi.webhookSecret)
           .update(rawBody)
           .digest('hex');
