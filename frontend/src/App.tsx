@@ -175,6 +175,8 @@ const AppContent = () => {
     if (hasKyb) {
       setStep(step - 1);
     } else {
+      setIndividualIndex(0);
+      setIndividual(individuals[0]);
       if (steps.length === step + 1) {
         submit();
       } else {

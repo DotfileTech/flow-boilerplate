@@ -9,6 +9,7 @@ import { individualData } from '../config/Individual';
 import { Individual, Field } from '../types';
 import CountrySelect from '../components/form/CountrySelect';
 import { GroupController } from '../components/form/group-controller';
+import { PhoneNumberInput } from '../components/form/phone-number-input';
 import { IndividualEditFormValues } from './utils';
 import { individualSchema } from './validation/individual.schema';
 
@@ -171,6 +172,46 @@ const IndividualEdit = (props: IndividualEditProps) => {
               );
             }
 
+            if (field.type === 'tel') {
+              return (
+                <GroupController
+                  key={field.id}
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  name={field.id}
+                  label={
+                    t(`steps.individual_edit.${field.id}.label`) || field.id
+                  }
+                  helper={
+                    field.hasHelper
+                      ? t(`steps.individual_edit.${field.id}.helper`)
+                      : null
+                  }
+                  isRequired={field.required}
+                  control={control}
+                  render={(f) => (
+                    <PhoneNumberInput
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      value={(f.value ?? '').replace('+', '')}
+                      onChange={(value: string) => {
+                        setValue(
+                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                          // @ts-ignore
+                          field.id,
+                          value ?? '',
+                          {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          }
+                        );
+                      }}
+                    />
+                  )}
+                />
+              );
+            }
+
             return (
               <GroupController
                 key={field.id}
@@ -184,7 +225,6 @@ const IndividualEdit = (props: IndividualEditProps) => {
                     : null
                 }
                 isRequired={field.required}
-                //hasHelper={field.hasHelper}
                 control={control}
                 render={(f) => {
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
