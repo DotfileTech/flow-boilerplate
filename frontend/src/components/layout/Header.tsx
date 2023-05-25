@@ -1,4 +1,4 @@
-import { Stack, Progress, Button, Box } from '@chakra-ui/react';
+import { Progress, Button, Box, Text } from '@chakra-ui/react';
 import { ChevronLeftIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,15 +10,17 @@ type HeaderProps = {
   back: () => void;
   progress: number;
   title: string | null;
+  description: string | null;
 };
 
 const Header = (props: HeaderProps) => {
-  const { hasBackButton, isCheckStep, back, progress, title } = props;
+  const { hasBackButton, isCheckStep, back, progress, title, description } =
+    props;
 
   const { t } = useTranslation();
 
   return (
-    <Stack spacing={8} pb={5}>
+    <Box>
       <Box>
         {hasBackButton && (
           <Button
@@ -32,11 +34,19 @@ const Header = (props: HeaderProps) => {
           </Button>
         )}
         {progress <= 100 && !isCheckStep && (
-          <Progress maxWidth="80vv" value={progress} />
+          <Progress maxWidth="80vv" value={progress} mb="8" />
         )}
       </Box>
       {title && <Title value={title}></Title>}
-    </Stack>
+      {description && (
+        <Text
+          mt="5"
+          dangerouslySetInnerHTML={{
+            __html: t(description),
+          }}
+        ></Text>
+      )}
+    </Box>
   );
 };
 

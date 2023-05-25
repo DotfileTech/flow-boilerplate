@@ -9,7 +9,7 @@ import {
   ModalHeader,
   Modal,
   ModalFooter,
-  HStack,
+  Stack,
   FormLabel,
   FormHelperText,
   FormControl,
@@ -245,7 +245,7 @@ const ModalDocument = (props: ModalDocumentProps) => {
           </FormControl>
         </ModalBody>
         <ModalFooter>
-          <HStack spacing={4}>
+          <Stack direction={['column-reverse', 'row']} spacing={4}>
             <Button variant="outline" onClick={onClose}>
               {t('domain.form.cancel')}
             </Button>
@@ -257,7 +257,7 @@ const ModalDocument = (props: ModalDocumentProps) => {
             >
               {t('send_documents')}
             </Button>
-          </HStack>
+          </Stack>
         </ModalFooter>
       </ModalContent>
     </Modal>

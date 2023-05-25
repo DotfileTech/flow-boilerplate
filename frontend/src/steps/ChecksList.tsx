@@ -1,13 +1,15 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
+  HStack,
+  Show,
   Stack,
-  Tabs,
-  TabList,
-  TabPanels,
   Tab,
+  TabList,
   TabPanel,
-  useMediaQuery,
+  TabPanels,
+  Tabs,
   useDisclosure,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
@@ -20,7 +22,11 @@ import { hasKyb } from '../config/step';
 import { EmptyState } from '../components/EmptyState';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { NotFound } from '../components/NotFound';
-import { CheckInterface, Company, Individual, Case } from '../types';
+import { Case, CheckInterface, Company, Individual } from '../types';
+import { TabButton } from '../components/tab-button';
+import { CopyableText } from '../components/copyable-text';
+import { CaseFlagEnum } from '../constants/case-flag.enum';
+import { UnderReview } from '../components/UnderReview';
 
 type ChecksListProps = {
   caseId: string;
@@ -41,6 +47,7 @@ const ChecksList = (props: ChecksListProps) => {
   const [currentEntity, setCurrentEntity] = useState<
     Company | Individual | null
   >(null);
+  const [tabIndex, setTabIndex] = useState<number>(0);
 
   const fetchMyAPI = useCallback(async () => {
     try {
@@ -105,6 +112,14 @@ const ChecksList = (props: ChecksListProps) => {
     [individuals]
   );
 
+  const handleTabButtonChange = (index: number) => {
+    setTabIndex(index);
+  };
+
+  const handleTabsChange = (index: number) => {
+    setTabIndex(index);
+  };
+
   const hasCompanies = (companies?.length ?? 0) > 0;
   const hasIndividuals = (individuals?.length ?? 0) > 0;
 
@@ -120,6 +135,14 @@ const ChecksList = (props: ChecksListProps) => {
     return <EmptyState />;
   }
 
+  if (
+    !hasCompaniesActions &&
+    !hasIndividualsActions &&
+    !caseData?.flags.includes(CaseFlagEnum.all_checks_approved)
+  ) {
+    return <UnderReview />;
+  }
+
   return (
     <Stack spacing={5} pt={2}>
       <Tabs
@@ -130,37 +153,47 @@ const ChecksList = (props: ChecksListProps) => {
         // @see https://chakra-ui.com/docs/components/tabs/usage#lazily-mounting-tab-panels
         isLazy
         isFitted={isMobile}
+        index={tabIndex}
+        onChange={handleTabsChange}
       >
-        {hasKyb && (
-          <TabList
-            borderBottom="1px"
-            borderColor="gray.100"
-            position="sticky"
-            top="0"
-            zIndex="1"
-          >
-            {hasCompanies && (
-              <Tab mr={{ base: 0, md: 10 }}>
-                {t('companies')}
-                {hasCompaniesActions && (
-                  <Indicator ml="2" boxSize="8px" color="orange" />
-                )}
-              </Tab>
-            )}
-            {hasIndividuals && (
-              <Tab mr={{ base: 0, md: 10 }}>
-                {t('individuals')}
-                {hasIndividualsActions && (
-                  <Indicator ml="2" boxSize="8px" color="orange" />
-                )}
-              </Tab>
-            )}
-          </TabList>
-        )}
+        <HStack justifyContent="space-between">
+          {hasKyb && (
+            <TabList
+              position="sticky"
+              top="0"
+              zIndex="1"
+              display={{ base: 'flex', md: 'inline-flex' }}
+              w={{ base: '100%', md: 'auto' }}
+            >
+              {hasCompanies && (
+                <Tab color="gray.500">
+                  {t('companies')}
+                  {hasCompaniesActions && (
+                    <Indicator ml="2" boxSize="8px" color="orange.500" />
+                  )}
+                </Tab>
+              )}
+              {hasIndividuals && (
+                <Tab color="gray.500">
+                  {t('individuals')}
+                  {hasIndividualsActions && (
+                    <Indicator ml="2" boxSize="8px" color="orange.500" />
+                  )}
+                </Tab>
+              )}
+            </TabList>
+          )}
+          <Show above="sm">
+            <CopyableText
+              label={t('steps.checks_list.copy.label')}
+              value={`${process.env.REACT_APP_BASE_URL}?caseId=${caseId}`}
+            />
+          </Show>
+        </HStack>
 
         <TabPanels>
           {hasCompanies && (
-            <TabPanel>
+            <TabPanel p={{ base: '0', md: '4' }}>
               <Stack spacing={5} pt={2}>
                 {caseData?.companies.map((entity: Company) => (
                   <CheckCard
@@ -173,10 +206,17 @@ const ChecksList = (props: ChecksListProps) => {
                   />
                 ))}
               </Stack>
+              {hasIndividualsActions && (
+                <TabButton
+                  entityName="individuals"
+                  tabIndex={1}
+                  onClick={handleTabButtonChange}
+                />
+              )}
             </TabPanel>
           )}
           {hasIndividuals && (
-            <TabPanel>
+            <TabPanel p={{ base: '0', md: '4' }}>
               <Stack spacing={5} pt={2}>
                 {caseData?.individuals.map((entity: Individual) => (
                   <CheckCard
@@ -189,6 +229,13 @@ const ChecksList = (props: ChecksListProps) => {
                   />
                 ))}
               </Stack>
+              {hasCompaniesActions && (
+                <TabButton
+                  entityName="company"
+                  tabIndex={0}
+                  onClick={handleTabButtonChange}
+                />
+              )}
             </TabPanel>
           )}
         </TabPanels>

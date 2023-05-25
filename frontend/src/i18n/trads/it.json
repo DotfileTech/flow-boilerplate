@@ -148,7 +148,15 @@
       "add_individual": "Aggiungi individuo"
     },
     "checks_list": {
-      "title": "Aiutaci ad effettuare i controlli necessari"
+      "title": "Aiutaci ad effettuare i controlli necessari",
+      "copy": {
+        "label": "Copia il link per l'onboarding"
+      },
+      "all_checks_submitted": "Thank you, your checks are being reviewed.",
+      "under_review": {
+        "title": "Under review",
+        "description": "Our team is now reviewing your information.<br /> We will keep you informed as soon as possible."
+      }
     }
   },
   "domain": {

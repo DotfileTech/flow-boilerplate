@@ -53,14 +53,18 @@ const theme = extendTheme({
     },
     Tabs: {
       baseStyle: {
-        root: {},
         tab: {
-          color: 'black',
           _selected: {
-            color: 'brand.main-2',
+            color: 'black',
+            borderColor: 'brand.accent',
+            borderBottomColor: 'brand.accent',
+            borderBottomWidth: '2px',
+            mb: '-2px',
           },
         },
         tablist: {
+          borderBottom: '2x solid',
+          borderColor: 'gray.200',
           backgroundColor: 'transparent',
         },
       },
@@ -198,6 +202,31 @@ const theme = extendTheme({
       //   // variant: 'sm', // default is solid
       //   // colorScheme: 'blue', // default is gray
       // },
+    },
+    Alert: {
+      baseStyle: {
+        container: {
+          borderRadius: 'md',
+          borderWidth: '1px',
+          borderColor: `blue.700`,
+          background: `blue.100`,
+        },
+        title: { color: `blue.700` },
+        description: { color: `blue.700` },
+        icon: { color: `blue.700` },
+      },
+      variants: {
+        toast_success: () => ({
+          container: {
+            borderWidth: '1px',
+            borderColor: `green.700`,
+            background: `green.100`,
+          },
+          title: { color: `green.700` },
+          description: { color: `green.700` },
+          icon: { color: `green.700` },
+        }),
+      },
     },
   },
 });

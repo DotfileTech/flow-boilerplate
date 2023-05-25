@@ -12,7 +12,6 @@ const Sidebar = () => {
       minH="100%"
       position="fixed"
       background="brand.sidebarBg"
-      display={{ base: 'none', md: 'flex' }}
       direction="column"
       p="2vw"
       w={{ base: 'full', md: '25vw' }}

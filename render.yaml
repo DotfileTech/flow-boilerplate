@@ -57,10 +57,12 @@ services:
     domains:
       - xxxxx.onboarding.dotfile.com # replace xxxxx with the customer name
     envVars:
-      - key: REACT_APP_HOST
+      - key: REACT_APP_BASE_URL_API
         fromService:
           type: web
           name: xxxxx-api # replace xxxxx with the customer name
           envVarKey: RENDER_EXTERNAL_URL # API (backend) url
+      - key: REACT_APP_BASE_URL
+        value: xxxxx.onboarding.dotfile.com # replace xxxxx with the customer name
       - key: REACT_APP_ENV
         value: production

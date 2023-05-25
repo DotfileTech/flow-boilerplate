@@ -148,7 +148,16 @@
       "add_individual": "Add individual"
     },
     "checks_list": {
-      "title": "Help us carry out the necessary checks"
+      "title": "Help us carry out the necessary checks",
+      "description": "Please proceed with the necessary verifications listed below. <br/> Our team will  keep you informed of the result of the verification.",
+      "copy": {
+        "label": "Copy onboarding link"
+      },
+      "all_checks_submitted": "Thank you, your checks are being reviewed.",
+      "under_review": {
+        "title": "Under review",
+        "description": "Our team is now reviewing your information.<br /> We will keep you informed as soon as possible."
+      }
     }
   },
   "domain": {

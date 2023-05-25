@@ -12,11 +12,11 @@ const Sidebar = () => {
       alignItems="center"
       borderBottomWidth="1px"
       position="static"
-      justifyContent="flex-start"
+      justifyContent={{ base: 'center', md: 'flex-start' }}
       background="brand.sidebarBg"
     >
       <Box pt={2} pb={2}>
-        <Logo width="80%" />
+        <Logo />
       </Box>
     </Flex>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect, ReactElement } from 'react';
-import { Stack, Flex, Text } from '@chakra-ui/react';
+import { Stack, Flex, useMediaQuery } from '@chakra-ui/react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
@@ -19,10 +19,12 @@ import useApi from './hooks/useApi';
 import { form } from './config/Forms';
 import { hasKyb, hasKyc } from './config/step';
 import { FormData, Company, Individual } from './types';
+import Footer from './components/layout/Footer';
 
 const AppContent = () => {
   const { t, i18n } = useTranslation();
   const [searchParams] = useSearchParams();
+  const [isMobile] = useMediaQuery('(max-width: 48em)');
 
   const api = useApi();
 
@@ -285,9 +287,9 @@ const AppContent = () => {
   }
 
   return (
-    <Flex direction={{ base: 'column', md: 'row' }}>
+    <Flex direction={{ base: 'column', md: 'row' }} minH="100vh">
       <MobileHeader />
-      <Sidebar />
+      {!isMobile && <Sidebar />}
       <Flex width="100%" ml={['0', '0', '25vw']}>
         <Stack
           width="100%"
@@ -303,19 +305,18 @@ const AppContent = () => {
               hasBackButton={step !== 0 && !caseId}
               isCheckStep={!!caseId}
               title={t(`steps.${steps[step].key}.title`)}
+              description={
+                i18n.exists(`steps.${steps[step].key}.description`)
+                  ? `steps.${steps[step].key}.description`
+                  : null
+              }
             />
-            {i18n.exists(`steps.${steps[step].key}.description`) && (
-              <Text
-                dangerouslySetInnerHTML={{
-                  __html: t(`steps.${steps[step].key}.description`),
-                }}
-              ></Text>
-            )}
             {isLoading && <LoadingSpinner />}
             {!isLoading && steps[step].content}
           </Stack>
         </Stack>
       </Flex>
+      {isMobile && <Footer caseId={caseId} />}
     </Flex>
   );
 };
