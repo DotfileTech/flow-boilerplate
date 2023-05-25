@@ -157,6 +157,11 @@
       "under_review": {
         "title": "En cours de traitement",
         "description": "Notre équipe examine actuellement vos informations.<br /> Nous vous tiendrons informés dès que possible."
+      },
+      "tab_button": {
+        "content": "Vous avez terminé de remplir cette section?",
+        "cta_individual": "Vérifiez également les individus",
+        "cta_company": "Vérifiez également l'entreprise"
       }
     }
   },

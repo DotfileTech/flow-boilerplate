@@ -208,7 +208,7 @@ const ChecksList = (props: ChecksListProps) => {
               </Stack>
               {hasIndividualsActions && (
                 <TabButton
-                  entityName="individuals"
+                  entityType="individual"
                   tabIndex={1}
                   onClick={handleTabButtonChange}
                 />
@@ -231,7 +231,7 @@ const ChecksList = (props: ChecksListProps) => {
               </Stack>
               {hasCompaniesActions && (
                 <TabButton
-                  entityName="company"
+                  entityType="company"
                   tabIndex={0}
                   onClick={handleTabButtonChange}
                 />

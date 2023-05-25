@@ -10,6 +10,7 @@ import {
   AlertIcon,
   Box,
   Divider,
+  Flex,
   Heading,
   HStack,
   Show,
@@ -17,7 +18,6 @@ import {
   Tag,
   Text,
   VStack,
-  Flex,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
@@ -31,6 +31,7 @@ import { hasKyb } from '../config/step';
 import type { CheckInterface, Company, Individual } from '../types';
 import { CheckCircle2 } from 'lucide-react';
 import { Country } from './country';
+import { EmptyState } from './EmptyState';
 
 type Entity =
   | {
@@ -52,27 +53,32 @@ const CheckCard = (props: CheckCardProps) => {
   const { t } = useTranslation();
   const { entity, entityType, selectCheck, setCurrentEntity, onOpen } = props;
 
-  const areAllCheckApproved = useMemo(
+  const checks = useMemo(
     () =>
-      entity.checks
-        .filter((c: CheckInterface) => c.type !== CheckTypeEnum.aml)
-        .every((c) => c.status === CheckStatusEnum.approved),
+      entity.checks.filter((c: CheckInterface) => c.type !== CheckTypeEnum.aml),
+    [entity]
+  );
+
+  const areAllCheckApproved = useMemo(
+    () => checks.every((c) => c.status === CheckStatusEnum.approved),
     [entity]
   );
 
   const areAllCheckSubmitted = useMemo(
     () =>
-      entity.checks
-        .filter((c: CheckInterface) => c.type !== CheckTypeEnum.aml)
-        .every((c) =>
-          [
-            CheckStatusEnum.need_review,
-            CheckStatusEnum.processing,
-            CheckStatusEnum.approved,
-          ].includes(c.status)
-        ),
+      checks.every((c) =>
+        [
+          CheckStatusEnum.need_review,
+          CheckStatusEnum.processing,
+          CheckStatusEnum.approved,
+        ].includes(c.status)
+      ),
     [entity]
   );
+
+  if (checks.length === 0) {
+    return <EmptyState />;
+  }
 
   return (
     <Accordion

@@ -16,7 +16,7 @@ const Sidebar = () => {
       background="brand.sidebarBg"
     >
       <Box pt={2} pb={2}>
-        <Logo />
+        <Logo width="80%" />
       </Box>
     </Flex>
   );

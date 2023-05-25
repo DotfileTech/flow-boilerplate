@@ -157,6 +157,11 @@
       "under_review": {
         "title": "Under review",
         "description": "Our team is now reviewing your information.<br /> We will keep you informed as soon as possible."
+      },
+      "tab_button": {
+        "content": "Done completing this section?",
+        "cta_individual": "Check individuals as well",
+        "cta_company": "Check company as well"
       }
     }
   },
