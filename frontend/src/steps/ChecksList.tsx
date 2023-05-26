@@ -183,7 +183,7 @@ const ChecksList = (props: ChecksListProps) => {
               )}
             </TabList>
           )}
-          <Show above="sm">
+          <Show above="md">
             <CopyableText
               label={t('steps.checks_list.copy.label')}
               value={`${process.env.REACT_APP_BASE_URL}?caseId=${caseId}`}

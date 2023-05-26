@@ -290,8 +290,7 @@ const AppContent = () => {
 
   return (
     <Flex direction={{ base: 'column', md: 'row' }} minH="100vh">
-      <MobileHeader />
-      {!isMobile && <Sidebar />}
+      {isMobile ? <MobileHeader /> : <Sidebar />}
       <Flex width="100%" ml={['0', '0', '25vw']}>
         <Stack
           width="100%"

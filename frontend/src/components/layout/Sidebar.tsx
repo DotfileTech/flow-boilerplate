@@ -14,7 +14,7 @@ const Sidebar = () => {
       background="brand.sidebarBg"
       direction="column"
       p="2vw"
-      w={{ base: 'full', md: '25vw' }}
+      w="25vw"
     >
       <Flex pt={10} pb={10}>
         <Logo />

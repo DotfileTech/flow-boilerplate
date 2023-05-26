@@ -25,9 +25,6 @@ const theme = extendTheme({
     heading: 'Montserrat',
     body: 'Montserrat',
   },
-  breakpoints: {
-    md: '60em',
-  },
   styles: {
     global: {
       body: {
