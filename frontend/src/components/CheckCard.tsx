@@ -128,7 +128,7 @@ const CheckCard = (props: CheckCardProps) => {
                       : entity.name}
                   </Heading>
                   {entityType === 'company' && (
-                    <Text mt="2" color="gray.500">
+                    <Text mt="2" color="gray.500" textAlign="left">
                       <Country code={entity.country} flagOnly mr="2" />
                       {entity.registration_number}
                     </Text>
