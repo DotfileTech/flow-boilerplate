@@ -51,7 +51,7 @@ const CompanySearch = (props: CompanySearchProps) => {
     handleSubmit,
     control,
     setValue,
-    formState: { isValid, isDirty },
+    formState: { isValid },
   } = methods;
 
   const onSubmit: SubmitHandler<FormValues> = async (formData) => {
@@ -94,7 +94,7 @@ const CompanySearch = (props: CompanySearchProps) => {
             variant="next"
             rightIcon={<ChevronRightIcon size={16} />}
             isLoading={isLoading}
-            isDisabled={!isValid || !isDirty}
+            isDisabled={!isValid}
             type="submit"
           >
             {t('steps.company_search.button')}
