@@ -28,6 +28,10 @@ export const stepsConfig: {
         isRequired: true,
       },
       {
+        id: 'tax_id',
+        isRequired: true,
+      },
+      {
         id: 'us_tax_payer_status',
         type: 'radio',
         isRequired: true,

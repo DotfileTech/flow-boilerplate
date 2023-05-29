@@ -56,8 +56,8 @@ export const individualData: IndividualData[] = [
   },
   {
     id: 'tax_identification_number',
-    required: true,
-    enabled: true,
+    required: false,
+    enabled: false,
   },
   {
     id: 'social_security_number',

@@ -43,6 +43,9 @@
       "tax_residency_country": {
         "label": "Tax residency country"
       },
+      "tax_id": {
+        "label": "Tax ID number"
+      },
       "us_tax_payer_status": {
         "label": "US tax payer status",
         "options": {
