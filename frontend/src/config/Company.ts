@@ -4,13 +4,6 @@ import { CompanyData } from '../types';
 export const companyData: CompanyData[] = [
   {
     // This field is mandatory to create a company
-    id: 'country',
-    type: 'country',
-    required: true,
-    enabled: true,
-  },
-  {
-    // This field is mandatory to create a company
     id: 'name',
     required: true,
     enabled: true,
@@ -91,7 +84,7 @@ export const companyData: CompanyData[] = [
     id: 'street_address_2',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'postal_code',
@@ -108,6 +101,13 @@ export const companyData: CompanyData[] = [
   {
     id: 'country',
     nested: 'address',
+    type: 'country',
+    required: false,
+    enabled: false,
+  },
+  {
+    // This field is mandatory to create a company
+    id: 'country',
     type: 'country',
     required: true,
     enabled: true,

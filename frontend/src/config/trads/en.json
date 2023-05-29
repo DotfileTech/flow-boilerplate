@@ -37,7 +37,7 @@
         "label": "Status"
       },
       "street_address": {
-        "label": "HQ address line 1"
+        "label": "HQ address line"
       },
       "street_address_2": {
         "label": "HQ address line 2"
@@ -125,7 +125,7 @@
     "individuals_list": {
       "title": "Check the list of individuals attached to your company",
       "description": "UBOs have more than 10% of equity or management.<br> <a href='https://docs.roundtable.eu/en/articles/6570037-how-to-find-corporate-ubos-in-europe' target='_blank'>How to find corporate UBOs in Europe?</a>",
-      "missing_data": "Please correct",
+      "missing_data": "Action required",
       "edit": "Edit",
       "delete": "Delete",
       "add_individual": "Add individual"

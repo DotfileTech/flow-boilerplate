@@ -63,7 +63,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'tax_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'social_security_number',
@@ -74,7 +74,7 @@ export const individualData: IndividualData[] = [
     id: 'birth_date',
     type: 'date',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'birth_place',
@@ -85,7 +85,7 @@ export const individualData: IndividualData[] = [
     id: 'birth_country',
     type: 'country',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'street_address',
