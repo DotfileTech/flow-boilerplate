@@ -98,7 +98,7 @@ export const individualData: IndividualData[] = [
     id: 'street_address_2',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'postal_code',
@@ -109,6 +109,13 @@ export const individualData: IndividualData[] = [
   {
     id: 'city',
     nested: 'address',
+    required: true,
+    enabled: true,
+  },
+  {
+    id: 'country',
+    nested: 'address',
+    type: 'country',
     required: true,
     enabled: true,
   },
