@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   Link,
-  Show,
   Spacer,
   Tag,
   Text,

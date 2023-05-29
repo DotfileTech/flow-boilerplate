@@ -31,7 +31,6 @@ import { hasKyb } from '../config/step';
 import type { CheckInterface, Company, Individual } from '../types';
 import { CheckCircle2 } from 'lucide-react';
 import { Country } from './country';
-import { EmptyState } from './EmptyState';
 
 type Entity =
   | {
@@ -76,8 +75,9 @@ const CheckCard = (props: CheckCardProps) => {
     [entity]
   );
 
+  // If the individual as only an AML check or no check
   if (checks.length === 0) {
-    return <EmptyState />;
+    return <></>;
   }
 
   return (

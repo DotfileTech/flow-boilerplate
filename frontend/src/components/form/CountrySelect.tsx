@@ -39,12 +39,13 @@ const CountrySelect = (props: CountrySelectProps) => {
       useBasicStyles
       chakraStyles={chakraStyles}
       defaultValue={resolvedDefaultValue}
+      isClearable={true}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       options={countryList}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      onChange={(option) => onChange(option.value)}
+      onChange={(option) => onChange(option ? option.value : '')}
     />
   );
 };

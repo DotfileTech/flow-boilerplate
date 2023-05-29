@@ -15,8 +15,8 @@ interface FormValues {
 }
 
 const validationSchema = Yup.object({
-  country: Yup.string().required(),
-  name: Yup.string().required(),
+  country: Yup.string().required().label('Country'),
+  name: Yup.string().required().label('Name'),
 });
 
 type CompanySearchProps = {

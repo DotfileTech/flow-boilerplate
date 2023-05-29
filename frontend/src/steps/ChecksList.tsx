@@ -92,6 +92,14 @@ const ChecksList = (props: ChecksListProps) => {
         ).length ?? 0) > 0,
     [companies]
   );
+  const hasCompaniesChecks = useMemo(
+    () =>
+      (companies
+        ?.flatMap((company: Company) => company.checks)
+        .filter((check: CheckInterface) => check.type !== CheckTypeEnum.aml)
+        .length ?? 0) > 0,
+    [companies]
+  );
 
   const individuals = useMemo(
     () =>
@@ -111,6 +119,14 @@ const ChecksList = (props: ChecksListProps) => {
         ).length ?? 0) > 0,
     [individuals]
   );
+  const hasIndividualsChecks = useMemo(
+    () =>
+      (individuals
+        ?.flatMap((individual: Individual) => individual.checks)
+        .filter((check: CheckInterface) => check.type !== CheckTypeEnum.aml)
+        .length ?? 0) > 0,
+    [individuals]
+  );
 
   const handleTabButtonChange = (index: number) => {
     setTabIndex(index);
@@ -120,8 +136,8 @@ const ChecksList = (props: ChecksListProps) => {
     setTabIndex(index);
   };
 
-  const hasCompanies = (companies?.length ?? 0) > 0;
-  const hasIndividuals = (individuals?.length ?? 0) > 0;
+  const hasCompanies = (companies?.length ?? 0) > 0 && hasCompaniesChecks;
+  const hasIndividuals = (individuals?.length ?? 0) > 0 && hasIndividualsChecks;
 
   if (loading) {
     return <LoadingSpinner />;
