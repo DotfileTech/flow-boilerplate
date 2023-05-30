@@ -145,7 +145,10 @@
       "missing_data": "Please correct",
       "edit": "Edit",
       "delete": "Delete",
-      "add_individual": "Add individual"
+      "add_individual": "Add individual",
+      "set_applicant": {
+        "label": "Amongst these individuals, which one are you?"
+      }
     },
     "checks_list": {
       "title": "Help us carry out the necessary checks",

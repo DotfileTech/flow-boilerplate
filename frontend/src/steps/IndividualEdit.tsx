@@ -6,12 +6,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Checkbox from '../components/form/Checkbox';
 import { individualData } from '../config/Individual';
-import { Individual, Field } from '../types';
+import { Field, Individual } from '../types';
 import CountrySelect from '../components/form/CountrySelect';
 import { GroupController } from '../components/form/group-controller';
 import { PhoneNumberInput } from '../components/form/phone-number-input';
 import { IndividualEditFormValues } from './utils';
 import { individualSchema } from './validation/individual.schema';
+import { IndividualRoleEnum } from '../constants';
 
 type IndividualEditProps = {
   individual: Omit<Individual, 'id' | 'checks'>;
@@ -224,7 +225,11 @@ const IndividualEdit = (props: IndividualEditProps) => {
                     ? t(`steps.individual_edit.${field.id}.helper`)
                     : null
                 }
-                isRequired={field.required}
+                isRequired={
+                  field.required ||
+                  (field.id === 'email' &&
+                    individual.roles?.includes(IndividualRoleEnum.applicant))
+                }
                 control={control}
                 render={(f) => {
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -173,6 +173,18 @@ class DotfileController {
         ? `KYB - ${company.name}`
         : `KYC - ${individuals[0].first_name} ${individuals[0].last_name}`;
 
+      // Set a metadata.email by default
+      if (!email && individuals.length > 0) {
+        const individualWithEmailIndex = individuals.findIndex(
+          (individual: IndividualInput) =>
+            individual.roles.includes(IndividualRoleEnum.applicant)
+        );
+
+        if (individualWithEmailIndex !== -1) {
+          metadata.email = individuals[individualWithEmailIndex].email;
+        }
+      }
+
       const createdCase: Case = await this.dotfileApi.request(
         'post',
         'cases',

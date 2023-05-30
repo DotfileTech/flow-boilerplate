@@ -21,7 +21,24 @@ export const individualSchema = mandatoryFields.shape({
         .transform((v) => (v === '' ? null : v))
         .required()
         .label('Email')
-    : optionalStringRule.email().label('Email'),
+    : Yup.string()
+        .email()
+        .when('roles', {
+          is: (roles: IndividualRoleEnum[]) =>
+            roles && roles.includes(IndividualRoleEnum.applicant),
+          then: (schema) =>
+            schema
+              .transform((v) => (v === '' ? null : v))
+              .required()
+              .label('Email'),
+          otherwise: (schema) =>
+            schema
+              .optional()
+              .nullable()
+              .default(null)
+              .transform((v) => (v === '' ? null : v))
+              .label('Email'),
+        }),
   roles: isEnabledField(individualData, 'roles')
     ? Yup.array(Yup.mixed().oneOf(Object.values(IndividualRoleEnum)))
         .min(1)

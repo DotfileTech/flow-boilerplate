@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
-  Stack,
-  Button,
-  Tag,
   Box,
+  Button,
   Flex,
-  Spacer,
   Heading,
   Show,
+  Spacer,
+  Stack,
+  Tag,
 } from '@chakra-ui/react';
-import { Trash2, EditIcon, PlusSquareIcon } from 'lucide-react';
+import { EditIcon, PlusSquareIcon, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { Individual } from '../types';
 import { IndividualRoleEnum } from '../constants';
 import { individualSchema } from './validation/individual.schema';
+import { hasApplicant } from '../config/step';
+import { SetApplicant } from '../components/set-applicant';
 
 type IndividualsListProps = {
   selectIndividual: (i: number | null) => void;
@@ -35,6 +37,9 @@ const IndividualsList = (props: IndividualsListProps) => {
 
   useEffect(() => {
     const validIndividuals = async () => {
+      let createIndividualIsValid: { key: number; isValid: boolean }[] = [];
+      setIndividualsAreValid(true);
+
       for (const [key, individual] of individuals.entries()) {
         const isValid = await individualSchema.isValid(individual);
 
@@ -42,25 +47,16 @@ const IndividualsList = (props: IndividualsListProps) => {
           setIndividualsAreValid(false);
         }
 
-        if (
-          individualIsValid.length > 0 &&
-          individualIsValid.find((t) => t.key === key)
-        ) {
-          setIndividualIsValid(
-            individualIsValid.map((t) =>
-              t.key === key ? { ...t, isValid } : { ...t }
-            )
-          );
-        } else {
-          setIndividualIsValid((prevFriends) => [
-            ...prevFriends,
-            {
-              key,
-              isValid,
-            },
-          ]);
-        }
+        createIndividualIsValid = [
+          ...createIndividualIsValid,
+          {
+            key,
+            isValid,
+          },
+        ];
       }
+
+      setIndividualIsValid(createIndividualIsValid);
     };
 
     validIndividuals();
@@ -69,6 +65,35 @@ const IndividualsList = (props: IndividualsListProps) => {
   const deleteIndividual = (index: number) => {
     setIndividuals(individuals.filter((_: any, i: number) => i !== index));
   };
+
+  const selectApplicant = (individualNumber: string) => {
+    const updatedIndividuals = individuals.map(
+      (individual: Individual, index: number) => {
+        if (individualNumber === index.toString()) {
+          return {
+            ...individual,
+            roles: [...individual.roles, IndividualRoleEnum.applicant],
+          };
+        }
+        return {
+          ...individual,
+          roles: individual.roles.filter(
+            (role: IndividualRoleEnum) => role !== IndividualRoleEnum.applicant
+          ),
+        };
+      }
+    );
+    setIndividuals(updatedIndividuals);
+  };
+
+  const noSelectedApplicant = useMemo(
+    () =>
+      hasApplicant &&
+      individuals.findIndex((individual: Individual) =>
+        individual.roles.includes(IndividualRoleEnum.applicant)
+      ) === -1,
+    [individuals]
+  );
 
   return (
     <Stack spacing={5} pt={2}>
@@ -126,11 +151,16 @@ const IndividualsList = (props: IndividualsListProps) => {
               </Show>
             </Flex>
             {individual.roles &&
-              individual.roles.map((role: IndividualRoleEnum) => (
-                <Tag key={role} mt={4} mr={4}>
-                  {t(`domain.individual.roles.${role}`)}
-                </Tag>
-              ))}
+              individual.roles
+                .filter(
+                  (role: IndividualRoleEnum) =>
+                    role !== IndividualRoleEnum.applicant
+                )
+                .map((role: IndividualRoleEnum) => (
+                  <Tag key={role} mt={4} mr={4}>
+                    {t(`domain.individual.roles.${role}`)}
+                  </Tag>
+                ))}
             <Show below="sm">
               <Box mt={{ base: '12px', md: '0' }}>
                 <Button
@@ -164,11 +194,21 @@ const IndividualsList = (props: IndividualsListProps) => {
           {t('steps.individuals_list.add_individual')}
         </Button>
       </Box>
+      {hasApplicant && individuals.length > 0 && (
+        <SetApplicant
+          individuals={individuals}
+          selectApplicant={selectApplicant}
+        />
+      )}
       <Box>
         <Button
           variant="next"
           onClick={submit}
-          isDisabled={individuals.length === 0 || !individualsAreValid}
+          isDisabled={
+            individuals.length === 0 ||
+            !individualsAreValid ||
+            noSelectedApplicant
+          }
         >
           {t('domain.form.next')}
         </Button>

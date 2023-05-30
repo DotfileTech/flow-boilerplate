@@ -7,10 +7,18 @@ type SelectProps = {
   defaultValue: string;
   options: string[];
   onChange: any;
+  isTranslatableOptions?: boolean;
 };
 
 const Select = (props: SelectProps) => {
-  const { stepId, name, defaultValue, options, onChange } = props;
+  const {
+    stepId,
+    name,
+    defaultValue,
+    options,
+    onChange,
+    isTranslatableOptions = true,
+  } = props;
 
   const { t } = useTranslation();
 
@@ -21,11 +29,17 @@ const Select = (props: SelectProps) => {
       maxW="400px"
     >
       <option hidden disabled value=""></option>
-      {options.map((option: string) => (
-        <option key={option} value={option}>
-          {t(`steps.${stepId}.${name}.options.${option}`)}
-        </option>
-      ))}
+      {isTranslatableOptions
+        ? options.map((option: string) => (
+            <option key={option} value={option}>
+              {t(`steps.${stepId}.${name}.options.${option}`)}
+            </option>
+          ))
+        : options.map((option, i: number) => (
+            <option key={i} value={i}>
+              {option}
+            </option>
+          ))}
     </ChakraSelect>
   );
 };

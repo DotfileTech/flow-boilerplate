@@ -145,7 +145,10 @@
       "missing_data": "Per favore Correggi",
       "edit": "Modificare",
       "delete": "Eliminare",
-      "add_individual": "Aggiungi individuo"
+      "add_individual": "Aggiungi individuo",
+      "set_applicant": {
+        "label": "Amongst these individuals, which one are you?"
+      }
     },
     "checks_list": {
       "title": "Aiutaci ad effettuare i controlli necessari",

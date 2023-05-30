@@ -145,7 +145,10 @@
       "missing_data": "Gelieve te corrigeren",
       "edit": "Bewerking",
       "delete": "Verwijderen",
-      "add_individual": "Individueel toevoegen"
+      "add_individual": "Individueel toevoegen",
+      "set_applicant": {
+        "label": "Amongst these individuals, which one are you?"
+      }
     },
     "checks_list": {
       "title": "Help ons de nodige controles uit te voeren",
