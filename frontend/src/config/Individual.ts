@@ -11,7 +11,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'middle_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual
@@ -22,14 +22,14 @@ export const individualData: IndividualData[] = [
   {
     id: 'maiden_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual with the "applicant" role
     id: 'email',
     type: 'email',
     required: false,
-    enabled: false,
+    enabled: true,
   },
   {
     id: 'phone_number',

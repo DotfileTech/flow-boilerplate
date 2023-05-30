@@ -18,7 +18,7 @@ export const companyData: CompanyData[] = [
   {
     id: 'commercial_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create a company
@@ -28,13 +28,13 @@ export const companyData: CompanyData[] = [
   },
   {
     id: 'legal_form',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'status',
     type: 'select',
-    required: false,
+    required: true,
     enabled: true,
     options: [
       CompanyStatusEnum.live,
@@ -45,7 +45,7 @@ export const companyData: CompanyData[] = [
   {
     id: 'registration_date',
     type: 'date',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
