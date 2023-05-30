@@ -28,6 +28,9 @@ export const templateMapping = (
     case 'other_source':
       template_id = process.env.TEMPLATE_OTHER_SOURCE;
       break;
+    case 'legal_entity':
+      template_id = process.env.TEMPLATE_LEGAL_ENTITY;
+      break;
     default:
       template_id = process.env.TEMPLATE_ID;
   }

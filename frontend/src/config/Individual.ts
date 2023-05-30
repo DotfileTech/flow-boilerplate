@@ -11,7 +11,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'middle_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual

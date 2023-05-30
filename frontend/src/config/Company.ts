@@ -18,7 +18,7 @@ export const companyData: CompanyData[] = [
   {
     id: 'commercial_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create a company
