@@ -26,6 +26,26 @@ export const stepsConfig: {
     key: 'company_edit',
   },
   {
+    key: 'company_details',
+    fields: [
+      {
+        id: 'trade_registry_location',
+        isRequired: true,
+      },
+    ],
+  },
+  {
+    key: 'origin_funds',
+    fields: [
+      {
+        id: 'origin_funds',
+        type: 'select',
+        isRequired: true,
+        options: ['company_revenue', 'shareholder_contribution'],
+      },
+    ],
+  },
+  {
     key: 'individuals_list',
     hasApplicant: false,
   },

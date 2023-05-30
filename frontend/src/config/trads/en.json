@@ -187,8 +187,9 @@
     "tax_notice": {
       "title": "Tax notice"
     },
-    "agreement_certificate": {
-      "title": "Agreement certificate"
+    "994b92c5-533a-4ed4-be33-bf59dc6de145": {
+      "title": "Shareholder contribution",
+      "description": "Please provide a proof of fund provenance (last 3 pay slips, sale of securities, inheritance/donation, …) for your investment."
     }
   }
 }
