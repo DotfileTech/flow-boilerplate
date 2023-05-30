@@ -27,7 +27,9 @@ const IndividualEdit = (props: IndividualEditProps) => {
   const defaultValues = useMemo(() => {
     const defaultValues: IndividualEditFormValues = {
       first_name: individual.first_name || '',
+      middle_name: individual.middle_name || '',
       last_name: individual.last_name || '',
+      maiden_name: individual.maiden_name || '',
       email: individual.email || '',
       roles: individual.roles || [],
       birth_date: individual.birth_date || '',

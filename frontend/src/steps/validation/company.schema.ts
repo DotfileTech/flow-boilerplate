@@ -15,6 +15,9 @@ const mandatoryFields = Yup.object({
 });
 
 export const companySchema = mandatoryFields.shape({
+  commercial_name: isRequiredField(companyData, 'commercial_name')
+    ? Yup.string().required().label('Commercial name')
+    : optionalStringRule.label('Commercial name'),
   legal_form: isRequiredField(companyData, 'legal_form')
     ? Yup.string().required().label('Legal form')
     : optionalStringRule.label('Legal form'),

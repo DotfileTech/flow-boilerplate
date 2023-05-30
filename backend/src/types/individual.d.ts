@@ -8,7 +8,9 @@ export type Individual = {
   case_id: string;
   roles: IndividualRoleEnum[];
   first_name: string;
+  middle_name: string;
   last_name: string;
+  maiden_name: string;
   email: string;
   birth_date: string;
   birth_country: string;
@@ -29,7 +31,9 @@ export type IndividualInput = {
   case_id: string;
   roles: IndividualRoleEnum[];
   first_name: string;
+  middle_name: string;
   last_name: string;
+  maiden_name: string;
   email: string;
   birth_date: string;
   birth_country: string;

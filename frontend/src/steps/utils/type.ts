@@ -3,6 +3,7 @@ import { IndividualRoleEnum } from '../../constants';
 
 export interface CompanyEditFormValues {
   name: string;
+  commercial_name: string;
   registration_number: string;
   country: string;
   legal_form: string;
@@ -28,7 +29,9 @@ export interface CompanyEditFormValues {
 
 export interface IndividualEditFormValues {
   first_name: string;
+  middle_name: string;
   last_name: string;
+  maiden_name: string;
   email: string;
   roles: IndividualRoleEnum[];
   birth_date: string;

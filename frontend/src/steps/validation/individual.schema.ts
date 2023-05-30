@@ -15,6 +15,12 @@ const mandatoryFields = Yup.object({
 });
 
 export const individualSchema = mandatoryFields.shape({
+  middle_name: isRequiredField(individualData, 'middle_name')
+    ? Yup.string().required().label('Middle name')
+    : optionalStringRule.label('Middle name'),
+  maiden_name: isRequiredField(individualData, 'maiden_name')
+    ? Yup.string().required().label('Maiden name')
+    : optionalStringRule.label('Maiden name'),
   email: isRequiredField(individualData, 'email')
     ? Yup.string()
         .email()

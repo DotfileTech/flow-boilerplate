@@ -12,6 +12,8 @@ export type Individual = {
   checks: CheckInterface[];
   email?: string;
   first_name: string;
+  middle_name: string;
+  maiden_name: string;
   id: string;
   last_name: string;
   ownership_percentage?: number | null;

@@ -17,6 +17,7 @@ export type Company = {
   id: string;
   case_id: string;
   name: string;
+  commercial_name: string;
   registration_number: string;
   registration_date: string;
   status: CompanyStatusEnum;
@@ -37,6 +38,7 @@ export type Company = {
 export type CompanyInput = {
   case_id: string;
   name: string;
+  commercial_name: string;
   registration_number: string;
   registration_date: string;
   status: CompanyStatusEnum;

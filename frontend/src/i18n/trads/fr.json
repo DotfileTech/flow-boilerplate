@@ -24,6 +24,9 @@
       "name": {
         "label": "Nom"
       },
+      "commercial_name": {
+        "label": "Nom commercial"
+      },
       "registration_number": {
         "label": "Numéro d'enregistrement"
       },
@@ -38,7 +41,7 @@
         "options": {
           "live": "Live",
           "closed": "Closed",
-          "registered": "Registered"
+          "not_reported": "Not reported"
         }
       },
       "street_address": {
@@ -80,8 +83,14 @@
       "first_name": {
         "label": "Prénom"
       },
+      "middle_name": {
+        "label": "Deuxième prénom"
+      },
       "last_name": {
         "label": "Nom"
+      },
+      "maiden_name": {
+        "label": "Nom de naissance"
       },
       "email": {
         "label": "Email"

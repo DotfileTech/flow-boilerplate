@@ -17,6 +17,7 @@ import { IndividualRoleEnum } from '../constants';
 import { individualSchema } from './validation/individual.schema';
 import { hasApplicant } from '../config/step';
 import { SetApplicant } from '../components/set-applicant';
+import { fullNameHelper } from '../helpers/fullname.helper';
 
 type IndividualsListProps = {
   selectIndividual: (i: number | null) => void;
@@ -111,9 +112,7 @@ const IndividualsList = (props: IndividualsListProps) => {
               direction={{ base: 'column', sm: 'row' }}
               alignItems={{ base: 'start', sm: 'center' }}
             >
-              <Heading size="sm">
-                {individual.first_name} {individual.last_name}
-              </Heading>
+              <Heading size="sm">{fullNameHelper(individual)}</Heading>
               <Spacer />
               {individualIsValid.length > 0 &&
                 individualIsValid.find((t) => t.key === i) &&

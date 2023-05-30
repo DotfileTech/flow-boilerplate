@@ -225,6 +225,8 @@ class DotfileController {
               first_name: individual.first_name,
               last_name: individual.last_name,
               // Optional
+              middle_name: individual.middle_name,
+              maiden_name: individual.maiden_name,
               email: individualEmail,
               birth_date: individual.birth_date,
               birth_country: individual.birth_country,
@@ -279,6 +281,7 @@ class DotfileController {
             registration_number: company.registration_number,
             country: company.country,
             // Optional
+            commercial_name: company.commercial_name,
             registration_date: company.registration_date,
             status: company.status,
             legal_form: company.legal_form,

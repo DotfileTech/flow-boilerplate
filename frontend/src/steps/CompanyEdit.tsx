@@ -26,6 +26,7 @@ const CompanyEdit = (props: CompanyEditProps) => {
   const defaultValues = useMemo(() => {
     const defaultValues: CompanyEditFormValues = {
       name: company.name || '',
+      commercial_name: company.commercial_name || '',
       registration_number: company.registration_number || '',
       country: company.country || '',
       legal_form: company.legal_form || '',

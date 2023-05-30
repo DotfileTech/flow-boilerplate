@@ -14,6 +14,7 @@ export type Company = {
   id: string;
   legal_form?: string;
   name: string;
+  commercial_name: string;
   registration_date?: string;
   registration_number: string;
   status: CompanyStatusEnum;

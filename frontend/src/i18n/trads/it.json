@@ -24,6 +24,9 @@
       "name": {
         "label": "Nome"
       },
+      "commercial_name": {
+        "label": "Commercial name"
+      },
       "registration_number": {
         "label": "Codice REA"
       },
@@ -38,7 +41,7 @@
         "options": {
           "live": "Live",
           "closed": "Closed",
-          "registered": "Registered"
+          "not_reported": "Not reported"
         }
       },
       "street_address": {
@@ -80,8 +83,14 @@
       "first_name": {
         "label": "Nome"
       },
+      "middle_name": {
+        "label": "Middle name"
+      },
       "last_name": {
         "label": "Cognome"
+      },
+      "maiden_name": {
+        "label": "Maiden name"
       },
       "email": {
         "label": "Email"

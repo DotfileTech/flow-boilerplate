@@ -6,7 +6,9 @@ type CompanyRepresentative = {
   entityType: 'company' | 'individual';
   name: string;
   first_name: string;
+  middle_name: string;
   last_name: string;
+  maiden_name: string;
   birth_date: string;
   birth_country: string;
   birth_place: string;
@@ -33,6 +35,7 @@ type MergedIndividual = {
 
 export type CompanyData = {
   name: string;
+  commercial_name: string;
   registration_number: string;
   country: string;
   status: CompanyStatusEnum;
