@@ -28,6 +28,10 @@ export const CUSTOM_COUNTRIES = [
     label: '🇧🇷 Brazil',
   },
   {
+    value: 'VG',
+    label: '🇻🇬 British Virgin Islands',
+  },
+  {
     value: 'KH',
     label: '🇰🇭 Cambodia',
   },
