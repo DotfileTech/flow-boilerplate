@@ -1,7 +1,18 @@
-import { Heading, Text, Image, Center, Flex, Box } from '@chakra-ui/react';
+import {
+  Heading,
+  Text,
+  Image,
+  Center,
+  Flex,
+  Box,
+  Button,
+} from '@chakra-ui/react';
 import AlertIcon from '../assets/alert-icon.png';
 
 export const NotFound = () => {
+  const url = new URL(window.location.origin);
+  url.searchParams.set('new', 'true');
+
   return (
     <Center h="80vh">
       <Flex w="45vw" minW="450px" direction="column">
@@ -14,6 +25,11 @@ export const NotFound = () => {
         <Text mb={10} textAlign="center">
           We cannot find the page, you're looking for.
         </Text>
+        <Center>
+          <Button onClick={() => (window.location.href = url.href)}>
+            Back home
+          </Button>
+        </Center>
       </Flex>
     </Center>
   );
