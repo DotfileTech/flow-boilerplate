@@ -17,5 +17,22 @@
         }
       }
     }
+  },
+  "checks": {
+    "ubo_registry_extract": {
+      "title": "Declaración de Beneficiarios Efectivos"
+    },
+    "bank_details": {
+      "title": "Datos bancarios"
+    },
+    "d158b2b6-ec0d-4901-98ac-3e92f5530e34": {
+      "title": "Justificante de liquidación de impuestos"
+    },
+    "articles_of_association": {
+      "title": "Estatutos"
+    },
+    "registration_certificate": {
+      "title": "Certificado de registro Mercantil (menos de 3 meses de edad)"
+    }
   }
 }

@@ -120,7 +120,8 @@
         "options": {
           "beneficial_owner": "Proprietarios efectivos",
           "legal_representative": "Representante legal",
-          "shareholder": "Accionista"
+          "shareholder": "Accionista",
+          "applicant": "Applicant"
         }
       },
       "ownership_percentage": {

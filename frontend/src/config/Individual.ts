@@ -47,6 +47,7 @@ export const individualData: IndividualData[] = [
       IndividualRoleEnum.beneficial_owner,
       IndividualRoleEnum.legal_representative,
       IndividualRoleEnum.shareholder,
+      IndividualRoleEnum.applicant,
     ],
   },
   {

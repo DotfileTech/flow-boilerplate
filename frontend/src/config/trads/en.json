@@ -17,5 +17,22 @@
         }
       }
     }
+  },
+  "checks": {
+    "ubo_registry_extract": {
+      "title": "Ultimate beneficial owners declaration"
+    },
+    "bank_details": {
+      "title": "Bank details"
+    },
+    "d158b2b6-ec0d-4901-98ac-3e92f5530e34": {
+      "title": "Tax return"
+    },
+    "articles_of_association": {
+      "title": "Articles of association"
+    },
+    "registration_certificate": {
+      "title": "Certificate of registration (less than 3 months old)"
+    }
   }
 }

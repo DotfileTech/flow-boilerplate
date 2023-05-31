@@ -17,5 +17,22 @@
         }
       }
     }
+  },
+  "checks": {
+    "ubo_registry_extract": {
+      "title": "Déclaration des bénéficiaires effectifs"
+    },
+    "bank_details": {
+      "title": "Relevé d’identité bancaire (RIB)"
+    },
+    "d158b2b6-ec0d-4901-98ac-3e92f5530e34": {
+      "title": "Liasse fiscale"
+    },
+    "articles_of_association": {
+      "title": "Statuts de la société"
+    },
+    "registration_certificate": {
+      "title": "K-bis (moins de 3 mois)"
+    }
   }
 }

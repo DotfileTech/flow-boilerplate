@@ -120,7 +120,8 @@
         "options": {
           "beneficial_owner": "Uiteindelijke begunstigde",
           "legal_representative": "Wettelijke vertegenwoordiger",
-          "shareholder": "Aandeelhouder"
+          "shareholder": "Aandeelhouder",
+          "applicant": "Applicant"
         }
       },
       "ownership_percentage": {
