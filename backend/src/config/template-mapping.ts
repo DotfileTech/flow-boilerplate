@@ -9,21 +9,31 @@ export const templateMapping = (
 ): string => {
   let template_id = process.env.TEMPLATE_ID;
 
-  switch (metadata['company_structure']) {
-    case 'private_company':
+  if (company.country === 'FR') {
+    if (metadata['company_form'] === 'private_company') {
+      // Entreprise non cotée
       template_id = process.env.TEMPLATE_PRIVATE_COMPANY;
-      break;
-    case 'public_company':
+    }
+    if (metadata['company_form'] === 'public_company') {
+      // Entreprise cotée
       template_id = process.env.TEMPLATE_PUBLIC_COMPANY;
-      break;
-    case 'association':
+    }
+    if (metadata['company_form'] === 'association') {
+      // Association
       template_id = process.env.TEMPLATE_ASSOCIATION;
-      break;
-    case 'self_employed':
+    }
+    if (metadata['company_form'] === 'self_employed') {
+      // Indépendant / Profession Libérale
       template_id = process.env.TEMPLATE_SELF_EMPLOYED;
-      break;
-    default:
-      template_id = process.env.TEMPLATE_ID;
+    }
+  } else {
+    if (metadata['company_form'] === 'association') {
+      // INT - Association
+      template_id = process.env.TEMPLATE_INT_ASSOCIATION;
+    }
+
+    // INT - Entreprise
+    template_id = process.env.TEMPLATE_INT_ENTREPRISE;
   }
 
   return template_id;
