@@ -86,7 +86,7 @@ export const companyData: CompanyData[] = [
     id: 'street_address_2',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'postal_code',

@@ -84,7 +84,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'birth_country',
     type: 'country',
-    required: false,
+    required: true,
     enabled: true,
   },
   {

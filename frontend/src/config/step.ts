@@ -13,6 +13,9 @@ export const stepsConfig: {
   pdfUrl?: string;
 }[] = [
   {
+    key: 'disclaimer',
+  },
+  {
     key: 'company_search',
   },
   {
@@ -22,7 +25,7 @@ export const stepsConfig: {
     key: 'company_edit',
   },
   {
-    key: 'about_your_company',
+    key: 'nilos_account',
     fields: [
       {
         id: 'company_website',
@@ -55,6 +58,19 @@ export const stepsConfig: {
         hasHelper: true,
       },
       {
+        id: 'source_of_funds',
+        isRequired: true,
+        hasHelper: true,
+      },
+      {
+        id: 'estimate_deposit_monthly',
+        isRequired: true,
+      },
+      {
+        id: 'estimate_frequency_fiat_payouts',
+        isRequired: true,
+      },
+      {
         id: 'phone',
         type: 'text',
         isRequired: true,
@@ -78,39 +94,6 @@ export const stepsConfig: {
         isRequired: true,
         hasHelper: true,
         options: ['yes', 'no'],
-      },
-    ],
-  },
-  {
-    key: 'payment_details',
-    fields: [
-      {
-        id: 'what_should_we_do_with_the_funds_you_receive_on_nilos',
-        type: 'select',
-        isRequired: true,
-        hasHelper: true,
-        options: [
-          'Any crypto received on my Nilos account has to be automatically exchanged into FIAT and transferred to the bank account below',
-          'Any crypto received on my Nilos account has to be automatically transferred to an external wallet I will communicate to Nilos',
-        ],
-      },
-      {
-        id: 'iban_account_number',
-        type: 'text',
-        isRequired: false,
-        hasHelper: true,
-      },
-      {
-        id: 'bic_swift',
-        type: 'text',
-        isRequired: false,
-      },
-      {
-        id: 'your_currency',
-        type: 'select',
-        isRequired: false,
-        hasHelper: true,
-        options: ['EUR', 'USD', 'GBP', 'CHF'],
       },
     ],
   },

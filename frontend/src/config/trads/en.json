@@ -3,6 +3,10 @@
     "title": "The crypto payment platform"
   },
   "steps": {
+    "disclaimer": {
+      "title": "Welcome to Nilos!",
+      "description": "You have to be a legal representative of the company (Director, CEO, President, ...) to access Nilos services. <br /><br />If you are not legally entitled to open an account on behalf of your company, please directly send an email to <a href='mailto:compliance@nilos.io'>compliance@nilos.io</a>."
+    },
     "company_search": {
       "title": "Find your company",
       "description": "Please proceed with the necessary verifications listed below. \nOur team will analyze your data and keep you informed about the outcome of your case.",
@@ -34,10 +38,7 @@
         "label": "Legal form"
       },
       "street_address": {
-        "label": "Address line 1"
-      },
-      "street_address_2": {
-        "label": "Address line 2"
+        "label": "Address"
       },
       "postal_code": {
         "label": "Postal code"
@@ -46,9 +47,9 @@
         "label": "City"
       }
     },
-    "about_your_company": {
-      "title": "About your company",
-      "description": "Please proceed with the necessary verifications listed below. Our team will analyze your data and keep you informed about the outcome of your case.",
+    "nilos_account": {
+      "title": "Your Nilos account",
+      "description": "Tell us about how you will use your Nilos account.",
       "company_website": {
         "label": "Your company website",
         "helper": "Please provide the URL of your company's website"
@@ -68,6 +69,16 @@
       "company_assets": {
         "label": "Company assets",
         "helper": "In euros - Please mention how much are evaluated the assets owned by the company"
+      },
+      "source_of_funds": {
+        "label": "Source of funds",
+        "helper": "Please provide an explanation of the anticipated source of the cryptos you will receive on your Nilos account"
+      },
+      "estimate_deposit_monthly": {
+        "label": "Estimated generated deposits on your Nilos account (monthly)"
+      },
+      "estimate_frequency_fiat_payouts": {
+        "label": "Estimated frequency of the FIAT payouts"
       },
       "phone": {
         "label": "Your phone number"
@@ -90,35 +101,6 @@
         "options": {
           "yes": "Yes",
           "no": "No"
-        }
-      }
-    },
-    "payment_details": {
-      "title": "Your payment details",
-      "description": "Please provide instructions on what should be done with the funds received through Nilos",
-      "what_should_we_do_with_the_funds_you_receive_on_nilos": {
-        "label": "What should we do with the funds you receive on Nilos?",
-        "helper": "If you want your funds to be converted into FIAT and transferred to the bank account you will register, please select the first option and fill the next 3 fields. Your company must be the owner of the bank account. If you want your crypto funds to be sent to an external wallet, please select the second option and send an email to compliance@nilos.io with the beneficiary wallet address information. You don't need to fill the next 3 fields if you picked this option.",
-        "options": {
-          "Any crypto received on my Nilos account has to be automatically exchanged into FIAT and transferred to the bank account below": "Any crypto received on my Nilos account has to be automatically exchanged into FIAT and transferred to the bank account below",
-          "Any crypto received on my Nilos account has to be automatically transferred to an external wallet I will communicate to Nilos": "Any crypto received on my Nilos account has to be automatically transferred to an external wallet I will communicate to Nilos"
-        }
-      },
-      "iban_account_number": {
-        "label": "IBAN / Account number",
-        "helper": "Please enter here your IBAN or your Account Number"
-      },
-      "bic_swift": {
-        "label": "BIC / SWIFT"
-      },
-      "your_currency": {
-        "label": "Your currency",
-        "helper": "Please select the currency in which you would like to receive your funds. If your currency is not on the list, please send an email to compliance@nilos.io",
-        "options": {
-          "EUR": "EUR",
-          "USD": "USD",
-          "GBP": "GBP",
-          "CHF": "CHF"
         }
       }
     },
