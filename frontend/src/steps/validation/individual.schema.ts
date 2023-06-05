@@ -161,5 +161,6 @@ export const individualSchema = mandatoryFields.shape({
         .optional()
         .nullable()
         .default(null)
+        .transform((value) => (isNaN(value) || value === '' ? null : value))
         .label('Ownership percentage'),
 });

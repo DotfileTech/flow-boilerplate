@@ -33,7 +33,7 @@
         "label": "Naam"
       },
       "registration_number": {
-        "label": "Registratie nummer"
+        "label": "Registratienummer"
       },
       "registration_date": {
         "label": "Aanmaakdatum"
@@ -57,7 +57,7 @@
         "label": "Stad"
       },
       "iban": {
-        "label": "IBAN"
+        "label": "Zakelijk bankafschrift"
       },
       "bic": {
         "label": "BIC/SWIFT"
@@ -103,7 +103,7 @@
       "title": "Controleer uw personenlijst",
       "description": "We hebben documenten nodig voor elk van de uiteindelijke begunstigden van het bedrijf, evenals voor de wettelijke vertegenwoordiger die de opening van de Mooncard-rekening aanvraagt.<br/> Een uiteindelijk gerechtigde is een persoon die meer dan 25% van het kapitaal van de onderneming bezit.<br/> Als deze personen niet in de onderstaande lijst voorkomen, verzoeken wij u hun contactgegevens door te geven.",
       "missing_data": "Gelieve te corrigeren",
-      "edit": "Bewerking",
+      "edit": "Bewerken",
       "delete": "Verwijderen",
       "add_individual": "Individueel toevoegen"
     },
@@ -138,7 +138,7 @@
     },
     "bank_details": { "title": "Bank details" },
     "articles_of_association": { "title": "Statuten" },
-    "registration_certificate": { "title": "Registratie certificaat" },
+    "registration_certificate": { "title": "KVK/KBO - uittreksel" },
     "financial_statements": { "title": "Financial statements" },
     "agreement_certificate": { "title": "Agreement certificate" },
     "proof_of_insurance": { "title": "Proof of insurance" },
@@ -148,7 +148,7 @@
     "tax_notice": { "title": "Tax notice" },
     "visa": { "title": "Visa" },
     "f791c550-7735-4c20-8131-6ff21a92da1e": { "title": "Annual accounts for the past year" },
-    "1c04b725-eeb3-4948-a1b6-cbe795d3bb43": { "title": "IBAN" },
+    "1c04b725-eeb3-4948-a1b6-cbe795d3bb43": { "title": "Zakelijk bankafschrift" },
     "0d601ff7-43a8-42be-b9a3-c2cac28285b7": { "title": "SIRENE Extract" },
     "55a34ef8-252d-4e4f-bed6-b09b81b5ecfd": { "title": "Minutes of last elections" },
     "1721a398-147f-46eb-843c-a95e775afe0f": { "title": "Proof of registration" },

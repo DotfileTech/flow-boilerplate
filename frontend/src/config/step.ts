@@ -13,7 +13,7 @@ export const stepsConfig: {
   pdfUrl?: string;
 }[] = [
   {
-    key: 'company_structure',
+    key: 'company_form',
     fields: [
       {
         id: 'company_form',
