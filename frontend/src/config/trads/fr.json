@@ -1,1 +1,61 @@
-{}
+{
+  "brand": {
+    "title": "Votre <1>nouveau</1> terminal de paiement"
+  },
+  "steps": {
+    "company_search": {
+      "name": {
+        "label": "Nom légal"
+      }
+    },
+    "company_edit": {
+      "name": {
+        "label": "Nom légal"
+      },
+      "registration_number": {
+        "label": "SIREN"
+      },
+      "status": {
+        "label": "Status",
+        "options": {
+          "live": "Ouverte",
+          "closed": "Fermée",
+          "not_reported": "Non communiqué"
+        }
+      },
+      "street_address": {
+        "label": "Adresse"
+      },
+      "street_address_2": {
+        "label": "Adresse (complément)"
+      }
+    },
+    "company_custom": {
+      "title": "Dites-nous en plus sur vous",
+      "activity": {
+        "label": "Forme légale",
+        "options": {
+          "Artisan": "Artisan",
+          "Association": "Association",
+          "EI": "EI",
+          "EURL": "EURL",
+          "SARL": "SARL",
+          "SAS": "SAS",
+          "SASU": "SASU"
+        }
+      },
+      "cb_mensuel": {
+        "label": "Flux CB mensuel",
+        "helper": "En euros"
+      }
+    },
+    "individual_edit": {
+      "street_address": {
+        "label": "Adresse"
+      },
+      "street_address_2": {
+        "label": "Adresse (complément)"
+      }
+    }
+  }
+}
