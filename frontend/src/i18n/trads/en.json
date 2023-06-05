@@ -159,6 +159,10 @@
         "label": "Amongst these individuals, which one are you?"
       }
     },
+    "terms_and_conditions": {
+      "title": "Terms and conditions",
+      "label": "By checking this box, I fully agree and consent the terms and conditions"
+    },
     "checks_list": {
       "title": "Help us carry out the necessary checks",
       "description": "Please proceed with the necessary verifications listed below. <br/> Our team will  keep you informed of the result of the verification.",

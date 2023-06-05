@@ -1,8 +1,32 @@
-// To skip all companies steps (search, list, edit), set hasKyb to false
+import { CustomField } from '../types';
+
+// @deprecated
+// To apply a specific design on the Checks list and card
 export const hasKyb = true;
 
-export const hasKyc = true;
-
-// Display a field to select the applicant in the individual list step
-// When field is enabled, is required and the individual selected has his required email
-export const hasApplicant = false;
+export const stepsConfig: {
+  key: string;
+  fields?: CustomField[];
+  hasApplicant?: boolean;
+}[] = [
+  {
+    key: 'company_search',
+  },
+  {
+    key: 'company_list',
+  },
+  {
+    key: 'company_edit',
+  },
+  {
+    key: 'individuals_list',
+    hasApplicant: true,
+  },
+  // Enable the individual_edit step only for a KYC
+  /*{
+    key: 'individual_edit',
+  },*/
+  {
+    key: 'terms_and_conditions',
+  },
+];

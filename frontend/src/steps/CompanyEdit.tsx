@@ -15,7 +15,7 @@ import { companySchema } from './validation/company.schema';
 type CompanyEditProps = {
   company: Omit<Company, 'id' | 'checks'>;
   onChange: (values: Omit<Company, 'id' | 'checks'>) => void;
-  next: () => void;
+  next: (() => void) | null;
 };
 
 const CompanyEdit = (props: CompanyEditProps) => {
@@ -74,7 +74,9 @@ const CompanyEdit = (props: CompanyEditProps) => {
 
   const onSubmit: SubmitHandler<CompanyEditFormValues> = async (formData) => {
     onChange(formData);
-    next();
+    if (next) {
+      next();
+    }
   };
 
   return (

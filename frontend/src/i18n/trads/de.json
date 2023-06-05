@@ -159,6 +159,10 @@
         "label": "Amongst these individuals, which one are you?"
       }
     },
+    "terms_and_conditions": {
+      "title": "Terms and conditions",
+      "label": "By checking this box, I fully agree and consent the terms and conditions"
+    },
     "checks_list": {
       "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen",
       "copy": {

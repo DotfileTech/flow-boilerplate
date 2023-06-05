@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import {
   Box,
   Button,
@@ -8,6 +8,7 @@ import {
   Spacer,
   Stack,
   Tag,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { EditIcon, PlusSquareIcon, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -15,51 +16,65 @@ import { useTranslation } from 'react-i18next';
 import { Individual } from '../types';
 import { IndividualRoleEnum } from '../constants';
 import { individualSchema } from './validation/individual.schema';
-import { hasApplicant } from '../config/step';
 import { SetApplicant } from '../components/set-applicant';
 import { fullNameHelper } from '../helpers/fullname.helper';
+import ModalIndividual from '../components/ModalIndividual';
 
 type IndividualsListProps = {
-  selectIndividual: (i: number | null) => void;
   individuals: any;
   setIndividuals: any;
+  hasApplicant: boolean;
   submit: () => void;
+  handleIndividual: (values: Omit<Individual, 'id' | 'checks'>) => void;
+  setIndividualIndex: Dispatch<SetStateAction<number | null>>;
 };
 
 const IndividualsList = (props: IndividualsListProps) => {
-  const { selectIndividual, individuals, setIndividuals, submit } = props;
+  const {
+    individuals,
+    setIndividuals,
+    hasApplicant,
+    submit,
+    handleIndividual,
+    setIndividualIndex,
+  } = props;
 
   const { t } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [individualsAreValid, setIndividualsAreValid] = useState<boolean>(true);
   const [individualIsValid, setIndividualIsValid] = useState<
     { key: number; isValid: boolean }[]
   >([]);
+  const [selectedIndividual, setSelectedIndividual] = useState<Omit<
+    Individual,
+    'id' | 'checks'
+  > | null>(null);
 
-  useEffect(() => {
-    const validIndividuals = async () => {
-      let createIndividualIsValid: { key: number; isValid: boolean }[] = [];
-      setIndividualsAreValid(true);
+  const validIndividuals = async () => {
+    let createIndividualIsValid: { key: number; isValid: boolean }[] = [];
+    setIndividualsAreValid(true);
 
-      for (const [key, individual] of individuals.entries()) {
-        const isValid = await individualSchema.isValid(individual);
+    for (const [key, individual] of individuals.entries()) {
+      const isValid = await individualSchema.isValid(individual);
 
-        if (!isValid) {
-          setIndividualsAreValid(false);
-        }
-
-        createIndividualIsValid = [
-          ...createIndividualIsValid,
-          {
-            key,
-            isValid,
-          },
-        ];
+      if (!isValid) {
+        setIndividualsAreValid(false);
       }
 
-      setIndividualIsValid(createIndividualIsValid);
-    };
+      createIndividualIsValid = [
+        ...createIndividualIsValid,
+        {
+          key,
+          isValid,
+        },
+      ];
+    }
 
+    setIndividualIsValid(createIndividualIsValid);
+  };
+
+  useEffect(() => {
     validIndividuals();
   }, [individuals]);
 
@@ -133,7 +148,11 @@ const IndividualsList = (props: IndividualsListProps) => {
                     mr={5}
                     leftIcon={<EditIcon size={16} />}
                     size="sl"
-                    onClick={() => selectIndividual(i)}
+                    onClick={() => {
+                      setSelectedIndividual(individuals[i]);
+                      setIndividualIndex(i);
+                      onOpen();
+                    }}
                     variant="secondary"
                   >
                     {t('steps.individuals_list.edit')}
@@ -166,7 +185,11 @@ const IndividualsList = (props: IndividualsListProps) => {
                   mr={5}
                   leftIcon={<EditIcon size={16} />}
                   size="sl"
-                  onClick={() => selectIndividual(i)}
+                  onClick={() => {
+                    setSelectedIndividual(individuals[i]);
+                    setIndividualIndex(i);
+                    onOpen();
+                  }}
                   variant="secondary"
                 >
                   {t('steps.individuals_list.edit')}
@@ -188,7 +211,11 @@ const IndividualsList = (props: IndividualsListProps) => {
         <Button
           variant="add_individual"
           leftIcon={<PlusSquareIcon size={16} />}
-          onClick={() => selectIndividual(null)}
+          onClick={() => {
+            setSelectedIndividual(null);
+            setIndividualIndex(null);
+            onOpen();
+          }}
         >
           {t('steps.individuals_list.add_individual')}
         </Button>
@@ -212,6 +239,14 @@ const IndividualsList = (props: IndividualsListProps) => {
           {t('domain.form.next')}
         </Button>
       </Box>
+      {isOpen && (
+        <ModalIndividual
+          selectedIndividual={selectedIndividual}
+          onChange={handleIndividual}
+          onClose={onClose}
+          validIndividuals={validIndividuals}
+        />
+      )}
     </Stack>
   );
 };

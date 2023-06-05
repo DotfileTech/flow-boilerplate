@@ -15,9 +15,7 @@ type CustomFormProps = {
   metadata: { [key: string]: string | null };
   changeHandlerMetadata: (e: any) => void;
   changeHandlerMetadataCustom: (question: string, answer: string) => void;
-  isLastStep: boolean;
-  next: () => void;
-  submit: () => void;
+  next: (() => void) | null;
 };
 
 const CustomForm = (props: CustomFormProps) => {
@@ -27,9 +25,7 @@ const CustomForm = (props: CustomFormProps) => {
     metadata,
     changeHandlerMetadata,
     changeHandlerMetadataCustom,
-    isLastStep = false,
     next,
-    submit,
   } = props;
 
   const { t } = useTranslation();
@@ -142,8 +138,13 @@ const CustomForm = (props: CustomFormProps) => {
         <Box>
           <Button
             variant="next"
-            onClick={isLastStep ? submit : next}
+            onClick={() => {
+              if (next) {
+                next();
+              }
+            }}
             isDisabled={!formValid}
+            type="submit"
           >
             {t('domain.form.next')}
           </Button>

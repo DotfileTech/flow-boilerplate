@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect } from 'react';
 import { Stack, Flex, useMediaQuery } from '@chakra-ui/react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -16,10 +16,10 @@ import IndividualEdit from './steps/IndividualEdit';
 import IndividualsList from './steps/IndividualsList';
 import ChecksList from './steps/ChecksList';
 import useApi from './hooks/useApi';
-import { form } from './config/Forms';
-import { hasKyb, hasKyc } from './config/step';
-import { FormData, Company, Individual } from './types';
 import Footer from './components/layout/Footer';
+import TermsAndConditions from './steps/TermsAndConditions';
+import { stepsConfig } from './config/step';
+import { Company, Individual } from './types';
 
 const AppContent = () => {
   const { t, i18n } = useTranslation();
@@ -37,7 +37,6 @@ const AppContent = () => {
   );
   const [step, setStep] = useState<number>(0);
   const [individuals, setIndividuals] = useState<any>([]);
-  const [individual, setIndividual] = useState<any>({});
   const [metadata, setMetadata] = useState<{ [key: string]: string | null }>({
     email,
   });
@@ -72,7 +71,9 @@ const AppContent = () => {
   }, []);
 
   useEffect(() => {
-    if (hasKyb) {
+    const companyEditStep = steps.find((step) => step.key === 'company_edit');
+
+    if (companyEditStep) {
       const country = searchParams.get('country');
       let registrationNumber = searchParams.get('registrationNumber');
 
@@ -100,6 +101,25 @@ const AppContent = () => {
       next();
     }
   }, [company, step]);
+
+  useEffect(() => {
+    window.addEventListener('error', (e) => {
+      if (e.message === 'ResizeObserver loop limit exceeded') {
+        const resizeObserverErrDiv = document.getElementById(
+          'webpack-dev-server-client-overlay-div'
+        );
+        const resizeObserverErr = document.getElementById(
+          'webpack-dev-server-client-overlay'
+        );
+        if (resizeObserverErr) {
+          resizeObserverErr.setAttribute('style', 'display: none');
+        }
+        if (resizeObserverErrDiv) {
+          resizeObserverErrDiv.setAttribute('style', 'display: none');
+        }
+      }
+    });
+  }, []);
 
   const next = async () => {
     setStep(step + 1);
@@ -154,17 +174,6 @@ const AppContent = () => {
     });
   };
 
-  const selectIndividual = (i: number | null) => {
-    if (i === null) {
-      setIndividual({});
-      setIndividualIndex(null);
-    } else {
-      setIndividualIndex(i);
-      setIndividual(individuals[i]);
-    }
-    setStep(steps.findIndex((step) => step.key === 'individual_edit'));
-  };
-
   const handleIndividual = (values: Omit<Individual, 'id' | 'checks'>) => {
     if (individualIndex !== null) {
       individuals[individualIndex] = values;
@@ -172,79 +181,137 @@ const AppContent = () => {
       individuals.push(values);
     }
 
-    if (hasKyb) {
-      setStep(step - 1);
-    } else {
+    const individualEditStep = steps.find(
+      (step) => step.key === 'individual_edit'
+    );
+    if (individualEditStep) {
       setIndividualIndex(0);
-      setIndividual(individuals[0]);
-      if (steps.length === step + 1) {
+      if (step === steps.length - 1) {
         submit();
       } else {
-        setStep(step + 1);
+        next();
       }
     }
   };
 
+  useEffect(() => {
+    // Submit onboarding when last step
+    if (!caseId && step === steps.length - 1) {
+      submit();
+    }
+  }, [metadata]);
+
+  const handleMetadata = (values: any) => {
+    setMetadata({
+      ...metadata,
+      ...values,
+    });
+  };
+
+  // @Deprecated
   const changeHandlerMetadata = (e: any) => {
     setMetadata({ ...metadata, [e.target.name]: e.target.value });
   };
 
+  // @Deprecated
   const changeHandlerMetadataCustom = (question: string, answer: string) => {
     setMetadata({ ...metadata, [question]: answer });
   };
 
-  const steps: { key: string; content: ReactElement }[] = [];
+  let steps: any[] = [];
 
-  if (hasKyb && !caseId) {
-    steps.push(
-      {
-        key: 'company_search',
-        content: (
-          <CompanySearch
-            company={company}
-            isLoading={isLoading}
-            onChange={handleCompany}
-            next={next}
-          />
-        ),
-      },
-      {
-        key: 'company_list',
-        content: (
-          <CompaniesList
-            company={company}
-            setCompany={setCompany}
-            selectCompany={selectCompany}
-            back={back}
-          />
-        ),
-      },
-      {
-        key: 'company_edit',
-        content: (
-          <CompanyEdit company={company} onChange={handleCompany} next={next} />
-        ),
-      },
-      {
-        key: 'individuals_list',
-        content: (
-          <IndividualsList
-            selectIndividual={selectIndividual}
-            individuals={individuals}
-            setIndividuals={setIndividuals}
-            submit={submit}
-          />
-        ),
+  if (!caseId) {
+    steps = stepsConfig.map((step, index) => {
+      if (step.key === 'company_search') {
+        return {
+          ...step,
+          content: (
+            <CompanySearch
+              company={company}
+              isLoading={isLoading}
+              onChange={handleCompany}
+              next={next}
+            />
+          ),
+        };
       }
-    );
-  }
+      if (step.key === 'company_list') {
+        return {
+          ...step,
+          content: (
+            <CompaniesList
+              company={company}
+              setCompany={setCompany}
+              selectCompany={selectCompany}
+              back={back}
+            />
+          ),
+        };
+      }
+      if (step.key === 'company_edit') {
+        return {
+          ...step,
+          content: (
+            <CompanyEdit
+              company={company}
+              onChange={handleCompany}
+              next={index !== stepsConfig.length - 1 ? next : null}
+            />
+          ),
+        };
+      }
+      if (step.key === 'individuals_list') {
+        return {
+          ...step,
+          content: (
+            <IndividualsList
+              setIndividualIndex={setIndividualIndex}
+              individuals={individuals}
+              setIndividuals={setIndividuals}
+              handleIndividual={handleIndividual}
+              hasApplicant={step.hasApplicant ?? true}
+              submit={index === stepsConfig.length - 1 ? submit : next}
+            />
+          ),
+        };
+      }
+      if (step.key === 'individual_edit') {
+        return {
+          ...step,
+          content: (
+            <IndividualEdit
+              individual={individuals[0] || {}}
+              onChange={handleIndividual}
+            />
+          ),
+        };
+      }
+      if (step.key === 'terms_and_conditions') {
+        return {
+          ...step,
+          content: (
+            <TermsAndConditions
+              metadata={metadata}
+              onChange={handleMetadata}
+              next={index !== stepsConfig.length - 1 ? next : null}
+            />
+          ),
+        };
+      }
 
-  if (hasKyc && !caseId) {
-    steps.push({
-      key: 'individual_edit',
-      content: (
-        <IndividualEdit individual={individual} onChange={handleIndividual} />
-      ),
+      return {
+        ...step,
+        content: (
+          <CustomForm
+            stepId={step.key}
+            fields={step.fields ?? []}
+            metadata={metadata}
+            changeHandlerMetadata={changeHandlerMetadata}
+            changeHandlerMetadataCustom={changeHandlerMetadataCustom}
+            next={index !== stepsConfig.length - 1 ? next : null}
+          />
+        ),
+      };
     });
   }
 
@@ -252,39 +319,6 @@ const AppContent = () => {
     steps.push({
       key: 'checks_list',
       content: <ChecksList caseId={caseId} />,
-    });
-  }
-
-  if (!caseId) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    form.forEach((item: FormData) => {
-      const content = (
-        <CustomForm
-          stepId={item.key}
-          fields={item.fields}
-          metadata={metadata}
-          changeHandlerMetadata={changeHandlerMetadata}
-          changeHandlerMetadataCustom={changeHandlerMetadataCustom}
-          isLastStep={item.isLastStep || false}
-          submit={submit}
-          next={next}
-        />
-      );
-
-      if (!item.after) {
-        steps.unshift({
-          key: item.key,
-          content,
-        });
-      } else {
-        const index =
-          steps.findIndex((element) => element.key === item.after) + 1;
-        steps.splice(index, 0, {
-          key: item.key,
-          content,
-        });
-      }
     });
   }
 

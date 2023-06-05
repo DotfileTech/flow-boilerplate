@@ -195,7 +195,7 @@ class DotfileController {
           template_id: template_id || null,
           metadata: Object.keys(metadata)
             .filter((k) => metadata[k] != null)
-            .reduce((a, k) => ({ ...a, [k]: metadata[k] }), {}),
+            .reduce((a, k) => ({ ...a, [k]: metadata[k].toString() }), {}),
         },
         {}
       );

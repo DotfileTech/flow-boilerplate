@@ -9,6 +9,5 @@ export type { CompanySearch } from './company-search';
 export type { Country } from './country';
 export type { CustomField } from './custom-field';
 export type { Field } from './field';
-export type { FormData } from './form-data';
 export type { Individual } from './individual';
 export type { IndividualData } from './individual-data';
