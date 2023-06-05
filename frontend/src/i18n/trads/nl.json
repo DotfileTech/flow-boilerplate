@@ -28,7 +28,7 @@
         "label": "Commercial name"
       },
       "registration_number": {
-        "label": "Registratie nummer"
+        "label": "Registratienummer"
       },
       "registration_date": {
         "label": "Aanmaakdatum"
@@ -60,7 +60,7 @@
         "label": "Land"
       },
       "iban": {
-        "label": "IBAN"
+        "label": "Zakelijk bankafschrift"
       },
       "bic": {
         "label": "BIC/SWIFT"
@@ -75,7 +75,7 @@
         "label": "Employer ID"
       },
       "code": {
-        "label": "Classification code"
+        "label": "Classificatiecode"
       }
     },
     "individual_edit": {
@@ -119,7 +119,7 @@
         "label": "Burgerservicenummer"
       },
       "iban": {
-        "label": "IBAN"
+        "label": "Zakelijk bankafschrift"
       },
       "bic": {
         "label": "BIC/SWIFT"
@@ -152,7 +152,7 @@
     "individuals_list": {
       "title": "Controleer uw personenlijst",
       "missing_data": "Gelieve te corrigeren",
-      "edit": "Bewerking",
+      "edit": "Bewerken",
       "delete": "Verwijderen",
       "add_individual": "Individueel toevoegen",
       "set_applicant": {
@@ -161,6 +161,7 @@
     },
     "checks_list": {
       "title": "Help ons de nodige controles uit te voeren",
+      "description": "Ga verder met de hieronder vermelde noodzakelijke verificaties. <br/> Ons team houdt u op de hoogte van het resultaat van de verificatie.",
       "copy": {
         "label": "Kopieer onboarding-link"
       },
@@ -168,6 +169,11 @@
       "under_review": {
         "title": "Under review",
         "description": "Our team is now reviewing your information.<br /> We will keep you informed as soon as possible."
+      },
+      "tab_button": {
+        "content": "Klaar met het invullen van dit gedeelte?",
+        "cta_individual": "Controleer ook het individuen gedeelte",
+        "cta_company": "Controleer ook het bedrijf gedeelte"
       }
     }
   },
@@ -191,10 +197,10 @@
     "form": {
       "select": "Selecteer",
       "next": "Volgende",
-      "save": "Besparen",
+      "save": "Opslaan",
       "cancel": "Annuleren"
     },
-    "back": "Vorig",
+    "back": "Vorige",
     "languages": {
       "en": "Engels",
       "fr": "Frans",
@@ -228,7 +234,7 @@
       "title": "Statuten"
     },
     "registration_certificate": {
-      "title": "Registratie certificaat"
+      "title": "KVK/KBO - uittreksel"
     },
     "financial_statements": {
       "title": "Financial statements"
@@ -266,6 +272,6 @@
   "countries": "Land",
   "upload_document": "Kies documenten)",
   "upload_document_front": "Voorzijde uploaden",
-  "upload_document_back": "Upload terug",
+  "upload_document_back": "Achterzijde uploaden",
   "document_add": "Voeg een bestand toe"
 }
