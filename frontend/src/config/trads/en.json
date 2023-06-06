@@ -60,7 +60,31 @@
       },
       "company_activity": {
         "label": "Your company activity",
-        "helper": "Please explain in a few words what your company does and how it is connected to cryptocurrencies"
+        "helper": "Please explain in a few words what your company does and how it is connected to cryptocurrencies",
+        "options": {
+          "Cryptocurrencies and cryptoassets": "Cryptocurrencies and cryptoassets",
+          "Agriculture, forestry, and fishing": "Agriculture, forestry, and fishing",
+          "Mining and quarrying": "Mining and quarrying",
+          "Manufacturing": "Manufacturing",
+          "Electricity, gas, steam, and air conditioning supply": "Electricity, gas, steam, and air conditioning supply",
+          "Water supply, sewerage, waste management, and remediation activities": "Water supply, sewerage, waste management, and remediation activities",
+          "Construction": "Construction",
+          "Wholesale and retail trade; repair of motor vehicles and motorcycles": "Wholesale and retail trade; repair of motor vehicles and motorcycles",
+          "Transportation and storage": "Transportation and storage",
+          "Accommodation and food service activities": "Accommodation and food service activities",
+          "Information and communication": "Information and communication",
+          "Financial and insurance activities": "Financial and insurance activities",
+          "Real estate activities": "Real estate activities",
+          "Professional, scientific, and technical activities": "Professional, scientific, and technical activities",
+          "Administrative and support service activities": "Administrative and support service activities",
+          "Public administration and defense; compulsory social security": "Public administration and defense; compulsory social security",
+          "Education": "Education",
+          "Human health and social work activities": "Human health and social work activities",
+          "Arts, entertainment, and recreation": "Arts, entertainment, and recreation",
+          "Other service activities": "Other service activities",
+          "Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use": "Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",
+          "Activities of extraterritorial organizations and bodies": "Activities of extraterritorial organizations and bodies"
+        }
       },
       "last_year_turnover": {
         "label": "Last year turnover",
@@ -75,17 +99,15 @@
         "helper": "Please provide an explanation of the anticipated source of the cryptos you will receive on your Nilos account"
       },
       "estimate_deposit_monthly": {
-        "label": "Estimated generated deposits on your Nilos account (monthly)"
+        "label": "Estimated generated deposits on your Nilos account (monthly)",
+        "helper": "In euros"
       },
-      "estimate_frequency_fiat_payouts": {
-        "label": "Estimated frequency of the FIAT payouts"
+      "monthly_fiat_transactions": {
+        "label": "Expected monthly outgoing FIAT transactions",
+        "helper": "In euros"
       },
       "phone": {
         "label": "Your phone number"
-      },
-      "personal_address": {
-        "label": "Your personal address",
-        "helper": "Please provide your personal residential adress"
       },
       "are_you_a_pep": {
         "label": "Are you, or any beneficial owner of the company, considered as a PEP?",
@@ -134,6 +156,11 @@
     "checks_list": {
       "title": "Help us run necessary verifications",
       "description": "Please proceed with the necessary verifications listed below. \nOur team will analyze your data and keep you informed about the outcome of your case."
+    }
+  },
+  "checks": {
+    "registration_certificate": {
+      "description": "Please provide document dated less than 3 months ago"
     }
   }
 }
