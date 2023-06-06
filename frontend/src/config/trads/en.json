@@ -1,1 +1,66 @@
-{}
+{
+  "brand": {
+    "title": "The crypto payment platform"
+  },
+  "steps": {
+    "individual_edit": {
+      "title": "Welcome to the Nilos Network!",
+      "description": "Please use your full name and email to register",
+      "position": {
+        "label": "About your occupation",
+        "helper": "Please detail what is your job / position"
+      }
+    },
+    "about_you": {
+      "title": "About you",
+      "description": "Tell us about yourself",
+      "company": {
+        "label": "Your company",
+        "helper": "Please mention here what company you work for (if applicable)"
+      },
+      "asset": {
+        "label": "Your personal assets",
+        "helper": "In euros - Please enter an estimation of the value of your personal assets"
+      },
+      "income": {
+        "label": "Your personal income",
+        "helper": "In euros - Please provide the amount of your personal income for 2022"
+      },
+      "pep": {
+        "label": "Are you considered as a PEP?",
+        "helper": "A politically exposed person (PEP) is an individual with a high profile political role, or someone who has been entrusted with a prominent public function",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "us_person": {
+        "label": "Are you, or any beneficial owner of the company, a US Person?",
+        "helper": "A \"U.S. person\" is any citizen of the United States (including a person born in the United States who resides abroad and who has not renounced his American citizenship); any legal resident of the United States (including a US green card holder); and any permanent resident of the United States.",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      }
+    },
+    "payment_details": {
+      "title": "Your payment details",
+      "description": "Please provide instructions on what should be done with the funds received through Nilos",
+      "funds": {
+        "label": "What should we do with the funds you receive on Nilos?",
+        "helper": "If you want your funds to be converted into FIAT and transferred to the bank account you will register, please select the first option and fill the next 3 fields. Your company must be the owner of the bank account.\n\nIf you want your crypto funds to be sent to an external wallet, please select the second option and send an email to compliance@nilos.io with the beneficiary wallet address information. You don't need to fill the next 3 fields if you picked this option."
+      },
+      "iban": {
+        "label": "IBAN / Account number",
+        "helper": "Please enter here your IBAN or your Account number"
+      },
+      "bic": {
+        "label": "BIC / SWIFT"
+      },
+      "currency": {
+        "label": "Your currency",
+        "helper": "Please select the currency in which you would like to receive your funds. If your currency is not on the list, please send an email to compliance@nilos.io"
+      }
+    }
+  }
+}
