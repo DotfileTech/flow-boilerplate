@@ -208,16 +208,6 @@ const AppContent = () => {
     });
   };
 
-  // @Deprecated
-  const changeHandlerMetadata = (e: any) => {
-    setMetadata({ ...metadata, [e.target.name]: e.target.value });
-  };
-
-  // @Deprecated
-  const changeHandlerMetadataCustom = (question: string, answer: string) => {
-    setMetadata({ ...metadata, [question]: answer });
-  };
-
   let steps: any[] = [];
 
   if (!caseId) {
@@ -306,8 +296,7 @@ const AppContent = () => {
             stepId={step.key}
             fields={step.fields ?? []}
             metadata={metadata}
-            changeHandlerMetadata={changeHandlerMetadata}
-            changeHandlerMetadataCustom={changeHandlerMetadataCustom}
+            onChange={handleMetadata}
             next={index !== stepsConfig.length - 1 ? next : null}
           />
         ),
