@@ -165,13 +165,19 @@
     },
     "checks_list": {
       "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen",
+      "description": "Bitte führen Sie die unten aufgeführten erforderlichen Verifizierungen durch. Unser Team wird Sie über das Ergebnis der Verifizierung benachrichtigen.",
       "copy": {
         "label": "Onboarding-Link kopieren"
       },
-      "all_checks_submitted": "Thank you, your checks are being reviewed.",
+      "all_checks_submitted": "Danke, Ihre Angaben werden derzeit geprüft.",
       "under_review": {
-        "title": "Under review",
-        "description": "Our team is now reviewing your information.<br /> We will keep you informed as soon as possible."
+        "title": "Wird geprüft",
+        "description": "Unser Team prüft derzeit Ihre Angaben.<br /> Wir werden Sie so bald wie möglich informieren."
+      },
+      "tab_button": {
+        "content": "Haben Sie diesen Abschnitt ausgefüllt?",
+        "cta_individual": "Prüfen Sie bitte auch die Einzelpersonen",
+        "cta_company": "Prüfen Sie bitte auch die Unternehmen"
       }
     }
   },
