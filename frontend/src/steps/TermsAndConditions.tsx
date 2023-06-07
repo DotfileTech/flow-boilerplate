@@ -15,7 +15,7 @@ import pdf from '../assets/terms-and-conditions.pdf';
 type TermsAndConditionsProps = {
   metadata: { [key: string]: string | boolean | null };
   onChange: (values: any) => void;
-  next: (() => void) | null;
+  next: () => void;
 };
 
 interface FormValues {
@@ -58,10 +58,7 @@ const TermsAndConditions = (props: TermsAndConditionsProps) => {
 
   const onSubmit: SubmitHandler<FormValues> = async (formData) => {
     onChange(formData);
-
-    if (next) {
-      next();
-    }
+    next();
   };
 
   return (

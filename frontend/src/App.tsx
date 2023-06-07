@@ -71,7 +71,9 @@ const AppContent = () => {
   }, []);
 
   useEffect(() => {
-    const companyEditStep = steps.find((step) => step.key === 'company_edit');
+    const companyEditStep = stepsConfig.find(
+      (step) => step.key === 'company_edit'
+    );
 
     if (companyEditStep) {
       const country = searchParams.get('country');
@@ -93,6 +95,7 @@ const AppContent = () => {
   useEffect(() => {
     // Skip search company step when the registration number is set in query param
     if (
+      steps[step] &&
       steps[step].key === 'company_search' &&
       company &&
       company.registration_number &&
@@ -196,7 +199,7 @@ const AppContent = () => {
 
   useEffect(() => {
     // Submit onboarding when last step
-    if (!caseId && step === steps.length - 1) {
+    if (!caseId && step === steps.length) {
       submit();
     }
   }, [metadata]);
@@ -283,7 +286,7 @@ const AppContent = () => {
             <TermsAndConditions
               metadata={metadata}
               onChange={handleMetadata}
-              next={index !== stepsConfig.length - 1 ? next : null}
+              next={next}
             />
           ),
         };
@@ -297,7 +300,7 @@ const AppContent = () => {
             fields={step.fields ?? []}
             metadata={metadata}
             onChange={handleMetadata}
-            next={index !== stepsConfig.length - 1 ? next : null}
+            next={next}
           />
         ),
       };
@@ -326,17 +329,19 @@ const AppContent = () => {
             <Header
               back={back}
               progress={(step / (steps.length - 1)) * 100}
-              hasBackButton={step !== 0 && !caseId}
+              hasBackButton={step !== 0 && !caseId && steps[step]}
               isCheckStep={!!caseId}
-              title={t(`steps.${steps[step].key}.title`)}
+              title={steps[step] ? t(`steps.${steps[step].key}.title`) : null}
               description={
-                i18n.exists(`steps.${steps[step].key}.description`)
-                  ? `steps.${steps[step].key}.description`
+                steps[step]
+                  ? i18n.exists(`steps.${steps[step]?.key}.description`)
+                    ? `steps.${steps[step]?.key}.description`
+                    : null
                   : null
               }
             />
             {isLoading && <LoadingSpinner />}
-            {!isLoading && steps[step].content}
+            {!isLoading && steps[step]?.content}
           </Stack>
         </Stack>
       </Flex>

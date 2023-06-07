@@ -17,7 +17,7 @@ type CustomFormProps = {
   fields: CustomField[];
   metadata: { [key: string]: string | null };
   onChange: (values: any) => void;
-  next: (() => void) | null;
+  next: () => void;
 };
 
 const CustomForm = (props: CustomFormProps) => {
@@ -53,10 +53,7 @@ const CustomForm = (props: CustomFormProps) => {
 
   const onSubmit: SubmitHandler<any> = async (formData) => {
     onChange(formData);
-
-    if (next) {
-      next();
-    }
+    next();
   };
 
   return (
@@ -93,7 +90,7 @@ const CustomForm = (props: CustomFormProps) => {
                     options={field.options || []}
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
-                    defaultValue={f.value}
+                    defaultValue={f.value ?? ''}
                   />
                 )}
               />
