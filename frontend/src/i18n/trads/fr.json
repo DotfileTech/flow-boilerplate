@@ -11,6 +11,11 @@
       "country": {
         "label": "Pays"
       },
+      "registration_number": {
+        "label": "SIREN"
+      },
+      "search_by_name": "Rechercher par nom",
+      "search_by_registration_number": "Rechercher par SIREN",
       "button": "Chercher une entreprise"
     },
     "company_list": {

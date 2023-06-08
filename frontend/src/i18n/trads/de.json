@@ -11,6 +11,11 @@
       "country": {
         "label": "Land"
       },
+      "registration_number": {
+        "label": "Registrierungsnummer"
+      },
+      "search_by_name": "Suchen nach name",
+      "search_by_registration_number": "Suchen nach registrierungsnummer",
       "button": "Unternehmen suchen"
     },
     "company_list": {

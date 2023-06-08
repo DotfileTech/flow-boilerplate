@@ -11,6 +11,11 @@
       "country": {
         "label": "Paese"
       },
+      "registration_number": {
+        "label": "Codice REA"
+      },
+      "search_by_name": "Cerca da nome",
+      "search_by_registration_number": "Cerca da codice REA",
       "button": "Cerca azienda"
     },
     "company_list": {

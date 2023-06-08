@@ -99,7 +99,8 @@ const AppContent = () => {
       steps[step].key === 'company_search' &&
       company &&
       company.registration_number &&
-      company.country
+      company.country &&
+      searchParams.get('registrationNumber')
     ) {
       next();
     }
@@ -147,7 +148,10 @@ const AppContent = () => {
   };
 
   const back = async () => {
-    if (steps[step].key === 'company_edit') {
+    if (
+      steps[step].key === 'company_edit' ||
+      steps[step].key === 'company_list'
+    ) {
       setCompany({
         ...company,
         registration_number: null,

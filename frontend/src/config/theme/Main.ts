@@ -160,6 +160,12 @@ const theme = extendTheme({
           bg: 'transparent',
           color: 'brand.main-2',
         }),
+        ghost: () => ({
+          px: 0,
+          _hover: {
+            bg: 'transparent',
+          },
+        }),
         back: () => ({}),
         next: () => ({
           bg: 'brand.main-2',
