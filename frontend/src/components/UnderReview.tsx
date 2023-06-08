@@ -20,7 +20,7 @@ export const UnderReview = () => {
           textAlign="center"
           color="gray.500"
           dangerouslySetInnerHTML={{
-            __html: t('steps.checks_list.under_review.description'),
+            __html: t('steps.checks_list.under_review.description') ?? '',
           }}
         ></Text>
       </Flex>

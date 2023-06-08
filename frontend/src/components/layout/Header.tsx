@@ -42,7 +42,7 @@ const Header = (props: HeaderProps) => {
         <Text
           mt="5"
           dangerouslySetInnerHTML={{
-            __html: t(description),
+            __html: t(description) ?? '',
           }}
         ></Text>
       )}

@@ -105,7 +105,7 @@ const ModalIndividual = (props: ModalIndividualProps) => {
             <Text
               mt="5"
               dangerouslySetInnerHTML={{
-                __html: t('steps.individual_edit.description'),
+                __html: t('steps.individual_edit.description') ?? '',
               }}
             ></Text>
           )}
