@@ -12,6 +12,7 @@ export type CustomField = {
   type?:
     | 'radio'
     | 'select'
+    | 'checkbox'
     | 'date'
     | 'url'
     | 'country'

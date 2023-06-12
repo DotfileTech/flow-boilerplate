@@ -35,24 +35,21 @@ const IndividualForm = (props: IndividualFormProps) => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 name={field.nested ? `${field.nested}.${field.id}` : field.id}
-                label={
-                  t(`steps.individual_edit.${field.id}.label`) + ' *' ||
-                  field.id
-                }
+                label={`${
+                  t(`steps.individual_edit.${field.id}.label`) || field.id
+                } ${field.required ? '*' : ''}`}
                 helper={
                   field.hasHelper
                     ? t(`steps.individual_edit.${field.id}.helper`)
                     : null
                 }
-                isRequired={field.required}
-                defaultValue="false"
                 control={control}
                 render={(f) => {
                   return (
                     <Checkbox
                       stepId="individual_edit"
                       name={field.id}
-                      onChange={(values: any) => {
+                      onChange={(values: string[]) => {
                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         setValue(field.id, values, {

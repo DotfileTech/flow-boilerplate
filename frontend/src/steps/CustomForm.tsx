@@ -9,6 +9,7 @@ import CountrySelect from '../components/form/CountrySelect';
 import Select from '../components/form/Select';
 import { PhoneNumberInput } from '../components/form/phone-number-input';
 import Radio from '../components/form/Radio';
+import Checkbox from '../components/form/Checkbox';
 import { createYupSchema } from '../helpers/create-yup-schema.helper';
 import { customFieldsExtendValidation } from '../helpers/custom-fields-extend-validation.helper';
 
@@ -120,6 +121,44 @@ const CustomForm = (props: CustomFormProps) => {
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
                       setValue(field.id, value ?? '', {
+                        shouldDirty: true,
+                        shouldValidate: true,
+                      });
+                    }}
+                    options={field.options || []}
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    defaultValue={f.value}
+                  />
+                )}
+              />
+            );
+          }
+
+          if (field.type === 'checkbox') {
+            return (
+              <GroupController
+                key={field.id}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                name={field.id}
+                label={`${t(`steps.${stepId}.${field.id}.label`) || field.id} ${
+                  field.isRequired ? '*' : ''
+                }`}
+                helper={
+                  field.hasHelper
+                    ? t(`steps.${stepId}.${field.id}.helper`)
+                    : null
+                }
+                control={control}
+                render={(f) => (
+                  <Checkbox
+                    stepId={stepId}
+                    name={field.id}
+                    onChange={(values: string[]) => {
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      setValue(field.id, values, {
                         shouldDirty: true,
                         shouldValidate: true,
                       });

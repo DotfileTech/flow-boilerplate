@@ -11,9 +11,3 @@ export const isRequiredField = (form: any, field: string, nested?: string) => {
     nested ? f.id === field && f.nested === nested : f.id === field
   )[0].required;
 };
-
-export const isEnabledField = (form: any, field: string, nested?: string) => {
-  return form.filter((f: any) =>
-    nested ? f.id === field && f.nested === nested : f.id === field
-  )[0].enabled;
-};
