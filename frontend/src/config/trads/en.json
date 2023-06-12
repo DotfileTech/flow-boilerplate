@@ -1,1 +1,224 @@
-{}
+{
+  "brand": {
+    "title": "Pricing assets <1>at scale</1>"
+  },
+  "steps": {
+    "disclaimer": {
+      "title": "KYC Questionnaire - Exchange",
+      "description": "Welcome to Keyrock's KYC Onboarding Flow. This process will allow us to get to know you better and will help us to satisfy any legal and regulatory laws in relation to Money Laundering and Terrorist Financing. <br/><br/>Records of all identity checks will be maintained for up to 10 years after the termination of the business relationship or after execution of a transaction, unless required otherwise by the supervisory or judicial authorities. The records will be handled in confidence in accordance with EU Regulation 2016/679 of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data. Keyrock shall delete the personal data at the end of the prescribed period."
+    },
+    "disclaimer2": {
+      "title": "KYC Questionnaire - Exchange",
+      "description": "In order to go complete the KYC process, please make sure that you have the following documents ready to be uploaded before you start :<br/>- A copy of the company's Incorporation Act;<br/>- A copy of the company's Memorandum & Article of Association;<br/>- A copy of the ID (passport) and proof of residence (not older than 3 months) of all Directors and Ultimate Beneficial Owners (owners of 25% or more equity of the entity and/or controlling persons);<br/>- A copy of a corporate document showing the shareholder structure and voting rights of the company; <br/>- A copy of the UBO register, commercial register or companies register detailing the  information on beneficial ownership of the company;<br/>- A copy of utility bill showing the company's business address (not older than 3 months);<br/>- A list of the company's authorised signatories;<br/>- A proof of ownership of all the company's wallet addresses that will be used with Keyrock (for incoming/outgoing transfers);<br/>- If you are 1) an exchange platform or 2) planning to act on behalf of your own customers, another form is required to be fulfilled (\"Keyrock Due Diligence Questionnaire\") and will be available for download at the end of the flow.<br/><br/>Should any questions arise, please don't hesitate to send an email to <a href='mailto:onboarding@keyrock.eu'>onboarding@keyrock.eu</a>."
+    },
+    "are_you": {
+      "title": "",
+      "are_you": {
+        "label": "Are you:",
+        "options": {
+          "an_exchange_platform": "An exchange platform",
+          "a_token_issuer": "A token issuer",
+          "other": "Other"
+        }
+      },
+      "are_you_other": {
+        "label": "Other, explain:"
+      }
+    },
+    "company_search": {
+      "title": "I. Entity"
+    },
+    "company_list": {
+      "title": "I. Entity"
+    },
+    "company_edit": {
+      "title": "I. Entity",
+      "name": {
+        "label": "Full legal name"
+      },
+      "registration_date": {
+        "label": "Incorporation date"
+      },
+      "website_url": {
+        "label": "Please add a link to the website of your company (if available)"
+      }
+    },
+    "company_additional_data": {
+      "title": "I. Entity",
+      "business_address": {
+        "label": "Business address",
+        "helper": "if different from previous"
+      },
+      "activity": {
+        "label": "Please describe your business activity"
+      },
+      "business_jurisdictions": {
+        "label": "Please detail the jurisdictions where your business is performed"
+      },
+      "customer_jurisdictions": {
+        "label": "Please detail the jurisdictions of your customers"
+      },
+      "subject_to_aml_cft": {
+        "label": "Please indicate whether you are subject to AML/CFT legislation",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "aml_cft_supervisor": {
+        "label": "If yes, please indicate the name of the AML/CFT supervisor"
+      }
+    },
+    "individuals_list": {
+      "title": "II. Ownership and information relating to Ultimate Beneficial Owners",
+      "description": "Please complete the ownership information.<br/><br/>Owner (legal entity) / Beneficial Owner (natural person) are:<br/><br/><b>Type 1:</b> <br/>Category 1: the natural person(s) who ultimately own(s) or control(s) a legal entity through direct or indirect ownership of a sufficient percentage of the shares, voting rights or ownership interest in that entity, including through bearer shareholdings.<br/>Category 2: The natural person(s) that exercise(s) control over the company via other means. <br/>Category 3: If no natural person under category 1 or 2 can be identified, the natural person(s) who hold the position of senior managing official(s) need to be considered as ultimate beneficial owners. <br/><br/><br/><b>Type 2:</b><br/>The natural person(s) for whose benefit a transaction is being executed or for whose benefit a business relationship is being established  "
+    },
+    "individual_additional_data": {
+      "title": "II. Ownership and information relating to Ultimate Beneficial Owners",
+      "customer_type": {
+        "label": "Customer type",
+        "options": {
+          "Private individual": "Private individual",
+          "Private entity (not a personal asset holding vehicles)": "Private entity (not a personal asset holding vehicles)",
+          "Private entity (personal asset holding vehicles)": "Private entity (personal asset holding vehicles)",
+          "Regulated financial institution": "Regulated financial institution",
+          "Publicly traded with 51% or more shares traded": "Publicly traded with 51% or more shares traded",
+          "Shares are listed on a regulated market in the EEA or an equivalent regulated market outside of the EEA  or the entity is 100% subsidiary of a company that meets the aforementioned condition": "Shares are listed on a regulated market in the EEA or an equivalent regulated market outside of the EEA  or the entity is 100% subsidiary of a company that meets the aforementioned condition",
+          "Government or State Owned": "Government or State Owned",
+          "Trusts/Foundations": "Trusts/Foundations",
+          "Other": "Other"
+        }
+      },
+      "customer_type_other": {
+        "label": "Other:"
+      },
+      "company_have_nominee_shareholders": {
+        "label": "Does your company have nominee shareholders and/or shares in a bearer form?",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "business_relationship_capacity": {
+        "label": "Capacity in which you are acting in the context of the business relationship",
+        "options": {
+          "Principal to principal": "Principal to principal",
+          "On behalf of your customers": "On behalf of your customers"
+        }
+      },
+      "criminality": {
+        "label": "Has your company/any of the authorised representatives / directors / ultimate beneficial owners been subject to any allegations of criminality and/or criminal convictions ?",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      }
+    },
+    "individual_pep": {
+      "title": "II. Ownership and information relating to Ultimate Beneficial Owners",
+      "description": "<ul style=\"list-style-position: inside;\"><li>Senior management or associates parties refers to authorized representatives, directors and ultimate beneficial owners.</li><li>The following natural persons should be considered a politically exposed person:<ul style=\"padding-left: 20px;\"><li>heads of State, heads of government, ministers and deputy or assistant ministers;</li><li>members of parliament or of similar legislative bodies;</li><li>members of the governing bodies of political parties;</li><li>members of supreme courts, of constitutional courts or of other high-level judicial bodies, including administrative judicial bodies, the decisions of which are not subject to further appeal, except in exceptional circumstances;</li><li>members of courts of auditors or of the boards of central banks;</li><li>ambassadors, consuls, chargés d’affaires and high-ranking officers in the armed forces;</li><li>members of the administrative, management or supervisory bodies of State-owned enterprises;</li><li>directors, deputy directors and members of the board or persons in an equivalent function of an international organisation. International organisations are  associations of means or interests established by means of an international agreement between States, with joint bodies if necessary, with legal personality and subject to a legal system which is different from the one of its members.</li></ul></li><li>The following natural persons should be considered a family member of a politically exposed person:<ul style=\"padding-left: 20px;\"><li>the spouse or a person considered to be equivalent to the spouse of a politically exposed person;</li><li>the children and the spouses of those children or the persons regarded as equal to the spouse of a politically exposed person;</li><li>the parents of a politically exposed person.</li></ul></li></ul>",
+      "pep": {
+        "label": "Is any member of the senior management or associated parties a Politically Exposed Person (‘PEP’) or associated to a PEP ?",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "pep_name_function_jurisdictions": {
+        "label": "Please provide the name of the person(s), the function(s) and the jurisdictions involved",
+        "helper": "If the answer to the above is ‘yes’"
+      }
+    },
+    "business_relationship": {
+      "title": "III. Business relationship",
+      "keyrock_relationship": {
+        "label": "How have you been entering in a relationship with Keyrock?",
+        "options": {
+          "I have been contacted by Keyrock's team": "I have been contacted by Keyrock’s team",
+          "I solicited Keyrock": "I solicited Keyrock",
+          "I have been introduced to Keyrock via a third party": "I have been introduced to Keyrock via a third party"
+        }
+      },
+      "keyrock_introduced_third_party": {
+        "label": "If you have been introduced to Keyrock via a third party, please provide its identification data:"
+      },
+      "purpose_of_your_business_relationship": {
+        "label": "Please provide the purpose of your business relationship with Keyrock",
+        "helper": "please check all the boxes relevant to the business relationship",
+        "options": {
+          "Market Making crypto/crypto": "Market Making crypto/crypto",
+          "Market Making fiat/crypto": "Market Making fiat/crypto",
+          "OTC crypto/crypto": "OTC crypto/crypto",
+          "OTC fiat/crypto": "OTC fiat/crypto",
+          "OEX crypto/crypto": "OEX crypto/crypto",
+          "OEX fiat/crypto": "OEX fiat/crypto"
+        }
+      },
+      "currencies": {
+        "label": "Please indicate the currencies/assets that will be involved in the service provided by Keyrock",
+        "helper": "EUR, GBP, CHF, BTC, ETH..."
+      },
+      "volume_of_transactions": {
+        "label": "What is the expected value and volume of the transaction ?",
+        "options": {
+          "< 500K Eur": "< 500K Eur",
+          "Between 500K Eur and 3M Eur": "Between 500K Eur and 3M Eur",
+          ">3M Eur": ">3M Eur",
+          "N/A": "N/A"
+        }
+      },
+      "source_of_funds": {
+        "label": "What is the source of your funds?",
+        "helper": "Please describe how your business generates revenue"
+      },
+      "fiat_send_deposit": {
+        "label": "If applicable (if you will send/receive FIAT to/from Keyrock), please specify the account owner and provide the name and jurisdiction of the credit institution from which the FIAT will be sent or deposited"
+      },
+      "crypto_send_deposit": {
+        "label": "If applicable (if you will send/receive crypto assets to/from Keyrock), please provide the incoming or/and the outgoing crypto wallet address(es)"
+      },
+      "wallet": {
+        "label": "If you have provided a crypto wallet address, please describe the type of wallet",
+        "helper": "A wallet on an exchange platform, a non-custodial wallet... If the wallet is owned on an exchange platform, please indicate which exchange platform. If not applicable, please write N/A"
+      },
+      "fireblocks_network_id": {
+        "label": "Fireblocks Network ID"
+      },
+      "signet_id": {
+        "label": "Signet ID"
+      },
+      "authorised_traders": {
+        "label": "List of authorised traders"
+      },
+      "telegram_handles": {
+        "label": "Telegram handles"
+      },
+      "email_for_trade_confirmation": {
+        "label": "Email for trade confirmation"
+      }
+    },
+    "anti_money_laundering_program": {
+      "title": "IV. Anti-Money Laundering Program",
+      "company_supporting_process": {
+        "label": "Did the company develop written procedures and supporting processes to prevent, detect and report suspicious AML/CFT activity ?",
+        "options": {
+          "yes": "Yes",
+          "no": "No",
+          "n/a": "N/A"
+        }
+      },
+      "company_perform_customers_due_diligence": {
+        "label": "Does the company perform customers due diligence checks in order to ensure 1) the identity of its customers and 2) the origin of their funds?",
+        "options": {
+          "yes": "Yes",
+          "no": "No",
+          "n/a": "N/A"
+        }
+      }
+    },
+    "terms_and_conditions": {
+      "title": "V. Declaration",
+      "label": "I approve the declaration"
+    }
+  }
+}

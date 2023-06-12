@@ -96,8 +96,13 @@ const ChecksList = (props: ChecksListProps) => {
     () =>
       (companies
         ?.flatMap((company: Company) => company.checks)
-        .filter((check: CheckInterface) => check.type !== CheckTypeEnum.aml)
-        .length ?? 0) > 0,
+        .filter(
+          (check: CheckInterface) =>
+            // @TODO - TMP for keyrock
+            check.type !== CheckTypeEnum.aml &&
+            check.data.settings?.custom_document_type?.id !==
+              '9951b264-2f37-48cf-a383-62cbedeca551'
+        ).length ?? 0) > 0,
     [companies]
   );
 

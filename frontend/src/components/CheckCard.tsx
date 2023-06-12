@@ -62,7 +62,13 @@ const CheckCard = (props: CheckCardProps) => {
 
   const checks = useMemo(
     () =>
-      entity.checks.filter((c: CheckInterface) => c.type !== CheckTypeEnum.aml),
+      entity.checks.filter(
+        (c: CheckInterface) =>
+          // @TODO - TMP for keyrock
+          c.type !== CheckTypeEnum.aml &&
+          c.data.settings?.custom_document_type?.id !==
+            '9951b264-2f37-48cf-a383-62cbedeca551'
+      ),
     [entity]
   );
 
@@ -193,7 +199,11 @@ const CheckCard = (props: CheckCardProps) => {
               <VStack spacing="0" divider={<Divider />}>
                 {entity.checks
                   .filter(
-                    (check: CheckInterface) => check.type !== CheckTypeEnum.aml
+                    (check: CheckInterface) =>
+                      // @TODO - TMP for keyrock
+                      check.type !== CheckTypeEnum.aml &&
+                      check.data.settings?.custom_document_type?.id !==
+                        '9951b264-2f37-48cf-a383-62cbedeca551'
                   )
                   .map((check: CheckInterface) => (
                     <CheckItem

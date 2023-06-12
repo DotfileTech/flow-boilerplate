@@ -7,5 +7,9 @@ export const templateMapping = (
   individuals: IndividualInput[],
   metadata: CaseMetadata
 ): string => {
-  return process.env.TEMPLATE_ID;
+  if (metadata['are_you'].includes('an_exchange_platform')) {
+    return process.env.TEMPLATE_EXCHANGES;
+  } else {
+    return process.env.TEMPLATE_ID; // Token Issuer
+  }
 };
