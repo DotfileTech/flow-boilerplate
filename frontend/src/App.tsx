@@ -148,10 +148,7 @@ const AppContent = () => {
   };
 
   const back = async () => {
-    if (
-      steps[step].key === 'company_edit' ||
-      steps[step].key === 'company_list'
-    ) {
+    if (steps[step].key === 'company_list') {
       setCompany({
         ...company,
         registration_number: null,
