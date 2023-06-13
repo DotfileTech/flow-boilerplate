@@ -31,7 +31,7 @@ const theme = extendTheme({
         backgroundColor: 'white',
       },
       a: {
-        color: 'teal.500',
+        color: 'brand.accent',
         _hover: {
           textDecoration: 'underline',
         },

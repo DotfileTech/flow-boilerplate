@@ -14,6 +14,9 @@ import {
   FormHelperText,
   FormControl,
   Icon,
+  Text,
+  AlertIcon,
+  Alert,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
@@ -149,6 +152,16 @@ const ModalDocument = (props: ModalDocumentProps) => {
         </ModalHeader>
         <ModalCloseButton color="white" />
         <ModalBody>
+          {i18n.exists(`checks.${exactType}.callout`) && (
+            <Alert status="info" mb="6">
+              <AlertIcon />
+              <Text
+                dangerouslySetInnerHTML={{
+                  __html: t(`checks.${exactType}.callout`) ?? '',
+                }}
+              ></Text>
+            </Alert>
+          )}
           <FormControl>
             <FormLabel>
               {t(`checks.${exactType}.title`, checkTitleFallBack as string)}
