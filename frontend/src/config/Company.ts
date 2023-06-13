@@ -18,7 +18,7 @@ export const companyData: CompanyData[] = [
   {
     id: 'commercial_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create a company
@@ -29,13 +29,13 @@ export const companyData: CompanyData[] = [
   {
     id: 'legal_form',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'status',
     type: 'select',
     required: false,
-    enabled: true,
+    enabled: false,
     options: [
       CompanyStatusEnum.live,
       CompanyStatusEnum.closed,
@@ -46,7 +46,7 @@ export const companyData: CompanyData[] = [
     id: 'registration_date',
     type: 'date',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'tax_identification_number',
@@ -80,43 +80,43 @@ export const companyData: CompanyData[] = [
     id: 'street_address',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'street_address_2',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'postal_code',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'city',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'country',
     nested: 'address',
     type: 'country',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'iban',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'bic',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
 ];

@@ -91,6 +91,15 @@ const AppContent = () => {
         country,
         registration_number: registrationNumber,
       });
+
+      // Specific logic for Defacto
+      if (
+        searchParams.get('company') &&
+        searchParams.get('country') &&
+        searchParams.get('registrationNumber')
+      ) {
+        next();
+      }
     }
   }, [searchParams]);
 

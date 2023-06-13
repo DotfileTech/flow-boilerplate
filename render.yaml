@@ -1,8 +1,8 @@
 services:
   # API (backend)
   - type: web
-    name: xxxxx-api # replace xxxxx with the customer name
-    branch: xxxxx # replace xxxxx with the customer name
+    name: defacto-api # replace xxxxx with the customer name
+    branch: defacto # replace xxxxx with the customer name
     env: node
     region: frankfurt
     rootDir: backend
@@ -22,14 +22,14 @@ services:
       - key: TEMPLATE_ID
         sync: false
       - key: WEBHOOK_SECRET
-        value: dotsecret.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # generate a token to replace xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (https://it-tools.tech/token-generator?length=32)
+        value: dotsecret.Wru4WGDOqVdYLhFTdvj8LcA7o8RJGydT # generate a token to replace xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (https://it-tools.tech/token-generator?length=32)
       # Email
       - key: SMTP_HOST
         value: smtp.postmarkapp.com
       - key: SMTP_PORT
         value: 587
       - key: EMAIL_FROM
-        value: noreply-xxxxx@dotfile.com # replace xxxxx with the customer name
+        value: noreply-defacto@dotfile.com # replace xxxxx with the customer name
       - key: EMAIL_USER
         sync: false
       - key: EMAIL_PASSWORD
@@ -40,12 +40,12 @@ services:
       - key: APP_URL
         fromService:
           type: web
-          name: xxxxx-app # replace xxxxx with the customer name
+          name: defacto-app # replace xxxxx with the customer name
           envVarKey: CUSTOM_DOMAIN # APP (frontend) url
   # APP (frontend)
   - type: web
-    name: xxxxx-app # replace xxxxx with the customer name
-    branch: xxxxx # replace xxxxx with the customer name
+    name: defacto-app # replace xxxxx with the customer name
+    branch: defacto # replace xxxxx with the customer name
     env: static
     rootDir: frontend
     buildCommand: npm run build
@@ -55,14 +55,14 @@ services:
       paths:
         - frontend/src
     domains:
-      - xxxxx.onboarding.dotfile.com # replace xxxxx with the customer name
+      - kyb.getdefacto.com # replace xxxxx with the customer name
     envVars:
       - key: REACT_APP_BASE_URL_API
         fromService:
           type: web
-          name: xxxxx-api # replace xxxxx with the customer name
+          name: defacto-api # replace xxxxx with the customer name
           envVarKey: RENDER_EXTERNAL_URL # API (backend) url
       - key: REACT_APP_BASE_URL
-        value: xxxxx.onboarding.dotfile.com # replace xxxxx with the customer name
+        value: kyb.getdefacto.com # replace xxxxx with the customer name
       - key: REACT_APP_ENV
         value: production
