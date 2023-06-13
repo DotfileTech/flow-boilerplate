@@ -20,7 +20,8 @@
   },
   "checks": {
     "ubo_registry_extract": {
-      "title": "Declaración de Beneficiarios Efectivos"
+      "title": "Declaración de Beneficiarios Efectivos",
+      "callout": "Por favor, descargue, complete y suba este <a href='https://cdn.heropay.eu/declaracion-de-beneficiarios.pdf' target='_blank'>documento</a>."
     },
     "bank_details": {
       "title": "Datos bancarios"

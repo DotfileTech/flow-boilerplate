@@ -192,12 +192,12 @@ const extensions: DeepPartial<ChakraTheme> = {
         container: {
           borderRadius: 'md',
           borderWidth: '1px',
-          borderColor: `blue.700`,
-          background: `blue.100`,
+          borderColor: `gray.700`,
+          background: `gray.100`,
         },
-        title: { color: `blue.700` },
-        description: { color: `blue.700` },
-        icon: { color: `blue.700` },
+        title: { color: `gray.700` },
+        description: { color: `gray.700` },
+        icon: { color: `gray.700` },
       },
       variants: {
         toast_success: () => ({
