@@ -138,6 +138,7 @@ const AppContent = () => {
       email,
       metadata,
       externalId: searchParams.get('externalId'),
+      templateId: searchParams.get('templateId'),
     });
     localStorage.setItem('caseId', response.data.caseId);
 

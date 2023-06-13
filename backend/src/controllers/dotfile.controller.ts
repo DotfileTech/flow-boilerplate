@@ -140,34 +140,42 @@ class DotfileController {
         metadata,
         email,
         externalId,
+        templateId,
       }: {
         company: CompanyInput;
         individuals: IndividualInput[];
         metadata: CaseMetadata;
         email: string;
         externalId: string;
+        templateId: string;
       } = req.body;
 
-      const template_id: string = process.env.TEMPLATE_ID;
+      let template_id: string | null;
 
-      // Custom config
-      // For several templates, create a mapping between a metadata and the corresponding template
-      /*switch (metadata['company_structure']) {
-        case 'private_company':
-          template_id = process.env.TEMPLATE_PRIVATE_COMPANY
-          break
-        case 'public_company':
-          template_id = process.env.TEMPLATE_PUBLIC_COMPANY
-          break
-        case 'association':
-          template_id = process.env.TEMPLATE_ASSOCIATION
-          break
-        case 'self_employed':
-          template_id = process.env.TEMPLATE_SELF_EMPLOYED
-          break
-        default:
-          template_id = process.env.TEMPLATE_ID
-      }*/
+      if (templateId) {
+        template_id = templateId;
+      } else {
+        template_id = process.env.TEMPLATE_ID;
+
+        // Custom config
+        // For several templates, create a mapping between a metadata and the corresponding template
+        /*switch (metadata['company_structure']) {
+          case 'private_company':
+            template_id = process.env.TEMPLATE_PRIVATE_COMPANY
+            break
+          case 'public_company':
+            template_id = process.env.TEMPLATE_PUBLIC_COMPANY
+            break
+          case 'association':
+            template_id = process.env.TEMPLATE_ASSOCIATION
+            break
+          case 'self_employed':
+            template_id = process.env.TEMPLATE_SELF_EMPLOYED
+            break
+          default:
+            template_id = process.env.TEMPLATE_ID
+        }*/
+      }
 
       const caseName = company
         ? `KYB - ${company.name}`
@@ -192,7 +200,7 @@ class DotfileController {
         {
           name: caseName,
           ...(externalId && { external_id: externalId }),
-          template_id: template_id || null,
+          template_id,
           metadata: Object.keys(metadata)
             .filter((k) => metadata[k] != null)
             .reduce((a, k) => ({ ...a, [k]: metadata[k].toString() }), {}),
