@@ -111,7 +111,20 @@ export const customFieldsExtendValidation = (
           ...f,
           validationType: 'array',
           validations: field.isRequired
-            ? [{ type: 'min', params: [1] }]
+            ? [
+                {
+                  type: 'default',
+                  params: [null],
+                },
+                {
+                  type: 'transform',
+                  params: [(v: any) => (v === '' ? null : v)],
+                },
+                {
+                  type: 'min',
+                  params: [1],
+                },
+              ]
             : [
                 {
                   type: 'optional',

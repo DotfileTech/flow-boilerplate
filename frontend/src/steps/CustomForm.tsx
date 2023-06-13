@@ -158,7 +158,7 @@ const CustomForm = (props: CustomFormProps) => {
                     onChange={(values: string[]) => {
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
-                      setValue(field.id, values, {
+                      setValue(field.id, values ?? [], {
                         shouldDirty: true,
                         shouldValidate: true,
                       });

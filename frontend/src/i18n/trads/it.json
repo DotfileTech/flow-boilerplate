@@ -262,9 +262,6 @@
     },
     "tax_notice": {
       "title": "Tax notice"
-    },
-    "agreement_certificate": {
-      "title": "Agreement certificate"
     }
   },
   "send_documents": "Invia per la revisione",

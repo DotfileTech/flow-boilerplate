@@ -262,9 +262,6 @@
     },
     "tax_notice": {
       "title": "Justificante de liquidación de impuestos"
-    },
-    "agreement_certificate": {
-      "title": "Agreement certificate"
     }
   },
   "send_documents": "Enviar para revisión",
