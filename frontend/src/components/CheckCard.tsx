@@ -46,11 +46,19 @@ type CheckCardProps = {
   selectCheck: (check: CheckInterface) => void;
   setCurrentEntity: Dispatch<SetStateAction<Company | Individual | null>>;
   onOpen: () => void;
+  fetchMyAPI: () => void;
 } & Entity;
 
 const CheckCard = (props: CheckCardProps) => {
   const { t } = useTranslation();
-  const { entity, entityType, selectCheck, setCurrentEntity, onOpen } = props;
+  const {
+    entity,
+    entityType,
+    selectCheck,
+    setCurrentEntity,
+    onOpen,
+    fetchMyAPI,
+  } = props;
 
   const checks = useMemo(
     () =>
@@ -195,6 +203,7 @@ const CheckCard = (props: CheckCardProps) => {
                       selectCheck={selectCheck}
                       setCurrentEntity={setCurrentEntity}
                       onOpen={onOpen}
+                      fetchMyAPI={fetchMyAPI}
                     />
                   ))}
               </VStack>

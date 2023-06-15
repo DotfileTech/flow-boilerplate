@@ -219,6 +219,7 @@ const ChecksList = (props: ChecksListProps) => {
                     selectCheck={selectCheck}
                     setCurrentEntity={setCurrentEntity}
                     onOpen={onOpen}
+                    fetchMyAPI={fetchMyAPI}
                   />
                 ))}
               </Stack>
@@ -242,6 +243,7 @@ const ChecksList = (props: ChecksListProps) => {
                     selectCheck={selectCheck}
                     setCurrentEntity={setCurrentEntity}
                     onOpen={onOpen}
+                    fetchMyAPI={fetchMyAPI}
                   />
                 ))}
               </Stack>

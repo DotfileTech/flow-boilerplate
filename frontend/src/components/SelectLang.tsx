@@ -18,7 +18,7 @@ const SelectLang = () => {
   return (
     <Select
       border="0"
-      color="white"
+      color="brand.sidebarColor"
       variant="flushed"
       value={selectedLang}
       onChange={changeHandler}

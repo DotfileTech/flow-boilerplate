@@ -229,6 +229,16 @@ const theme = extendTheme({
           description: { color: `green.700` },
           icon: { color: `green.700` },
         }),
+        toast_warning: () => ({
+          container: {
+            borderWidth: '1px',
+            borderColor: `yellow.700`,
+            background: `yellow.100`,
+          },
+          title: { color: `yellow.700` },
+          description: { color: `yellow.700` },
+          icon: { color: `yellow.700` },
+        }),
       },
     },
   },
