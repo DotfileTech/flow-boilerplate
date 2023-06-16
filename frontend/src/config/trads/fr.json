@@ -1,6 +1,6 @@
 {
   "brand": {
-    "title": "Votre <1>nouveau</1> terminal de paiement"
+    "title": "Le paiement qui <1>propulse</1> votre commerce"
   },
   "steps": {
     "company_search": {
@@ -45,7 +45,7 @@
         }
       },
       "cb_mensuel": {
-        "label": "Flux CB mensuel",
+        "label": "Quelle volume mensuel pensez-vous encaisser avec Yavin",
         "helper": "En euros"
       }
     },
@@ -56,6 +56,29 @@
       "street_address_2": {
         "label": "Adresse (complément)"
       }
+    }
+  },
+  "checks": {
+    "id_document": {
+      "callout": "Pour les <b>cartes d’identité</b> :<ul style=\"list-style: inside\"><li>Recto verso</li><li>Les cartes d'identité doivent être valides (Jusqu'à 5 ans après la date d’expiration pour les personnes majeures lors de l’émission de la CNI)</li><li>Les bords transparents des cartes d’identités doivent être visibles</li><li>Aucun doigt ne doit être visible sur les photos</li></ul><br/><br/>Pour les <b>passeports</b> :<ul style=\"list-style: inside\"><li>Nous devons voir les 2 pages complètes avec bords visibles du passeport sur le même scan</li><li>La date d’expiration du passeport ne doit pas être dépassée</li><li>Le passeport doit être signé</li><li>Aucun doigt ne doit être visible sur les photos</li></ul>",
+      "title": "Document d'identité",
+      "description": ""
+    },
+    "registration_certificate": {
+      "callout": "Si le représentant de l’entreprise est une personne morale, merci de nous fournir le KBIS de la personne morale.<br/><ul style=\"list-style: inside\"><li>Ou une <b>Attestation de situation au répertoire SIRENE</b></li><li>Ou un <b>certificat d’inscription au répertoire des entreprises et des établissements</b></li><li>Un extrait <b>D1P</b> pour les artisans</li><li>Ou une <b>Attestation URSSAF</b> pour les professions libérales (médecins...)</li><li>Extrait du journal officiel</li><li>Les statuts de l’association : Le document doit être signé.</li></ul>",
+      "title": "KBIS à jour",
+      "description": "Extrait de Kbis de moins de 3 mois avec le code de vérification apparent ou bien la signature du Greffier."
+    },
+    "proof_of_address": {
+      "callout": "Les types de <b>factures</b> acceptées sont les suivantes:<ul style=\"list-style: inside\"><li>Une <b>facture énergie</b> (EDF/GDF/EAU) de moins de 6 mois (et adresse du certificat avis de situation de l'association)</li><li>Une <b>facture téléphone</b> de moins de 3 mois</li><li>Une <b>quittance de loyer</b> de moins de 3 mois</li><li>Un <b>bail commercial</b> au nom et adresse de la société signé par toutes les personnes concernées</li></ul>",
+      "title": "Justificatif de domicile"
+    },
+    "bank_details": {
+      "callout": "Le RIB doit correspondre au nom légal de l'entreprise ou au nom de l’entrepreneur individuel<ul style=\"list-style: inside\"><li>Les captures d’écran ne sont pas acceptées.</li><li>Le document doit être sous format <b>PDF</b></li><li>Tous documents créés à la main par le client ne sont pas acceptés</li><li>Les relevés bancaires ne sont pas acceptés</li></ul>",
+      "title": "RIB"
+    },
+    "ubo_registry_extract": {
+      "callout": "Veuillez cliquer sur le lien pour télécharger la liste des bénéficiaires effectifs à compléter. Veuillez la renseigner dans l’onglet déclaration des bénéficiaires effectifs une fois qu'elle sera complétée.<br/><br/>Liste des bénéficiaires effectifs:<ul style=\"list-style: inside\"><li>La LBE doit être remplie par le représentant légal</li><li>La raison sociale doit être la même que le nom légal sur le KBIS</li><li>Le pourcentage de détention doit être indiqué</li><li>La liste doit être signée et datée par le représentant légal</li></ul>"
     }
   }
 }

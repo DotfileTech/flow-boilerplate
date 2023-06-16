@@ -34,8 +34,8 @@ export const companyData: CompanyData[] = [
   {
     id: 'status',
     type: 'select',
-    required: true,
-    enabled: true,
+    required: false,
+    enabled: false,
     options: [
       CompanyStatusEnum.live,
       CompanyStatusEnum.closed,
