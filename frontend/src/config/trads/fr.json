@@ -56,6 +56,9 @@
       "street_address_2": {
         "label": "Adresse (complément)"
       }
+    },
+    "individuals_list": {
+      "missing_data": "A compléter"
     }
   },
   "checks": {
