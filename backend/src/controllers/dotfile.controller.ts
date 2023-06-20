@@ -14,6 +14,7 @@ import {
   IndividualInput,
 } from '../types';
 import { IndividualRoleEnum } from '../constants';
+import { templateMapping } from '../config/template-mapping';
 
 type GetCasesResponse = {
   data: Case[];
@@ -155,26 +156,7 @@ class DotfileController {
       if (templateId) {
         template_id = templateId;
       } else {
-        template_id = process.env.TEMPLATE_ID;
-
-        // Custom config
-        // For several templates, create a mapping between a metadata and the corresponding template
-        /*switch (metadata['company_structure']) {
-          case 'private_company':
-            template_id = process.env.TEMPLATE_PRIVATE_COMPANY
-            break
-          case 'public_company':
-            template_id = process.env.TEMPLATE_PUBLIC_COMPANY
-            break
-          case 'association':
-            template_id = process.env.TEMPLATE_ASSOCIATION
-            break
-          case 'self_employed':
-            template_id = process.env.TEMPLATE_SELF_EMPLOYED
-            break
-          default:
-            template_id = process.env.TEMPLATE_ID
-        }*/
+        template_id = templateMapping(company, individuals, metadata);
       }
 
       const caseName = company

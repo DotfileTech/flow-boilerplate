@@ -9,6 +9,7 @@ import {
   CheckStatusEnum,
   CheckTypeEnum,
 } from '../constants';
+import { emails } from '../config/emails';
 
 class WebhooksController {
   public dotfileApi = new Dotfile({
@@ -80,7 +81,7 @@ class WebhooksController {
         await this.emailService.sendEmail(
           email,
           {
-            template: 'checkStarted',
+            template: emails[0].template,
             subject: 'New document check',
             message: '',
           },
@@ -100,7 +101,7 @@ class WebhooksController {
             await this.emailService.sendEmail(
               email,
               {
-                template: 'checkRejected',
+                template: emails[1].template,
                 subject: 'Document rejected',
                 message: '',
               },

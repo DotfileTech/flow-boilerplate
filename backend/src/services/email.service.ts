@@ -7,14 +7,21 @@ import baseEs from './trads/es.json';
 import baseDe from './trads/de.json';
 import baseIt from './trads/it.json';
 import baseNl from './trads/nl.json';
+import customFr from '../config/trads/fr.json';
+import customEn from '../config/trads/en.json';
+import customEs from '../config/trads/es.json';
+import customDe from '../config/trads/de.json';
+import customIt from '../config/trads/it.json';
+import customNl from '../config/trads/nl.json';
+import { isObjectEmpty } from '../helpers/is-object-empty';
 
 const trads = {
-  fr: baseFr,
-  es: baseEs,
-  en: baseEn,
-  de: baseDe,
-  it: baseIt,
-  nl: baseNl,
+  fr: isObjectEmpty(customFr) ? baseFr : customFr,
+  es: isObjectEmpty(customEs) ? baseEs : customEs,
+  en: isObjectEmpty(customEn) ? baseEn : customEn,
+  de: isObjectEmpty(customDe) ? baseDe : customDe,
+  it: isObjectEmpty(customIt) ? baseIt : customIt,
+  nl: isObjectEmpty(customNl) ? baseNl : customNl,
 };
 
 const mailOptions = {
