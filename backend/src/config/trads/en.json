@@ -1,1 +1,12 @@
-{}
+{
+  "titleLabel": "Title",
+  "titleValue": "Complete your Mooncard file",
+  "courtesy": "Dear Sir/Madam,",
+  "thank": "Thank you for choosing our Mooncard solution.",
+  "contentText": "In order to finalize the creation of your account, please send us as soon as possible the exhaustive list of documents (via the Dotfile platform), in order to bring your file into compliance with the legal obligations set out in",
+  "contentLink": "Article L. 561-2 of the Monetary and Financial Code",
+  "cta": "COMPLETE YOUR FILE",
+  "underCta": "The purpose of this information collection is to ensure your security and the protection of your interests while facilitating future operations, as well as to validate your file with our payment institutions.",
+  "greeting": "Thank you in advance, and we send you our sincere greetings,",
+  "signature": "The Compliance team"
+}

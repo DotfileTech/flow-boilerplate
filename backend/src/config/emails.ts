@@ -3,10 +3,10 @@
 export const emails = [
   {
     // checkStarted
-    template: 'defaultCheckStarted',
+    template: 'customCheckStarted',
   },
   {
     // checkRejected
-    template: 'defaultCheckRejected',
+    template: 'customCheckRejected',
   },
 ];
