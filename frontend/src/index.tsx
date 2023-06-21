@@ -1,20 +1,23 @@
 import '@fontsource/poppins';
 import '@fontsource/montserrat';
-
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
 import { ColorModeScript } from '@chakra-ui/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { ChakraProvider } from '@chakra-ui/react';
 import theme from './config/theme/Main';
 import './i18n/config';
+import { websiteTitle } from './config/main';
 
 const container = document.getElementById('root');
 if (!container) throw new Error('Failed to find the root element');
 const root = ReactDOM.createRoot(container);
+
+document.title = websiteTitle;
 
 root.render(
   <React.StrictMode>
