@@ -23,7 +23,7 @@ export const stepsConfig: {
   },
   {
     key: 'individuals_list',
-    hasApplicant: true,
+    hasApplicant: false,
   },
   // Enable the individual_edit step only for a KYC
   /*{
@@ -32,6 +32,6 @@ export const stepsConfig: {
   // A step with a pdf viewer and a checkbox (like T&Cs) must contain "pdf_viewer" in the key (eg: pdf_viewer_terms)
   {
     key: 'pdf_viewer_terms',
-    pdfUrl: 'https://acme.onboarding.dotfile.com/terms-and-conditions.pdf',
+    pdfUrl: 'https://getpanto.onboarding.dotfile.com/terms-and-conditions.pdf',
   },
 ];

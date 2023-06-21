@@ -11,7 +11,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'middle_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual
@@ -22,20 +22,20 @@ export const individualData: IndividualData[] = [
   {
     id: 'maiden_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual with the "applicant" role
     id: 'email',
     type: 'email',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'phone_number',
     type: 'tel',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create an individual in a KYB
@@ -52,7 +52,7 @@ export const individualData: IndividualData[] = [
   {
     id: 'ownership_percentage',
     type: 'number',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -63,28 +63,28 @@ export const individualData: IndividualData[] = [
   {
     id: 'tax_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'social_security_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'birth_date',
     type: 'date',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'birth_place',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'birth_country',
     type: 'country',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -122,12 +122,12 @@ export const individualData: IndividualData[] = [
     id: 'iban',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'bic',
     nested: 'banking_information',
     required: false,
-    enabled: true,
+    enabled: false,
   },
 ];
