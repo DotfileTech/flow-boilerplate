@@ -26,6 +26,10 @@
     },
     "company_edit": {
       "title": "Überprüfen Sie die Informationen Ihres Unternehmens",
+      "subtitle": {
+        "address": "Adresse",
+        "banking_information": "Bankkonto"
+      },
       "name": {
         "label": "Name"
       },
@@ -85,6 +89,10 @@
     },
     "individual_edit": {
       "title": "Überprüfen oder vervollständigen Sie die Informationen über Ihr Unternehmen",
+      "subtitle": {
+        "address": "Adresse",
+        "banking_information": "Bankkonto"
+      },
       "first_name": {
         "label": "Vorname"
       },

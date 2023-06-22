@@ -26,6 +26,10 @@
     },
     "company_edit": {
       "title": "Controleer uw bedrijfsgegevens",
+      "subtitle": {
+        "address": "Adres",
+        "banking_information": "Bankrekening"
+      },
       "name": {
         "label": "Naam"
       },
@@ -85,6 +89,10 @@
     },
     "individual_edit": {
       "title": "Controleer de informatie",
+      "subtitle": {
+        "address": "Adres",
+        "banking_information": "Bankrekening"
+      },
       "first_name": {
         "label": "Voornaam"
       },

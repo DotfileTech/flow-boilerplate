@@ -1,4 +1,4 @@
-import { Input } from '@chakra-ui/react';
+import { Heading, Input, Box } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useFormContext } from 'react-hook-form';
 
@@ -149,36 +149,51 @@ const IndividualForm = (props: IndividualFormProps) => {
           }
 
           return (
-            <GroupController
-              key={field.id}
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              name={field.nested ? `${field.nested}.${field.id}` : field.id}
-              label={t(`steps.individual_edit.${field.id}.label`) || field.id}
-              helper={
-                field.hasHelper
-                  ? t(`steps.individual_edit.${field.id}.helper`)
-                  : null
-              }
-              isRequired={
-                field.required || (field.id === 'email' && isApplicant)
-              }
-              control={control}
-              render={(f) => {
+            <Box w="100%">
+              {field.nested &&
+                t(`steps.individual_edit.subtitle.${field.nested}`) !== '' &&
+                (field.id === 'street_address' || field.id === 'iban') && (
+                  <Heading
+                    pt="5"
+                    pb="2"
+                    fontWeight={600}
+                    color="brand.main-3"
+                    fontSize={{ base: 'xl', md: '2xl' }}
+                  >
+                    {t(`steps.individual_edit.subtitle.${field.nested}`)}
+                  </Heading>
+                )}
+              <GroupController
+                key={field.id}
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
-                return (
-                  <Input
-                    type={field.type}
-                    maxW="400px"
-                    {...f}
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
-                    value={f.value ?? ''}
-                  />
-                );
-              }}
-            />
+                name={field.nested ? `${field.nested}.${field.id}` : field.id}
+                label={t(`steps.individual_edit.${field.id}.label`) || field.id}
+                helper={
+                  field.hasHelper
+                    ? t(`steps.individual_edit.${field.id}.helper`)
+                    : null
+                }
+                isRequired={
+                  field.required || (field.id === 'email' && isApplicant)
+                }
+                control={control}
+                render={(f) => {
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  return (
+                    <Input
+                      type={field.type}
+                      maxW="400px"
+                      {...f}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      value={f.value ?? ''}
+                    />
+                  );
+                }}
+              />
+            </Box>
           );
         })}
     </>

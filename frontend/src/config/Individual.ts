@@ -38,7 +38,7 @@ export const individualData: IndividualData[] = [
     enabled: true,
   },
   {
-    // This field is mandatory to create an individual
+    // This field is mandatory to create an individual in a KYB
     id: 'roles',
     type: 'checkbox',
     required: true,
@@ -67,18 +67,6 @@ export const individualData: IndividualData[] = [
   },
   {
     id: 'social_security_number',
-    required: false,
-    enabled: true,
-  },
-  {
-    id: 'iban',
-    nested: 'banking_information',
-    required: false,
-    enabled: true,
-  },
-  {
-    id: 'bic',
-    nested: 'banking_information',
     required: false,
     enabled: true,
   },
@@ -127,6 +115,18 @@ export const individualData: IndividualData[] = [
     id: 'country',
     nested: 'address',
     type: 'country',
+    required: false,
+    enabled: true,
+  },
+  {
+    id: 'iban',
+    nested: 'banking_information',
+    required: false,
+    enabled: true,
+  },
+  {
+    id: 'bic',
+    nested: 'banking_information',
     required: false,
     enabled: true,
   },

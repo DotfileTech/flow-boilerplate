@@ -26,6 +26,10 @@
     },
     "company_edit": {
       "title": "Verifica le informazioni sulla tua azienda",
+      "subtitle": {
+        "address": "Indirizzo",
+        "banking_information": "Conto bancario"
+      },
       "name": {
         "label": "Nome"
       },
@@ -85,6 +89,10 @@
     },
     "individual_edit": {
       "title": "Verifica le informazioni",
+      "subtitle": {
+        "address": "Indirizzo",
+        "banking_information": "Conto bancario"
+      },
       "first_name": {
         "label": "Nome"
       },

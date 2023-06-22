@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Button, Box, VStack, Input } from '@chakra-ui/react';
+import { Button, Box, VStack, Input, Heading } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -171,31 +171,46 @@ const CompanyEdit = (props: CompanyEditProps) => {
             }
 
             return (
-              <GroupController
-                key={field.id}
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                name={
-                  field.nested
-                    ? field.nested === 'classifications'
-                      ? `${field.nested}.0.${field.id}`
-                      : `${field.nested}.${field.id}`
-                    : field.id
-                }
-                label={t(`steps.company_edit.${field.id}.label`) || field.id}
-                helper={
-                  field.hasHelper
-                    ? t(`steps.company_edit.${field.id}.helper`)
-                    : null
-                }
-                isRequired={field.required}
-                control={control}
-                render={(f) => {
+              <Box w="100%">
+                {field.nested &&
+                  t(`steps.company_edit.subtitle.${field.nested}`) !== '' &&
+                  (field.id === 'street_address' || field.id === 'iban') && (
+                    <Heading
+                      pt="5"
+                      pb="2"
+                      fontWeight={600}
+                      color="brand.main-3"
+                      fontSize={{ base: 'xl', md: '2xl' }}
+                    >
+                      {t(`steps.company_edit.subtitle.${field.nested}`)}
+                    </Heading>
+                  )}
+                <GroupController
+                  key={field.id}
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
-                  return <Input type={field.type} maxW="400px" {...f} />;
-                }}
-              />
+                  name={
+                    field.nested
+                      ? field.nested === 'classifications'
+                        ? `${field.nested}.0.${field.id}`
+                        : `${field.nested}.${field.id}`
+                      : field.id
+                  }
+                  label={t(`steps.company_edit.${field.id}.label`) || field.id}
+                  helper={
+                    field.hasHelper
+                      ? t(`steps.company_edit.${field.id}.helper`)
+                      : null
+                  }
+                  isRequired={field.required}
+                  control={control}
+                  render={(f) => {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    return <Input type={field.type} maxW="400px" {...f} />;
+                  }}
+                />
+              </Box>
             );
           })}
 

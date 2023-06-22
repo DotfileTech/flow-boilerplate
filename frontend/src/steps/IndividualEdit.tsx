@@ -9,6 +9,7 @@ import { IndividualEditFormValues } from './utils';
 import { individualSchema } from './validation/individual.schema';
 import { IndividualRoleEnum } from '../constants';
 import IndividualForm from '../components/IndividualForm';
+import { useSearchParams } from 'react-router-dom';
 
 type IndividualEditProps = {
   individual: Omit<Individual, 'id' | 'checks'> | null;
@@ -19,14 +20,15 @@ const IndividualEdit = (props: IndividualEditProps) => {
   const { individual, onChange } = props;
 
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
 
   const defaultValues = useMemo(() => {
     const defaultValues: IndividualEditFormValues = {
-      first_name: individual?.first_name || '',
+      first_name: individual?.first_name || searchParams.get('firstName') || '',
       middle_name: individual?.middle_name || '',
-      last_name: individual?.last_name || '',
+      last_name: individual?.last_name || searchParams.get('lastName') || '',
       maiden_name: individual?.maiden_name || '',
-      email: individual?.email || '',
+      email: individual?.email || searchParams.get('email') || '',
       roles: individual?.roles || [],
       birth_date: individual?.birth_date || '',
       birth_country: individual?.birth_country || '',
