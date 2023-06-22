@@ -1,1 +1,82 @@
-{}
+{
+  "brand": {
+    "title": ""
+  },
+  "steps": {
+    "nationality": {
+      "title": "",
+      "nationality1": {
+        "label": "Principal nationality"
+      }
+    },
+    "individual_edit": {
+      "title": "Fill in your individual's details",
+      "description": "Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\">contact us</a>",
+      "first_name": {
+        "label": "First name"
+      },
+      "middle_name": {
+        "label": "Middle name"
+      },
+      "last_name": {
+        "label": "Last name"
+      },
+      "birth_date": {
+        "label": "Birth date"
+      },
+      "birth_place": {
+        "label": "Birth place"
+      },
+      "birth_country": {
+        "label": "Birth country"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "phone_number": {
+        "label": "Mobile phone number"
+      },
+      "roles": {
+        "label": "Roles",
+        "options": {
+          "beneficial_owner": "Beneficial owner",
+          "legal_representative": "Legal representative",
+          "shareholder": "Shareholder"
+        }
+      },
+      "ownership_percentage": {
+        "label": "Ownership percentage"
+      },
+      "position": {
+        "label": "Position"
+      },
+      "tax_identification_number": {
+        "label": "Tax ID"
+      },
+      "social_security_number": {
+        "label": "Social security number"
+      },
+      "iban": {
+        "label": "IBAN"
+      },
+      "bic": {
+        "label": "BIC/SWIFT"
+      },
+      "street_address": {
+        "label": "Address line 1"
+      },
+      "street_address_2": {
+        "label": "Address line 2"
+      },
+      "postal_code": {
+        "label": "Postal code"
+      },
+      "city": {
+        "label": "City"
+      },
+      "country": {
+        "label": "Country of residency"
+      }
+    }
+  }
+}

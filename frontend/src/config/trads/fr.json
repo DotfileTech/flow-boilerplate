@@ -1,1 +1,21 @@
-{}
+{
+  "brand": {
+    "title": ""
+  },
+  "steps": {
+    "nationality": {
+      "title": "",
+      "nationality1": {
+        "label": "Nationalité principale"
+      }
+    },
+    "individual_edit": {
+      "title": "Complétez vos informations personnelles",
+      "description": "Besoin d'aide? n'hésitez pas à <a href=\"https://goldbroker.com/contact\">nous contacter</a>",
+      "country": {
+        "label": "Pays de résidence"
+      }
+    }
+  }
+}
+
