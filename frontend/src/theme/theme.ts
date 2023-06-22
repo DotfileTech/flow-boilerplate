@@ -1,37 +1,19 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, DeepPartial } from '@chakra-ui/react';
+import { ChakraTheme } from '@chakra-ui/theme';
 import { defineStyle } from '@chakra-ui/styled-system';
+import { colors } from './colors';
+import { fonts } from '../config/theme/fonts';
 
-// @TODO - OF-11 - Refactor style config file
-
-const disabledStyles = {
-  backgroundColor: 'gray.100',
-  borderColor: 'gray.100',
-  color: 'gray.500',
-};
-
-const theme = extendTheme({
-  colors: {
-    brand: {
-      'main-0': '#23272F',
-      'main-1': '#23272F',
-      'main-2': '#23272F',
-      'main-3': '#23272F',
-      accent: '#0176FF',
-      sidebarBg: '#23272F',
-      sidebarColor: '#FFFFFF',
-    },
-  },
-  fonts: {
-    heading: 'Montserrat',
-    body: 'Montserrat',
-  },
+const extensions: DeepPartial<ChakraTheme> = {
+  colors,
+  fonts,
   styles: {
     global: {
       body: {
-        backgroundColor: 'white',
+        backgroundColor: 'brand.white',
       },
       a: {
-        color: 'brand.accent',
+        color: 'brand.secondary',
         _hover: {
           textDecoration: 'underline',
         },
@@ -44,7 +26,7 @@ const theme = extendTheme({
       baseStyle: {
         filledTrack: {
           borderRadius: '1rem',
-          bg: 'brand.accent',
+          bg: 'brand.secondary',
         },
       },
     },
@@ -52,9 +34,9 @@ const theme = extendTheme({
       baseStyle: {
         tab: {
           _selected: {
-            color: 'black',
-            borderColor: 'brand.accent',
-            borderBottomColor: 'brand.accent',
+            color: 'brand.black',
+            borderColor: 'brand.secondary',
+            borderBottomColor: 'brand.secondary',
             borderBottomWidth: '2px',
             mb: '-2px',
           },
@@ -69,8 +51,8 @@ const theme = extendTheme({
     Modal: {
       baseStyle: {
         header: {
-          color: 'white',
-          bg: 'brand.main-2',
+          color: 'brand.white',
+          bg: 'brand.primary',
           textAlign: 'center',
           fontWeight: '500',
           padding: 4,
@@ -144,21 +126,21 @@ const theme = extendTheme({
       },
       variants: {
         solid: () => ({
-          bg: 'brand.main-2',
-          color: 'white',
+          bg: 'brand.primary',
+          color: 'brand.white',
           _hover: {
-            bg: 'brand.main-2',
+            bg: 'brand.primary',
             _disabled: {
-              bgColor: 'brand.main-2',
+              bgColor: 'brand.primary',
             },
           },
-          _active: { bg: 'brand.main-2' },
+          _active: { bg: 'brand.primary' },
         }),
         outline: () => ({
           border: '1px solid',
-          borderColor: 'brand.main-2',
+          borderColor: 'brand.primary',
           bg: 'transparent',
-          color: 'brand.main-2',
+          color: 'brand.primary',
         }),
         ghost: () => ({
           px: 0,
@@ -168,28 +150,31 @@ const theme = extendTheme({
         }),
         back: () => ({}),
         next: () => ({
-          bg: 'brand.main-2',
-          color: 'white',
+          bg: 'brand.primary',
+          color: 'brand.white',
           _disabled: {
-            ...disabledStyles,
+            backgroundColor: 'gray.100',
+            borderColor: 'gray.100',
+            color: 'gray.500',
             _hover: {
-              ...disabledStyles,
+              backgroundColor: 'gray.100',
+              borderColor: 'gray.100',
+              color: 'gray.500',
             },
           },
         }),
         upload: () => ({
-          bg: 'brand.main-2',
+          bg: 'brand.primary',
           fontSize: 'xs',
           size: 'xs',
-          color: 'white',
+          color: 'brand.white',
         }),
         select: () => ({
           boxShadow: '1px 1px 16px rgba(153, 153, 153, 0.1)',
-          border: '1px solid #F9F9F9',
+          border: '1px solid #ffffff',
         }),
         fill: () => ({
           fontSize: 'sl',
-          // maxWidth: '200px',
           border: '1px solid',
           borderColor: 'brand.secondary',
           color: 'brand.secondary',
@@ -200,11 +185,6 @@ const theme = extendTheme({
           padding: '1rem',
         }),
       },
-      // defaultProps: {
-      //   // size: 'lg', // default is md
-      //   // variant: 'sm', // default is solid
-      //   // colorScheme: 'blue', // default is gray
-      // },
     },
     Alert: {
       baseStyle: {
@@ -242,6 +222,8 @@ const theme = extendTheme({
       },
     },
   },
-});
+};
+
+const theme = extendTheme(extensions);
 
 export default theme;

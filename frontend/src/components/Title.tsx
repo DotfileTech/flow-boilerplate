@@ -9,7 +9,7 @@ const Title = ({ value }: TitleProps) => {
     <Box>
       <Heading
         fontWeight={600}
-        color="brand.main-3"
+        color="brand.primary"
         fontSize={{ base: '2xl', md: '3xl' }}
       >
         {value}

@@ -12,7 +12,7 @@ const MobileHeader = () => {
       borderBottomWidth="1px"
       position="static"
       justifyContent="center"
-      background="brand.sidebarBg"
+      background="sidebar.backgroundColor"
     >
       <Box pt={2} pb={2}>
         <Logo width="80%" />

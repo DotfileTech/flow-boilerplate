@@ -1,4 +1,4 @@
-resolves OF-XXX
+resolves OPS-XXX
 
 ## What's new
 
@@ -18,4 +18,4 @@ resolves OF-XXX
 
 ## FollowUp
 
-- [OF-XX - xxxxxxxxxxx](https://linear.app/dotfile/issue/OF-xxxxxxxxx)
+- [OPS-XX - xxxxxxxxxxx](https://linear.app/dotfile/issue/OPS-xxxxxxxxx)

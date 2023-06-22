@@ -1,4 +1,6 @@
-export const EmptyStateImage = (): JSX.Element => {
+import { ReactElement } from 'react';
+
+export const EmptyStateImage = (): ReactElement => {
   return (
     <svg
       width="422"

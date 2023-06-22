@@ -1,4 +1,10 @@
-export const UnderReviewImage = ({ color }: { color: string }): JSX.Element => {
+import { ReactElement } from 'react';
+
+export const UnderReviewImage = ({
+  color,
+}: {
+  color: string;
+}): ReactElement => {
   return (
     <svg
       width="47"

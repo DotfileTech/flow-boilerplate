@@ -88,7 +88,7 @@ const IndividualEdit = (props: IndividualEditProps) => {
               isDisabled={!isValid}
               type="submit"
             >
-              {t('domain.form.save')}
+              {t('domain.form.next')}
             </Button>
           </Box>
         </VStack>

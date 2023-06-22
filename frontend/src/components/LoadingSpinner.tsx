@@ -7,7 +7,7 @@ const LoadingSpinner = () => {
         thickness="4px"
         speed="0.65s"
         emptyColor="gray.200"
-        color="brand.accent"
+        color="brand.secondary"
         size="xl"
       />
     </Center>

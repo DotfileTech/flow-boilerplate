@@ -17,7 +17,7 @@ export const CopyableText = (props: CopyableTextProps): JSX.Element => {
       variant="link"
       rightIcon={<Icon size="16" as={Copy} />}
       onClick={() => copyToClipBoard()}
-      color={{ base: 'brand.sidebarColor', md: 'gray.500' }}
+      color={{ base: 'sidebar.color', md: 'gray.500' }}
     >
       {label}
     </Button>

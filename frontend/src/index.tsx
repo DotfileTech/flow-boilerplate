@@ -9,7 +9,7 @@ import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-import theme from './config/theme/Main';
+import theme from './theme/theme';
 import './i18n/config';
 import { websiteTitle } from './config/main';
 

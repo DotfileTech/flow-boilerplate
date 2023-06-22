@@ -1,15 +1,16 @@
-import { Flex, Text, VStack } from '@chakra-ui/react';
+import { Flex, Text, useToken, VStack } from '@chakra-ui/react';
 import { languages } from '../../config/languages';
 import SelectLang from '../SelectLang';
-import { ReactComponent as DotfileLogo } from '../../assets/dotfile.svg';
 import { CopyableText } from '../copyable-text';
 import { useTranslation } from 'react-i18next';
+import { DotfileLogo } from '../../assets/dotfile-logo';
 
 const Footer = ({ caseId }: { caseId: string | null | undefined }) => {
   const { t } = useTranslation();
+  const [sidebarColor] = useToken('colors', ['sidebar.color']);
 
   return (
-    <VStack background="brand.sidebarBg" p="6" spacing="4" mt="auto">
+    <VStack background="sidebar.backgroundColor" p="6" spacing="4" mt="auto">
       {caseId && (
         <CopyableText
           label={t('steps.checks_list.copy.label')}
@@ -19,7 +20,7 @@ const Footer = ({ caseId }: { caseId: string | null | undefined }) => {
       {languages.length > 1 && <SelectLang />}
       <Flex alignItems="center">
         <Text
-          color="brand.sidebarColor"
+          color="sidebar.color"
           mr="5px"
           fontSize="12px"
           lineHeight="2Opx"
@@ -28,7 +29,7 @@ const Footer = ({ caseId }: { caseId: string | null | undefined }) => {
         >
           <b>Powered by</b>
         </Text>
-        <DotfileLogo height="20px" />
+        <DotfileLogo color={sidebarColor} />
       </Flex>
     </VStack>
   );

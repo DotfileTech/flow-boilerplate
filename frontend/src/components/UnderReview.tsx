@@ -4,7 +4,7 @@ import { UnderReviewImage } from '../assets/under-review-image';
 
 export const UnderReview = () => {
   const { t } = useTranslation();
-  const [accentColor] = useToken('colors', ['brand.accent']);
+  const [accentColor] = useToken('colors', ['brand.secondary']);
 
   return (
     <Center mt={4}>
