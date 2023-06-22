@@ -56,8 +56,10 @@ export const stepsConfig: {
     fields: [
       {
         id: 'funds',
+        type: 'select',
         isRequired: true,
         hasHelper: true,
+        options: ['Any crypto received with Nilos has to be automatically exchanged into FIAT and transferred to the bank account below','Any crypto received with Nilos has to be automatically transferred to an external wallet I will communicate to Nilos'],
       },
       {
         id: 'iban',
@@ -70,8 +72,10 @@ export const stepsConfig: {
       },
       {
         id: 'currency',
+        type: 'select',
         isRequired: true,
         hasHelper: true,
+        options: ['EUR','GBP','CHF','USD'],
       },
     ],
   },
