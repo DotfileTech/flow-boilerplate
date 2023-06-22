@@ -1,13 +1,13 @@
 export const brandColors = {
-  primary: '#23272F',
-  secondary: '#0176FF',
+  primary: '#193B4D',
+  secondary: '#9FC9DF',
 };
 
 export const sidebarColors = {
-  backgroundColor: '#23272F',
+  backgroundColor: '#193B4D',
   color: '#ffffff',
 };
 
 export const linkColors = {
-  color: '#0176FF',
+  color: '#193B4D',
 };

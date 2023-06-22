@@ -9,11 +9,7 @@ import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-<<<<<<< HEAD
 import theme from './theme/theme';
-=======
-import theme from './config/theme/Main';
->>>>>>> 26f2ea2 (✨ Frontend - Add config for index (!60))
 import './i18n/config';
 import { websiteTitle } from './config/main';
 
