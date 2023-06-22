@@ -156,6 +156,10 @@
     "checks_list": {
       "title": "Help us run necessary verifications",
       "description": "Please proceed with the necessary verifications listed below. \nOur team will analyze your data and keep you informed about the outcome of your case."
+    },
+    "terms_and_conditions": {
+      "title": "Terms and conditions",
+      "label": "By checking this box, as the company's legal representative, I fully agree and consent to Modulr Terms and Conditions"
     }
   },
   "checks": {
