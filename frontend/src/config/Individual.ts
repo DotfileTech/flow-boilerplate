@@ -53,7 +53,7 @@ export const individualData: IndividualData[] = [
     id: 'ownership_percentage',
     type: 'number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'position',
