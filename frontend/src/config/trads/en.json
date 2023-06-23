@@ -1,1 +1,132 @@
-{}
+{
+  "brand": {
+    "title": ""
+  },
+  "steps": {
+    "company_search": {
+      "title": "Help us identify your company",
+      "description": "Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>",
+      "name": {
+        "label": "Company name"
+      }
+    },
+    "company_list": {
+      "title": "Select your company",
+      "description": "Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>",
+      "not_found": "You cannot find your company ?",
+      "no_result": "No result",
+      "button": "Fill details manually"
+    },
+    "company_edit": {
+      "title": "Fill in your company's details",
+      "description": "Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>",
+      "subtitle": {
+        "address": "Address",
+        "banking_information": "Bank account"
+      },
+      "name": {
+        "label": "Company name"
+      },
+      "registration_number": {
+        "label": "Registration number"
+      },
+      "registration_date": {
+        "label": "Registration date"
+      },
+      "legal_form": {
+        "label": "Legal form"
+      },
+      "street_address": {
+        "label": "Address line 1 (street address)"
+      },
+      "street_address_2": {
+        "label": "Address line 2 (apartment, suite, unit, building, floor, etc.)"
+      },
+      "iban": {
+        "label": "IBAN/Account number"
+      }
+    },
+    "individual_edit": {
+      "title": "Fill in your individual's details",
+      "subtitle": {
+        "address": "Address",
+        "banking_information": "Bank account"
+      },
+      "phone_number": {
+        "label": "Mobile phone"
+      },
+      "roles": {
+        "label": "Roles",
+        "options": {
+          "shareholder": "Shareholder",
+          "legal_representative": "Principal officer (Director, CEO, CFO, etc.)"
+        }
+      },
+      "ownership_percentage": {
+        "label": "Ownership percentage"
+      },
+      "position": {
+        "label": "Position"
+      },
+      "street_address": {
+        "label": "Address line 1 (street address)"
+      },
+      "street_address_2": {
+        "label": "Address line 2 (apartment, suite, building, floor, etc.)"
+      },
+      "country": {
+        "label": "Country of residency"
+      }
+    },
+    "individuals_list": {
+      "title": "Verify your individuals list",
+      "description": "<p>Please verify the list below and delete individuals who are not shareholder or principal officer.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>",
+      "missing_data": "Please correct",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add_individual": "Add individual",
+      "set_applicant": {
+        "label": "Amongst these individuals, which one are you?"
+      }
+    },
+    "checks_list": {
+      "title": "Help us run necessary verifications",
+      "description": "<p>Submit supporting documents.</p><br /><p>Please provide us with the following documents to help us verify your profile. <br/> Our team will  keep you informed of the result of the verification.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>",
+      "copy": {
+        "label": "Copy onboarding link"
+      },
+      "all_checks_submitted": "Thank you, your checks are being reviewed.",
+      "under_review": {
+        "title": "Under review",
+        "description": "Our team is now reviewing your information.<br /> We will keep you informed as soon as possible."
+      },
+      "tab_button": {
+        "content": "Done completing this section?",
+        "cta_individual": "Check individuals as well",
+        "cta_company": "Check company as well"
+      }
+    }
+  },
+  "checks": {
+    "id_verification": {
+      "title": "Proof of identity",
+      "callout": "<p>Identity document (passport or ID card) must be valid.</p><p>For storage in Singapore, Toronto and New York, a passport is required.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>"
+    },
+    "proof_of_address": {
+      "title": "Proof of address",
+      "callout": "<p>Proof of address (utility bill) must be less than 3 months old.</p><p>Legible, non-truncated copy in PNG, JPG or PDF format.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>"
+    },
+    "articles_of_association": {
+      "title": "Memorandum of association",
+      "callout": "<p>Memorandum of association (MoA) must be valid.</p><p>Legible, non-truncated copy in PNG, JPG or PDF format.</p>"
+    },
+    "bank_details": {
+      "title": "Bank identity statement",
+      "callout": "<p>Bank identity statement (banking details) must be less than 3 months old.</p><p>Bank account verification ensures, by means of an official document from your bank, that you are the holder of the account used for your buying and selling transactions.</p><p>Legible, non-truncated copy in PNG, JPG or PDF format.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>"
+    },
+    "registration_certificate": {
+      "title": "Registration certificate",
+      "callout": "<p>Registration certificate must be less than 3 months old.</p><p>Legible, non-truncated copy in PNG, JPG or PDF format.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>"
+    }
+  }
+}

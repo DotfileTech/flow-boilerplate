@@ -1,1 +1,106 @@
-{}
+{
+    "brand": {
+      "title": ""
+    },
+    "steps": {
+      "company_search": {
+        "title": "Helfen Sie uns, Ihr Unternehmen zu identifizieren",
+        "description": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>",
+        "name": {
+          "label": "Nom"
+        }
+      },
+      "company_list": {
+        "title": "Wählen Sie Ihr Unternehmen aus",
+        "description": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
+      },
+      "company_edit": {
+        "title": "Überprüfen Sie die Informationen Ihres Unternehmens",
+        "description": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>",
+        "subtitle": {
+          "address": "Adresse",
+          "banking_information": "Bankkonto"
+        },
+        "legal_form": {
+          "label": "Rechtsform"
+        },
+        "street_address": {
+          "label": "Adresszeile 1 (Straße und Hausnummer)"
+        },
+        "street_address_2": {
+          "label": "Adresszeile 2 (Appartement, Wohnungsnr., Gebäude, Etage etc.)"
+        },
+        "iban": {
+          "label": "IBAN/Kontonummer"
+        }
+      },
+      "individual_edit": {
+        "title": "Überprüfen oder vervollständigen Sie die Informationen über Ihr Unternehmen",
+        "subtitle": {
+          "address": "Adresse",
+          "banking_information": "Bankkonto"
+        },
+        "phone_number": {
+          "label": "Mobiltelefonnummer"
+        },
+        "roles": {
+          "label": "Roles",
+          "options": {
+            "shareholder": "Aktionär",
+            "legal_representative": "Hauptgeschäftsführer (Direktor, Vorstandsvorsitzender,  Finanzdirektor etc.)"
+          }
+        },
+        "street_address": {
+          "label": "Adresszeile 1 (Straße und Hausnummer)"
+        },
+        "street_address_2": {
+          "label": "Adresszeile 2 (Appartement, Wohnungsnr., Gebäude, Etage etc.)"
+        },
+        "country": {
+          "label": "Wohnsitzland"
+        }
+      },
+      "individuals_list": {
+        "title": "Überprüfen oder ergänzen Sie die gesetzlichen Vertreter und wirtschaftlichen Eigentümer Ihres Unternehmens.",
+        "description": "<p>Bitte überprüfen Sie die unten stehende Liste und entfernen Sie Personen, die keine gesetzlichen Vertreter und wirtschaftlichen Eigentümer sind.</p><p><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>",
+        "missing_data": "Bitte korrigieren",
+        "edit": "Bearbeiten",
+        "delete": "Löschen",
+        "add_individual": "Person hinzufügen",
+        "set_applicant": {
+          "label": "Wer von diesen Personen sind Sie?"
+        }
+      },
+      "checks_list": {
+        "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen",
+        "description": "<p>Bitte führen Sie die unten aufgeführten erforderlichen Verifizierungen durch. Unser Team wird Sie über das Ergebnis der Verifizierung benachrichtigen.</p><p><br />Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>",
+        "copy": {
+          "label": "Onboarding-Link kopieren"
+        }
+      }
+    },
+    "checks": {
+      "id_verification": {
+        "title": "Identitätsprüfung",
+        "callout": "<p>Der Identitätsnachweis (Reisepass oder Personalausweis) muss aktuell gültig sein.</p><p>Für die Lagerung in Singapur, Toronto und New York ist ein Reisepass erforderlich.</p><p>Vollständig lesbare Kopie im PNG-, JPG- oder PDF-Format.</p><p><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>"
+      },
+      "proof_of_address": {
+        "title": "Wohnsitzbescheinigung",
+        "callout": "<p>Der Adressnachweis (Wasser-, Strom-, Gas-, Telefonrechnung) darf nicht älter als 3 Monate sein.</p><p>Vollständig lesbare Kopie im PNG-, JPG- oder PDF-Format.</p><p><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>"
+      },
+      "articles_of_association": {
+        "title": "Gesellschaftsvertrag",
+        "callout": "<p>Der Gesellschaftsvertrag/die Satzung muss aktuell gültig sein.</p><p>Vollständig lesbare Kopie im PNG-, JPG- oder PDF-Format.</p><p><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>"
+      },
+      "bank_details": {
+        "title": "Bank details",
+        "callout": "<p>Der Nachweis über die Bankverbindung darf nicht älter als 3 Monate sein.</p><p>Durch die Prüfung der Bankverbindung mit Hilfe eines offiziellen Dokuments Ihrer Bank stellen wir sicher, dass Sie der Inhaber des Kontos sind, welches für Kauf- und Verkaufstransaktionen verwendet wird.</p><p>Vollständig lesbare Kopie im PNG-, JPG- oder PDF-Format.</p><p><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>"
+      },
+      "registration_certificate": {
+        "title": "Handelsregister",
+        "callout": "<p>Der Handelsregisterauszug darf nicht älter als 3 Monate sein.</p><p>Vollständig lesbare Kopie im PNG-, JPG- oder PDF-Format.<p><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>"
+      }
+    }
+  }
+  
+

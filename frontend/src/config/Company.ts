@@ -18,7 +18,7 @@ export const companyData: CompanyData[] = [
   {
     id: 'commercial_name',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     // This field is mandatory to create a company
@@ -28,14 +28,20 @@ export const companyData: CompanyData[] = [
   },
   {
     id: 'legal_form',
-    required: false,
+    required: true,
+    enabled: true,
+  },
+  {
+    id: 'registration_date',
+    type: 'date',
+    required: true,
     enabled: true,
   },
   {
     id: 'status',
     type: 'select',
     required: false,
-    enabled: true,
+    enabled: false,
     options: [
       CompanyStatusEnum.live,
       CompanyStatusEnum.closed,
@@ -43,43 +49,37 @@ export const companyData: CompanyData[] = [
     ],
   },
   {
-    id: 'registration_date',
-    type: 'date',
-    required: false,
-    enabled: true,
-  },
-  {
     id: 'tax_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'website_url',
     type: 'url',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'employer_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'code',
     nested: 'classifications',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'description',
     nested: 'classifications',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'street_address',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
@@ -91,32 +91,32 @@ export const companyData: CompanyData[] = [
   {
     id: 'postal_code',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'city',
     nested: 'address',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'country',
     nested: 'address',
     type: 'country',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'iban',
     nested: 'banking_information',
-    required: false,
+    required: true,
     enabled: true,
   },
   {
     id: 'bic',
     nested: 'banking_information',
-    required: false,
+    required: true,
     enabled: true,
   },
 ];
