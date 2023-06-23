@@ -1,28 +1,28 @@
 {
   "brand": {
-    "title": "Une description avec quelques <1>mots accentués</1> si besoin"
+    "title": "A brand motto with some <1>accent words</1> if needed"
   },
   "steps": {
     "company_search": {
-      "title": "Aidez-nous à identifier votre entreprise",
+      "title": "Help us identify your company",
       "name": {
-        "label": "Nom"
+        "label": "Name"
       },
       "country": {
-        "label": "Pays"
+        "label": "Country"
       },
       "registration_number": {
-        "label": "SIREN"
+        "label": "Registration number"
       },
-      "search_by_name": "Rechercher par nom",
-      "search_by_registration_number": "Rechercher par SIREN",
-      "button": "Chercher une entreprise"
+      "search_by_name": "Search by name",
+      "search_by_registration_number": "Search by registration number",
+      "button": "Search company"
     },
     "company_list": {
-      "title": "Sélectionnez votre entreprise",
-      "not_found": "Vous ne trouvez pas votre entreprise ?",
-      "no_result": "Aucun résultat",
-      "button": "Remplir les détails manuellement"
+      "title": "Select your company",
+      "not_found": "You cannot find your company ?",
+      "no_result": "No result",
+      "button": "Fill details manually"
     },
     "company_edit": {
       "title": "Verify your company information",
@@ -32,19 +32,19 @@
         "banking_information": "Bank account"
       },
       "name": {
-        "label": "Nom"
+        "label": "Name"
       },
       "commercial_name": {
-        "label": "Nom commercial"
+        "label": "Commercial name"
       },
       "registration_number": {
-        "label": "Numéro d'enregistrement"
+        "label": "Registration number"
       },
       "registration_date": {
-        "label": "Date de création"
+        "label": "Registration date"
       },
       "legal_form": {
-        "label": "Forme légale"
+        "label": "Legal form"
       },
       "status": {
         "label": "Status",
@@ -55,19 +55,19 @@
         }
       },
       "street_address": {
-        "label": "Adresse ligne 1"
+        "label": "Address line 1"
       },
       "street_address_2": {
-        "label": "Adresse ligne 2"
+        "label": "Address line 2"
       },
       "postal_code": {
-        "label": "Code postal"
+        "label": "Postal code"
       },
       "city": {
-        "label": "Ville"
+        "label": "City"
       },
       "country": {
-        "label": "Pays"
+        "label": "Country"
       },
       "iban": {
         "label": "IBAN"
@@ -76,13 +76,13 @@
         "label": "BIC/SWIFT"
       },
       "tax_identification_number": {
-        "label": "Numéro de TVA"
+        "label": "Tax ID"
       },
       "website_url": {
-        "label": "Site web"
+        "label": "Website"
       },
       "employer_identification_number": {
-        "label": "Numéro d'employeur"
+        "label": "Employer ID"
       },
       "code": {
         "label": "Code"
@@ -98,42 +98,42 @@
         "banking_information": "Bank account"
       },
       "first_name": {
-        "label": "Prénom"
+        "label": "First name"
       },
       "middle_name": {
-        "label": "Deuxième prénom"
+        "label": "Middle name"
       },
       "last_name": {
-        "label": "Nom"
+        "label": "Last name"
       },
       "maiden_name": {
-        "label": "Nom de naissance"
+        "label": "Maiden name"
       },
       "email": {
         "label": "Email"
       },
       "phone_number": {
-        "label": "Numéro de téléphone"
+        "label": "Phone number"
       },
       "roles": {
-        "label": "Rôles",
+        "label": "Roles",
         "options": {
-          "beneficial_owner": "Bénéficiaire effectif",
-          "legal_representative": "Représentant légal",
-          "shareholder": "Actionnaire"
+          "beneficial_owner": "Beneficial owner",
+          "legal_representative": "Legal representative",
+          "shareholder": "Shareholder"
         }
       },
       "ownership_percentage": {
-        "label": "Pourcentage de détention"
+        "label": "Ownership percentage"
       },
       "position": {
         "label": "Position"
       },
       "tax_identification_number": {
-        "label": "Identifiant fiscal"
+        "label": "Tax ID"
       },
       "social_security_number": {
-        "label": "Numéro de sécurité sociale"
+        "label": "Social security number"
       },
       "iban": {
         "label": "IBAN"
@@ -142,38 +142,38 @@
         "label": "BIC/SWIFT"
       },
       "birth_date": {
-        "label": "Date de naissance"
+        "label": "Birth date"
       },
       "birth_place": {
-        "label": "Lieu de naissance"
+        "label": "Birth place"
       },
       "birth_country": {
-        "label": "Pays de naissance"
+        "label": "Birth country"
       },
       "street_address": {
-        "label": "Adresse ligne 1"
+        "label": "Address line 1"
       },
       "street_address_2": {
-        "label": "Adresse ligne 2"
+        "label": "Address line 2"
       },
       "postal_code": {
-        "label": "Code postal"
+        "label": "Postal code"
       },
       "city": {
-        "label": "Ville"
+        "label": "City"
       },
       "country": {
-        "label": "Pays"
+        "label": "Country"
       }
     },
     "individuals_list": {
-      "title": "Vérifiez ou complétez les représentants légaux et bénéficiaires effectifs de votre entreprise",
-      "missing_data": "A corriger",
-      "edit": "Éditer",
-      "delete": "Supprimer",
-      "add_individual": "Ajouter un individu",
+      "title": "Check the list of individuals attached to your company",
+      "missing_data": "Please correct",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add_individual": "Add individual",
       "set_applicant": {
-        "label": "Parmi ces personnes, laquelle êtes-vous ?"
+        "label": "Amongst these individuals, which one are you?"
       }
     },
     "pdf_viewer_terms": {
@@ -185,44 +185,44 @@
       "title": "Help us carry out the necessary checks",
       "subtitle": "Please proceed with the necessary verifications listed below. <br/> Our team will  keep you informed of the result of the verification.",
       "copy": {
-        "label": "Copier le lien d'onboarding"
+        "label": "Copy onboarding link"
       },
-      "all_checks_submitted": "Merci, les vérifications sont en cours d'examen.",
+      "all_checks_submitted": "Thank you, your checks are being reviewed.",
       "under_review": {
-        "title": "En cours de traitement",
-        "description": "Notre équipe examine actuellement vos informations.<br /> Nous vous tiendrons informés dès que possible."
+        "title": "Under review",
+        "description": "Our team is now reviewing your information.<br /> We will keep you informed as soon as possible."
       },
       "tab_button": {
-        "content": "Vous avez terminé de remplir cette section?",
-        "cta_individual": "Vérifiez également les individus",
-        "cta_company": "Vérifiez également l'entreprise"
+        "content": "Done completing this section?",
+        "cta_individual": "Check individuals as well",
+        "cta_company": "Check company as well"
       }
     }
   },
   "domain": {
     "individual": {
       "roles": {
-        "beneficial_owner": "Bénéficiaire effectif",
-        "legal_representative": "Représentant légal",
-        "shareholder": "Actionnaire",
-        "applicant": "Demandeur"
+        "beneficial_owner": "Beneficial owner",
+        "legal_representative": "Legal representative",
+        "shareholder": "Shareholder",
+        "applicant": "Applicant"
       }
     },
     "check": {
       "status": {
-        "rejected": "Rejeté",
-        "approved": "Approuvé",
-        "need_review": "En cours de vérification",
-        "expired": "Expiré"
+        "rejected": "Rejected",
+        "approved": "Approved",
+        "need_review": "In review",
+        "expired": "Expired"
       }
     },
     "form": {
-      "select": "Sélectionner",
-      "next": "Suivant",
-      "save": "Sauvegarder",
-      "cancel": "Annuler"
+      "select": "Select",
+      "next": "Next",
+      "save": "Save",
+      "cancel": "Cancel"
     },
-    "back": "Précédent",
+    "back": "Previous",
     "languages": {
       "en": "English",
       "fr": "French",
@@ -240,63 +240,63 @@
   },
   "checks": {
     "id_document": {
-      "title": "Document d'identité",
-      "description": "Merci de fournir un document couleur, non expiré, cadré, non rogné et net de la carte d'identité (recto / verso) ou du passeport (double page intérieure comportant la signature)"
+      "title": "Identity document",
+      "description": "Please provide a color, unexpired, framed, untrimmed and clear document of the identity card (front / back) or passport (double inside page with the signature)"
     },
     "id_verification": {
-      "title": "Vérification d'identité"
+      "title": "Identity Verification"
     },
     "proof_of_address": {
-      "title": "Justificatif de domicile"
+      "title": "Proof of address"
     },
     "driving_license": {
-      "title": "Permis de conduire"
+      "title": "Driver's license"
     },
     "social_security_card": {
-      "title": "Carte Vitale"
+      "title": "Social security card"
     },
     "ubo_registry_extract": {
-      "title": "Déclaration des bénéficiaires effectifs"
+      "title": "Ultimate beneficial owner certificate"
     },
     "articles_of_association": {
-      "title": "Statuts de la société"
+      "title": "Articles of association"
     },
     "registration_certificate": {
-      "title": "KBIS à jour"
+      "title": "Certificate of registration"
     },
     "financial_statements": {
-      "title": "Etats financier"
+      "title": "Financial statements"
     },
     "bank_details": {
-      "title": "Coordonnées bancaires"
+      "title": "Bank details"
     },
     "proof_of_insurance": {
-      "title": "Justificatif d'assurance"
+      "title": "Proof of insurance"
     },
     "visa": {
       "title": "Visa"
     },
     "birth_certificate": {
-      "title": "Certificat de naissance"
+      "title": "Birth certificate"
     },
     "vehicle_registration_certificate": {
-      "title": "Carte grise"
+      "title": "Vehicle registration certificate"
     },
     "criminal_record_extract": {
-      "title": "Extrait de casier judiciaire"
+      "title": "Criminal record extract"
     },
     "tax_notice": {
-      "title": "Avis d'imposition"
+      "title": "Tax notice"
     }
   },
-  "send_documents": "Envoyer pour vérification",
-  "verify_identity": "Vérifier l'identité",
-  "for": "pour",
-  "individuals": "Individu(s)",
-  "companies": "Entreprise",
-  "countries": "Pays",
-  "upload_document": "Choisir un fichier",
-  "upload_document_front": "Télécharger le Recto",
-  "upload_document_back": "Télécharger le Verso",
-  "document_add": "Ajouter un fichier"
+  "send_documents": "Send for review",
+  "verify_identity": "Verify identity",
+  "for": "for",
+  "individuals": "Individual(s)",
+  "companies": "Company",
+  "countries": "Country",
+  "upload_document": "Choose file",
+  "upload_document_front": "Upload Front",
+  "upload_document_back": "Upload Back",
+  "document_add": "Add a file"
 }

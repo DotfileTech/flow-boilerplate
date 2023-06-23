@@ -1,4 +1,4 @@
 export const fonts = {
-  heading: 'Montserrat, sans-serif',
-  body: 'Montserrat, sans-serif',
+  heading: 'Rules, sans-serif',
+  body: 'Rules, sans-serif',
 };

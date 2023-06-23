@@ -47,26 +47,21 @@ export const companyData: CompanyData[] = [
     enabled: true,
   },
   {
-    id: 'tax_identification_number',
-    required: false,
-    enabled: true,
-  },
-  {
     id: 'website_url',
     type: 'url',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'employer_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'code',
     nested: 'classifications',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'description',
@@ -122,27 +117,6 @@ export const companyData: CompanyData[] = [
     id: 'bic',
     nested: 'banking_information',
     required: false,
-<<<<<<< HEAD
-    enabled: true,
-=======
     enabled: false,
-  },
-  {
-    id: 'website_url',
-    type: 'url',
-    required: false,
-    enabled: false,
-  },
-  {
-    id: 'employer_identification_number',
-    required: false,
-    enabled: false,
-  },
-  {
-    id: 'code',
-    nested: 'classifications',
-    required: false,
-    enabled: false,
->>>>>>> 1dcf1b3 (🔀 Rebase main with new features)
   },
 ];
