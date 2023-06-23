@@ -51,18 +51,18 @@ export const companyData: CompanyData[] = [
   {
     id: 'tax_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'website_url',
     type: 'url',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'employer_identification_number',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'code',
