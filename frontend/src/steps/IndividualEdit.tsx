@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Box, Button, VStack } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
@@ -75,23 +75,21 @@ const IndividualEdit = (props: IndividualEditProps) => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <VStack spacing="6" alignItems="start">
-          <IndividualForm
-            isApplicant={
-              individual?.roles?.includes(IndividualRoleEnum.applicant) || false
-            }
-          />
-          <Box>
-            <Button
-              variant="next"
-              isLoading={isSubmitting}
-              isDisabled={!isValid}
-              type="submit"
-            >
-              {t('domain.form.next')}
-            </Button>
-          </Box>
-        </VStack>
+        <IndividualForm
+          isApplicant={
+            individual?.roles?.includes(IndividualRoleEnum.applicant) || false
+          }
+        />
+        <Box>
+          <Button
+            variant="next"
+            isLoading={isSubmitting}
+            isDisabled={!isValid}
+            type="submit"
+          >
+            {t('domain.form.next')}
+          </Button>
+        </Box>
       </form>
     </FormProvider>
   );

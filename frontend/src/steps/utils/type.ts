@@ -24,6 +24,7 @@ export interface CompanyEditFormValues {
   employer_identification_number: string;
   classifications: {
     code: string;
+    description: string;
   }[];
 }
 

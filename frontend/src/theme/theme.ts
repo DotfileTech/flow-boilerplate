@@ -177,8 +177,8 @@ const extensions: DeepPartial<ChakraTheme> = {
         fill: () => ({
           fontSize: 'sl',
           border: '1px solid',
-          borderColor: 'brand.secondary',
-          color: 'brand.secondary',
+          borderColor: 'brand.primary',
+          color: 'brand.primary',
           padding: '1rem',
         }),
         add_individual: () => ({

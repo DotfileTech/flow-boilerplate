@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Button, Box, VStack, Input, Heading } from '@chakra-ui/react';
+import { Button, Box, Input, Heading } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -50,6 +50,7 @@ const CompanyEdit = (props: CompanyEditProps) => {
         ? [
             {
               code: company.classifications[0]?.code || '',
+              description: company.classifications[0]?.description || '',
             },
           ]
         : [],
@@ -81,150 +82,169 @@ const CompanyEdit = (props: CompanyEditProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <VStack spacing="6" alignItems="start">
-        {companyData
-          .filter((field: Field) => field.enabled)
-          .map((field: Field) => {
-            if (field.type === 'select') {
-              return (
-                <GroupController
-                  key={
-                    field.nested
-                      ? `company_${field.nested}_${field.id}`
-                      : `company_${field.id}`
-                  }
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
-                  name={field.nested ? `${field.nested}.${field.id}` : field.id}
-                  label={t(`steps.company_edit.${field.id}.label`) || field.id}
-                  helper={
-                    field.hasHelper
-                      ? t(`steps.company_edit.${field.id}.helper`)
-                      : null
-                  }
-                  isRequired={field.required}
-                  control={control}
-                  render={(f) => (
-                    <Select
-                      stepId="company_edit"
-                      name={field.id}
-                      onChange={(value: string) => {
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-ignore
-                        setValue(field.id, value ?? '', {
-                          shouldDirty: true,
-                          shouldValidate: true,
-                        });
-                      }}
-                      options={field.options || []}
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      defaultValue={f.value}
-                    />
-                  )}
-                />
-              );
-            }
+      {companyData.map((field: Field) => {
+        if (!field.enabled) {
+          return (
+            <GroupController
+              key={field.id}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              name={
+                field.nested
+                  ? field.nested === 'classifications'
+                    ? `${field.nested}.0.${field.id}`
+                    : `${field.nested}.${field.id}`
+                  : field.id
+              }
+              isRequired={false}
+              control={control}
+              render={(f) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                return <Input type="hidden" maxW="400px" {...f} />;
+              }}
+            />
+          );
+        }
 
-            if (field.type === 'country') {
-              return (
-                <GroupController
-                  key={
-                    field.nested
-                      ? `company_${field.nested}_${field.id}`
-                      : `company_${field.id}`
-                  }
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
-                  name={field.nested ? `${field.nested}.${field.id}` : field.id}
-                  label={t(`steps.company_edit.${field.id}.label`) || field.id}
-                  helper={
-                    field.hasHelper
-                      ? t(`steps.company_edit.${field.id}.helper`)
-                      : null
-                  }
-                  isRequired={field.required}
-                  control={control}
-                  render={(f) => (
-                    <CountrySelect
-                      onChange={(value: string) => {
-                        setValue(
-                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                          // @ts-ignore
-                          field.nested
-                            ? `${field.nested}.${field.id}`
-                            : field.id,
-                          value ?? '',
-                          {
-                            shouldDirty: true,
-                            shouldValidate: true,
-                          }
-                        );
-                      }}
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      defaultValue={f.value}
-                    />
-                  )}
-                />
-              );
-            }
-
-            return (
-              <Box w="100%">
-                {field.nested &&
-                  t(`steps.company_edit.subtitle.${field.nested}`) !== '' &&
-                  (field.id === 'street_address' || field.id === 'iban') && (
-                    <Heading
-                      pt="5"
-                      pb="2"
-                      fontWeight={600}
-                      color="brand.main-3"
-                      fontSize={{ base: 'xl', md: '2xl' }}
-                    >
-                      {t(`steps.company_edit.subtitle.${field.nested}`)}
-                    </Heading>
-                  )}
-                <GroupController
-                  key={field.id}
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
-                  name={
-                    field.nested
-                      ? field.nested === 'classifications'
-                        ? `${field.nested}.0.${field.id}`
-                        : `${field.nested}.${field.id}`
-                      : field.id
-                  }
-                  label={t(`steps.company_edit.${field.id}.label`) || field.id}
-                  helper={
-                    field.hasHelper
-                      ? t(`steps.company_edit.${field.id}.helper`)
-                      : null
-                  }
-                  isRequired={field.required}
-                  control={control}
-                  render={(f) => {
+        if (field.type === 'select') {
+          return (
+            <GroupController
+              key={
+                field.nested
+                  ? `company_${field.nested}_${field.id}`
+                  : `company_${field.id}`
+              }
+              mb="6"
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              name={field.nested ? `${field.nested}.${field.id}` : field.id}
+              label={t(`steps.company_edit.${field.id}.label`) || field.id}
+              helper={
+                field.hasHelper
+                  ? t(`steps.company_edit.${field.id}.helper`)
+                  : null
+              }
+              isRequired={field.required}
+              control={control}
+              render={(f) => (
+                <Select
+                  stepId="company_edit"
+                  name={field.id}
+                  onChange={(value: string) => {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
-                    return <Input type={field.type} maxW="400px" {...f} />;
+                    setValue(field.id, value ?? '', {
+                      shouldDirty: true,
+                      shouldValidate: true,
+                    });
                   }}
+                  options={field.options || []}
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  defaultValue={f.value}
                 />
-              </Box>
-            );
-          })}
+              )}
+            />
+          );
+        }
 
-        <Box>
-          <Button
-            variant="next"
-            isLoading={isSubmitting}
-            isDisabled={!isValid}
-            type="submit"
-          >
-            {t('domain.form.next')}
-          </Button>
-        </Box>
-      </VStack>
+        if (field.type === 'country') {
+          return (
+            <GroupController
+              key={
+                field.nested
+                  ? `company_${field.nested}_${field.id}`
+                  : `company_${field.id}`
+              }
+              mb="6"
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              name={field.nested ? `${field.nested}.${field.id}` : field.id}
+              label={t(`steps.company_edit.${field.id}.label`) || field.id}
+              helper={
+                field.hasHelper
+                  ? t(`steps.company_edit.${field.id}.helper`)
+                  : null
+              }
+              isRequired={field.required}
+              control={control}
+              render={(f) => (
+                <CountrySelect
+                  onChange={(value: string) => {
+                    setValue(
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      field.nested ? `${field.nested}.${field.id}` : field.id,
+                      value ?? '',
+                      {
+                        shouldDirty: true,
+                        shouldValidate: true,
+                      }
+                    );
+                  }}
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  defaultValue={f.value}
+                />
+              )}
+            />
+          );
+        }
+
+        return (
+          <Box w="100%" key={field.id} mb="6">
+            {field.nested &&
+              t(`steps.company_edit.subtitle.${field.nested}`) !== '' &&
+              (field.id === 'street_address' || field.id === 'iban') && (
+                <Heading
+                  pt="5"
+                  pb="2"
+                  fontWeight={600}
+                  color="brand.main-3"
+                  fontSize={{ base: 'xl', md: '2xl' }}
+                >
+                  {t(`steps.company_edit.subtitle.${field.nested}`)}
+                </Heading>
+              )}
+            <GroupController
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              name={
+                field.nested
+                  ? field.nested === 'classifications'
+                    ? `${field.nested}.0.${field.id}`
+                    : `${field.nested}.${field.id}`
+                  : field.id
+              }
+              label={t(`steps.company_edit.${field.id}.label`) || field.id}
+              helper={
+                field.hasHelper
+                  ? t(`steps.company_edit.${field.id}.helper`)
+                  : null
+              }
+              isRequired={field.required}
+              control={control}
+              render={(f) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                return <Input type={field.type} maxW="400px" {...f} />;
+              }}
+            />
+          </Box>
+        );
+      })}
+
+      <Box>
+        <Button
+          variant="next"
+          isLoading={isSubmitting}
+          isDisabled={!isValid}
+          type="submit"
+        >
+          {t('domain.form.next')}
+        </Button>
+      </Box>
     </form>
   );
 };

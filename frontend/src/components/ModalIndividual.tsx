@@ -10,7 +10,6 @@ import {
   Stack,
   Button,
   ModalFooter,
-  VStack,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
@@ -110,12 +109,7 @@ const ModalIndividual = (props: ModalIndividualProps) => {
             ></Text>
           )}
           <FormProvider {...methods}>
-            <VStack
-              as="form"
-              onSubmit={handleSubmit(onSubmit)}
-              spacing="6"
-              alignItems="start"
-            >
+            <form onSubmit={handleSubmit(onSubmit)}>
               <IndividualForm
                 isApplicant={
                   selectedIndividual?.roles?.includes(
@@ -123,7 +117,7 @@ const ModalIndividual = (props: ModalIndividualProps) => {
                   ) || false
                 }
               />
-            </VStack>
+            </form>
           </FormProvider>
         </ModalBody>
         <ModalFooter>
