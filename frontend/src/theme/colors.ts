@@ -1,4 +1,4 @@
-import { brandColors, sidebarColors } from '../config/theme/colors';
+import { brandColors, sidebarColors, linkColors } from '../config/theme/colors';
 
 // Override Chakra palette
 const swatch = {
@@ -130,6 +130,7 @@ const swatch = {
 const tokens = {
   brand: brandColors,
   sidebar: sidebarColors,
+  link: linkColors,
 };
 
 export const colors = {

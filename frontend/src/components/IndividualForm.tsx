@@ -149,7 +149,7 @@ const IndividualForm = (props: IndividualFormProps) => {
           }
 
           return (
-            <Box w="100%">
+            <Box w="100%" key={field.id}>
               {field.nested &&
                 t(`steps.individual_edit.subtitle.${field.nested}`) !== '' &&
                 (field.id === 'street_address' || field.id === 'iban') && (
@@ -164,7 +164,6 @@ const IndividualForm = (props: IndividualFormProps) => {
                   </Heading>
                 )}
               <GroupController
-                key={field.id}
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 name={field.nested ? `${field.nested}.${field.id}` : field.id}

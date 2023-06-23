@@ -7,3 +7,7 @@ export const sidebarColors = {
   backgroundColor: '#23272F',
   color: '#ffffff',
 };
+
+export const linkColors = {
+  color: '#0176FF',
+};

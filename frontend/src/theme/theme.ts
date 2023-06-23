@@ -10,10 +10,11 @@ const extensions: DeepPartial<ChakraTheme> = {
   styles: {
     global: {
       body: {
-        backgroundColor: 'brand.white',
+        backgroundColor: 'white',
       },
       a: {
-        color: 'brand.secondary',
+        fontWeight: 'bold',
+        color: 'link.color',
         _hover: {
           textDecoration: 'underline',
         },
@@ -34,7 +35,7 @@ const extensions: DeepPartial<ChakraTheme> = {
       baseStyle: {
         tab: {
           _selected: {
-            color: 'brand.black',
+            color: 'black',
             borderColor: 'brand.secondary',
             borderBottomColor: 'brand.secondary',
             borderBottomWidth: '2px',
@@ -51,7 +52,7 @@ const extensions: DeepPartial<ChakraTheme> = {
     Modal: {
       baseStyle: {
         header: {
-          color: 'brand.white',
+          color: 'white',
           bg: 'brand.primary',
           textAlign: 'center',
           fontWeight: '500',
@@ -127,7 +128,7 @@ const extensions: DeepPartial<ChakraTheme> = {
       variants: {
         solid: () => ({
           bg: 'brand.primary',
-          color: 'brand.white',
+          color: 'white',
           _hover: {
             bg: 'brand.primary',
             _disabled: {
@@ -151,7 +152,7 @@ const extensions: DeepPartial<ChakraTheme> = {
         back: () => ({}),
         next: () => ({
           bg: 'brand.primary',
-          color: 'brand.white',
+          color: 'white',
           _disabled: {
             backgroundColor: 'gray.100',
             borderColor: 'gray.100',
@@ -167,7 +168,7 @@ const extensions: DeepPartial<ChakraTheme> = {
           bg: 'brand.primary',
           fontSize: 'xs',
           size: 'xs',
-          color: 'brand.white',
+          color: 'white',
         }),
         select: () => ({
           boxShadow: '1px 1px 16px rgba(153, 153, 153, 0.1)',
