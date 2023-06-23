@@ -45,11 +45,7 @@
         }
       },
       "cb_mensuel": {
-<<<<<<< HEAD
         "label": "Quelle volume mensuel pensez-vous encaisser avec Yavin",
-=======
-        "label": "Flux CB mensuel",
->>>>>>> acd85fa (🎉 Yavin onboarding flow)
         "helper": "En euros"
       }
     },
@@ -60,7 +56,6 @@
       "street_address_2": {
         "label": "Adresse (complément)"
       }
-<<<<<<< HEAD
     },
     "individuals_list": {
       "missing_data": "A compléter"
@@ -87,8 +82,6 @@
     },
     "ubo_registry_extract": {
       "callout": "Veuillez cliquer sur le lien pour télécharger la liste des bénéficiaires effectifs à compléter. Veuillez la renseigner dans l’onglet déclaration des bénéficiaires effectifs une fois qu'elle sera complétée.<br/><br/>Liste des bénéficiaires effectifs:<ul style=\"list-style: inside\"><li>La LBE doit être remplie par le représentant légal</li><li>La raison sociale doit être la même que le nom légal sur le KBIS</li><li>Le pourcentage de détention doit être indiqué</li><li>La liste doit être signée et datée par le représentant légal</li></ul>"
-=======
->>>>>>> acd85fa (🎉 Yavin onboarding flow)
     }
   }
 }
