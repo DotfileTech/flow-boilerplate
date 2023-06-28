@@ -1,1 +1,45 @@
-{}
+{
+  "brand": {
+    "title": "Zahlungen, die Ihr Geschäft beflügeln."
+  },
+  "steps": {
+    "individuals_list": {
+      "title": "Überprüfen oder vervollständigen Sie die gesetzlichen Vertreter (natürliche Personen) und die wirtschaftlichen Eigentümer Ihres Unternehmens",
+      "description": "Um akzeptiert zu werden, muss Ihr Antrag mindestens einen gesetzlichen Vertreter und einen wirtschaftlich Berechtigten enthalten (dies kann dieselbe Person sein)."
+    },
+    "additional_data": {
+      "title": "",
+      "self_employed": {
+        "label": "Sind Sie Selbstunternehmer? ",
+        "options": {
+          "yes": "Ja",
+          "no": "Nein"
+        }
+      }
+    }
+  },
+  "checks": {
+    "ubo_registry_extract": {
+      "title": "Mitteilung der wirtschaftlich Berechtigten"
+    },
+    "bank_details": {
+      "title": "Bankverbindung"
+    },
+    "d158b2b6-ec0d-4901-98ac-3e92f5530e34": {
+      "title": "Tax return"
+    },
+    "44b8a8f2-a34e-4197-8a55-aebde9090624": {
+      "title": "Gewinn- und Verlustrechnung"
+    },
+    "b891d098-7a00-4119-b931-81f9cb403a83": {
+      "title": "Bilanz"
+    },
+    "registration_certificate": {
+      "title": "Handelsregisterauszug (weniger als 3 Monate)"
+    },
+    "id_document": {
+      "title": "Ausweisdokument",
+      "description": ""
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "brand": {
-    "title": ""
+    "title": "Les paiements qui doppent votre business."
   },
   "steps": {
     "individuals_list": {
@@ -27,6 +27,12 @@
     },
     "d158b2b6-ec0d-4901-98ac-3e92f5530e34": {
       "title": "Liasse fiscale"
+    },
+    "44b8a8f2-a34e-4197-8a55-aebde9090624": {
+      "title": "Compte de résultat"
+    },
+    "b891d098-7a00-4119-b931-81f9cb403a83": {
+      "title": "Bilan"
     },
     "articles_of_association": {
       "title": "Statuts de la société"

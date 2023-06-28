@@ -1,6 +1,6 @@
 {
   "brand": {
-    "title": ""
+    "title": "Payments that boost your business."
   },
   "steps": {
     "individuals_list": {
@@ -26,13 +26,19 @@
       "title": "Bank details"
     },
     "d158b2b6-ec0d-4901-98ac-3e92f5530e34": {
-      "title": "Tax return"
+      "title": "Tax refund"
+    },
+    "44b8a8f2-a34e-4197-8a55-aebde9090624": {
+      "title": "Income statement"
+    },
+    "b891d098-7a00-4119-b931-81f9cb403a83": {
+      "title": "Balance sheet"
     },
     "articles_of_association": {
       "title": "Articles of association"
     },
     "registration_certificate": {
-      "title": "Certificate of registration (less than 3 months old)"
+      "title": "Incorporation certificate (less than 3 months old)"
     }
   }
 }

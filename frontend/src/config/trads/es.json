@@ -1,6 +1,6 @@
 {
   "brand": {
-    "title": ""
+    "title": "Pagos que impulsan su negocio."
   },
   "steps": {
     "individuals_list": {
@@ -28,6 +28,12 @@
     },
     "d158b2b6-ec0d-4901-98ac-3e92f5530e34": {
       "title": "Justificante de liquidación de impuestos"
+    },
+    "44b8a8f2-a34e-4197-8a55-aebde9090624": {
+      "title": "Cuenta de resultados"
+    },
+    "b891d098-7a00-4119-b931-81f9cb403a83": {
+      "title": "Balance de situación"
     },
     "articles_of_association": {
       "title": "Estatutos"
