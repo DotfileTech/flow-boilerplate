@@ -50,4 +50,8 @@ export const stepsConfig: {
     key: 'individuals_list',
     hasApplicant: true,
   },
+  {
+    key: 'pdf_viewer_terms',
+    pdfUrl: 'https://yavin.onboarding.dotfile.com/terms-and-conditions.pdf',
+  },
 ];

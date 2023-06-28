@@ -37,7 +37,7 @@
         "options": {
           "Artisan": "Artisan",
           "Association": "Association",
-          "EI": "EI",
+          "EI": "Entrepreneur Individuel",
           "EURL": "EURL",
           "SARL": "SARL",
           "SAS": "SAS",
@@ -59,6 +59,10 @@
     },
     "individuals_list": {
       "missing_data": "A compléter"
+    },
+    "terms_and_conditions": {
+      "title": "Conditions générales de vente",
+      "label": "Je reconnais avoir pris connaissance et j’accepte les conditions générales de vente."
     }
   },
   "checks": {
@@ -80,8 +84,11 @@
       "callout": "Le RIB doit correspondre au nom légal de l'entreprise ou au nom de l’entrepreneur individuel<ul style=\"list-style: inside\"><li>Les captures d’écran ne sont pas acceptées.</li><li>Le document doit être sous format <b>PDF</b></li><li>Tous documents créés à la main par le client ne sont pas acceptés</li><li>Les relevés bancaires ne sont pas acceptés</li></ul>",
       "title": "RIB"
     },
+    "dc480be8-3d91-42ee-aa2d-9698932d7bfe": {
+      "title": "Extrait du journal officel"
+    },
     "ubo_registry_extract": {
-      "callout": "Veuillez cliquer sur le lien pour télécharger la liste des bénéficiaires effectifs à compléter. Veuillez la renseigner dans l’onglet déclaration des bénéficiaires effectifs une fois qu'elle sera complétée.<br/><br/>Liste des bénéficiaires effectifs:<ul style=\"list-style: inside\"><li>La LBE doit être remplie par le représentant légal</li><li>La raison sociale doit être la même que le nom légal sur le KBIS</li><li>Le pourcentage de détention doit être indiqué</li><li>La liste doit être signée et datée par le représentant légal</li></ul>"
+      "callout": "Veuillez cliquer sur le lien pour <a href=\"https://docs.google.com/document/d/16ynFBw2WozbD_zhdwrQ5YLdU38Jp-HZS/edit?usp=gmail\" target=\"_blank\">télécharger la liste des bénéficiaires effectifs à compléter</a>. Veuillez la renseigner dans l’onglet déclaration des bénéficiaires effectifs une fois qu'elle sera complétée.<br/><br/>Liste des bénéficiaires effectifs:<ul style=\"list-style: inside\"><li>La LBE doit être remplie par le représentant légal</li><li>La raison sociale doit être la même que le nom légal sur le KBIS</li><li>Le pourcentage de détention doit être indiqué</li><li>La liste doit être signée et datée par le représentant légal</li></ul>"
     }
   }
 }
