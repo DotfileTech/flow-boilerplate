@@ -164,7 +164,16 @@
   },
   "checks": {
     "registration_certificate": {
-      "description": "Please provide document dated less than 3 months ago"
+      "title": "Certificate of incorporation",
+      "description": "Please provide the legal document which evidences the formation or registration of your legal entity. This document must have been issued within the last 3 months."
+    },
+    "articles_of_association": {
+      "title": "Articles / Memorandum of incorporation",
+      "description": "Please upload the document which governs and regulates the activities of the company and outlines rules and procedures to govern the company. Please upload the latest and most up to date version."
+    },
+    "ubo_registry_extract": {
+      "title": "Shareholders register",
+      "callout": "<p>Please upload a register showing ownership of your company. The document should be dated within the last 12 months.<br>If the document is not issued by a government or a registry, please ensure the document is signed by an appropriate authority (i.e. Director, Company Secretary, Legal, or equivalent) and contains the statement <b>\"I attest and confirm that this document is true, valid and accurate as of DDMMY\"</b>.</p><p><br>The signer should sign off with their full name, capacity/designation, and date of sign off.</p>"
     }
   }
 }
