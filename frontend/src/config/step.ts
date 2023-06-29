@@ -53,6 +53,7 @@ export const stepsConfig: {
       {
         id: 'activity',
         isRequired: true,
+        hasHelper: true,
       },
       {
         id: 'business_jurisdictions',
@@ -243,7 +244,17 @@ export const stepsConfig: {
     ],
   },
   {
+    key: 'communicate_more_info',
+    fields: [
+      {
+        id: 'additional_comment',
+        isRequired: false,
+        type: 'text',
+      },
+    ],
+  },
+  {
     key: 'pdf_viewer_terms',
-    pdfUrl: 'https://acme.onboarding.dotfile.com/terms-and-conditions.pdf',
+    pdfUrl: 'https://keyrock.onboarding.dotfile.com/terms-and-conditions.pdf',
   },
 ];
