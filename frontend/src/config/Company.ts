@@ -110,13 +110,13 @@ export const companyData: CompanyData[] = [
   {
     id: 'iban',
     nested: 'banking_information',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'bic',
     nested: 'banking_information',
-    required: true,
+    required: false,
     enabled: true,
   },
 ];

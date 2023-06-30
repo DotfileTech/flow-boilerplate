@@ -110,23 +110,27 @@
   "checks": {
     "id_verification": {
       "title": "Proof of identity",
-      "callout": "<p>Identity document (passport or ID card) must be valid.</p><p>For storage in Singapore, Toronto and New York, a passport is required.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>"
+      "callout": "Identity document (passport or ID card) must be valid.<br/><br/>For storage in Singapore, Toronto and New York, a passport is required.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     },
     "proof_of_address": {
       "title": "Proof of address",
-      "callout": "<p>Proof of address (utility bill) must be less than 3 months old.</p><p>Legible, non-truncated copy in PNG, JPG or PDF format.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>"
+      "description": "Proof of address (utility bill) must be less than 3 months old.",
+      "callout": "Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     },
     "articles_of_association": {
       "title": "Memorandum of association",
-      "callout": "<p>Memorandum of association (MoA) must be valid.</p><p>Legible, non-truncated copy in PNG, JPG or PDF format.</p>"
+      "description": "Memorandum of association (MoA) must be valid.",
+      "callout": "Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.</p>"
     },
     "bank_details": {
       "title": "Bank identity statement",
-      "callout": "<p>Bank identity statement (banking details) must be less than 3 months old.</p><p>Bank account verification ensures, by means of an official document from your bank, that you are the holder of the account used for your buying and selling transactions.</p><p>Legible, non-truncated copy in PNG, JPG or PDF format.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>"
+      "description": "Bank identity statement (banking details) must be less than 3 months old.",
+      "callout": "Bank account verification ensures, by means of an official document from your bank, that you are the holder of the account used for your buying and selling transactions.</p><p>Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     },
     "registration_certificate": {
       "title": "Registration certificate",
-      "callout": "<p>Registration certificate must be less than 3 months old.</p><p>Legible, non-truncated copy in PNG, JPG or PDF format.</p><p><br />Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a></p>"
+      "description": "Registration certificate must be less than 3 months old.",
+      "callout": "Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/<br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     }
   }
 }

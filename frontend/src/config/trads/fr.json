@@ -1,114 +1,117 @@
 {
-    "brand": {
-      "title": ""
-    },
-    "steps": {
-      "company_search": {
-        "title": "Aidez-nous à identifier votre entreprise",
-        "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
-        "name": {
-          "label": "Nom"
-        }
-      },
-      "company_list": {
-        "title": "Sélectionnez votre entreprise",
-        "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
-        "not_found": "Vous ne trouvez pas votre entreprise ?",
-        "no_result": "Aucun résultat",
-        "button": "Remplir les détails manuellement"
-      },
-      "company_edit": {
-        "title": "Vérifiez les informations de votre entreprise",
-        "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
-        "subtitle": {
-          "address": "Adresse",
-          "banking_information": "Compte bancaire"
-        },
-        "legal_form": {
-          "label": "Forme juridique"
-        },
-        "street_address": {
-          "label": "Adresse ligne 1 (Adresse de la rue)"
-        },
-        "street_address_2": {
-          "label": "Adresse ligne 2 (appartement, suite, unité, bâtiment, étage, etc.)"
-        },
-        "iban": {
-          "label": "IBAN/Numéro de compte"
-        }
-      },
-      "individual_edit": {
-        "title": "Vérifiez ou completez les informations",
-        "subtitle": {
-          "address": "Adresse",
-          "banking_information": "Compte bancaire"
-        },
-        "phone_number": {
-          "label": "Téléphone mobile"
-        },
-        "roles": {
-          "label": "Roles",
-          "options": {
-            "shareholder": "Actionnaire",
-            "legal_representative": "Dirigeant (président, directeur général, directeur financier, etc.)"
-          }
-        },
-        "ownership_percentage": {
-          "label": "Pourcentage de détention"
-        },
-        "position": {
-          "label": "Position"
-        },
-        "street_address": {
-          "label": "Adresse ligne 1 (Adresse de la rue)"
-        },
-        "street_address_2": {
-          "label": "Adresse ligne 2 (appartement, suite, unité, bâtiment, étage, etc.)"
-        },
-        "country": {
-          "label": "Pays de résidence"
-        }
-      },
-      "individuals_list": {
-        "title": "Vérifiez ou complétez les représentants légaux et bénéficiaires effectifs de votre entreprise",
-        "description": "<p>Veuillez vérifier la liste ci-dessous et supprimer les personnes qui ne sont pas représentants légaux et bénéficiaires effectifs.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
-        "missing_data": "A corriger",
-        "edit": "Éditer",
-        "delete": "Supprimer",
-        "add_individual": "Ajouter un individu",
-        "set_applicant": {
-        "label": "Parmi ces personnes, laquelle êtes-vous ?"
-        }
-      },
-      "checks_list": {
-        "title": "Aidez-nous à effectuer les vérifications nécessaires",
-        "description": "<p>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil.<br/>Notre équipe vous tiendra informé du résultat de la vérification.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
-        "copy": {
-          "label": "Copier le lien d'onboarding"
-        }
+  "brand": {
+    "title": ""
+  },
+  "steps": {
+    "company_search": {
+      "title": "Aidez-nous à identifier votre entreprise",
+      "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "name": {
+        "label": "Nom"
       }
     },
-    "checks": {
-      "id_verification": {
-        "title": "Pièce d'identité",
-        "callout": "<p>La pièce d'identité (passeport ou carte d'identité) doit être en cours de validité.</p><p><br />Pour le stockage à Singapour, Toronto et New York, un passeport est requis.</p><p><br/>Copie lisible, non tronquée, au format PNG, JPG ou PDF.</p>"
+    "company_list": {
+      "title": "Sélectionnez votre entreprise",
+      "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "not_found": "Vous ne trouvez pas votre entreprise ?",
+      "no_result": "Aucun résultat",
+      "button": "Remplir les détails manuellement"
+    },
+    "company_edit": {
+      "title": "Vérifiez les informations de votre entreprise",
+      "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "subtitle": {
+        "address": "Adresse",
+        "banking_information": "Compte bancaire"
       },
-      "proof_of_address": {
-        "title": "Justificatif de domicile",
-        "callout": "<p>Le justificatif de domicile (facture eau, électricité, gaz, téléphone) doit dater de moins de 3 mois.</p><p><br/>Copie lisible, non tronquée, au format PNG, JPG ou PDF.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>"
+      "legal_form": {
+        "label": "Forme juridique"
       },
-      "articles_of_association": {
-        "title": "Statuts de la société",
-        "callout": "<p>L’acte constitutif doit être en cours de validité.</p><p><br/>Copie lisible, non tronquée, au format PNG, JPG ou PDF.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>"
+      "street_address": {
+        "label": "Adresse ligne 1 (Adresse de la rue)"
       },
-      "bank_details": {
-        "title": "Coordonnées bancaires",
-        "callout": "<p>Le relevé d'identité bancaire (RIB) doit dater de moins de 3 mois.</p><p>La vérification du compte bancaire permet d'assurer, à l'aide d'un document officiel de votre banque, que vous êtes bien le titulaire du compte utilisé pour vos opérations d'achat et de vente.</p><p><br/>Copie lisible, non tronquée, au format PNG, JPG ou PDF.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>"
+      "street_address_2": {
+        "label": "Adresse ligne 2 (appartement, suite, unité, bâtiment, étage, etc.)"
       },
-      "registration_certificate": {
-        "title": "KBIS à jour",
-        "callout": "<p>Le certificat d'incorporation (KBIS) doit dater de moins de 3 mois.</p><p><br/>Copie lisible, non tronquée, au format PNG, JPG ou PDF.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>"
+      "iban": {
+        "label": "IBAN/Numéro de compte"
+      }
+    },
+    "individual_edit": {
+      "title": "Vérifiez ou completez les informations",
+      "subtitle": {
+        "address": "Adresse",
+        "banking_information": "Compte bancaire"
+      },
+      "phone_number": {
+        "label": "Téléphone mobile"
+      },
+      "roles": {
+        "label": "Roles",
+        "options": {
+          "shareholder": "Actionnaire",
+          "legal_representative": "Dirigeant (président, directeur général, directeur financier, etc.)"
+        }
+      },
+      "ownership_percentage": {
+        "label": "Pourcentage de détention"
+      },
+      "position": {
+        "label": "Position"
+      },
+      "street_address": {
+        "label": "Adresse ligne 1 (Adresse de la rue)"
+      },
+      "street_address_2": {
+        "label": "Adresse ligne 2 (appartement, suite, unité, bâtiment, étage, etc.)"
+      },
+      "country": {
+        "label": "Pays de résidence"
+      }
+    },
+    "individuals_list": {
+      "title": "Vérifiez ou complétez les représentants légaux et bénéficiaires effectifs de votre entreprise",
+      "description": "<p>Veuillez vérifier la liste ci-dessous et supprimer les personnes qui ne sont pas représentants légaux et bénéficiaires effectifs.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
+      "missing_data": "A corriger",
+      "edit": "Éditer",
+      "delete": "Supprimer",
+      "add_individual": "Ajouter un individu",
+      "set_applicant": {
+        "label": "Parmi ces personnes, laquelle êtes-vous ?"
+      }
+    },
+    "checks_list": {
+      "title": "Aidez-nous à effectuer les vérifications nécessaires",
+      "description": "<p>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil.<br/>Notre équipe vous tiendra informé du résultat de la vérification.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
+      "copy": {
+        "label": "Copier le lien d'onboarding"
       }
     }
+  },
+  "checks": {
+    "id_verification": {
+      "title": "Pièce d'identité",
+      "callout": "La pièce d'identité (passeport ou carte d'identité) doit être en cours de validité.<br/><br/>Pour le stockage à Singapour, Toronto et New York, un passeport est requis.<br/>Copie lisible, non tronquée, au format <b>PNG</b>,<b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
+    },
+    "proof_of_address": {
+      "title": "Justificatif de domicile",
+      "description": "Le justificatif de domicile (facture eau, électricité, gaz, téléphone) doit dater de moins de 3 mois.",
+      "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
+    },
+    "articles_of_association": {
+      "title": "Statuts de la société",
+      "description": "L’acte constitutif doit être en cours de validité.",
+      "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
+    },
+    "bank_details": {
+      "title": "Coordonnées bancaires",
+      "description": "Le relevé d'identité bancaire (RIB) doit dater de moins de 3 mois.",
+      "callout": "La vérification du compte bancaire permet d'assurer, à l'aide d'un document officiel de votre banque, que vous êtes bien le titulaire du compte utilisé pour vos opérations d'achat et de vente.<br/><br/>Copie lisible, non tronquée, au format <b>PNG</b>,<b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
+    },
+    "registration_certificate": {
+      "title": "KBIS à jour",
+      "description": "Le certificat d'incorporation (KBIS) doit dater de moins de 3 mois.",
+      "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
+    }
   }
-  
+}

@@ -1,1 +1,1 @@
-export const languages = ['fr', 'en', 'de', 'es', 'it', 'nl'];
+export const languages = ['fr', 'en', 'de'];
