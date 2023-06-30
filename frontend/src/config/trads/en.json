@@ -3,15 +3,9 @@
     "title": ""
   },
   "steps": {
-    "nationality": {
-      "title": "",
-      "nationality1": {
-        "label": "Principal nationality"
-      }
-    },
     "individual_edit": {
       "title": "Fill in your individual's details",
-      "description": "Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\">contact us</a>",
+      "description": "Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>",
       "first_name": {
         "label": "First name"
       },
@@ -34,7 +28,7 @@
         "label": "Email"
       },
       "phone_number": {
-        "label": "Mobile phone number"
+        "label": "Mobile phone"
       },
       "roles": {
         "label": "Roles",
@@ -57,16 +51,16 @@
         "label": "Social security number"
       },
       "iban": {
-        "label": "IBAN"
+        "label": "IBAN/Account number"
       },
       "bic": {
         "label": "BIC/SWIFT"
       },
       "street_address": {
-        "label": "Address line 1"
+        "label": "Address line 1 (street adress)"
       },
       "street_address_2": {
-        "label": "Address line 2"
+        "label": "Address line 2 (apartment, suite, unit, building, floor etc.)"
       },
       "postal_code": {
         "label": "Postal code"
@@ -77,6 +71,25 @@
       "country": {
         "label": "Country of residency"
       }
+    },
+    "checks_list": {
+      "description": "Submit supporting documents.<br/><br/>Please provide us with the following documents to help us verify your profile.<br/>Our team will  keep you informed of the result of the verification.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Proof of identity",
+      "description": "La pièce d'identité (passeport ou carte d'identité) doit être en cours de validité.",
+      "callout": "For storage in Singapore, Toronto and New York, a passport is required.<br/>Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
+    },
+    "bank_details": {
+      "title": "Bank identity statement",
+      "description": "Bank identity statement (banking details) must be less than 3 months old.",
+      "callout": "Bank account verification ensures, by means of an official document from your bank, that you are the holder of the account used for your buying and selling transactions.<br/>Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
+    },
+    "proof_of_address": {
+      "description": "Proof of address (utility bill) must be less than 3 months old.",
+      "callout": "Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     }
   }
 }

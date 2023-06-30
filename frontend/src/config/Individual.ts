@@ -51,7 +51,7 @@ export const individualData: IndividualData[] = [
     id: 'birth_country',
     type: 'country',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'ownership_percentage',
@@ -121,13 +121,13 @@ export const individualData: IndividualData[] = [
   {
     id: 'iban',
     nested: 'banking_information',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'bic',
     nested: 'banking_information',
-    required: true,
+    required: false,
     enabled: true,
   },
 ];

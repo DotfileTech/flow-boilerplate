@@ -1,22 +1,44 @@
 {
-    "brand": {
-      "title": ""
-    },
-    "steps": {
-      "nationality": {
-        "title": "",
-        "nationality1": {
-          "label": "Hauptstaatsangehörigkeit"
-        }
+  "brand": {
+    "title": ""
+  },
+  "steps": {
+    "individual_edit": {
+      "title": "Füllen Sie Ihre persönlichen Daten aus",
+      "description": "Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>",
+      "country": {
+        "label": "Wohnsitzland"
       },
-      "individual_edit": {
-        "title": "Füllen Sie Ihre persönlichen Daten aus",
-        "description": "Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\">kontaktieren Sie uns.</a>",
-        "country": {
-          "label": "Land des Wohnsitzes"
-        }
+      "street_address": {
+        "label": "Adresszeile 1 (Straße und Hausnummer)"
+      },
+      "street_address_2": {
+        "label": "Adresszeile 2 (Appartement, Wohnungsnr., Gebäude, Etage etc.)"
+      },
+      "iban": {
+        "label": "IBAN/Kontonummer"
+      },
+      "phone_number": {
+        "label": "Mobiltelefonnummer"
       }
+    },
+    "checks_list": {
+      "description": "Nachweisdokumente hochladen.<br/><br/>Bitte laden Sie die folgenden Dokumente hoch, um uns bei der Bestätigung Ihres Profils zu helfen<br/>Unser Team wird sie über das Ergebnis informieren.<br/><br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
+    }
+  },
+  "checks": {
+    "id_document": {
+      "description": "Der Identitätsnachweis (Reisepass oder Personalausweis) muss aktuell gültig sein.",
+      "callout": "Für die Lagerung in Singapur, Toronto und New York ist ein Reisepass erforderlich.<br/>Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b> format.<br/><br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
+    },
+    "bank_details": {
+      "title": "Bankkonto",
+      "description": "Der Nachweis über die Bankverbindung darf nicht älter als 3 Monate sein.",
+      "callout": "Durch die Prüfung der Bankverbindung mit Hilfe eines offiziellen Dokuments Ihrer Bank stellen wir sicher, dass Sie der Inhaber des Kontos sind, welches für Kauf- und Verkaufstransaktionen verwendet wird.<br/>Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b> format.<br/><br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
+    },
+    "proof_of_address": {
+      "description": "Der Adressnachweis (Wasser-, Strom-, Gas-, Telefonrechnung) darf nicht älter als 3 Monate sein.",
+      "callout": "Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b> format.<br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
     }
   }
-  
-  
+}

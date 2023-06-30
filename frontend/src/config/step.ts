@@ -15,14 +15,4 @@ export const stepsConfig: {
   {
     key: 'individual_edit',
   },
-  {
-    key: 'nationality',
-    fields: [
-      {
-        id: 'nationality1',
-        type: 'country',
-        isRequired: true,
-      },
-    ],
-  },
 ];

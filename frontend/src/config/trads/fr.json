@@ -3,19 +3,48 @@
     "title": ""
   },
   "steps": {
-    "nationality": {
-      "title": "",
-      "nationality1": {
-        "label": "Nationalité principale"
-      }
-    },
     "individual_edit": {
       "title": "Complétez vos informations personnelles",
-      "description": "Besoin d'aide? n'hésitez pas à <a href=\"https://goldbroker.com/contact\">nous contacter</a>",
+      "description": "Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
       "country": {
         "label": "Pays de résidence"
+      },
+      "phone_number": {
+        "label": "Téléphone mobile"
+      },
+      "street_address": {
+        "label": "Adresse ligne 1 (Adresse de la rue)"
+      },
+      "street_address_2": {
+        "label": "Adresse ligne 2 (appartement, suite, unité, bâtiment, étage, etc.)"
+      },
+      "iban": {
+        "label": "IBAN/Numéro de compte"
       }
+    },
+    "checks_list": {
+      "title": "Aidez-nous à effectuer les vérifications nécessaires",
+      "description": "Soumettre les documents justificatifs.<br/><br/>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil. <br/> Notre équipe vous informera du résultat de ces vérifications.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "copy": {
+        "label": "Copier le lien d'onboarding"
+      }
+    }
+  },
+  "checks": {
+    "id_document": {
+      "title": "Justificatif d’identité",
+      "description": "La pièce d'identité (passeport ou carte d'identité) doit être en cours de validité.",
+      "callout": "Pour le stockage à Singapour, Toronto et New York, un passeport est requis.<br/>Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
+    },
+    "bank_details": {
+      "title": "Relevé d’identité bancaire (RIB)",
+      "description": "Le relevé d'identité bancaire (RIB) doit dater de moins de 3 mois.",
+      "callout": "La vérification du compte bancaire permet d'assurer, à l'aide d'un document officiel de votre banque, que vous êtes bien le titulaire du compte utilisé pour vos opérations d'achat et de vente.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
+    },
+    "proof_of_address": {
+      "title": "Justificatif de domicile",
+      "description": "Le justificatif de domicile (facture eau, électricité, gaz, téléphone) doit dater de moins de 3 mois.",
+      "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     }
   }
 }
-
