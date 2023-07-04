@@ -320,12 +320,12 @@ class DotfileController {
     }
   };
 
-  public getCases = async (req: Request, res: Response) => {
+  public getCaseByExternalId = async (req: Request, res: Response) => {
     try {
       const cases: GetCasesResponse = await this.dotfileApi.request(
         'get',
         `cases`,
-        { external_id: req.query.externalId },
+        { external_id: req.params.externalId },
         {},
         {}
       );
@@ -340,10 +340,10 @@ class DotfileController {
           message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
         });
       } else {
-        console.error('[getCases] Unexpected error: ', error);
+        console.error('[getCaseByExternalId] Unexpected error: ', error);
         res.status(400).send({
           type: 'error',
-          message: '[getCases] An unexpected error occurred',
+          message: '[getCaseByExternalId] An unexpected error occurred',
         });
       }
     }
@@ -415,40 +415,6 @@ class DotfileController {
         res.status(400).send({
           type: 'error',
           message: '[fetchCase] An unexpected error occurred',
-        });
-      }
-    }
-  };
-
-  public fetchCheck = async (req: Request, res: Response) => {
-    try {
-      const { checkId, type } = req.body;
-
-      const check = await this.dotfileApi.request(
-        'get',
-        `checks/${type}/${checkId}`,
-        {},
-        {},
-        {}
-      );
-
-      res.status(200).json({
-        url: check.data.vendor.verification_url,
-      });
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(
-          `[${error.request.path}] Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`
-        );
-        res.status(error.response.status).send({
-          type: 'error',
-          message: `Error ${error.response.status} (${error.response.statusText}): ${error.response.data.message}`,
-        });
-      } else {
-        console.error('[fetchCheck] Unexpected error: ', error);
-        res.status(400).send({
-          type: 'error',
-          message: '[fetchCheck] An unexpected error occurred',
         });
       }
     }

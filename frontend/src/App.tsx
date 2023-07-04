@@ -47,7 +47,9 @@ const AppContent = () => {
   async function fetchMyAPI() {
     const externalId = searchParams.get('externalId');
     if (externalId) {
-      const response = await api.get(`/dotfile/cases?externalId=${externalId}`);
+      const response = await api.get(
+        `/dotfile/cases/external-id/${externalId}`
+      );
 
       if (response.data.id) {
         setCaseId(response.data.id);

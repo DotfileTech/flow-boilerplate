@@ -15,8 +15,6 @@ class PublicApiRoute implements Routes {
   private initializeRoutes() {
     this.router.use(express.json());
 
-    // this.router.use(rateLimiterMiddleware, bearerCheck)
-
     this.router.get(
       `${this.path}companies`,
       this.dotfileController.searchCompanies
@@ -29,11 +27,12 @@ class PublicApiRoute implements Routes {
 
     this.router.post(`${this.path}cases`, this.dotfileController.createCase);
 
-    this.router.get(`${this.path}cases`, this.dotfileController.getCases);
+    this.router.get(
+      `${this.path}cases/external-id/:externalId`,
+      this.dotfileController.getCaseByExternalId
+    );
 
     this.router.get(`${this.path}cases/:id`, this.dotfileController.fetchCase);
-
-    this.router.post(`${this.path}checks`, this.dotfileController.fetchCheck);
 
     this.router.post(
       `${this.path}documents`,
