@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import FormData from 'form-data';
 import axios from 'axios';
+import 'reflect-metadata';
+import { plainToClass } from 'class-transformer';
 
 import Dotfile from '../api/dotfile.api';
 import {
@@ -15,6 +17,8 @@ import {
 } from '../types';
 import { IndividualRoleEnum } from '../constants';
 import { templateMapping } from '../config/template-mapping';
+import { CaseDetailedDTO } from './dto/case-detailed.dto';
+import { CheckDTO } from './dto/check.dto';
 
 type GetCasesResponse = {
   data: Case[];
@@ -329,7 +333,14 @@ class DotfileController {
         {},
         {}
       );
-      res.status(200).json(cases.data[0]);
+
+      if (cases.data.length > 0) {
+        res.status(200).json({
+          caseId: cases.data[0].id,
+        });
+      } else {
+        res.status(200).json({ caseId: null });
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(
@@ -400,7 +411,11 @@ class DotfileController {
       caseData.companies = enrichedCompanies;
       caseData.individuals = enrichedIndividuals;
 
-      res.status(200).json(caseData);
+      const caseDetailedDTO = plainToClass(CaseDetailedDTO, caseData, {
+        excludeExtraneousValues: true,
+      });
+
+      res.status(200).json(caseDetailedDTO);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(
@@ -443,7 +458,11 @@ class DotfileController {
         {}
       );
 
-      res.status(200).json(completedChecks);
+      const checkDTO = plainToClass(CheckDTO, completedChecks, {
+        excludeExtraneousValues: true,
+      });
+
+      res.status(200).json(checkDTO);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(
@@ -490,7 +509,13 @@ class DotfileController {
         {}
       );
 
-      res.status(200).json(completedChecks);
+      const checkDTO = plainToClass(CheckDTO, completedChecks, {
+        excludeExtraneousValues: true,
+      });
+      console.log(completedChecks);
+      console.log(checkDTO);
+
+      res.status(200).json(checkDTO);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(

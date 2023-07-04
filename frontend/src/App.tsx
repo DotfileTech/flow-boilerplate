@@ -51,8 +51,8 @@ const AppContent = () => {
         `/dotfile/cases/external-id/${externalId}`
       );
 
-      if (response.data.id) {
-        setCaseId(response.data.id);
+      if (response.data.caseId) {
+        setCaseId(response.data.caseId);
         // checks_list step
         setStep(0);
       } else {
