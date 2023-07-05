@@ -9,5 +9,5 @@ export const sidebarColors = {
 };
 
 export const linkColors = {
-  color: '#0176FF',
+  color: '#0C151A',
 };
