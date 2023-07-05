@@ -28,8 +28,8 @@ export const individualData: IndividualData[] = [
     // This field is mandatory to create an individual with the "applicant" role
     id: 'email',
     type: 'email',
-    required: false,
-    enabled: false,
+    required: true,
+    enabled: true,
   },
   {
     // This field is mandatory to create an individual in a KYB
