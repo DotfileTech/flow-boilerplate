@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Heading, Input, Box } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useFormContext } from 'react-hook-form';
@@ -18,7 +19,16 @@ const IndividualForm = (props: IndividualFormProps) => {
   const { isApplicant } = props;
 
   const { t } = useTranslation();
-  const { control, setValue, getValues } = useFormContext();
+  const { control, setValue, getValues, setError } = useFormContext();
+
+  useEffect(() => {
+    if (isApplicant && !getValues('email')) {
+      setError('email', {
+        type: 'manual',
+        message: "Please add applicant's email to continue",
+      });
+    }
+  }, [setError, isApplicant, getValues]);
 
   return (
     <>

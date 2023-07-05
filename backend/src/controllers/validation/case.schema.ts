@@ -44,7 +44,8 @@ export const caseSchema = z.object({
       name: true,
       registration_number: true,
       country: true,
-    }),
+    })
+    .optional(),
   individuals: z
     .object({
       roles: z.nativeEnum(IndividualRoleEnum).optional().array(),
@@ -87,7 +88,7 @@ export const caseSchema = z.object({
       last_name: true,
     })
     .array(),
-  metadata: z.record(z.string(), z.string().or(z.boolean()).nullish()),
+  metadata: z.record(z.string(), z.any().nullish()),
   email: z.string().email().nullish(),
   externalId: z.string().nullish(),
   templateId: z.string().uuid().nullish(),
