@@ -3,6 +3,14 @@ import { CaseFlagEnum } from '../../constants';
 import { CompanyDTO } from './company.dto';
 import { IndividualDTO } from './individual.dto';
 
+class CaseMetadataDTO {
+  @Expose()
+  locale: string;
+
+  @Expose()
+  email: string;
+}
+
 export class CaseDetailedDTO {
   @Expose()
   flags: CaseFlagEnum[];
@@ -14,4 +22,8 @@ export class CaseDetailedDTO {
   @Expose()
   @Type(() => CompanyDTO)
   companies: CompanyDTO[];
+
+  @Expose()
+  @Type(() => CaseMetadataDTO)
+  metadata: CaseMetadataDTO;
 }
