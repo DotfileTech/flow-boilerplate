@@ -4,7 +4,7 @@ export const brandColors = {
 };
 
 export const sidebarColors = {
-  backgroundColor: 'linear-gradient(134.97deg, #075ED2 -9.42%, #007FFB 84.86%)',
+  backgroundColor: '#0176FF',
   color: '#ffffff',
 };
 
