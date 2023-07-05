@@ -8,6 +8,7 @@ import { Field } from '../types';
 import CountrySelect from '../components/form/CountrySelect';
 import { GroupController } from './form/group-controller';
 import { PhoneNumberInput } from './form/phone-number-input';
+import { IndividualRoleEnum } from '../constants';
 
 type IndividualFormProps = {
   isApplicant: boolean;
@@ -17,7 +18,7 @@ const IndividualForm = (props: IndividualFormProps) => {
   const { isApplicant } = props;
 
   const { t } = useTranslation();
-  const { control, setValue } = useFormContext();
+  const { control, setValue, getValues } = useFormContext();
 
   return (
     <>
@@ -200,7 +201,10 @@ const IndividualForm = (props: IndividualFormProps) => {
                   : null
               }
               isRequired={
-                field.required || (field.id === 'email' && isApplicant)
+                field.required ||
+                (field.id === 'email' &&
+                  (isApplicant ||
+                    getValues('roles').includes(IndividualRoleEnum.applicant)))
               }
               control={control}
               render={(f) => {

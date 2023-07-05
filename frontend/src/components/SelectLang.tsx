@@ -19,6 +19,7 @@ const SelectLang = () => {
     <Select
       border="0"
       color="sidebar.color"
+      bg="sidebar.backgroundColor"
       variant="flushed"
       value={selectedLang}
       onChange={changeHandler}

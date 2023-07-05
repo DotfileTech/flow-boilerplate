@@ -3,6 +3,7 @@ import FormData from 'form-data';
 import axios from 'axios';
 import 'reflect-metadata';
 import { plainToClass } from 'class-transformer';
+import { z } from 'zod';
 
 import Dotfile from '../api/dotfile.api';
 import {
@@ -19,6 +20,7 @@ import { IndividualRoleEnum } from '../constants';
 import { templateMapping } from '../config/template-mapping';
 import { CaseDetailedDTO } from './dto/case-detailed.dto';
 import { CheckDTO } from './dto/check.dto';
+import { caseSchema } from './validation/case.schema';
 
 type GetCasesResponse = {
   data: Case[];
@@ -67,6 +69,33 @@ class DotfileController {
   };
 
   public searchCompanies = async (req: Request, res: Response) => {
+    const inputSchema = z
+      .object({
+        country: z.string().length(2),
+        name: z.string().optional(),
+        registration_number: z.string().optional(),
+      })
+      .required({
+        country: true,
+      })
+      .refine((input) => !!input.name || !!input.registration_number);
+
+    const validation = inputSchema.safeParse(req.query);
+
+    if (!validation.success) {
+      console.error(
+        `[searchCompanies] Validation failed: `,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        validation.error.issues
+      );
+      res.status(400).json({
+        type: 'BAD_REQUEST',
+        message: '[searchCompanies] Validation failed',
+      });
+      return;
+    }
+
     try {
       const { country, name, registration_number } = req.query;
 
@@ -108,6 +137,26 @@ class DotfileController {
   };
 
   public fetchCompany = async (req: Request, res: Response) => {
+    const inputSchema = z.object({
+      id: z.string(),
+    });
+
+    const validation = inputSchema.safeParse(req.params);
+
+    if (!validation.success) {
+      console.error(
+        `[fetchCompany] Validation failed: `,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        validation.error.issues
+      );
+      res.status(400).json({
+        type: 'BAD_REQUEST',
+        message: '[fetchCompany] Validation failed',
+      });
+      return;
+    }
+
     try {
       const company: CompanyData = await this.dotfileApi.request(
         'get',
@@ -138,6 +187,22 @@ class DotfileController {
   };
 
   public createCase = async (req: Request, res: Response) => {
+    const validation = caseSchema.safeParse(req.body);
+
+    if (!validation.success) {
+      console.error(
+        `[createCase] Validation failed: `,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        validation.error.issues
+      );
+      res.status(400).json({
+        type: 'BAD_REQUEST',
+        message: '[createCase] Validation failed',
+      });
+      return;
+    }
+
     try {
       const {
         company,
@@ -325,6 +390,26 @@ class DotfileController {
   };
 
   public getCaseByExternalId = async (req: Request, res: Response) => {
+    const inputSchema = z.object({
+      externalId: z.string(),
+    });
+
+    const validation = inputSchema.safeParse(req.params);
+
+    if (!validation.success) {
+      console.error(
+        `[getCaseByExternalId] Validation failed: `,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        validation.error.issues
+      );
+      res.status(400).json({
+        type: 'BAD_REQUEST',
+        message: '[getCaseByExternalId] Validation failed',
+      });
+      return;
+    }
+
     try {
       const cases: GetCasesResponse = await this.dotfileApi.request(
         'get',
@@ -361,6 +446,23 @@ class DotfileController {
   };
 
   public fetchCase = async (req: Request, res: Response) => {
+    const inputSchema = z.object({
+      id: z.string().uuid(),
+    });
+
+    const validation = inputSchema.safeParse(req.params);
+
+    if (!validation.success) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      console.error(`[fetchCase] Validation failed: `, validation.error.issues);
+      res.status(400).json({
+        type: 'BAD_REQUEST',
+        message: '[fetchCase] Validation failed',
+      });
+      return;
+    }
+
     try {
       const caseData: CaseDetailed = await this.dotfileApi.request(
         'get',
@@ -512,8 +614,6 @@ class DotfileController {
       const checkDTO = plainToClass(CheckDTO, completedChecks, {
         excludeExtraneousValues: true,
       });
-      console.log(completedChecks);
-      console.log(checkDTO);
 
       res.status(200).json(checkDTO);
     } catch (error) {

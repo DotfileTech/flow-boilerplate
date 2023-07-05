@@ -86,9 +86,12 @@ const IndividualsList = (props: IndividualsListProps) => {
     const updatedIndividuals = individuals.map(
       (individual: Individual, index: number) => {
         if (individualNumber === index.toString()) {
+          const roles = individual.roles.includes(IndividualRoleEnum.applicant)
+            ? [...individual.roles]
+            : [...individual.roles, IndividualRoleEnum.applicant];
           return {
             ...individual,
-            roles: [...individual.roles, IndividualRoleEnum.applicant],
+            roles,
           };
         }
         return {
