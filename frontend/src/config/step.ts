@@ -19,31 +19,31 @@ export const stepsConfig: {
     key: 'about_you',
     fields: [
       {
-        id: 'company',
+        id: 'Your company',
         isRequired: false,
         hasHelper: true,
       },
       {
-        id: 'asset',
+        id: 'Personal assets',
         type: 'number',
         isRequired: true,
         hasHelper: true,
       },
       {
-        id: 'income',
+        id: 'Personal income',
         type: 'number',
         isRequired: true,
         hasHelper: true,
       },
       {
-        id: 'pep',
+        id: 'Are you considered as a PEP?',
         type: 'radio',
         isRequired: true,
         hasHelper: true,
         options: ['yes', 'no'],
       },
       {
-        id: 'us_person',
+        id: 'Are you, or any beneficial owner of the company, a US Person?',
         type: 'radio',
         isRequired: true,
         hasHelper: true,
@@ -55,23 +55,23 @@ export const stepsConfig: {
     key: 'payment_details',
     fields: [
       {
-        id: 'funds',
+        id: 'What should we do with the funds you receive on Nilos?',
         type: 'select',
         isRequired: true,
         hasHelper: true,
         options: ['Any crypto received with Nilos has to be automatically exchanged into FIAT and transferred to the bank account below','Any crypto received with Nilos has to be automatically transferred to an external wallet I will communicate to Nilos'],
       },
       {
-        id: 'iban',
+        id: 'IBAN / Account number',
         isRequired: true,
         hasHelper: true,
       },
       {
-        id: 'bic',
+        id: 'BIC / SWIFT',
         isRequired: true,
       },
       {
-        id: 'currency',
+        id: 'Currency',
         type: 'select',
         isRequired: true,
         hasHelper: true,
