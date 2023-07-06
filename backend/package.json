@@ -8,7 +8,7 @@
     "start": "node .",
     "dev": "nodemon",
     "prod": "node ./dist/index.js",
-    "build": "npm install && tsc -p . && cp -r src/mailer/templates dist/services"
+    "build": "npm install && tsc -p . && cp -r src/mailer/templates dist/mailer"
   },
   "engines": {
     "node": "^16.x"

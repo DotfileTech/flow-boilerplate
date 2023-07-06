@@ -19,14 +19,13 @@ const SelectLang = () => {
     <Select
       border="0"
       color="sidebar.color"
-      bg="sidebar.backgroundColor"
       variant="flushed"
       value={selectedLang}
       onChange={changeHandler}
       name="lang"
     >
       {languages.map((language: string, i: number) => (
-        <option key={i} value={language}>
+        <option key={i} value={language} color="inherit">
           {t(`domain.languages.${language}`)}
         </option>
       ))}

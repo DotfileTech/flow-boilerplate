@@ -6,16 +6,16 @@
     "description1": "Su",
     "description2": "ha sido rechazado",
     "comment": "por la siguiente razón:",
-    "cta": "Continuar con un nuevo chequeo",
+    "cta": "Continuar con un nuevo comprobación",
     "fallbackLink": "¿El botón no funciona? Pruebe a copiar este enlace en su navegador:"
   },
   "checkStarted": {
     "subject": "Por favor revise su información",
     "title": "",
     "subtitle": "Por favor revise su información",
-    "description1": "Tiene un nuevo check",
+    "description1": "Tiene un nuevo comprobación",
     "description2": "para completar.",
-    "cta": "Completar el nuevo cheque",
+    "cta": "Completar el nuevo comprobación",
     "fallbackLink": "¿El botón no funciona? Pruebe a copiar este enlace en su navegador:"
   },
   "footer": {
