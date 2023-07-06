@@ -50,15 +50,15 @@
     "nilos_account": {
       "title": "Your Nilos account",
       "description": "Tell us about how you will use your Nilos account.",
-      "company_website": {
+      "Company website": {
         "label": "Your company website",
         "helper": "Please provide the URL of your company's website"
       },
-      "company_operational_address": {
+      "Company operational address": {
         "label": "Your company operational address",
         "helper": "Only fill this field if your operational address is different from the official headquarter address"
       },
-      "company_activity": {
+      "Company activity": {
         "label": "Your company activity",
         "helper": "Please explain in a few words what your company does and how it is connected to cryptocurrencies",
         "options": {
@@ -86,30 +86,30 @@
           "Activities of extraterritorial organizations and bodies": "Activities of extraterritorial organizations and bodies"
         }
       },
-      "last_year_turnover": {
+      "Last year turnover": {
         "label": "Last year turnover",
         "helper": "In euros - Please enter the amount your company's turnover on 2022"
       },
-      "company_assets": {
+      "Company assets": {
         "label": "Company assets",
         "helper": "In euros - Please mention how much are evaluated the assets owned by the company"
       },
-      "source_of_funds": {
+      "Source of funds": {
         "label": "Source of funds",
         "helper": "Please provide an explanation of the anticipated source of the cryptos you will receive on your Nilos account"
       },
-      "estimate_deposit_monthly": {
+      "Estimated generated deposits on Nilos account (monthly)": {
         "label": "Estimated generated deposits on your Nilos account (monthly)",
         "helper": "In euros"
       },
-      "monthly_fiat_transactions": {
+      "Expected monthly outgoing FIAT transactions": {
         "label": "Expected monthly outgoing FIAT transactions",
         "helper": "In euros"
       },
-      "phone": {
+      "Phone": {
         "label": "Your phone number"
       },
-      "are_you_a_pep": {
+      "Are you, or any beneficial owner of the company, considered as a PEP?": {
         "label": "Are you, or any beneficial owner of the company, considered as a PEP?",
         "helper": "A politically exposed person (PEP) is an individual with a high profile political role, or someone who has been entrusted with a prominent public function",
         "options": {
@@ -117,7 +117,7 @@
           "no": "No"
         }
       },
-      "are_you_a_us_person": {
+      "Are you, or any beneficial owner of the company, a US Person?": {
         "label": "Are you, or any beneficial owner of the company, a US Person?",
         "helper": "A \"U.S. person\" is any citizen of the United States (including a person born in the United States who resides abroad and who has not renounced his American citizenship); any legal resident of the United States (including a US green card holder); and any permanent resident of the United States.",
         "options": {
