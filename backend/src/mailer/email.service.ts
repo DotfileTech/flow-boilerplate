@@ -47,7 +47,7 @@ class EmailService {
     },
     context: {
       link: string;
-      appLogoUrl: string;
+      logoUrl: string;
       checkTitle: string;
       comment?: string;
     },
@@ -70,6 +70,10 @@ class EmailService {
           defaultLayout: options.template,
           helpers: {
             translate: function (str) {
+              if (str.includes('.')) {
+                const keys = str.split('.');
+                return trads[defaultLocale][keys[0]][keys[1]];
+              }
               return trads[defaultLocale][str];
             },
           },
@@ -82,7 +86,7 @@ class EmailService {
     const message = {
       from: process.env.EMAIL_FROM,
       to: email,
-      subject: trads[defaultLocale]['titleValue'],
+      subject: trads[defaultLocale][options.subject]['subject'],
       // text: 'Plaintext version of the message',
       template: options.template,
       context,

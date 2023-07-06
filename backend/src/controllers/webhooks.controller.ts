@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { createHmac } from 'crypto';
-import EmailService from '../services/email.service';
+import EmailService from '../mailer/email.service';
 import Dotfile from '../api/dotfile.api';
 import { Check } from '../types';
 import {
@@ -82,13 +82,13 @@ class WebhooksController {
           email,
           {
             template: emails[0].template,
-            subject: 'New document check',
+            subject: 'checkStarted',
             message: '',
           },
           {
             link: `${process.env.APP_URL}/?caseId=${caseId}`,
-            appLogoUrl: process.env.LOGO_URL,
-            checkTitle: exactType(check),
+            logoUrl: process.env.LOGO_URL,
+            checkTitle: `document.${exactType(check)}`,
           },
           locale
         );
@@ -102,13 +102,13 @@ class WebhooksController {
               email,
               {
                 template: emails[1].template,
-                subject: 'Document rejected',
+                subject: 'checkRejected',
                 message: '',
               },
               {
                 link: `${process.env.APP_URL}/?caseId=${caseId}`,
-                appLogoUrl: process.env.LOGO_URL,
-                checkTitle: exactType(check),
+                logoUrl: process.env.LOGO_URL,
+                checkTitle: `document.${exactType(check)}`,
                 comment: check.data.review.comment,
               },
               locale

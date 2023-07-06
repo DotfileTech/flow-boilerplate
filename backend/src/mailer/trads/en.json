@@ -1,0 +1,43 @@
+{
+  "checkRejected": {
+    "subject": "Please review your information",
+    "title": "",
+    "subtitle": "Please review your information",
+    "description1": "Your",
+    "description2": "has been rejected",
+    "comment": "for the following reason:",
+    "cta": "Proceed to a new check",
+    "fallbackLink": "Button not working? Try pasting this link in to your browser:"
+  },
+  "checkStarted": {
+    "subject": "Please review your information",
+    "title": "",
+    "subtitle": "Please review your information",
+    "description1": "You have a new",
+    "description2": "check to complete",
+    "cta": "Complete the new check",
+    "fallbackLink": "Button not working? Try pasting this link in to your browser:"
+  },
+  "footer": {
+    "baseline": "All-in-one platform for customer verification",
+    "questions": "If you have any questions please contact us"
+  },
+  "document": {
+    "id_document": "Identity document",
+    "id_verification": "Identity Verification",
+    "proof_of_address": "Proof of address",
+    "driving_license": "Driver's license",
+    "social_security_card": "Social security card",
+    "ubo_registry_extract": "Ultimate beneficial owner certificate",
+    "articles_of_association": "Articles of association",
+    "registration_certificate": "Certificate of registration",
+    "financial_statements": "Financial statements",
+    "bank_details": "Bank details",
+    "proof_of_insurance": "Proof of insurance",
+    "visa": "Visa",
+    "birth_certificate": "Birth certificate",
+    "vehicle_registration_certificate": "Vehicle registration certificate",
+    "criminal_record_extract": "Criminal record extract",
+    "tax_notice": "Tax notice"
+  }
+}

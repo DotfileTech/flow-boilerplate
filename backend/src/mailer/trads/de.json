@@ -1,0 +1,43 @@
+{
+  "checkRejected": {
+    "subject": "Bitte überprüfen Sie Ihre Angaben",
+    "title": "",
+    "subtitle": "Bitte überprüfen Sie Ihre Angaben",
+    "description1": "Ihr",
+    "description2": "wurde abgelehnt",
+    "comment": "aus folgendem Grund:",
+    "cta": "Weiter zum neuen Check",
+    "fallbackLink": "Funktioniert der Button nicht? Versuchen Sie, diesen Link in Ihren Browser einzufügen:"
+  },
+  "checkStarted": {
+    "subject": "Bitte überprüfen Sie Ihre Angaben",
+    "title": "",
+    "subtitle": "Bitte überprüfen Sie Ihre Angaben",
+    "description1": "Sie haben einen neuen",
+    "description2": "check zum Ausfüllen.",
+    "cta": "Den neuen Check ausfüllen",
+    "fallbackLink": "Funktioniert der Button nicht? Versuchen Sie, diesen Link in Ihren Browser einzufügen:"
+  },
+  "footer": {
+    "baseline": "All-in-one platform for customer verification",
+    "questions": "Wenn sie fragen haben, kontaktieren sie uns bitte"
+  },
+  "document": {
+    "id_document": "Identitätsnachweis",
+    "id_verification": "Identitätsprüfung",
+    "proof_of_address": "Wohnsitzbescheinigung",
+    "driving_license": "Führerschein",
+    "social_security_card": "Krankenversicherungskarte",
+    "ubo_registry_extract": "Bescheinigung des wirtschaftlich Berechtigten",
+    "articles_of_association": "Gesellschaftsvertrag",
+    "registration_certificate": "Handelsregister",
+    "financial_statements": "Financial statements",
+    "bank_details": "Bank details",
+    "proof_of_insurance": "Proof of insurance",
+    "visa": "Visa",
+    "birth_certificate": "Birth certificate",
+    "vehicle_registration_certificate": "Vehicle registration certificate",
+    "criminal_record_extract": "Criminal record extract",
+    "tax_notice": "Tax notice"
+  }
+}

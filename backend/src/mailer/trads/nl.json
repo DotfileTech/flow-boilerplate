@@ -1,0 +1,43 @@
+{
+  "checkRejected": {
+    "subject": "Controleer uw gegevens",
+    "title": "",
+    "subtitle": "Controleer uw gegevens",
+    "description1": "Uw",
+    "description2": "is afgewezen",
+    "comment": "om de volgende reden:",
+    "cta": "Ga verder met een nieuwe controle",
+    "fallbackLink": "Werkt de knop niet? Probeer deze link in uw browser te plakken:"
+  },
+  "checkStarted": {
+    "subject": "Controleer uw gegevens",
+    "title": "",
+    "subtitle": "Controleer uw gegevens",
+    "description1": "Je hebt een nieuwe",
+    "description2": "controle om in te vullen.",
+    "cta": "Voltooi de nieuwe controle",
+    "fallbackLink": "Werkt de knop niet? Probeer deze link in uw browser te plakken:"
+  },
+  "footer": {
+    "baseline": "All-in-one platform for customer verification",
+    "questions": "Als u vragen heeft, neem dan contact met ons op"
+  },
+  "document": {
+    "id_document": "Identiteitsbewijs",
+    "id_verification": "Identiteit verificatie",
+    "proof_of_address": "bewijs van verblijf",
+    "driving_license": "Rijbewijs",
+    "social_security_card": "Vitale kaart",
+    "ubo_registry_extract": "Certificaat uiteindelijk gerechtigden",
+    "articles_of_association": "Statuten",
+    "registration_certificate": "KVK/KBO - uittreksel",
+    "financial_statements": "Financial statements",
+    "bank_details": "Bank details",
+    "proof_of_insurance": "Proof of insurance",
+    "visa": "Visa",
+    "birth_certificate": "Birth certificate",
+    "vehicle_registration_certificate": "Vehicle registration certificate",
+    "criminal_record_extract": "Criminal record extract",
+    "tax_notice": "Tax notice"
+  }
+}

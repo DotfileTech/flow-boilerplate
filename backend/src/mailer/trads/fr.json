@@ -1,0 +1,43 @@
+{
+  "checkRejected": {
+    "subject": "Veuillez vérifier vos informations",
+    "title": "",
+    "subtitle": "Veuillez vérifier vos informations",
+    "description1": "Votre",
+    "description2": "a été refusé",
+    "comment": "pour la raison suivante :",
+    "cta": "Lancer une nouvelle vérification",
+    "fallbackLink": "Le bouton ne fonctionne pas ? Essayez de copier ce lien dans votre navigateur :"
+  },
+  "checkStarted": {
+    "subject": "Veuillez vérifier vos informations",
+    "title": "",
+    "subtitle": "Veuillez vérifier vos informations",
+    "description1": "Vous avez un nouveau check",
+    "description2": "à compléter",
+    "cta": "Compléter la nouvelle vérification",
+    "fallbackLink": "Le bouton ne fonctionne pas ? Essayez de copier ce lien dans votre navigateur :"
+  },
+  "footer": {
+    "baseline": "All-in-one platform for customer verification",
+    "questions": "Si vous avez des questions, contactez-nous"
+  },
+  "document": {
+    "id_document": "Document d'identité",
+    "id_verification": "Vérification d'identité",
+    "proof_of_address": "Justificatif de domicile",
+    "driving_license": "Permis de conduire",
+    "social_security_card": "Carte Vitale",
+    "ubo_registry_extract": "Déclaration des bénéficiaires effectifs",
+    "articles_of_association": "Statuts de la société",
+    "registration_certificate": "KBIS à jour",
+    "financial_statements": "Etats financier",
+    "bank_details": "Coordonnées bancaires",
+    "proof_of_insurance": "Justificatif d'assurance",
+    "visa": "Visa",
+    "birth_certificate": "Certificat de naissance",
+    "vehicle_registration_certificate": "Carte grise",
+    "criminal_record_extract": "Extrait de casier judiciaire",
+    "tax_notice": "Avis d'imposition"
+  }
+}
