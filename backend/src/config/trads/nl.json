@@ -1,4 +1,10 @@
 {
+  "checkRejected": {
+    "subject": "Voltooi uw Mooncard-dossier"
+  },
+  "checkStarted": {
+    "subject": "Voltooi uw Mooncard-dossier"
+  },
   "titleLabel": "Onderwerp",
   "titleValue": "Voltooi uw Mooncard-dossier",
   "courtesy": "Geachte mevrouw, geachte heer,",

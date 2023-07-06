@@ -1,4 +1,10 @@
 {
+  "checkRejected": {
+    "subject": "Vervollständigen Sie Ihre Mooncard-Unterlagen"
+  },
+  "checkStarted": {
+    "subject": "Vervollständigen Sie Ihre Mooncard-Unterlagen"
+  },
   "titleLabel": "Objekt",
   "titleValue": "Vervollständigen Sie Ihre Mooncard-Unterlagen",
   "courtesy": "Sehr geehrte Damen und Herren,",

@@ -1,4 +1,10 @@
 {
+  "checkRejected": {
+    "subject": "Compléter votre dossier Mooncard"
+  },
+  "checkStarted": {
+    "subject": "Compléter votre dossier Mooncard"
+  },
   "titleLabel": "Objet",
   "titleValue": "Compléter votre dossier Mooncard",
   "courtesy": "Madame, Monsieur,",

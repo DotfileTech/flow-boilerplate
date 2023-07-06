@@ -1,4 +1,10 @@
 {
+  "checkRejected": {
+    "subject": "Completa il tuo file Mooncard"
+  },
+  "checkStarted": {
+    "subject": "Completa il tuo file Mooncard"
+  },
   "titleLabel": "Titolo",
   "titleValue": "Completa il tuo file Mooncard",
   "courtesy": "Egregio/a Signore/Signora,",

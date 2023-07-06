@@ -1,4 +1,10 @@
 {
+  "checkRejected": {
+    "subject": "Complete su expediente Mooncard"
+  },
+  "checkStarted": {
+    "subject": "Complete su expediente Mooncard"
+  },
   "titleLabel": "Título",
   "titleValue": "Complete su expediente Mooncard",
   "courtesy": "Estimado/a Sr./Sra.,",
