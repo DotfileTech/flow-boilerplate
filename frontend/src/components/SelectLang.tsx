@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Select } from '@chakra-ui/react';
+import { Select, useToken } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
@@ -8,6 +8,7 @@ import { languages } from '../config/languages';
 const SelectLang = () => {
   const { t } = useTranslation();
   const [selectedLang, setSelectedLang] = useState(i18next.languages[0]);
+  const [sidebarBgColor] = useToken('colors', ['sidebar.backgroundColor']);
 
   const changeHandler = (e: any) => {
     setSelectedLang(e.target.value);
@@ -28,7 +29,7 @@ const SelectLang = () => {
         <option
           key={i}
           value={language}
-          style={{ backgroundColor: 'sidebar.backgroundColor' }}
+          style={{ backgroundColor: sidebarBgColor }}
         >
           {t(`domain.languages.${language}`)}
         </option>
