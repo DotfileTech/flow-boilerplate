@@ -25,7 +25,11 @@ const SelectLang = () => {
       name="lang"
     >
       {languages.map((language: string, i: number) => (
-        <option key={i} value={language} color="inherit">
+        <option
+          key={i}
+          value={language}
+          style={{ backgroundColor: 'sidebar.backgroundColor' }}
+        >
           {t(`domain.languages.${language}`)}
         </option>
       ))}
