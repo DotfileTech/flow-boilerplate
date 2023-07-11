@@ -6,7 +6,7 @@ export type CheckInterface = {
   id: string;
   individual_id?: string;
   status: CheckStatusEnum;
-  subtype?: string;
+  subtype: string;
   type: CheckTypeEnum;
   updated_at: Date;
   data: any;

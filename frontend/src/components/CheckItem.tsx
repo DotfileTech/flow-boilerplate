@@ -53,7 +53,7 @@ const CheckItem = (props: CheckItemProps) => {
   const checkTitleFallBack = useMemo(() => {
     if (
       check.type === CheckTypeEnum.document &&
-      check.data.settings.custom_document_type
+      check.subtype.includes('custom_document_type')
     ) {
       return check.data.settings.custom_document_type.label;
     }

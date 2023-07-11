@@ -16,7 +16,11 @@ import {
   Country,
   IndividualInput,
 } from '../types';
-import { IndividualRoleEnum } from '../constants';
+import {
+  CheckStatusEnum,
+  CheckTypeEnum,
+  IndividualRoleEnum,
+} from '../constants';
 import { templateMapping } from '../config/template-mapping';
 import { CaseDetailedDTO } from './dto/case-detailed.dto';
 import { CheckDTO } from './dto/check.dto';
@@ -477,34 +481,55 @@ class DotfileController {
       for (const company of caseData.companies) {
         const enrichedChecks = [];
         for (const check of company.checks) {
-          const enrichedCheck = await this.dotfileApi.request(
-            'get',
-            `checks/${check.type}/${check.id}`,
-            {},
-            {},
-            {}
-          );
+          if (check.type !== CheckTypeEnum.aml) {
+            if (
+              check.status === CheckStatusEnum.rejected ||
+              (check.type === CheckTypeEnum.document &&
+                check.subtype.includes('custom_document_type'))
+            ) {
+              const enrichedCheck = await this.dotfileApi.request(
+                'get',
+                `checks/${check.type}/${check.id}`,
+                {},
+                {},
+                {}
+              );
 
-          enrichedChecks.push(enrichedCheck);
+              enrichedChecks.push(enrichedCheck);
+            } else {
+              enrichedChecks.push(check);
+            }
+          }
         }
         company.checks = enrichedChecks;
         enrichedCompanies.push(company);
       }
 
       const enrichedIndividuals = [];
-
       for (const individual of caseData.individuals) {
         const enrichedChecks = [];
         for (const check of individual.checks) {
-          const enrichedCheck = await this.dotfileApi.request(
-            'get',
-            `checks/${check.type}/${check.id}`,
-            {},
-            {},
-            {}
-          );
+          if (check.type !== CheckTypeEnum.aml) {
+            if (
+              check.status === CheckStatusEnum.rejected ||
+              (check.type === CheckTypeEnum.document &&
+                check.subtype.includes('custom_document_type')) ||
+              (check.type === CheckTypeEnum.id_verification &&
+                check.status === CheckStatusEnum.in_progress)
+            ) {
+              const enrichedCheck = await this.dotfileApi.request(
+                'get',
+                `checks/${check.type}/${check.id}`,
+                {},
+                {},
+                {}
+              );
 
-          enrichedChecks.push(enrichedCheck);
+              enrichedChecks.push(enrichedCheck);
+            } else {
+              enrichedChecks.push(check);
+            }
+          }
         }
         individual.checks = enrichedChecks;
         enrichedIndividuals.push(individual);

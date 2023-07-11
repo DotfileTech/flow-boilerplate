@@ -125,7 +125,7 @@ const ModalDocument = (props: ModalDocumentProps) => {
   const checkTitleFallBack = useMemo(() => {
     if (
       currentCheck.type === CheckTypeEnum.document &&
-      currentCheck.data.settings.custom_document_type
+      currentCheck.subtype.includes('custom_document_type')
     ) {
       return currentCheck.data.settings.custom_document_type.label;
     }
