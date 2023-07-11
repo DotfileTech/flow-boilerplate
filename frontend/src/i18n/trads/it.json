@@ -219,6 +219,12 @@
       "es": "Spagnolo",
       "de": "Tedesco",
       "nl": "Olandese"
+    },
+    "toast": {
+      "copy_to_clip_board": {
+        "title": "Copiato!",
+        "description": "è stato copiato con successo"
+      }
     }
   },
   "checks": {

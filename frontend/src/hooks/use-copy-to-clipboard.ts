@@ -1,9 +1,12 @@
 import { useCallback, useEffect } from 'react';
 import { useClipboard, useToast } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
 export const useCopyToClipBoard = (value: string): (() => void) => {
   const toast = useToast();
   const { onCopy, setValue } = useClipboard(value);
+
+  const { t } = useTranslation();
 
   // Value must be manually synchronized to useClipboard using setValue
   // @see https://chakra-ui.com/docs/hooks/use-clipboard
@@ -15,8 +18,10 @@ export const useCopyToClipBoard = (value: string): (() => void) => {
     onCopy();
     toast({
       variant: 'toast_success',
-      title: 'Copied!',
-      description: `'${value}' has been successfully copied`,
+      title: t('domain.toast.copy_to_clip_board.title'),
+      description: `'${value}' ${t(
+        'domain.toast.copy_to_clip_board.description'
+      )}`,
       status: 'success',
       isClosable: false,
       position: 'bottom-right',

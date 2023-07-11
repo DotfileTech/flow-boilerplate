@@ -225,6 +225,12 @@
       "de": "German",
       "it": "Italian",
       "nl": "Dutch"
+    },
+    "toast": {
+      "copy_to_clip_board": {
+        "title": "Copied!",
+        "description": "has been successfully copied"
+      }
     }
   },
   "checks": {

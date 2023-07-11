@@ -225,6 +225,12 @@
       "es": "Espagnol",
       "nl": "Néerlandais",
       "de": "Allemand"
+    },
+    "toast": {
+      "copy_to_clip_board": {
+        "title": "Copié dans le presse-papier!",
+        "description": "a été copié avec succès"
+      }
     }
   },
   "checks": {
