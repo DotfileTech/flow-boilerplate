@@ -5,11 +5,11 @@
   "steps": {
     "disclaimer": {
       "title": "Welcome to Nilos!",
-      "description": "You have to be a legal representative of the company (Director, CEO, President, ...) to access Nilos services. <br /><br />If you are not legally entitled to open an account on behalf of your company, please directly send an email to <a href='mailto:compliance@nilos.io'>compliance@nilos.io</a>."
+      "subtitle": "You have to be a legal representative of the company (Director, CEO, President, ...) to access Nilos services. <br /><br />If you are not legally entitled to open an account on behalf of your company, please directly send an email to <a href='mailto:compliance@nilos.io'>compliance@nilos.io</a>."
     },
     "company_search": {
       "title": "Find your company",
-      "description": "Please proceed with the necessary verifications listed below. \nOur team will analyze your data and keep you informed about the outcome of your case.",
+      "subtitle": "Please proceed with the necessary verifications listed below. \nOur team will analyze your data and keep you informed about the outcome of your case.",
       "name": {
         "label": "Name"
       },
@@ -49,18 +49,30 @@
     },
     "nilos_account": {
       "title": "Your Nilos account",
-      "description": "Tell us about how you will use your Nilos account.",
+      "subtitle": "Tell us about how you will use your Nilos account.",
+      "What Nilos Services would you like to have access to?": {
+        "label": "What Nilos Services would you like to have access to?",
+        "options": {
+          "Crypto custody": "Crypto custody",
+          "Crypto deposits": "Crypto deposits",
+          "Crypto withdrawals": "Crypto withdrawals",
+          "Off-ramp (crypto-to-fiat)": "Off-ramp (crypto-to-fiat)",
+          "On-ramp (fiat-to-crypto)": "On-ramp (fiat-to-crypto)",
+          "EUR/GBP IBANs": "EUR/GBP IBANs",
+          "Virtual Cards (available soon)": "Virtual Cards (available soon)"
+        }
+      },
+      "In what countries do you operate business?": {
+        "label": "In what countries do you operate business?",
+        "helper": "Please write down the list of countries you operate business into"
+      },
       "Company website": {
         "label": "Your company website",
         "helper": "Please provide the URL of your company's website"
       },
-      "Company operational address": {
-        "label": "Your company operational address",
-        "helper": "Only fill this field if your operational address is different from the official headquarter address"
-      },
       "Company activity": {
         "label": "Your company activity",
-        "helper": "Please explain in a few words what your company does and how it is connected to cryptocurrencies",
+        "helper": "",
         "options": {
           "Cryptocurrencies and cryptoassets": "Cryptocurrencies and cryptoassets",
           "Agriculture, forestry, and fishing": "Agriculture, forestry, and fishing",
@@ -86,6 +98,24 @@
           "Activities of extraterritorial organizations and bodies": "Activities of extraterritorial organizations and bodies"
         }
       },
+      "Activity explanation": {
+        "label": "Please explain what your company does, the services it offers and how it is connected to cryptocurrencies"
+      },
+      "Source of Wealth of your Entity": {
+        "label": "Source of Wealth of your Entity",
+        "helper": "Please provide an explanation of the origin of the entire wealth of your entity",
+        "options": {
+          "Sales revenue / Business earnings": "Sales revenue / Business earnings",
+          "Investors funds": "Investors funds",
+          "Company treasury": "Company treasury",
+          "Crowdfunding": "Crowdfunding",
+          "Investment returns": "Investment returns",
+          "Loan / Debt Financing": "Loan / Debt Financing",
+          "ICO": "ICO",
+          "Grant": "Grant",
+          "Other": "Other"
+        }
+      },
       "Last year turnover": {
         "label": "Last year turnover",
         "helper": "In euros - Please enter the amount your company's turnover on 2022"
@@ -94,24 +124,48 @@
         "label": "Company assets",
         "helper": "In euros - Please mention how much are evaluated the assets owned by the company"
       },
-      "Source of funds": {
-        "label": "Source of funds",
-        "helper": "Please provide an explanation of the anticipated source of the cryptos you will receive on your Nilos account"
+      "Anticipated source of the funds on your Nilos Account": {
+        "label": "Anticipated source of the funds on your Nilos Account",
+        "helper": "Please provide an explanation of the anticipated source of the cryptos you will receive on your Nilos account",
+        "options": {
+          "Sales revenue / Business earnings": "Sales revenue / Business earnings",
+          "Investors funds": "Investors funds",
+          "Company treasury": "Company treasury",
+          "Crowdfunding": "Crowdfunding",
+          "Investment returns": "Investment returns",
+          "Loan / Debt Financing": "Loan / Debt Financing",
+          "ICO": "ICO",
+          "Grant": "Grant",
+          "Other": "Other"
+        }
       },
-      "Estimated generated deposits on Nilos account (monthly)": {
-        "label": "Estimated generated deposits on your Nilos account (monthly)",
+      "Estimated deposits on Nilos account (monthly)": {
+        "label": "Estimated deposits on your Nilos account (monthly)",
         "helper": "In euros"
       },
       "Expected monthly outgoing FIAT transactions": {
         "label": "Expected monthly outgoing FIAT transactions",
         "helper": "In euros"
       },
-      "Phone": {
-        "label": "Your phone number"
+      "Do you provide regulated services?": {
+        "label": "Do you provide regulated services?",
+        "helper": "Answer \"yes\" if the services your company provide are subject to any regulation (e.g. financial or payment services, investment services, crypto exchange and custodial services, etc.)",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "Do you plan to store and or process your clients funds on your Nilos account?": {
+        "label": "Do you plan to store and/or process your clients' funds on your Nilos account?",
+        "helper": "Answer \"Yes\" if the funds that will be deposited into your Nilos account belong to your customers and not to your entity.",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
       },
       "Are you, or any beneficial owner of the company, considered as a PEP?": {
         "label": "Are you, or any beneficial owner of the company, considered as a PEP?",
-        "helper": "A politically exposed person (PEP) is an individual with a high profile political role, or someone who has been entrusted with a prominent public function",
+        "helper": "A politically exposed person (PEP) is an individual with a high profile political role, or someone who has been entrusted with a prominent public function.",
         "options": {
           "yes": "Yes",
           "no": "No"
@@ -124,10 +178,14 @@
           "yes": "Yes",
           "no": "No"
         }
+      },
+      "Specify who is a PEP and / or a US Person": {
+        "label": "If you answered \"Yes\" to any of the 2 questions above, please specify who is a PEP and / or a US Person"
       }
     },
     "individuals_list": {
       "title": "Verify your individuals list",
+      "subtitle": "In order to accept your application, we need to collect complete information regarding all of your entity's beneficial owners.<br/>Who is the beneficial owner of a company? The ultimate beneficial owner (UBO) is <u>the natural person who ultimately owns or manages a company</u>. This person does not have to be known directly as the owner.<br/><br/>A beneficial owner is <u>a person who owns more than 25% of the company's shares, controls more than 25% of the voting rights or who can similarly exercise significant control over the company</u>.<br/><br/><b>Before moving to the next step, please make sure that all natural persons considered as UBOs according to this definition have been entered. For data security reasons, you will not be able to go back to this step once submitted.</b>",
       "missing_data": "Please correct",
       "edit": "Edit",
       "delete": "Delete",
@@ -155,7 +213,17 @@
     },
     "checks_list": {
       "title": "Help us run necessary verifications",
-      "description": "Please proceed with the necessary verifications listed below. \nOur team will analyze your data and keep you informed about the outcome of your case."
+      "subtitle": "Please proceed with the necessary verifications listed below.<br/>Our team will analyze your data and keep you informed about the outcome of your case.<br/><br/>For your individuals, please consult the <a href=\"https://nilos-public.s3.eu-central-1.amazonaws.com/legal/Nilos_Accepted+IDs+and+Proofs+of+address.pdf\" target=_\"blank\">list of accepted ID documents and proof of address</a>. "
+    },
+    "agreement": {
+      "title": "Final agreement",
+      "subtitle": "I/we fully understand and confirm for and on behalf of the Entity I/we represent that:<br/><br/><ul><li> I/we have full power and authority to open the Nilos Account and to enter into the associated terms and conditions and representations for and on behalf of the applicant company.<br/></li><li> The information provided in this application is true, accurate, and complete.<br/></li><li> I/we will promptly notify Nilos of any changes to the information provided, but no later than 7 business days following the occurrence of such changes.</li></ul>",
+      "Declaration": {
+        "label": "Check the box below to agree to this declaration",
+        "options": {
+          "I/we understand and agree to this declaration": "I/we understand and agree to this declaration."
+        }
+      }
     },
     "terms_and_conditions": {
       "title": "Terms and conditions",
@@ -173,7 +241,16 @@
     },
     "ubo_registry_extract": {
       "title": "Shareholders register",
-      "callout": "<p>Please upload a register showing ownership of your company. The document should be dated within the last 12 months.<br>If the document is not issued by a government or a registry, please ensure the document is signed by an appropriate authority (i.e. Director, Company Secretary, Legal, or equivalent) and contains the statement <b>\"I attest and confirm that this document is true, valid and accurate as of DDMMY\"</b>.</p><p><br>The signer should sign off with their full name, capacity/designation, and date of sign off.</p>"
+      "callout": "<p>Please upload a register showing ownership of your company (click <a href=\"https://nilos-public.s3.eu-central-1.amazonaws.com/legal/Shareholders+Register_Nilos.docx\" target=\"_blank\">here</a> to download an empty Shareholders register template). The document should be dated within the last 12 months.<br>If the document is not issued by a government or a registry, please ensure the document is signed by an appropriate authority (i.e. Director, Company Secretary, Legal, or equivalent) and contains the statement <b>\"I attest and confirm that this document is true, valid and accurate as of DDMMY\"</b>.</p><p><br>The signer should sign off with their full name, capacity/designation, and date of sign off.</p>"
+    },
+    "c8654def-b757-40e8-b45f-223aef8e365d": {
+      "title": "Nilos AML Due Diligence Questionnaire",
+      "description": "This questionnaire is required for prospective banking partners, financial institutions, cryptocurrency exchanges, investment firms, etc. The information collected on this form is part of the due diligence process at Nilos.",
+      "callout": "Please click <a href=\"https://nilos-public.s3.eu-central-1.amazonaws.com/legal/Nilos+AML+Due+Diligence+Questionnaire.pdf\" target=_\"blank\">here</a> to download the questionnaire."
+    },
+    "74a56cc0-934d-423f-a23f-7dd02ab7abb5": {
+      "title": "Shareholders register",
+      "callout": "<p>Please upload a register showing ownership of your company (click <a href=\"https://nilos-public.s3.eu-central-1.amazonaws.com/legal/Shareholders+Register_Nilos.docx\" target=\"_blank\">here</a> to download an empty Shareholders register template). The document should be dated within the last 12 months.<br>If the document is not issued by a government or a registry, please ensure the document is signed by an appropriate authority (i.e. Director, Company Secretary, Legal, or equivalent) and contains the statement <b>\"I attest and confirm that this document is true, valid and accurate as of DDMMY\"</b>.</p><p><br>The signer should sign off with their full name, capacity/designation, and date of sign off.</p>"
     }
   }
 }

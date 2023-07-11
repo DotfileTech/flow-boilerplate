@@ -1,3 +1,4 @@
+import { idText } from 'typescript';
 import { CustomField } from '../types';
 
 // @deprecated
@@ -28,14 +29,29 @@ export const stepsConfig: {
     key: 'nilos_account',
     fields: [
       {
-        id: 'Company website',
+        id: 'What Nilos Services would you like to have access to?',
+        type: 'select',
+        isRequired: true,
+        hasHelper: false,
+        options: [
+          'Crypto custody',
+          'Crypto deposits',
+          'Crypto withdrawals',
+          'Off-ramp (crypto-to-fiat)',
+          'On-ramp (fiat-to-crypto)',
+          'EUR/GBP IBANs',
+          'Virtual Cards (available soon)',
+        ],
+      },
+      {
+        id: 'In what countries do you operate business?',
+        type: 'text',
         isRequired: true,
         hasHelper: true,
       },
       {
-        id: 'Company operational address',
-        type: 'text',
-        isRequired: false,
+        id: 'Company website',
+        isRequired: true,
         hasHelper: true,
       },
       {
@@ -69,6 +85,28 @@ export const stepsConfig: {
         ],
       },
       {
+        id: 'Activity explanation',
+        type: 'text',
+        isRequired: false,
+      },
+      {
+        id: 'Source of Wealth of your Entity',
+        type: 'select',
+        isRequired: true,
+        hasHelper: true,
+        options: [
+          'Sales revenue / Business earnings',
+          'Investors funds',
+          'Company treasury',
+          'Crowdfunding',
+          'Investment returns',
+          'Loan / Debt Financing',
+          'ICO',
+          'Grant',
+          'Other',
+        ],
+      },
+      {
         id: 'Last year turnover',
         type: 'number',
         isRequired: true,
@@ -81,12 +119,24 @@ export const stepsConfig: {
         hasHelper: true,
       },
       {
-        id: 'Source of funds',
+        id: 'Anticipated source of the funds on your Nilos Account',
+        type: 'select',
         isRequired: true,
         hasHelper: true,
+        options: [
+          'Sales revenue / Business earnings',
+          'Investors funds',
+          'Company treasury',
+          'Crowdfunding',
+          'Investment returns',
+          'Loan / Debt Financing',
+          'ICO',
+          'Grant',
+          'Other',
+        ],
       },
       {
-        id: 'Estimated generated deposits on Nilos account (monthly)',
+        id: 'Estimated deposits on Nilos account (monthly)',
         type: 'number',
         isRequired: true,
         hasHelper: true,
@@ -98,9 +148,18 @@ export const stepsConfig: {
         hasHelper: true,
       },
       {
-        id: 'Phone',
-        type: 'tel',
+        id: 'Do you provide regulated services?',
+        type: 'radio',
         isRequired: true,
+        hasHelper: true,
+        options: ['yes', 'no'],
+      },
+      {
+        id: 'Do you plan to store and or process your clients funds on your Nilos account?',
+        type: 'radio',
+        isRequired: true,
+        hasHelper: true,
+        options: ['yes', 'no'],
       },
       {
         id: 'Are you, or any beneficial owner of the company, considered as a PEP?',
@@ -116,11 +175,29 @@ export const stepsConfig: {
         hasHelper: true,
         options: ['yes', 'no'],
       },
+      {
+        id: 'Specify who is a PEP and / or a US Person',
+        type: 'text',
+        isRequired: false,
+        hasHelper: false,
+      },
     ],
   },
   {
     key: 'individuals_list',
     hasApplicant: true,
+  },
+  {
+    key: 'agreement',
+    fields: [
+      {
+        id: 'Declaration',
+        type: 'checkbox',
+        isRequired: true,
+        hasHelper: false,
+        options: ['I/we understand and agree to this declaration'],
+      },
+    ],
   },
   {
     key: 'pdf_viewer_terms',
