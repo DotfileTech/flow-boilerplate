@@ -57,6 +57,10 @@ class WebhooksController {
         {}
       );
 
+      if (!caseData.metadata) {
+        return res.status(200).json({});
+      }
+
       const { email, locale } = caseData.metadata;
       const flags: CaseFlagEnum[] = caseData.flags;
 
@@ -64,10 +68,14 @@ class WebhooksController {
         return res.status(200).json({});
       }
 
+      if (check.type === CheckTypeEnum.aml) {
+        return res.status(200).json({});
+      }
+
       const exactType = (currentCheck: Check) => {
         return currentCheck.type === CheckTypeEnum.document
-          ? currentCheck.subtype.split(':')[1]
-          : currentCheck.type;
+          ? `document.${currentCheck.subtype.split(':')[1]}`
+          : `document.${currentCheck.type}`;
       };
 
       // Check.Started
@@ -88,7 +96,7 @@ class WebhooksController {
           {
             link: `${process.env.APP_URL}/?caseId=${caseId}`,
             logoUrl: process.env.LOGO_URL,
-            checkTitle: `document.${exactType(check)}`,
+            checkTitle: exactType(check),
           },
           locale
         );
@@ -108,7 +116,7 @@ class WebhooksController {
               {
                 link: `${process.env.APP_URL}/?caseId=${caseId}`,
                 logoUrl: process.env.LOGO_URL,
-                checkTitle: `document.${exactType(check)}`,
+                checkTitle: exactType(check),
                 comment: check.data.review.comment,
               },
               locale
