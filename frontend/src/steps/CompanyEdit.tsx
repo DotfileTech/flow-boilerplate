@@ -196,7 +196,9 @@ const CompanyEdit = (props: CompanyEditProps) => {
           <Box w="100%" key={field.id} mb="6">
             {field.nested &&
               t(`steps.company_edit.subtitle.${field.nested}`) !== '' &&
-              (field.id === 'street_address' || field.id === 'iban') && (
+              (field.id === 'code' ||
+                field.id === 'street_address' ||
+                field.id === 'iban') && (
                 <Heading
                   pt="5"
                   pb="2"

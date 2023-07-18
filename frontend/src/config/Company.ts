@@ -71,6 +71,12 @@ export const companyData: CompanyData[] = [
     enabled: true,
   },
   {
+    id: 'description',
+    nested: 'classifications',
+    required: false,
+    enabled: true,
+  },
+  {
     id: 'street_address',
     nested: 'address',
     required: false,

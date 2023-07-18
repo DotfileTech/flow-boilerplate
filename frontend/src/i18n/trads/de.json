@@ -27,6 +27,7 @@
     "company_edit": {
       "title": "Überprüfen Sie die Informationen Ihres Unternehmens",
       "subtitle": {
+        "classifications": "Einstufung",
         "address": "Adresse",
         "banking_information": "Bankkonto"
       },
@@ -84,7 +85,10 @@
         "label": "Employer ID"
       },
       "code": {
-        "label": "Classification code"
+        "label": "Code"
+      },
+      "description": {
+        "label": "Beschreibung"
       }
     },
     "individual_edit": {

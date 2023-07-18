@@ -27,6 +27,7 @@
     "company_edit": {
       "title": "Vérifiez les informations de votre entreprise",
       "subtitle": {
+        "classifications": "Classification NAF",
         "address": "Adresse",
         "banking_information": "Compte bancaire"
       },
@@ -85,6 +86,9 @@
       },
       "code": {
         "label": "Code NAF"
+      },
+      "description": {
+        "label": "Description"
       }
     },
     "individual_edit": {
@@ -173,8 +177,8 @@
       }
     },
     "terms_and_conditions": {
-      "title": "Terms and conditions",
-      "label": "By checking this box, I fully agree and consent the terms and conditions"
+      "title": "Conditions générale d'utilisation",
+      "label": "En cochant cette case, j'accepte les conditions générale d'utilisation"
     },
     "checks_list": {
       "title": "Aidez-nous à effectuer les vérifications nécessaires",

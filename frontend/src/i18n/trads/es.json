@@ -27,6 +27,7 @@
     "company_edit": {
       "title": "Verifica la información de tu empresa",
       "subtitle": {
+        "classifications": "Clasificación",
         "address": "Dirección",
         "banking_information": "Cuenta bancaria"
       },
@@ -84,7 +85,10 @@
         "label": "Employer ID"
       },
       "code": {
-        "label": "Classification code"
+        "label": "Código"
+      },
+      "description": {
+        "label": "Descripción"
       }
     },
     "individual_edit": {

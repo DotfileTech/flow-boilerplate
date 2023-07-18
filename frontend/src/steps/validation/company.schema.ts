@@ -98,6 +98,13 @@ export const companySchema = mandatoryFields.shape({
         code: isRequiredField(companyData, 'code', 'classifications')
           ? Yup.string().required().label('Classification code')
           : optionalStringRule.label('Classification code'),
+        description: isRequiredField(
+          companyData,
+          'description',
+          'classifications'
+        )
+          ? Yup.string().required().label('Classification description')
+          : optionalStringRule.label('Classification description'),
       })
     )
     .nullable(),

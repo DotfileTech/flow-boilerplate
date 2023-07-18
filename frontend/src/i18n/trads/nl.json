@@ -27,6 +27,7 @@
     "company_edit": {
       "title": "Controleer uw bedrijfsgegevens",
       "subtitle": {
+        "classifications": "Classificatie",
         "address": "Adres",
         "banking_information": "Bankrekening"
       },
@@ -84,7 +85,10 @@
         "label": "Employer ID"
       },
       "code": {
-        "label": "Classificatiecode"
+        "label": "Code"
+      },
+      "description": {
+        "label": "Beschrijving"
       }
     },
     "individual_edit": {
