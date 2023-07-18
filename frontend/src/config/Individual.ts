@@ -46,19 +46,18 @@ export const individualData: IndividualData[] = [
     options: [
       IndividualRoleEnum.beneficial_owner,
       IndividualRoleEnum.legal_representative,
-      IndividualRoleEnum.shareholder,
     ],
   },
   {
     id: 'ownership_percentage',
     type: 'number',
-    required: true,
+    required: false,
     enabled: true,
   },
   {
     id: 'position',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'tax_identification_number',
@@ -91,25 +90,25 @@ export const individualData: IndividualData[] = [
     id: 'street_address',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'street_address_2',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'postal_code',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'city',
     nested: 'address',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'country',

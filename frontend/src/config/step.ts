@@ -13,6 +13,21 @@ export const stepsConfig: {
   pdfUrl?: string;
 }[] = [
   {
+    key: 'who_are_you',
+    fields: [
+      {
+        id: 'Qui êtes-vous ?',
+        isRequired: true,
+        type: 'radio',
+        options: [
+          'Une société',
+          'Une entreprise individuelle',
+          'Un particulier',
+        ],
+      },
+    ],
+  },
+  {
     key: 'company_search',
   },
   {
@@ -22,14 +37,42 @@ export const stepsConfig: {
     key: 'company_edit',
   },
   {
+    key: 'activity_abroad',
+    fields: [
+      {
+        id: 'Confirmez que',
+        isRequired: false,
+        type: 'checkbox',
+        options: [
+          "La société n'est pas une US person",
+          "La société n'est pas une entité exemptée",
+          "La société n'est pas une ENF passive",
+        ],
+      },
+      {
+        id: "Avez vous une résidence fiscale dans d'autres pays ?",
+        isRequired: false,
+        type: 'radio',
+        options: ['yes', 'no'],
+      },
+      {
+        id: 'Si oui, veuillez lister les pays de votre résidence fiscale',
+        isRequired: false,
+      },
+      {
+        id: 'Pour vos autres résidences fiscales, renseignez les NIF',
+        isRequired: false,
+      },
+    ],
+  },
+  {
+    key: 'pdf_viewer_countries_risked',
+    pdfUrl: 'https://getpanto.onboarding.dotfile.com/terms-and-conditions.pdf',
+  },
+  {
     key: 'individuals_list',
     hasApplicant: false,
   },
-  // Enable the individual_edit step only for a KYC
-  /*{
-    key: 'individual_edit',
-  },*/
-  // A step with a pdf viewer and a checkbox (like T&Cs) must contain "pdf_viewer" in the key (eg: pdf_viewer_terms)
   {
     key: 'pdf_viewer_terms',
     pdfUrl: 'https://getpanto.onboarding.dotfile.com/terms-and-conditions.pdf',

@@ -1,5 +1,65 @@
 {
   "brand": {
     "title": "Effortless payment solutions for marketplaces"
+  },
+  "steps": {
+    "who_are_you": {
+      "title": "",
+      "Qui êtes-vous ?": {
+        "label": "Qui êtes-vous ?",
+        "options": {
+          "Une société": "Une société",
+          "Une entreprise individuelle": "Une entreprise individuelle",
+          "Un particulier": "Un particulier"
+        }
+      }
+    },
+    "company_edit": {
+      "registration_number": {
+        "label": "SIREN"
+      }
+    },
+    "activity_abroad": {
+      "title": "Activité à l'étranger",
+      "subtitle": "Pour poursuivre, nous devons nous assurez que votre société ne rentre pas dans l’un des cas suivants.",
+      "Confirmez que": {
+        "label": "Confirmez que :",
+        "options": {
+          "La société n'est pas une US person": "La société n'est pas une US person",
+          "La société n'est pas une entité exemptée": "La société n'est pas une entité exemptée",
+          "La société n'est pas une ENF passive": "La société n'est pas une ENF passive"
+        }
+      },
+      "Avez vous une résidence fiscale dans d'autres pays ?": {
+        "label": "Avez-vous une résidence fiscale dans d'autres pays ?",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "Si oui, veuillez lister les pays de votre résidence fiscale": {
+        "label": "Si oui, veuillez lister les pays de votre résidence fiscale",
+        "helper": "Veuillez séparer les pays par des virgules"
+      },
+      "Pour vos autres résidences fiscales, renseignez les NIF": {
+        "label": "Pour vos autres résidences fiscales, renseignez les NIF",
+        "helper": "Veuillez séparer les NIF par des virgules"
+      }
+    },
+    "pdf_viewer_countries_risked": {
+      "title": "Activité dans des pays à risque",
+      "id": "Aucun lien avec des pays à risque",
+      "label": "Je confirme n’avoir aucun lien avec ces pays à risque (Corée du Nord, Crimée/Sebastopol, Cuba, Iran, Syrie)"
+    },
+    "individual_edit": {
+      "country": {
+        "label": "Pays de résidence"
+      }
+    },
+    "pdf_viewer_terms": {
+      "title": "Conditions générales d'utilisation",
+      "id": "Conditions générales",
+      "label": "J'accepte les conditions générales"
+    }
   }
 }
