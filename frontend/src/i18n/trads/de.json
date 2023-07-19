@@ -176,8 +176,9 @@
         "label": "Amongst these individuals, which one are you?"
       }
     },
-    "terms_and_conditions": {
+    "pdf_viewer_terms": {
       "title": "Terms and conditions",
+      "id": "terms_and_conditions",
       "label": "By checking this box, I fully agree and consent the terms and conditions"
     },
     "checks_list": {

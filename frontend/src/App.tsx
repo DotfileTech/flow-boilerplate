@@ -17,7 +17,7 @@ import IndividualsList from './steps/IndividualsList';
 import ChecksList from './steps/ChecksList';
 import useApi from './hooks/useApi';
 import Footer from './components/layout/Footer';
-import TermsAndConditions from './steps/TermsAndConditions';
+import PdfViewer from './steps/PdfViewer';
 import { stepsConfig } from './config/step';
 import { Company, Individual } from './types';
 
@@ -283,11 +283,13 @@ const AppContent = () => {
           ),
         };
       }
-      if (step.key === 'terms_and_conditions') {
+      if (step.key.includes('pdf_viewer')) {
         return {
           ...step,
           content: (
-            <TermsAndConditions
+            <PdfViewer
+              stepId={step.key}
+              pdfUrl={step.pdfUrl as string}
               metadata={metadata}
               onChange={handleMetadata}
               next={next}

@@ -176,8 +176,9 @@
         "label": "Parmi ces personnes, laquelle êtes-vous ?"
       }
     },
-    "terms_and_conditions": {
+    "pdf_viewer_terms": {
       "title": "Conditions générale d'utilisation",
+      "id": "terms_and_conditions",
       "label": "En cochant cette case, j'accepte les conditions générale d'utilisation"
     },
     "checks_list": {
