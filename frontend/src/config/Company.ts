@@ -74,7 +74,7 @@ export const companyData: CompanyData[] = [
     id: 'description',
     nested: 'classifications',
     required: false,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'street_address',
