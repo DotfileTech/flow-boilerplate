@@ -5,22 +5,22 @@
   "steps": {
     "company_search": {
       "title": "Aidez-nous à identifier votre entreprise",
-      "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "subtitle": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
       "name": {
         "label": "Nom"
       }
     },
     "company_list": {
       "title": "Sélectionnez votre entreprise",
-      "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "subtitle": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
       "not_found": "Vous ne trouvez pas votre entreprise ?",
       "no_result": "Aucun résultat",
       "button": "Remplir les détails manuellement"
     },
     "company_edit": {
       "title": "Vérifiez les informations de votre entreprise",
-      "description": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
-      "subtitle": {
+      "subtitle": "Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "nested": {
         "address": "Adresse",
         "banking_information": "Compte bancaire"
       },
@@ -71,7 +71,7 @@
     },
     "individuals_list": {
       "title": "Vérifiez ou complétez les représentants légaux et bénéficiaires effectifs de votre entreprise",
-      "description": "<p>Veuillez vérifier la liste ci-dessous et supprimer les personnes qui ne sont pas représentants légaux et bénéficiaires effectifs.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
+      "subtitle": "<p>Veuillez vérifier la liste ci-dessous et supprimer les personnes qui ne sont pas représentants légaux et bénéficiaires effectifs.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
       "missing_data": "A corriger",
       "edit": "Éditer",
       "delete": "Supprimer",
@@ -82,7 +82,7 @@
     },
     "checks_list": {
       "title": "Aidez-nous à effectuer les vérifications nécessaires",
-      "description": "<p>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil.<br/>Notre équipe vous tiendra informé du résultat de la vérification.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
+      "subtitle": "<p>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil.<br/>Notre équipe vous tiendra informé du résultat de la vérification.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
       "copy": {
         "label": "Copier le lien d'onboarding"
       }

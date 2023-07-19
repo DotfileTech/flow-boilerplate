@@ -5,16 +5,16 @@
   "steps": {
     "company_search": {
       "title": "Helfen Sie uns, Ihr Unternehmen zu identifizieren",
-      "description": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
+      "subtitle": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
     },
     "company_list": {
       "title": "Wählen Sie Ihr Unternehmen aus",
-      "description": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
+      "subtitle": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
     },
     "company_edit": {
       "title": "Überprüfen Sie die Informationen Ihres Unternehmens",
-      "description": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>",
-      "subtitle": {
+      "subtitle": "Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>",
+      "nested": {
         "address": "Adresse",
         "banking_information": "Bankkonto"
       },
@@ -59,7 +59,7 @@
     },
     "individuals_list": {
       "title": "Überprüfen oder ergänzen Sie die gesetzlichen Vertreter und wirtschaftlichen Eigentümer Ihres Unternehmens.",
-      "description": "<p>Bitte überprüfen Sie die unten stehende Liste und entfernen Sie Personen, die keine gesetzlichen Vertreter und wirtschaftlichen Eigentümer sind.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>",
+      "subtitle": "<p>Bitte überprüfen Sie die unten stehende Liste und entfernen Sie Personen, die keine gesetzlichen Vertreter und wirtschaftlichen Eigentümer sind.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>",
       "missing_data": "Bitte korrigieren",
       "edit": "Bearbeiten",
       "delete": "Löschen",
@@ -70,7 +70,7 @@
     },
     "checks_list": {
       "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen",
-      "description": "<p>Bitte führen Sie die unten aufgeführten erforderlichen Verifizierungen durch. Unser Team wird Sie über das Ergebnis der Verifizierung benachrichtigen.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>",
+      "subtitle": "<p>Bitte führen Sie die unten aufgeführten erforderlichen Verifizierungen durch. Unser Team wird Sie über das Ergebnis der Verifizierung benachrichtigen.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>",
       "copy": {
         "label": "Onboarding-Link kopieren"
       }
