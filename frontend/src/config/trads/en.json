@@ -5,7 +5,7 @@
   "steps": {
     "disclaimer": {
       "title": "Before continuing, please pay attention to the following",
-      "description": "You will need an ID, a proof of address, a proof of fund provenance (e.g. last pay slip or last tax report) and your Tax ID Number.<br/>All personal information is confidential, is only used for <a href='https://docs.roundtable.eu/en/articles/6442473-why-do-i-need-to-do-kyc-kyb-checks' target='_blank'>Anti-Money Laundering purposes</a>, and won’t be shared with your co-investors.<br/>For more details : \"<a href='https://docs.roundtable.eu/en/articles/6479354-how-do-i-perform-my-kyc-check' target='_blank'>How do I perform my KYC check?</a>\""
+      "subtitle": "You will need an ID, a proof of address, a proof of fund provenance (e.g. last pay slip or last tax report) and your Tax ID Number.<br/>All personal information is confidential, is only used for <a href='https://docs.roundtable.eu/en/articles/6442473-why-do-i-need-to-do-kyc-kyb-checks' target='_blank'>Anti-Money Laundering purposes</a>, and won’t be shared with your co-investors.<br/>For more details : \"<a href='https://docs.roundtable.eu/en/articles/6479354-how-do-i-perform-my-kyc-check' target='_blank'>How do I perform my KYC check?</a>\""
     },
     "individual_edit": {
       "title": "Fill in your personal details",
@@ -64,7 +64,7 @@
     },
     "origin_funds": {
       "title": "What is the origin of funds you're investing?",
-      "description": "A bank statement IS NOT a proof of fund provenance, <a href=\"https://docs.roundtable.eu/en/articles/6479354-how-do-i-perform-my-kyc-check\" target=\"_blank\">see here the proofs of fund provenance accepted</a>",
+      "subtitle": "A bank statement IS NOT a proof of fund provenance, <a href=\"https://docs.roundtable.eu/en/articles/6479354-how-do-i-perform-my-kyc-check\" target=\"_blank\">see here the proofs of fund provenance accepted</a>",
       "origin_funds": {
         "label": "What is the origin of funds you're investing?",
         "options": {
@@ -80,7 +80,7 @@
     },
     "checks_list": {
       "title": "Help us run necessary verifications",
-      "description": "Please proceed with the necessary verifications listed below.<br/> Our team will analyze your data and keep you informed about the outcome of your case."
+      "subtitle": "Please proceed with the necessary verifications listed below.<br/> Our team will analyze your data and keep you informed about the outcome of your case."
     }
   },
   "checks": {
