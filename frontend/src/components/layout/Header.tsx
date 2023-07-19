@@ -10,12 +10,11 @@ type HeaderProps = {
   back: () => void;
   progress: number;
   title: string | null;
-  description: string | null;
+  subtitle: string | null;
 };
 
 const Header = (props: HeaderProps) => {
-  const { hasBackButton, isCheckStep, back, progress, title, description } =
-    props;
+  const { hasBackButton, isCheckStep, back, progress, title, subtitle } = props;
 
   const { t } = useTranslation();
 
@@ -38,11 +37,11 @@ const Header = (props: HeaderProps) => {
         )}
       </Box>
       {title && <Title value={title}></Title>}
-      {description && (
+      {subtitle && (
         <Text
           mt="5"
           dangerouslySetInnerHTML={{
-            __html: t(description) ?? '',
+            __html: t(subtitle) ?? '',
           }}
         ></Text>
       )}

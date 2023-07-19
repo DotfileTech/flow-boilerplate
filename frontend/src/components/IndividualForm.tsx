@@ -188,7 +188,7 @@ const IndividualForm = (props: IndividualFormProps) => {
         return (
           <Box w="100%" key={field.id} mb="6">
             {field.nested &&
-              t(`steps.individual_edit.subtitle.${field.nested}`) !== '' &&
+              t(`steps.individual_edit.nested.${field.nested}`) !== '' &&
               (field.id === 'street_address' || field.id === 'iban') && (
                 <Heading
                   pt="5"
@@ -197,7 +197,7 @@ const IndividualForm = (props: IndividualFormProps) => {
                   color="brand.main-3"
                   fontSize={{ base: 'xl', md: '2xl' }}
                 >
-                  {t(`steps.individual_edit.subtitle.${field.nested}`)}
+                  {t(`steps.individual_edit.nested.${field.nested}`)}
                 </Heading>
               )}
             <GroupController

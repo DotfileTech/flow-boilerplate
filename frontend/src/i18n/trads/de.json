@@ -26,7 +26,7 @@
     },
     "company_edit": {
       "title": "Überprüfen Sie die Informationen Ihres Unternehmens",
-      "subtitle": {
+      "nested": {
         "classifications": "Einstufung",
         "address": "Adresse",
         "banking_information": "Bankkonto"
@@ -93,7 +93,7 @@
     },
     "individual_edit": {
       "title": "Überprüfen oder vervollständigen Sie die Informationen über Ihr Unternehmen",
-      "subtitle": {
+      "nested": {
         "address": "Adresse",
         "banking_information": "Bankkonto"
       },
@@ -183,7 +183,7 @@
     },
     "checks_list": {
       "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen",
-      "description": "Bitte führen Sie die unten aufgeführten erforderlichen Verifizierungen durch. Unser Team wird Sie über das Ergebnis der Verifizierung benachrichtigen.",
+      "subtitle": "Bitte führen Sie die unten aufgeführten erforderlichen Verifizierungen durch. Unser Team wird Sie über das Ergebnis der Verifizierung benachrichtigen.",
       "copy": {
         "label": "Onboarding-Link kopieren"
       },

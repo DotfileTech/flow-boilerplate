@@ -26,7 +26,7 @@
     },
     "company_edit": {
       "title": "Verifica la información de tu empresa",
-      "subtitle": {
+      "nested": {
         "classifications": "Clasificación",
         "address": "Dirección",
         "banking_information": "Cuenta bancaria"

@@ -26,7 +26,7 @@
     },
     "company_edit": {
       "title": "Controleer uw bedrijfsgegevens",
-      "subtitle": {
+      "nested": {
         "classifications": "Classificatie",
         "address": "Adres",
         "banking_information": "Bankrekening"
@@ -93,7 +93,7 @@
     },
     "individual_edit": {
       "title": "Controleer de informatie",
-      "subtitle": {
+      "nested": {
         "address": "Adres",
         "banking_information": "Bankrekening"
       },
@@ -183,7 +183,7 @@
     },
     "checks_list": {
       "title": "Help ons de nodige controles uit te voeren",
-      "description": "Ga verder met de hieronder vermelde noodzakelijke verificaties. <br/> Ons team houdt u op de hoogte van het resultaat van de verificatie.",
+      "subtitle": "Ga verder met de hieronder vermelde noodzakelijke verificaties. <br/> Ons team houdt u op de hoogte van het resultaat van de verificatie.",
       "copy": {
         "label": "Kopieer onboarding-link"
       },

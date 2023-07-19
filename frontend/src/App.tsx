@@ -338,10 +338,10 @@ const AppContent = () => {
               hasBackButton={step !== 0 && !caseId && steps[step]}
               isCheckStep={!!caseId}
               title={steps[step] ? t(`steps.${steps[step].key}.title`) : null}
-              description={
+              subtitle={
                 steps[step]
-                  ? i18n.exists(`steps.${steps[step]?.key}.description`)
-                    ? `steps.${steps[step]?.key}.description`
+                  ? i18n.exists(`steps.${steps[step]?.key}.subtitle`)
+                    ? `steps.${steps[step]?.key}.subtitle`
                     : null
                   : null
               }

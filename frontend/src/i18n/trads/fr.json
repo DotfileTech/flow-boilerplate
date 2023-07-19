@@ -26,7 +26,7 @@
     },
     "company_edit": {
       "title": "Vérifiez les informations de votre entreprise",
-      "subtitle": {
+      "nested": {
         "classifications": "Classification NAF",
         "address": "Adresse",
         "banking_information": "Compte bancaire"
@@ -93,7 +93,7 @@
     },
     "individual_edit": {
       "title": "Vérifiez ou completez les informations",
-      "subtitle": {
+      "nested": {
         "address": "Adresse",
         "banking_information": "Compte bancaire"
       },
@@ -183,7 +183,7 @@
     },
     "checks_list": {
       "title": "Aidez-nous à effectuer les vérifications nécessaires",
-      "description": "Veuillez procéder aux vérifications nécessaires listées ci-dessous. <br/> Notre équipe vous informera du résultat de ces vérifications.",
+      "subtitle": "Veuillez procéder aux vérifications nécessaires listées ci-dessous. <br/> Notre équipe vous informera du résultat de ces vérifications.",
       "copy": {
         "label": "Copier le lien d'onboarding"
       },

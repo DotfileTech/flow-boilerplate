@@ -26,7 +26,7 @@
     },
     "company_edit": {
       "title": "Verify your company information",
-      "subtitle": {
+      "nested": {
         "classifications": "Classification",
         "address": "Address",
         "banking_information": "Bank account"
@@ -93,7 +93,7 @@
     },
     "individual_edit": {
       "title": "Check the information",
-      "subtitle": {
+      "nested": {
         "address": "Address",
         "banking_information": "Bank account"
       },
@@ -183,7 +183,7 @@
     },
     "checks_list": {
       "title": "Help us carry out the necessary checks",
-      "description": "Please proceed with the necessary verifications listed below. <br/> Our team will  keep you informed of the result of the verification.",
+      "subtitle": "Please proceed with the necessary verifications listed below. <br/> Our team will  keep you informed of the result of the verification.",
       "copy": {
         "label": "Copy onboarding link"
       },

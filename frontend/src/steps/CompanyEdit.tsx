@@ -195,7 +195,7 @@ const CompanyEdit = (props: CompanyEditProps) => {
         return (
           <Box w="100%" key={field.id} mb="6">
             {field.nested &&
-              t(`steps.company_edit.subtitle.${field.nested}`) !== '' &&
+              t(`steps.company_edit.nested.${field.nested}`) !== '' &&
               (field.id === 'code' ||
                 field.id === 'street_address' ||
                 field.id === 'iban') && (
@@ -206,7 +206,7 @@ const CompanyEdit = (props: CompanyEditProps) => {
                   color="brand.main-3"
                   fontSize={{ base: 'xl', md: '2xl' }}
                 >
-                  {t(`steps.company_edit.subtitle.${field.nested}`)}
+                  {t(`steps.company_edit.nested.${field.nested}`)}
                 </Heading>
               )}
             <GroupController
