@@ -5,7 +5,7 @@
   "steps": {
     "individual_edit": {
       "title": "Welcome to the Nilos Network!",
-      "description": "Please use your full name and email to register",
+      "subtitle": "Please use your full name and email to register",
       "position": {
         "label": "About your occupation",
         "helper": "Please detail what is your job / position"
@@ -13,7 +13,7 @@
     },
     "about_you": {
       "title": "About you",
-      "description": "Tell us about yourself",
+      "subtitle": "Tell us about yourself",
       "Your company": {
         "label": "Your company",
         "helper": "Please mention here what company you work for (if applicable)"
@@ -45,7 +45,7 @@
     },
     "payment_details": {
       "title": "Your payment details",
-      "description": "Please provide instructions on what should be done with the funds received through Nilos",
+      "subtitle": "Please provide instructions on what should be done with the funds received through Nilos",
       "What should we do with the funds you receive on Nilos?": {
         "label": "What should we do with the funds you receive on Nilos?",
         "helper": "If you want your funds to be converted into FIAT and transferred to the bank account you will register, please select the first option and fill the next 3 fields. Your company must be the owner of the bank account.\n\nIf you want your crypto funds to be sent to an external wallet, please select the second option and send an email to compliance@nilos.io with the beneficiary wallet address information. You don't need to fill the next 3 fields if you picked this option.",

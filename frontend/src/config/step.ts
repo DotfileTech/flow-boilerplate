@@ -59,7 +59,10 @@ export const stepsConfig: {
         type: 'select',
         isRequired: true,
         hasHelper: true,
-        options: ['Any crypto received with Nilos has to be automatically exchanged into FIAT and transferred to the bank account below','Any crypto received with Nilos has to be automatically transferred to an external wallet I will communicate to Nilos'],
+        options: [
+          'Any crypto received with Nilos has to be automatically exchanged into FIAT and transferred to the bank account below',
+          'Any crypto received with Nilos has to be automatically transferred to an external wallet I will communicate to Nilos',
+        ],
       },
       {
         id: 'IBAN / Account number',
@@ -75,12 +78,12 @@ export const stepsConfig: {
         type: 'select',
         isRequired: true,
         hasHelper: true,
-        options: ['EUR','GBP','CHF','USD'],
+        options: ['EUR', 'GBP', 'CHF', 'USD'],
       },
     ],
   },
   {
     key: 'pdf_viewer_terms',
-    pdfUrl: 'https://acme.onboarding.dotfile.com/terms-and-conditions.pdf',
+    pdfUrl: 'https://nilos-kyc.onboarding.dotfile.com/terms-and-conditions.pdf',
   },
 ];
