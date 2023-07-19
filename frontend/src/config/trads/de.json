@@ -101,7 +101,7 @@
     },
     "individuals_list": {
       "title": "Überprüfen oder ergänzen Sie die gesetzlichen Vertreter und wirtschaftlichen Eigentümer Ihres Unternehmens.",
-      "description": "Wir benötigen Dokumente für jeden wirtschaftlichen Eigentümer des Unternehmens sowie für den gesetzlichen Vertreter, der die Eröffnung des Mooncard-Kontos beantragt.<br/> Ein wirtschaftlicher Eigentümer ist eine Person, die mehr als 25 % des Kapitals der Gesellschaft hält.<br/> Wenn diese Personen nicht in der Liste unten aufgeführt sind, teilen Sie uns bitte ihre Kontaktdaten mit.",
+      "subtitle": "Wir benötigen Dokumente für jeden wirtschaftlichen Eigentümer des Unternehmens sowie für den gesetzlichen Vertreter, der die Eröffnung des Mooncard-Kontos beantragt.<br/> Ein wirtschaftlicher Eigentümer ist eine Person, die mehr als 25 % des Kapitals der Gesellschaft hält.<br/> Wenn diese Personen nicht in der Liste unten aufgeführt sind, teilen Sie uns bitte ihre Kontaktdaten mit.",
       "missing_data": "Bitte korrigieren",
       "edit": "Bearbeiten",
       "delete": "Löschen",

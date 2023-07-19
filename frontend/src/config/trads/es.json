@@ -101,7 +101,7 @@
     },
     "individuals_list": {
       "title": "Verifica la lista de personas",
-      "description": "Necesitaremos documentos para cada uno de los beneficiarios reales de la empresa, así como para el representante legal que solicita la apertura de la cuenta Mooncard.<br/> Un usufructuario es una persona que posee más del 25% del capital de la empresa.<br/> Si estas personas no aparecen en la lista a continuación, indíquenos sus datos de contacto.",
+      "subtitle": "Necesitaremos documentos para cada uno de los beneficiarios reales de la empresa, así como para el representante legal que solicita la apertura de la cuenta Mooncard.<br/> Un usufructuario es una persona que posee más del 25% del capital de la empresa.<br/> Si estas personas no aparecen en la lista a continuación, indíquenos sus datos de contacto.",
       "missing_data": "Por favor corregir",
       "edit": "Editar",
       "delete": "Borrar",

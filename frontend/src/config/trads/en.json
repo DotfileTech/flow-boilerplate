@@ -101,7 +101,7 @@
     },
     "individuals_list": {
       "title": "Check the list of individuals attached to your company",
-      "description": "We will need documents for each of the beneficial owners of the company as well as for the legal representative requesting the opening of the Mooncard account.<br/> A beneficial owner is a person holding more than 25% of the capital of the company.<br/> If these people do not appear in the list below, please provide us with their contact details.",
+      "subtitle": "We will need documents for each of the beneficial owners of the company as well as for the legal representative requesting the opening of the Mooncard account.<br/> A beneficial owner is a person holding more than 25% of the capital of the company.<br/> If these people do not appear in the list below, please provide us with their contact details.",
       "missing_data": "Please correct",
       "edit": "Edit",
       "delete": "Delete",

@@ -101,7 +101,7 @@
     },
     "individuals_list": {
       "title": "Vérifiez ou complétez les représentants légaux et bénéficiaires effectifs de votre entreprise",
-      "description": "Nous allons avoir besoin de documents pour chacun des bénéficiaires effectifs de l'entreprise ainsi que pour le représentant légal sollicitant l'ouverture du compte Mooncard.<br/> Un bénéficiaire effectif est une personne détenant plus de 25% du capital de la société.<br/> Si ces personnes n'apparaissent pas dans la liste ci-dessous, veuillez nous fournir leurs coordonnées.",
+      "subtitle": "Nous allons avoir besoin de documents pour chacun des bénéficiaires effectifs de l'entreprise ainsi que pour le représentant légal sollicitant l'ouverture du compte Mooncard.<br/> Un bénéficiaire effectif est une personne détenant plus de 25% du capital de la société.<br/> Si ces personnes n'apparaissent pas dans la liste ci-dessous, veuillez nous fournir leurs coordonnées.",
       "missing_data": "A corriger",
       "edit": "Éditer",
       "delete": "Supprimer",

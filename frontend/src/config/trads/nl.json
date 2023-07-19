@@ -101,7 +101,7 @@
     },
     "individuals_list": {
       "title": "Controleer uw personenlijst",
-      "description": "We hebben documenten nodig voor elk van de uiteindelijke begunstigden van het bedrijf, evenals voor de wettelijke vertegenwoordiger die de opening van de Mooncard-rekening aanvraagt.<br/> Een uiteindelijk gerechtigde is een persoon die meer dan 25% van het kapitaal van de onderneming bezit.<br/> Als deze personen niet in de onderstaande lijst voorkomen, verzoeken wij u hun contactgegevens door te geven.",
+      "subtitle": "We hebben documenten nodig voor elk van de uiteindelijke begunstigden van het bedrijf, evenals voor de wettelijke vertegenwoordiger die de opening van de Mooncard-rekening aanvraagt.<br/> Een uiteindelijk gerechtigde is een persoon die meer dan 25% van het kapitaal van de onderneming bezit.<br/> Als deze personen niet in de onderstaande lijst voorkomen, verzoeken wij u hun contactgegevens door te geven.",
       "missing_data": "Gelieve te corrigeren",
       "edit": "Bewerken",
       "delete": "Verwijderen",

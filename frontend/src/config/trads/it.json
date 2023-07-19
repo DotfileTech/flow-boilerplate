@@ -101,7 +101,7 @@
     },
     "individuals_list": {
       "title": "Verifica l'elenco delle persone",
-      "description": "Avremo bisogno di documenti per ciascuno dei titolari effettivi della società, nonché per il rappresentante legale che richiede l'apertura del conto Mooncard.<br/> Un beneficiario effettivo è una persona che detiene più del 25% del capitale della società.<br/> Se queste persone non compaiono nell'elenco sottostante, ti preghiamo di fornirci i loro recapiti.",
+      "subtitle": "Avremo bisogno di documenti per ciascuno dei titolari effettivi della società, nonché per il rappresentante legale che richiede l'apertura del conto Mooncard.<br/> Un beneficiario effettivo è una persona che detiene più del 25% del capitale della società.<br/> Se queste persone non compaiono nell'elenco sottostante, ti preghiamo di fornirci i loro recapiti.",
       "missing_data": "Per favore Correggi",
       "edit": "Modificare",
       "delete": "Eliminare",
