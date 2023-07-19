@@ -5,7 +5,7 @@
   "steps": {
     "individual_edit": {
       "title": "Complétez vos informations personnelles",
-      "description": "Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "subtitle": "Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
       "country": {
         "label": "Pays de résidence"
       },
@@ -24,7 +24,7 @@
     },
     "checks_list": {
       "title": "Aidez-nous à effectuer les vérifications nécessaires",
-      "description": "Soumettre les documents justificatifs.<br/><br/>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil. <br/> Notre équipe vous informera du résultat de ces vérifications.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "subtitle": "Soumettre les documents justificatifs.<br/><br/>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil. <br/> Notre équipe vous informera du résultat de ces vérifications.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
       "copy": {
         "label": "Copier le lien d'onboarding"
       }

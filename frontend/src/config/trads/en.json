@@ -5,7 +5,7 @@
   "steps": {
     "individual_edit": {
       "title": "Fill in your individual's details",
-      "description": "Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>",
+      "subtitle": "Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>",
       "first_name": {
         "label": "First name"
       },
@@ -73,7 +73,7 @@
       }
     },
     "checks_list": {
-      "description": "Submit supporting documents.<br/><br/>Please provide us with the following documents to help us verify your profile.<br/>Our team will  keep you informed of the result of the verification.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
+      "subtitle": "Submit supporting documents.<br/><br/>Please provide us with the following documents to help us verify your profile.<br/>Our team will  keep you informed of the result of the verification.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     }
   },
   "checks": {

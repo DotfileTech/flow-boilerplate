@@ -5,7 +5,7 @@
   "steps": {
     "individual_edit": {
       "title": "Füllen Sie Ihre persönlichen Daten aus",
-      "description": "Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>",
+      "subtitle": "Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>",
       "country": {
         "label": "Wohnsitzland"
       },
@@ -23,7 +23,7 @@
       }
     },
     "checks_list": {
-      "description": "Nachweisdokumente hochladen.<br/><br/>Bitte laden Sie die folgenden Dokumente hoch, um uns bei der Bestätigung Ihres Profils zu helfen<br/>Unser Team wird sie über das Ergebnis informieren.<br/><br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
+      "subtitle": "Nachweisdokumente hochladen.<br/><br/>Bitte laden Sie die folgenden Dokumente hoch, um uns bei der Bestätigung Ihres Profils zu helfen<br/>Unser Team wird sie über das Ergebnis informieren.<br/><br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
     }
   },
   "checks": {
