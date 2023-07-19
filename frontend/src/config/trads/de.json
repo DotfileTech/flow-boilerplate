@@ -5,7 +5,7 @@
   "steps": {
     "individuals_list": {
       "title": "Überprüfen oder vervollständigen Sie die gesetzlichen Vertreter (natürliche Personen) und die wirtschaftlichen Eigentümer Ihres Unternehmens",
-      "description": "Um akzeptiert zu werden, muss Ihr Antrag mindestens einen gesetzlichen Vertreter und einen wirtschaftlich Berechtigten enthalten (dies kann dieselbe Person sein)."
+      "subtitle": "Um akzeptiert zu werden, muss Ihr Antrag mindestens einen gesetzlichen Vertreter und einen wirtschaftlich Berechtigten enthalten (dies kann dieselbe Person sein)."
     },
     "additional_data": {
       "title": "",

@@ -5,7 +5,7 @@
   "steps": {
     "individuals_list": {
       "title": "Check or complete the legal representatives (natural persons) and beneficial owners of your company",
-      "description": "To be accepted, your application must include at least one legal representative and one beneficial owner (who may be the same person)."
+      "subtitle": "To be accepted, your application must include at least one legal representative and one beneficial owner (who may be the same person)."
     },
     "additional_data": {
       "title": "",
