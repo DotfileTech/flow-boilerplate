@@ -142,7 +142,8 @@ const CustomForm = (props: CustomFormProps) => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 name={field.id}
-                label={`${t(`steps.${stepId}.${field.id}.label`) || field.id} ${
+                // @TODO - custom for Panto without fallback field.id: ${t(`steps.${stepId}.${field.id}.label`) || field.id}
+                label={`${t(`steps.${stepId}.${field.id}.label`)} ${
                   field.isRequired ? '*' : ''
                 }`}
                 helper={

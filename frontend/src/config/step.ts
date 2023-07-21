@@ -50,6 +50,12 @@ export const stepsConfig: {
         ],
       },
       {
+        id: "Faites-vous plus de 75% de votre chiffre d'affaires dans l'Union Européenne ?",
+        isRequired: false,
+        type: 'radio',
+        options: ['yes', 'no'],
+      },
+      {
         id: "Avez vous une résidence fiscale dans d'autres pays ?",
         isRequired: false,
         type: 'radio',
@@ -66,8 +72,15 @@ export const stepsConfig: {
     ],
   },
   {
-    key: 'pdf_viewer_countries_risked',
-    pdfUrl: 'https://getpanto.onboarding.dotfile.com/terms-and-conditions.pdf',
+    key: 'activity_in_countries_risked',
+    fields: [
+      {
+        id: 'Activité dans des pays à risque',
+        isRequired: false,
+        type: 'checkbox',
+        options: ['checked'],
+      },
+    ],
   },
   {
     key: 'individuals_list',

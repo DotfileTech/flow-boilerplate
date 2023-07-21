@@ -30,11 +30,18 @@
           "La société n'est pas une ENF passive": "La société n'est pas une ENF passive"
         }
       },
+      "Faites-vous plus de 75% de votre chiffre d'affaires dans l'Union Européenne ?": {
+        "label": "Faites-vous plus de 75% de votre chiffre d'affaires dans l'Union Européenne ?",
+        "options": {
+          "yes": "Oui",
+          "no": "Non"
+        }
+      },
       "Avez vous une résidence fiscale dans d'autres pays ?": {
         "label": "Avez-vous une résidence fiscale dans d'autres pays ?",
         "options": {
-          "yes": "Yes",
-          "no": "No"
+          "yes": "Oui",
+          "no": "Non"
         }
       },
       "Si oui, veuillez lister les pays de votre résidence fiscale": {
@@ -46,10 +53,15 @@
         "helper": "Veuillez séparer les NIF par des virgules"
       }
     },
-    "pdf_viewer_countries_risked": {
+    "activity_in_countries_risked": {
       "title": "Activité dans des pays à risque",
-      "id": "Aucun lien avec des pays à risque",
-      "label": "Je confirme n’avoir aucun lien avec ces pays à risque (Corée du Nord, Crimée/Sebastopol, Cuba, Iran, Syrie)"
+      "subtitle": "Votre entité (ou une entité liée) n'exerce aucune activité, n’effectue aucune opération ni n’est présente ou domiciliée en CRIMÉE / SÉBASTOPOL, CUBA, l'IRAN, la CORÉE DU NORD ou la SYRIE. <br/> <a href='https://dotfile.com' target='_blank'>Voir la déclaration complète</a>",
+      "Activité dans des pays à risque": {
+        "label": "",
+        "options": {
+          "checked": "Je confirme les informations et engagements ci-dessus en lien avec la CRIMÉE / SÉBASTOPOL, CUBA, l'IRAN, la CORÉE DU NORD ou la SYRIE *"
+        }
+      }
     },
     "individual_edit": {
       "country": {
