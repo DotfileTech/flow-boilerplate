@@ -30,7 +30,7 @@ export const stepsConfig: {
     fields: [
       {
         id: 'What Nilos Services would you like to have access to?',
-        type: 'select',
+        type: 'checkbox',
         isRequired: true,
         hasHelper: false,
         options: [
@@ -87,11 +87,11 @@ export const stepsConfig: {
       {
         id: 'Activity explanation',
         type: 'text',
-        isRequired: false,
+        isRequired: true,
       },
       {
         id: 'Source of Wealth of your Entity',
-        type: 'select',
+        type: 'checkbox',
         isRequired: true,
         hasHelper: true,
         options: [
@@ -120,7 +120,7 @@ export const stepsConfig: {
       },
       {
         id: 'Anticipated source of the funds on your Nilos Account',
-        type: 'select',
+        type: 'checkbox',
         isRequired: true,
         hasHelper: true,
         options: [
