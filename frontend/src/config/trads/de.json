@@ -69,8 +69,8 @@
       }
     },
     "checks_list": {
-      "title": "Helfen Sie uns bei der Durchführung der notwendigen Kontrollen",
-      "subtitle": "<p>Bitte führen Sie die unten aufgeführten erforderlichen Verifizierungen durch. Unser Team wird Sie über das Ergebnis der Verifizierung benachrichtigen.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>",
+      "title": "Nachweisdokumente hochladen",
+      "subtitle": "<p>Bitte laden Sie die folgenden Dokumente hoch, um uns bei der Bestätigung Ihres Profils zu helfen. Unser Team wird sie über das Ergebnis informieren.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a></p>",
       "copy": {
         "label": "Onboarding-Link kopieren"
       }
@@ -78,11 +78,11 @@
   },
   "checks": {
     "id_verification": {
-      "title": "Identitätsprüfung",
+      "title": "Identitätsnachweis",
       "callout": "Der Identitätsnachweis (Reisepass oder Personalausweis) muss aktuell gültig sein.<br/>Für die Lagerung in Singapur, Toronto und New York ist ein Reisepass erforderlich.<br/>Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b>Format.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
     },
     "proof_of_address": {
-      "title": "Wohnsitzbescheinigung",
+      "title": "Adressnachweis",
       "description": "Der Adressnachweis (Wasser-, Strom-, Gas-, Telefonrechnung) darf nicht älter als 3 Monate sein.",
       "callout": "Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b>Format.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
     },
@@ -92,7 +92,7 @@
       "callout": "Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b>Format.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
     },
     "bank_details": {
-      "title": "Bank details",
+      "title": "Bankverbindung",
       "description": "Der Nachweis über die Bankverbindung darf nicht älter als 3 Monate sein.",
       "callout": "Durch die Prüfung der Bankverbindung mit Hilfe eines offiziellen Dokuments Ihrer Bank stellen wir sicher, dass Sie der Inhaber des Kontos sind, welches für Kauf- und Verkaufstransaktionen verwendet wird.<br/>Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b>Format.<br/><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
     },

@@ -81,7 +81,7 @@
       }
     },
     "checks_list": {
-      "title": "Aidez-nous à effectuer les vérifications nécessaires",
+      "title": "Envoyez-nous les documents justificatifs",
       "subtitle": "<p>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil.<br/>Notre équipe vous tiendra informé du résultat de la vérification.</p><p><br />Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a></p>",
       "copy": {
         "label": "Copier le lien d'onboarding"
@@ -90,7 +90,7 @@
   },
   "checks": {
     "id_verification": {
-      "title": "Pièce d'identité",
+      "title": "Justificatif d’identité",
       "callout": "La pièce d'identité (passeport ou carte d'identité) doit être en cours de validité.<br/><br/>Pour le stockage à Singapour, Toronto et New York, un passeport est requis.<br/>Copie lisible, non tronquée, au format <b>PNG</b>,<b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     },
     "proof_of_address": {
@@ -99,18 +99,18 @@
       "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     },
     "articles_of_association": {
-      "title": "Statuts de la société",
-      "description": "L’acte constitutif doit être en cours de validité.",
+      "title": "Statuts",
+      "description": "Les statuts de la société doivent être en cours de validité.",
       "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     },
     "bank_details": {
-      "title": "Coordonnées bancaires",
+      "title": "Relevé d’identité bancaire (RIB)",
       "description": "Le relevé d'identité bancaire (RIB) doit dater de moins de 3 mois.",
       "callout": "La vérification du compte bancaire permet d'assurer, à l'aide d'un document officiel de votre banque, que vous êtes bien le titulaire du compte utilisé pour vos opérations d'achat et de vente.<br/><br/>Copie lisible, non tronquée, au format <b>PNG</b>,<b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     },
     "registration_certificate": {
-      "title": "KBIS à jour",
-      "description": "Le certificat d'incorporation (KBIS) doit dater de moins de 3 mois.",
+      "title": "Certificat d'incorporation (Kbis)",
+      "description": "Le certificat d'incorporation (Kbis) doit dater de moins de 3 mois.",
       "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     }
   }
