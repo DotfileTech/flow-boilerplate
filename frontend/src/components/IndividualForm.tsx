@@ -162,22 +162,11 @@ const IndividualForm = (props: IndividualFormProps) => {
               }
               isRequired={field.required}
               control={control}
-              render={(f) => (
+              render={({ onChange, value }) => (
                 <PhoneNumberInput
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
-                  value={(f.value ?? '').replace('+', '')}
-                  onChange={(value: string) => {
-                    setValue(
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      field.id,
-                      value ?? '',
-                      {
-                        shouldDirty: true,
-                        shouldValidate: true,
-                      }
-                    );
+                  value={(value ?? '').replace('+', '')}
+                  onChange={(phoneNumber: string) => {
+                    onChange(phoneNumber.replace('+', '') ? phoneNumber : null);
                   }}
                 />
               )}

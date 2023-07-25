@@ -1,5 +1,15 @@
 import { z } from 'zod';
 import { CompanyStatusEnum, IndividualRoleEnum } from '../../constants';
+import { parsePhoneNumber } from 'libphonenumber-js';
+
+const validatePhoneNumber = z.custom<{ arg: string }>((val) => {
+  if (!val) {
+    return true;
+  }
+  const parsed = parsePhoneNumber(<string>val);
+
+  return !!parsed && !!val && parsed.isValid();
+});
 
 export const caseSchema = z.object({
   company: z
@@ -76,10 +86,7 @@ export const caseSchema = z.object({
         .optional(),
       tax_identification_number: z.string().nullish(),
       social_security_number: z.string().nullish(),
-      phone_number: z
-        .string()
-        .regex(/^\+(?:[0-9] ?){6,14}[0-9]$/)
-        .nullish(),
+      phone_number: validatePhoneNumber,
       position: z.string().nullish(),
       ownership_percentage: z.number().nullish(),
     })

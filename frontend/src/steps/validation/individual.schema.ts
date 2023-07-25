@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { parsePhoneNumber } from 'libphonenumber-js';
 
 import {
   isRequiredField,
@@ -12,6 +13,9 @@ const mandatoryFields = Yup.object({
   first_name: Yup.string().required().label('First name'),
   last_name: Yup.string().required().label('Last name'),
 });
+
+const PHONE_NUMBER_ERROR_MESSAGE =
+  'Phone number should follow international standard format';
 
 export const individualSchema = mandatoryFields.shape({
   middle_name: isRequiredField(individualData, 'middle_name')
@@ -114,15 +118,32 @@ export const individualSchema = mandatoryFields.shape({
     : optionalStringRule.label('Social security number'),
   phone_number: isRequiredField(individualData, 'phone_number')
     ? Yup.string()
-        .matches(
-          /^\+(?:[0-9] ?){6,14}[0-9]$/,
-          'Phone number should follow international standard format'
-        )
+        .test('phoneNumber', PHONE_NUMBER_ERROR_MESSAGE, (value) => {
+          try {
+            const parsed = parsePhoneNumber(value ?? '');
+
+            return !!parsed && !!value && parsed.isValid();
+          } catch (error) {
+            return false;
+          }
+        })
         .required()
-    : optionalStringRule.matches(
-        /^\+(?:[0-9] ?){6,14}[0-9]$/,
-        'Phone number should follow international standard format'
-      ),
+        .label('Phone number')
+    : optionalStringRule
+        .test('phoneNumber', PHONE_NUMBER_ERROR_MESSAGE, (value) => {
+          if (!value) {
+            return true;
+          }
+
+          try {
+            const parsed = parsePhoneNumber(value ?? '');
+
+            return !!parsed && !!value && parsed.isValid();
+          } catch (error) {
+            return false;
+          }
+        })
+        .label('Phone number'),
   position: isRequiredField(individualData, 'position')
     ? Yup.string().required().label('Position')
     : optionalStringRule.label('Position'),
