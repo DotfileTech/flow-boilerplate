@@ -7,6 +7,6 @@ export const emails = [
   },
   {
     // checkRejected
-    template: 'defaultCheckRejected',
+    template: 'customCheckRejected',
   },
 ];

@@ -44,6 +44,36 @@ export const stepsConfig: {
         hasHelper: true,
         type: 'number',
       },
+      {
+        id: 'Adresse de livraison',
+        isRequired: true,
+        hasHelper: false,
+        type: 'text',
+      },
+      {
+        id: 'Complément d\'adresse',
+        isRequired: false,
+        hasHelper: false,
+        type: 'text',
+      },
+      {
+        id: 'Code Postal',
+        isRequired: true,
+        hasHelper: false,
+        type: 'text',
+      },
+      {
+        id: 'Ville',
+        isRequired: true,
+        hasHelper: false,
+        type: 'text',
+      },
+      {
+        id: 'Pays',
+        isRequired: true,
+        hasHelper: false,
+        type: 'text',
+      }
     ],
   },
   {
@@ -51,7 +81,15 @@ export const stepsConfig: {
     hasApplicant: true,
   },
   {
-    key: 'pdf_viewer_terms',
+    key: 'pdf_viewer_cgv',
+    pdfUrl: 'https://yavin.onboarding.dotfile.com/cgv-yavin.pdf'
+  },
+  {
+    key: 'pdf_viewer_cgu_app',
+    pdfUrl: 'https://yavin.onboarding.dotfile.com/cgu-app-yavin.pdf'
+  },
+  {
+    key: 'pdf_viewer_cgu_monetique',
     pdfUrl: 'https://yavin.onboarding.dotfile.com/terms-and-conditions.pdf',
   },
 ];
