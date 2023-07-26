@@ -201,6 +201,7 @@ export const stepsConfig: {
   },
   {
     key: 'pdf_viewer_terms',
-    pdfUrl: 'https://acme.onboarding.dotfile.com/terms-and-conditions.pdf',
+    pdfUrl:
+      'https://nilos-public.s3.eu-central-1.amazonaws.com/legal/Modulr+T%26C.pdf',
   },
 ];

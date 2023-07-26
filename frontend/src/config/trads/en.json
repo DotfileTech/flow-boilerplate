@@ -225,9 +225,10 @@
         }
       }
     },
-    "terms_and_conditions": {
-      "title": "Terms and conditions",
-      "label": "By checking this box, as the company's legal representative, I fully agree and consent to Modulr Terms and Conditions"
+    "pdf_viewer_terms": {
+      "title": "Modulr Terms & Conditions",
+      "subtitle": "For accessing FIAT accounts and payments services, you need to agree to Modulr T&Cs",
+      "label": "By checking this box, I agree to Modulr Terms & Conditions"
     }
   },
   "checks": {
