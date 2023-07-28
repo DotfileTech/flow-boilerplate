@@ -10,7 +10,7 @@ const whitelist = [
 
 export const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: Number(process.env.TEMPLATE_MAX_SIZE ?? 5048576) },
+  limits: { fileSize: Number(20000000) }, // 20 Mo in bytes
   fileFilter: (req, file, cb) => {
     if (whitelist.includes(file.mimetype)) {
       cb(null, true);
