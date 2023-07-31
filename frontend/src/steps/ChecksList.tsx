@@ -100,7 +100,7 @@ const ChecksList = (props: ChecksListProps) => {
           (check: CheckInterface) =>
             // @TODO - TMP for keyrock
             check.type !== CheckTypeEnum.aml &&
-            check.data.settings?.custom_document_type?.id !==
+            check.data?.settings?.custom_document_type?.id !==
               '9951b264-2f37-48cf-a383-62cbedeca551'
         ).length ?? 0) > 0,
     [companies]

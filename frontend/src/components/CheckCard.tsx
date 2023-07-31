@@ -66,7 +66,7 @@ const CheckCard = (props: CheckCardProps) => {
         (c: CheckInterface) =>
           // @TODO - TMP for keyrock
           c.type !== CheckTypeEnum.aml &&
-          c.data.settings?.custom_document_type?.id !==
+          c.data?.settings?.custom_document_type?.id !==
             '9951b264-2f37-48cf-a383-62cbedeca551'
       ),
     [entity]
@@ -202,7 +202,7 @@ const CheckCard = (props: CheckCardProps) => {
                     (check: CheckInterface) =>
                       // @TODO - TMP for keyrock
                       check.type !== CheckTypeEnum.aml &&
-                      check.data.settings?.custom_document_type?.id !==
+                      check.data?.settings?.custom_document_type?.id !==
                         '9951b264-2f37-48cf-a383-62cbedeca551'
                   )
                   .map((check: CheckInterface) => (
