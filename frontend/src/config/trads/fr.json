@@ -51,7 +51,7 @@
       "Adresse de livraison": {
         "label": "Adresse de livraison"
       },
-      "Complément d'adresse": {
+      "Complément_adresse": {
         "label": "Complément d'adresse"
       },
       "Code Postal": {
@@ -77,18 +77,9 @@
     },
     "pdf_viewer_cgv": {
       "id": "CGV",
-      "title": "Conditions générales de vente",
-      "label": "Je reconnais avoir pris connaissance et j’accepte les conditions générales de vente."
-    },
-    "pdf_viewer_cgu_app": {
-      "id": "CGU - app Yavin",
-      "title": "Conditions générales d'utilisation - application Yavin",
-      "label": "Je reconnais avoir pris connaissance et j’accepte les conditions générales d'utilisation de l'application Yavin."
-    },
-    "pdf_viewer_cgu_monetique": {
-      "id": "CGU - Contrat Monétique",
-      "title": "Conditions générales d'utilisation - contrat monétique",
-      "label": "Je reconnais avoir pris connaissance et j’accepte les conditions générales d'utilisation - contrat monétique."
+      "title": "Conditions générales de vente et d'utilisation",
+      "subtitle": "En cochant la case ci-dessous, je reconnais avoir pris connaissance et j’accepte :<br/><br/><ul><li>Les conditions générales de vente.</li><li>Les conditions générales d'utilisation de l'application Yavin.</li><li>Les conditions générales d'utilisation du contrat monétique.</li><ul><br/>",
+      "label": "Je reconnais avoir pris connaissance et j’accepte les conditions générales de vente et d'utilisation."
     }
   },
   "checks": {

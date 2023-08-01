@@ -51,7 +51,7 @@ export const stepsConfig: {
         type: 'text',
       },
       {
-        id: 'Complément d\'adresse',
+        id: 'Complément_adresse',
         isRequired: false,
         hasHelper: false,
         type: 'text',
@@ -82,14 +82,6 @@ export const stepsConfig: {
   },
   {
     key: 'pdf_viewer_cgv',
-    pdfUrl: 'https://yavin.onboarding.dotfile.com/cgv-yavin.pdf'
-  },
-  {
-    key: 'pdf_viewer_cgu_app',
-    pdfUrl: 'https://yavin.onboarding.dotfile.com/cgu-app-yavin.pdf'
-  },
-  {
-    key: 'pdf_viewer_cgu_monetique',
-    pdfUrl: 'https://yavin.onboarding.dotfile.com/terms-and-conditions.pdf',
-  },
+    pdfUrl: 'https://yavin.onboarding.dotfile.com/CGV_CGU_YAVIN.pdf'
+  }
 ];
