@@ -24,7 +24,7 @@
     },
     "checks_list": {
       "title": "Aidez-nous à effectuer les vérifications nécessaires",
-      "subtitle": "Soumettre les documents justificatifs.<br/><br/>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil. <br/> Notre équipe vous informera du résultat de ces vérifications.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>",
+      "subtitle": "Soumettre les documents justificatifs.<br/><br/>Veuillez nous fournir les documents suivants pour nous aider à vérifier votre profil. <br/> Notre équipe vous informera du résultat de ces vérifications.<br/><br/>Pour le stockage à Singapour, Toronto et New York, un passeport est requis.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter.</a>",
       "copy": {
         "label": "Copier le lien d'onboarding"
       }
@@ -32,7 +32,6 @@
   },
   "checks": {
     "id_document": {
-      "title": "Justificatif d’identité",
       "description": "La pièce d'identité (passeport ou carte d'identité) doit être en cours de validité.",
       "callout": "Pour le stockage à Singapour, Toronto et New York, un passeport est requis.<br/>Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     },
@@ -45,6 +44,11 @@
       "title": "Justificatif de domicile",
       "description": "Le justificatif de domicile (facture eau, électricité, gaz, téléphone) doit dater de moins de 3 mois.",
       "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
+    },
+    "id_verification": {
+      "title": "Justificatif d’identité",
+      "description": "La pièce d'identité (passeport ou carte d'identité) doit être en cours de validité.",
+      "callout": "Pour le stockage à Singapour, Toronto et New York, un passeport est requis.<br/>Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? n'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     }
   }
 }

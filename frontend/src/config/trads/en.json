@@ -73,13 +73,13 @@
       }
     },
     "checks_list": {
-      "subtitle": "Submit supporting documents.<br/><br/>Please provide us with the following documents to help us verify your profile.<br/>Our team will  keep you informed of the result of the verification.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
+      "subtitle": "Submit supporting documents.<br/><br/>Please provide us with the following documents to help us verify your profile.<br/>Our team will  keep you informed of the result of the verification.<br/><br/>For storage in Singapore, Toronto and New York, a passport is required.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     }
   },
   "checks": {
     "id_document": {
       "title": "Proof of identity",
-      "description": "La pièce d'identité (passeport ou carte d'identité) doit être en cours de validité.",
+      "description": "Identity document (passport or ID card) must be valid.",
       "callout": "For storage in Singapore, Toronto and New York, a passport is required.<br/>Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     },
     "bank_details": {
@@ -90,6 +90,10 @@
     "proof_of_address": {
       "description": "Proof of address (utility bill) must be less than 3 months old.",
       "callout": "Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
+    },
+    "id_verification": {
+      "description": "Identity document (passport or ID card) must be valid.",
+      "callout": "For storage in Singapore, Toronto and New York, a passport is required.<br/>Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/><br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     }
   }
 }

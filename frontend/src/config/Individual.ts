@@ -79,7 +79,7 @@ export const individualData: IndividualData[] = [
     id: 'email',
     type: 'email',
     required: true,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 'phone_number',

@@ -23,7 +23,7 @@
       }
     },
     "checks_list": {
-      "subtitle": "Nachweisdokumente hochladen.<br/><br/>Bitte laden Sie die folgenden Dokumente hoch, um uns bei der Bestätigung Ihres Profils zu helfen<br/>Unser Team wird sie über das Ergebnis informieren.<br/><br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
+      "subtitle": "Nachweisdokumente hochladen.<br/><br/>Bitte laden Sie die folgenden Dokumente hoch, um uns bei der Bestätigung Ihres Profils zu helfen<br/>Unser Team wird sie über das Ergebnis informieren.<br/><br/>Für die Lagerung in Singapur, Toronto und New York ist ein Reisepass erforderlich.<br/><br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
     }
   },
   "checks": {
@@ -39,6 +39,10 @@
     "proof_of_address": {
       "description": "Der Adressnachweis (Wasser-, Strom-, Gas-, Telefonrechnung) darf nicht älter als 3 Monate sein.",
       "callout": "Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b> format.<br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
+    },
+    "id_verification": {
+      "description": "Der Identitätsnachweis (Reisepass oder Personalausweis) muss aktuell gültig sein.",
+      "callout": "Für die Lagerung in Singapur, Toronto und New York ist ein Reisepass erforderlich.<br/>Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b> format.<br/><br/>Brauchen Sie Hilfe? Bitte <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">kontaktieren Sie uns.</a>"
     }
   }
 }
