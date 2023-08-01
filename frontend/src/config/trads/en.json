@@ -5,7 +5,7 @@
   "steps": {
     "disclaimer": {
       "title": "Before continuing, please pay attention to the following",
-      "subtitle": "You will need an ID, a proof of address, a proof of fund provenance (e.g. last pay slip or last tax report) and your Tax ID Number.<br/>All personal information is confidential, is only used for <a href='https://docs.roundtable.eu/en/articles/6442473-why-do-i-need-to-do-kyc-kyb-checks' target='_blank'>Anti-Money Laundering purposes</a>, and won’t be shared with your co-investors.<br/>For more details : \"<a href='https://docs.roundtable.eu/en/articles/6479354-how-do-i-perform-my-kyc-check' target='_blank'>How do I perform my KYC check?</a>\""
+      "subtitle": "You will need an ID, a proof of address, a proof of fund provenance (e.g. last pay slip or last tax report) and your Tax ID Number.<br/><br/>All personal information is confidential, is only used for <a href='https://docs.roundtable.eu/en/articles/6442473-why-do-i-need-to-do-kyc-kyb-checks' target='_blank'>Anti-Money Laundering purposes</a>, and won’t be shared with your co-investors.<br/><br/>For more details : \"<a href='https://docs.roundtable.eu/en/articles/6479354-how-do-i-perform-my-kyc-check' target='_blank'>How do I perform my KYC check?</a>\""
     },
     "individual_edit": {
       "title": "Fill in your personal details",
@@ -89,7 +89,28 @@
       "description": "Please provide a color, unexpired, framed, untrimmed and clear document of the identity card (front / back) or passport (double inside page with the signature)"
     },
     "proof_of_address": {
-      "title": "Proof of address"
+      "callout": "Utility bill less than 3-month old, bank statement, ..."
+    },
+    "3be576d1-5f31-442e-b997-d3e982461689": {
+      "callout": "Last 3 pay slips or freelance invoices"
+    },
+    "d10b5045-33aa-4d6a-9e45-523cec704eef": {
+      "callout": "Last 3 pay slips or freelance invoices"
+    },
+    "bccf6052-6505-4f0b-92a5-c5f2288fe595": {
+      "callout": "Last 3 pay slips or freelance invoices"
+    },
+    "66dfd14d-f958-402c-88ea-272b662a02fa": {
+      "callout": "Last financial statements (balance sheet/income statement)"
+    },
+    "76ad7e39-33de-413d-9799-4555de2a5a20": {
+      "callout": "Sale contract, securities transaction statement"
+    },
+    "a9d67c67-72a6-4f45-a54e-f71372166909": {
+      "callout": "Notarial act"
+    },
+    "641463d4-c620-4ac1-9169-4c9cf0414c94": {
+      "callout": "Notarial act, inheritance/donation act"
     }
   }
 }
