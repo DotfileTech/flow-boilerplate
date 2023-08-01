@@ -18,6 +18,7 @@ export const companyData: CompanyData[] = [
     id: 'registration_number',
     required: true,
     enabled: true,
+    hasHelper: true
   },
   {
     id: 'legal_form',
@@ -43,7 +44,7 @@ export const companyData: CompanyData[] = [
   },
   {
     id: 'tax_identification_number',
-    required: false,
+    required: true,
     enabled: true,
   },
   {

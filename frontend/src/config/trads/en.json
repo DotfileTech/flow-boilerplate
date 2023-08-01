@@ -5,7 +5,7 @@
   "steps": {
     "disclaimer": {
       "title": "Before continuing, please pay attention to the following",
-      "subtitle": "You will need the company’s incorporation certificate (KBIS, BCE extract, ...), the latest bylaws, the diagram of the cap table and the latest financial statements. For more information see <a href='https://docs.roundtable.eu/en/articles/6479467-how-do-i-perform-my-kyb-check' target='_blank'>here</a>.<br> All personal information is confidential, is only used for Anti-Money Laundering purposes, and won’t be shared with your co-investors."
+      "subtitle": "You will need the company’s incorporation certificate (KBIS, BCE extract, ...), the latest bylaws, the diagram of the cap table and the latest financial statements. For more information see <a href='https://docs.roundtable.eu/en/articles/6479467-how-do-i-perform-my-kyb-check' target='_blank'>here</a>.<br/><br/> All personal information is confidential, is only used for Anti-Money Laundering purposes, and won’t be shared with your co-investors."
     },
     "company_search": {
       "title": "Help us identify your business",
@@ -25,7 +25,8 @@
         "label": "Name"
       },
       "registration_number": {
-        "label": "Registration number"
+        "label": "Registration number",
+        "helper": "(e.g. SIREN in France)"
       },
       "registration_date": {
         "label": "Registration date"
@@ -67,7 +68,8 @@
     "company_details": {
       "title": "Fill your company details",
       "trade_registry_location": {
-        "label": "Trade registry location"
+        "label": "Trade registry location",
+        "helper": "e.g. Tribunal de commerce de Nanterre"
       }
     },
     "origin_funds": {
@@ -154,17 +156,20 @@
       "title": "Vital card"
     },
     "ubo_registry_extract": {
-      "title": "Beneficial owners certificate"
+      "title": "Beneficial owners (UBO) certificate",
+      "callout": "As an up-to-date signed and dated table, or diagram showing all shareholders and their percentage of ownership, or a Ultimate Beneficial Owner (UBO) list. You can for instance find the UBO list on <a href=\"https://docs.roundtable.eu/en/articles/6570037-how-to-find-corporate-ubos-in-europe\" target=\"_blank\">the following article</a>."
     },
     "articles_of_association": {
-      "title": "Bylaws"
+      "title": "Bylaws",
+      "callout": "Upload latest bylaws"
     },
     "registration_certificate": {
-      "title": "Registration certificate"
+      "title": "Incorporation certificate",
+      "callout": "KBIS, BCE extract, Certificate of incorporation, …"
     },
     "financial_statements": {
       "title": "Financial statements",
-      "description": "If your company is less than 1-year old and you don’t have a financial statement yet, you can upload 3 invoices edited by your company instead"
+      "callout": "If your company is less than 1-year old and you don’t have a financial statement yet, you can upload 3 invoices edited by your company instead"
     },
     "bank_details": {
       "title": "Bank details"
@@ -189,8 +194,7 @@
     },
     "994b92c5-533a-4ed4-be33-bf59dc6de145": {
       "title": "Shareholder contribution",
-      "description": "Please provide a proof of fund provenance (last 3 pay slips, sale of securities, inheritance/donation, …) for your investment."
+      "callout": "Please provide a proof of fund provenance (last 3 pay slips, sale of securities, inheritance/donation, …) for your investment."
     }
   }
 }
-

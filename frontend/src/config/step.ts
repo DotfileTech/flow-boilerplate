@@ -31,6 +31,7 @@ export const stepsConfig: {
       {
         id: 'trade_registry_location',
         isRequired: true,
+        hasHelper: true
       },
     ],
   },
