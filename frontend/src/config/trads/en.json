@@ -132,5 +132,12 @@
       "description": "Registration certificate must be less than 3 months old.",
       "callout": "Legible, non-truncated copy in <b>PNG</b>, <b>JPG</b> or <b>PDF</b> format.<br/<br/>Need help? please don't hesitate to <a href=\"https://goldbroker.com/contact\" target=\"_blank\">contact us</a>"
     }
+  },
+  "domain": {
+    "individual": {
+      "roles": {
+        "legal_representative": "Principal officer (Director, CEO, CFO etc.)"
+      }
+    }
   }
 }

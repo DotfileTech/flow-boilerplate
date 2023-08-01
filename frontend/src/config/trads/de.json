@@ -101,5 +101,12 @@
       "description": "Der Handelsregisterauszug darf nicht älter als 3 Monate sein.",
       "callout": "Vollständig lesbare Kopie im <b>PNG-</b>, <b>JPG-</b> oder <b>PDF-</b>Format.<p><br/>Benötigen Sie Hilfe? Zögern Sie nicht, <a href=\"https://de.goldbroker.com/kontakt\" target=\"_blank\">uns zu kontaktieren</a>"
     }
+  },
+  "domain": {
+    "individual": {
+      "roles": {
+        "legal_representative": "Hauptgeschäftsführer (Direktor, Vorstandsvorsitzender,  Finanzdirektor etc.)"
+      }
+    }
   }
 }

@@ -113,5 +113,12 @@
       "description": "Le certificat d'incorporation (Kbis) doit dater de moins de 3 mois.",
       "callout": "Copie lisible, non tronquée, au format <b>PNG</b>, <b>JPG</b> ou <b>PDF</b>.<br/><br/>Besoin d'aide? N'hésitez pas à <a href=\"https://or.fr/contact\" target=\"_blank\">nous contacter</a>"
     }
+  },
+  "domain": {
+    "individual": {
+      "roles": {
+        "legal_representative": "Dirigeant (président, directeur général, directeur financier, etc.)"
+      }
+    }
   }
 }
