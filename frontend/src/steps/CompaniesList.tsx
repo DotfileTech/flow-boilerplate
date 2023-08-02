@@ -35,26 +35,30 @@ const CompaniesList = (props: CompaniesListProps) => {
       }),
     };
 
-    const response = await api.get(
-      `dotfile/companies?${new URLSearchParams(params).toString()}`
-    );
-
-    if (
-      response.data.data.length === 0 &&
-      searchParams.get('registrationNumber') &&
-      company.registration_number
-    ) {
-      // Go to the search company step when the registration number in query param is bad
-      setCompany({
-        name: searchParams.get('company'),
-        country: searchParams.get('country'),
-        registration_number: null,
+    await api
+      .get(`dotfile/companies?${new URLSearchParams(params).toString()}`)
+      .then((response) => {
+        if (
+          response.data.data.length === 0 &&
+          searchParams.get('registrationNumber') &&
+          company.registration_number
+        ) {
+          // Go to the search company step when the registration number in query param is bad
+          setCompany({
+            name: searchParams.get('company'),
+            country: searchParams.get('country'),
+            registration_number: null,
+          });
+          back();
+        } else if (response.data.data.length > 0) {
+          setCompanies(response.data.data);
+        }
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
       });
-      back();
-    } else if (response.data.data.length > 0) {
-      setCompanies(response.data.data);
-    }
-    setIsLoading(false);
   };
 
   useEffect(() => {
